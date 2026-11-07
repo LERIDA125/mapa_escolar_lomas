@@ -1,19 +1,8 @@
-import java.util.Properties
-
 plugins {
     id("com.android.application")
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id("dev.flutter.flutter-gradle-plugin")
 }
-
-val localProperties = Properties().apply {
-    val file = rootProject.file("local.properties")
-    if (file.exists()) {
-        file.inputStream().use { load(it) }
-    }
-}
-val mapsApiKey: String = localProperties.getProperty("MAPS_API_KEY") ?: ""
-// Add MAPS_API_KEY=your_key to android/local.properties to render the map.
 
 android {
     namespace = "com.example.mapa_escolar"
@@ -32,7 +21,6 @@ android {
         // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion
-        manifestPlaceholders["MAPS_API_KEY"] = mapsApiKey
         // Uses the version code from pubspec.yaml. When using split APKs, 1000 * ABI_VERSION
         // is added automatically by Flutter. (https://developer.android.com/studio/build/configure-apk-splits#configure-APK-versions)
         // You can force using the value of versionCode by specifying the `-P force-version-code-ignoring-abi=true`

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:latlong2/latlong.dart';
 
 import '../../domain/models/school_models.dart';
 import '../../providers/school_providers.dart';
@@ -13,6 +14,7 @@ class HomeScreen extends ConsumerWidget {
   static const routeName = '/home';
 
   static const _lomasCenter = LatLng(-34.7616, -58.4027);
+  static const _osmTileUrl = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -23,19 +25,36 @@ class HomeScreen extends ConsumerWidget {
       value: SystemUiOverlayStyle.dark,
       child: Scaffold(
         body: Stack(
+          fit: StackFit.expand,
           children: [
-            GoogleMap(
-              initialCameraPosition: const CameraPosition(
-                target: _lomasCenter,
-                zoom: 13.5,
+            FlutterMap(
+              options: const MapOptions(
+                initialCenter: _lomasCenter,
+                initialZoom: 13.5,
+                minZoom: 3,
+                maxZoom: 19,
+                backgroundColor: AppColors.surfaceContainer,
               ),
-              markers: _buildMarkers(schools),
-              myLocationButtonEnabled: false,
-              zoomControlsEnabled: false,
-              mapToolbarEnabled: false,
-              compassEnabled: false,
-              padding: const EdgeInsets.only(top: 140, bottom: 24),
+              children: [
+                TileLayer(
+                  urlTemplate: _osmTileUrl,
+                  userAgentPackageName: 'com.example.mapa_escolar',
+                  maxNativeZoom: 19,
+                ),
+                MarkerLayer(markers: _buildMarkers(schools)),
+                const RichAttributionWidget(
+                  attributions: [
+                    TextSourceAttribution('OpenStreetMap contributors'),
+                  ],
+                ),
+              ],
             ),
+            if (schoolsAsync.isLoading) const _LoadingOverlay(),
+            if (schoolsAsync.hasError)
+              _ErrorOverlay(
+                error: schoolsAsync.error!,
+                onRetry: () => ref.invalidate(schoolsProvider),
+              ),
             const SafeArea(
               child: Align(
                 alignment: Alignment.topCenter,
@@ -45,31 +64,34 @@ class HomeScreen extends ConsumerWidget {
                 ),
               ),
             ),
-            if (schoolsAsync.isLoading) const _LoadingOverlay(),
-            if (schoolsAsync.hasError)
-              _ErrorOverlay(
-                error: schoolsAsync.error!,
-                onRetry: () => ref.invalidate(schoolsProvider),
-              ),
           ],
         ),
       ),
     );
   }
 
-  Set<Marker> _buildMarkers(List<School> schools) {
-    return {
+  List<Marker> _buildMarkers(List<School> schools) {
+    return [
       for (final school in schools)
         Marker(
-          markerId: MarkerId(school.id),
-          position: LatLng(school.latitude, school.longitude),
-          icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed),
-          infoWindow: InfoWindow(
-            title: school.name,
-            snippet: '${school.level} · ${school.address}',
+          point: LatLng(school.latitude, school.longitude),
+          width: 40,
+          height: 40,
+          alignment: Alignment.topCenter,
+          child: const Icon(
+            Icons.location_on_rounded,
+            color: AppColors.mapMarker,
+            size: 40,
+            shadows: [
+              Shadow(
+                color: Color(0x66000000),
+                blurRadius: 6,
+                offset: Offset(0, 2),
+              ),
+            ],
           ),
         ),
-    };
+    ];
   }
 }
 

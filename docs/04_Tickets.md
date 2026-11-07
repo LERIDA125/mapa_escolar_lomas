@@ -1,10 +1,6 @@
-# 04_Tickets.md (Roadmap y Sprints)
-
-## Sprint 1: Setup, Data ETL y UI Base
-
 | Ticket       | Módulo     | Descripción                                                                                                                                 | Estado         |
 | ------------ | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------- | -------------- |
 | **TICK-001** | Docs       | Estructurar SDD (PRD, ERD, Guidelines, Tickets) y assets visuales de Stitch.                                                                | 🟢 DONE        |
-| **TICK-002** | Data (ETL) | Script en Python para parsear el nomenclador PDF, limpiar datos, estructurar en base al ERD y exportar `escuelas_seed.json`.                | 🟢 DONE        |
-| **TICK-003** | Infra      | Inicializar proyecto Flutter, limpiar `main.dart`, configurar dependencias (`riverpod`, `google_maps_flutter`) y empaquetar JSON en assets. | 🟡 IN PROGRESS |
-| **TICK-004** | UI         | Traducir prototipos de Google Stitch (Splash, Login, Home) a widgets de Dart respetando los lineamientos de Material Design 3.              | ⚪ TO DO       |
+| **TICK-002** | Data (ETL) | Script Python ETL, parseo de nomenclador PDF a Excel y export a `escuelas_seed.json`.                                                       | 🟢 DONE        |
+| **TICK-003** | Infra      | Configurar modelos de datos, `SchoolRepository` y Riverpod. Inyectar JSON tolerando registros vacíos y configurar test unitarios.           | 🟢 DONE        |
+| **TICK-004** | UI         | Traducir prototipos de Stitch (Splash, Login, Home) a Flutter integrando `flutter_map` (OpenStreetMap) con pines renderizados vía Riverpod. | 🟡 IN PROGRESS |
