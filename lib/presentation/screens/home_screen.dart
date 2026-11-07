@@ -98,72 +98,78 @@ class _SearchBar extends StatelessWidget {
           ),
         ],
       ),
-      child: Row(
-        children: [
-          const Icon(Icons.search_rounded, size: 22, color: AppColors.neutral),
-          const SizedBox(width: 12),
-          Expanded(
-            child: TextField(
-              textInputAction: TextInputAction.search,
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                color: AppColors.onSurface,
-              ),
-              decoration: const InputDecoration(
-                hintText: 'Buscar por número o nombre (ej. EP 12)',
-                border: InputBorder.none,
-                enabledBorder: InputBorder.none,
-                focusedBorder: InputBorder.none,
-                filled: false,
-                isDense: true,
-                contentPadding: EdgeInsets.zero,
-              ),
-            ),
-          ),
-          IconButton(
-            tooltip: 'Buscar por voz',
-            onPressed: () {
-              ScaffoldMessenger.of(context)
-                ..hideCurrentSnackBar()
-                ..showSnackBar(
-                  const SnackBar(
-                    content: Text(
-                      'La búsqueda por voz estará disponible próximamente.',
-                    ),
-                  ),
-                );
-            },
-            icon: const Icon(
-              Icons.mic_none_rounded,
-              size: 20,
+      child: Material(
+        type: MaterialType.transparency,
+        child: Row(
+          children: [
+            const Icon(
+              Icons.search_rounded,
+              size: 22,
               color: AppColors.neutral,
             ),
-          ),
-          Container(
-            width: 1,
-            height: 20,
-            color: AppColors.outlineVariant.withValues(alpha: 0.6),
-          ),
-          const SizedBox(width: 8),
-          Tooltip(
-            message: 'Aspirante',
-            child: Container(
-              width: 28,
-              height: 28,
-              decoration: const BoxDecoration(
-                color: AppColors.primaryFixed,
-                shape: BoxShape.circle,
-              ),
-              alignment: Alignment.center,
-              child: Text(
-                'AP',
-                style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                  color: AppColors.onPrimaryFixedVariant,
-                  fontWeight: FontWeight.w700,
+            const SizedBox(width: 12),
+            Expanded(
+              child: TextField(
+                textInputAction: TextInputAction.search,
+                style: Theme.of(context).textTheme.bodyMedium
+                    ?.copyWith(color: AppColors.onSurface),
+                decoration: const InputDecoration(
+                  hintText: 'Buscar por número o nombre (ej. EP 12)',
+                  border: InputBorder.none,
+                  enabledBorder: InputBorder.none,
+                  focusedBorder: InputBorder.none,
+                  filled: false,
+                  isDense: true,
+                  contentPadding: EdgeInsets.zero,
                 ),
               ),
             ),
-          ),
-        ],
+            IconButton(
+              tooltip: 'Buscar por voz',
+              onPressed: () {
+                ScaffoldMessenger.of(context)
+                  ..hideCurrentSnackBar()
+                  ..showSnackBar(
+                    const SnackBar(
+                      content: Text(
+                        'La búsqueda por voz estará disponible próximamente.',
+                      ),
+                    ),
+                  );
+              },
+              icon: const Icon(
+                Icons.mic_none_rounded,
+                size: 20,
+                color: AppColors.neutral,
+              ),
+            ),
+            Container(
+              width: 1,
+              height: 20,
+              color: AppColors.outlineVariant.withValues(alpha: 0.6),
+            ),
+            const SizedBox(width: 8),
+            Tooltip(
+              message: 'Aspirante',
+              child: Container(
+                width: 28,
+                height: 28,
+                decoration: const BoxDecoration(
+                  color: AppColors.primaryFixed,
+                  shape: BoxShape.circle,
+                ),
+                alignment: Alignment.center,
+                child: Text(
+                  'AP',
+                  style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                    color: AppColors.onPrimaryFixedVariant,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

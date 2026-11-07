@@ -94,134 +94,130 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget _buildLoginCard(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
 
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: AppColors.surface,
+    return Material(
+      color: AppColors.surface,
+      elevation: 1,
+      shadowColor: const Color(0x1A3C4043),
+      clipBehavior: Clip.antiAlias,
+      shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(
+        side: BorderSide(
           color: AppColors.outlineVariant.withValues(alpha: 0.8),
         ),
-        boxShadow: const [
-          BoxShadow(
-            color: Color(0x0F3C4043),
-            blurRadius: 3,
-            offset: Offset(0, 1),
-          ),
-        ],
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          const _FieldLabel(
-            text: 'Documento Nacional de Identidad (DNI)',
-          ),
-          const SizedBox(height: 6),
-          const TextField(
-            keyboardType: TextInputType.number,
-            textInputAction: TextInputAction.next,
-            autofillHints: [AutofillHints.username],
-            decoration: InputDecoration(
-              hintText: 'Ej: 35.123.456',
-              prefixIcon: Icon(
-                Icons.badge_outlined,
-                size: 20,
-                color: AppColors.outline,
-              ),
-            ),
-          ),
-          const SizedBox(height: 4),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 4),
-            child: Text(
-              'Sin puntos ni espacios',
-              style: textTheme.labelSmall?.copyWith(color: AppColors.outline),
-            ),
-          ),
-          const SizedBox(height: 16),
-          const _FieldLabel(text: 'Contraseña'),
-          const SizedBox(height: 6),
-          TextField(
-            obscureText: _obscurePassword,
-            textInputAction: TextInputAction.done,
-            autofillHints: const [AutofillHints.password],
-            onSubmitted: (_) => _openHome(),
-            decoration: InputDecoration(
-              hintText: '••••••••••••',
-              prefixIcon: const Icon(
-                Icons.lock_outline_rounded,
-                size: 20,
-                color: AppColors.outline,
-              ),
-              suffixIcon: IconButton(
-                tooltip: _obscurePassword
-                    ? 'Mostrar contraseña'
-                    : 'Ocultar contraseña',
-                onPressed: () {
-                  setState(() => _obscurePassword = !_obscurePassword);
-                },
-                icon: Icon(
-                  _obscurePassword
-                      ? Icons.visibility_outlined
-                      : Icons.visibility_off_outlined,
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            const _FieldLabel(text: 'Documento Nacional de Identidad (DNI)'),
+            const SizedBox(height: 6),
+            const TextField(
+              keyboardType: TextInputType.number,
+              textInputAction: TextInputAction.next,
+              autofillHints: [AutofillHints.username],
+              decoration: InputDecoration(
+                hintText: 'Ej: 35.123.456',
+                prefixIcon: Icon(
+                  Icons.badge_outlined,
                   size: 20,
                   color: AppColors.outline,
                 ),
               ),
             ),
-          ),
-          const SizedBox(height: 8),
-          Row(
-            children: [
-              SizedBox(
-                width: 24,
-                height: 24,
-                child: Checkbox(
-                  value: _rememberDni,
-                  onChanged: (value) {
-                    setState(() => _rememberDni = value ?? false);
-                  },
-                  visualDensity: VisualDensity.compact,
-                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                ),
+            const SizedBox(height: 4),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 4),
+              child: Text(
+                'Sin puntos ni espacios',
+                style: textTheme.labelSmall?.copyWith(color: AppColors.outline),
               ),
-              const SizedBox(width: 8),
-              Expanded(
-                child: GestureDetector(
-                  onTap: () {
-                    setState(() => _rememberDni = !_rememberDni);
+            ),
+            const SizedBox(height: 16),
+            const _FieldLabel(text: 'Contraseña'),
+            const SizedBox(height: 6),
+            TextField(
+              obscureText: _obscurePassword,
+              textInputAction: TextInputAction.done,
+              autofillHints: const [AutofillHints.password],
+              onSubmitted: (_) => _openHome(),
+              decoration: InputDecoration(
+                hintText: '••••••••••••',
+                prefixIcon: const Icon(
+                  Icons.lock_outline_rounded,
+                  size: 20,
+                  color: AppColors.outline,
+                ),
+                suffixIcon: IconButton(
+                  tooltip: _obscurePassword
+                      ? 'Mostrar contraseña'
+                      : 'Ocultar contraseña',
+                  onPressed: () {
+                    setState(() => _obscurePassword = !_obscurePassword);
                   },
-                  child: Text(
-                    'Recordar mi DNI en este dispositivo',
-                    style: textTheme.labelMedium?.copyWith(
-                      color: AppColors.onSurfaceVariant,
-                    ),
+                  icon: Icon(
+                    _obscurePassword
+                        ? Icons.visibility_outlined
+                        : Icons.visibility_off_outlined,
+                    size: 20,
+                    color: AppColors.outline,
                   ),
                 ),
               ),
-            ],
-          ),
-          const SizedBox(height: 12),
-          FilledButton(
-            onPressed: _openHome,
-            child: const Row(
-              mainAxisSize: MainAxisSize.min,
+            ),
+            const SizedBox(height: 8),
+            Row(
               children: [
-                Text('Ingresar'),
-                SizedBox(width: 8),
-                Icon(Icons.arrow_forward_rounded, size: 19),
+                SizedBox(
+                  width: 24,
+                  height: 24,
+                  child: Checkbox(
+                    value: _rememberDni,
+                    onChanged: (value) {
+                      setState(() => _rememberDni = value ?? false);
+                    },
+                    visualDensity: VisualDensity.compact,
+                    materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  ),
+                ),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () {
+                      setState(() => _rememberDni = !_rememberDni);
+                    },
+                    child: Text(
+                      'Recordar mi DNI en este dispositivo',
+                      style: textTheme.labelMedium?.copyWith(
+                        color: AppColors.onSurfaceVariant,
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
-          ),
-          const SizedBox(height: 12),
-          TextButton(
-            onPressed: () => _showPending(
-              context,
-              'La recuperación de contraseña estará disponible próximamente.',
+            const SizedBox(height: 12),
+            FilledButton(
+              onPressed: _openHome,
+              child: const Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text('Ingresar'),
+                  SizedBox(width: 8),
+                  Icon(Icons.arrow_forward_rounded, size: 19),
+                ],
+              ),
             ),
-            child: const Text('¿Olvidaste tu contraseña?'),
-          ),
-        ],
+            const SizedBox(height: 12),
+            TextButton(
+              onPressed: () => _showPending(
+                context,
+                'La recuperación de contraseña estará disponible próximamente.',
+              ),
+              child: const Text('¿Olvidaste tu contraseña?'),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -229,76 +225,79 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget _buildHelpCard(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
 
-    return Container(
-      padding: const EdgeInsets.all(14),
-      decoration: BoxDecoration(
-        color: AppColors.surfaceContainerLow,
+    return Material(
+      color: AppColors.surfaceContainerLow,
+      clipBehavior: Clip.antiAlias,
+      shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(
+        side: BorderSide(
           color: AppColors.outlineVariant.withValues(alpha: 0.5),
         ),
       ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            width: 36,
-            height: 36,
-            decoration: const BoxDecoration(
-              color: AppColors.primaryFixed,
-              shape: BoxShape.circle,
+      child: Padding(
+        padding: const EdgeInsets.all(14),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              width: 36,
+              height: 36,
+              decoration: const BoxDecoration(
+                color: AppColors.primaryFixed,
+                shape: BoxShape.circle,
+              ),
+              child: const Icon(
+                Icons.school_outlined,
+                size: 20,
+                color: AppColors.primary,
+              ),
             ),
-            child: const Icon(
-              Icons.school_outlined,
-              size: 20,
-              color: AppColors.primary,
-            ),
-          ),
-          const SizedBox(width: 12),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  '¿Primer ingreso o dudas con tu puntaje?',
-                  style: textTheme.titleSmall,
-                ),
-                const SizedBox(height: 2),
-                Text(
-                  'Verifica tu número de legajo en el listado oficial de '
-                  'aspirantes o consulta en la mesa de ayuda de la sede '
-                  'distrital.',
-                  style: textTheme.bodySmall?.copyWith(
-                    color: AppColors.onSurfaceVariant,
+            const SizedBox(width: 12),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    '¿Primer ingreso o dudas con tu puntaje?',
+                    style: textTheme.titleSmall,
                   ),
-                ),
-                const SizedBox(height: 8),
-                Wrap(
-                  spacing: 16,
-                  runSpacing: 4,
-                  children: [
-                    _HelpLink(
-                      label: 'Mesa de Ayuda',
-                      icon: Icons.open_in_new_rounded,
-                      onTap: () => _showPending(
-                        context,
-                        'La mesa de ayuda estará disponible próximamente.',
-                      ),
+                  const SizedBox(height: 2),
+                  Text(
+                    'Verifica tu número de legajo en el listado oficial de '
+                    'aspirantes o consulta en la mesa de ayuda de la sede '
+                    'distrital.',
+                    style: textTheme.bodySmall?.copyWith(
+                      color: AppColors.onSurfaceVariant,
                     ),
-                    _HelpLink(
-                      label: 'Listado 1047 / ABC',
-                      muted: true,
-                      onTap: () => _showPending(
-                        context,
-                        'El listado oficial estará disponible próximamente.',
+                  ),
+                  const SizedBox(height: 8),
+                  Wrap(
+                    spacing: 16,
+                    runSpacing: 4,
+                    children: [
+                      _HelpLink(
+                        label: 'Mesa de Ayuda',
+                        icon: Icons.open_in_new_rounded,
+                        onTap: () => _showPending(
+                          context,
+                          'La mesa de ayuda estará disponible próximamente.',
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-              ],
+                      _HelpLink(
+                        label: 'Listado 1047 / ABC',
+                        muted: true,
+                        onTap: () => _showPending(
+                          context,
+                          'El listado oficial estará disponible próximamente.',
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -377,9 +376,7 @@ class _StatusHeader extends StatelessWidget {
               const SizedBox(width: 6),
               Text(
                 'Acto Público Activo',
-                style: labelStyle?.copyWith(
-                  color: AppColors.onSurfaceVariant,
-                ),
+                style: labelStyle?.copyWith(color: AppColors.onSurfaceVariant),
               ),
             ],
           ),
@@ -411,9 +408,7 @@ class _StatusHeader extends StatelessWidget {
               const SizedBox(width: 4),
               Text(
                 'Modo Offline listo',
-                style: labelStyle?.copyWith(
-                  color: AppColors.onSurfaceVariant,
-                ),
+                style: labelStyle?.copyWith(color: AppColors.onSurfaceVariant),
               ),
             ],
           ),
@@ -440,26 +435,27 @@ class _HelpLink extends StatelessWidget {
   Widget build(BuildContext context) {
     final color = muted ? AppColors.onSurfaceVariant : AppColors.primary;
 
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(4),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 2),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(
-              label,
-              style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                color: color,
-                fontWeight: FontWeight.w600,
+    return Material(
+      type: MaterialType.transparency,
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(4),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 2),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                label,
+                style: Theme.of(context).textTheme.labelSmall
+                    ?.copyWith(color: color, fontWeight: FontWeight.w600),
               ),
-            ),
-            if (icon != null) ...[
-              const SizedBox(width: 4),
-              Icon(icon!, size: 14, color: color),
+              if (icon != null) ...[
+                const SizedBox(width: 4),
+                Icon(icon!, size: 14, color: color),
+              ],
             ],
-          ],
+          ),
         ),
       ),
     );

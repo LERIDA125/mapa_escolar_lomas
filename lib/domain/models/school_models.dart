@@ -77,9 +77,7 @@ class School {
           ? const Locality(id: '', name: '', zone: '')
           : Locality.fromJson(locality),
       transportLines: (transportLines ?? const <dynamic>[])
-          .map(
-            (line) => TransportLine.fromJson(line as Map<String, dynamic>),
-          )
+          .map((line) => TransportLine.fromJson(line as Map<String, dynamic>))
           .toList(growable: false),
     );
   }

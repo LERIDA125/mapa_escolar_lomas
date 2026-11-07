@@ -13,6 +13,7 @@ val localProperties = Properties().apply {
     }
 }
 val mapsApiKey: String = localProperties.getProperty("MAPS_API_KEY") ?: ""
+// Add MAPS_API_KEY=your_key to android/local.properties to render the map.
 
 android {
     namespace = "com.example.mapa_escolar"
