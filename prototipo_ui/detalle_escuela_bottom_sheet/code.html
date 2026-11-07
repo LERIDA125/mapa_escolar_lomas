@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Detalle de Institución - Actos Públicos</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Inter Font -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-background": "#181c20",
+            "outline": "#727785",
+            "on-surface-variant": "#414754",
+            "surface-dim": "#d7dae0",
+            "surface": "#f7f9ff",
+            "surface-variant": "#dfe3e8",
+            "secondary": "#006e2a",
+            "surface-container-highest": "#dfe3e8",
+            "on-tertiary-fixed-variant": "#930004",
+            "tertiary-container": "#dc392c",
+            "on-tertiary-container": "#ffffff",
+            "surface-container": "#ebeef4",
+            "outline-variant": "#c1c6d6",
+            "on-secondary-fixed": "#002108",
+            "primary": "#005bbf",
+            "tertiary-fixed-dim": "#ffb4a9",
+            "inverse-surface": "#2d3135",
+            "on-tertiary": "#ffffff",
+            "primary-container": "#1a73e8",
+            "on-surface": "#181c20",
+            "primary-fixed": "#d8e2ff",
+            "surface-tint": "#005bc0",
+            "on-secondary-container": "#00752d",
+            "primary-fixed-dim": "#adc7ff",
+            "error-container": "#ffdad6",
+            "on-secondary-fixed-variant": "#00531e",
+            "on-primary-fixed-variant": "#004493",
+            "error": "#ba1a1a",
+            "surface-bright": "#f7f9ff",
+            "tertiary-fixed": "#ffdad5",
+            "on-error-container": "#93000a",
+            "secondary-container": "#8ffa9b",
+            "on-primary-container": "#ffffff",
+            "on-primary": "#ffffff",
+            "background": "#f7f9ff",
+            "on-primary-fixed": "#001a41",
+            "secondary-fixed": "#8ffa9b",
+            "surface-container-low": "#f1f4fa",
+            "surface-container-high": "#e5e8ee",
+            "on-tertiary-fixed": "#410001",
+            "on-secondary": "#ffffff",
+            "tertiary": "#b81d17",
+            "secondary-fixed-dim": "#73dc82",
+            "on-error": "#ffffff",
+            "inverse-on-surface": "#eef1f7",
+            "surface-container-lowest": "#ffffff",
+            "inverse-primary": "#adc7ff"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "gutter": "1rem",
+            "margin": "1rem",
+            "space-md": "1rem",
+            "space-xs": "0.25rem",
+            "space-xl": "2rem",
+            "space-lg": "1.5rem"
+          },
+          "fontFamily": {
+            "body-md": ["Inter"],
+            "label-lg": ["Inter"],
+            "label-sm": ["Inter"],
+            "body-lg": ["Inter"],
+            "title-sm": ["Inter"],
+            "headline-sm": ["Inter"],
+            "headline-md": ["Inter"],
+            "headline-lg": ["Inter"],
+            "body-sm": ["Inter"],
+            "display-sm": ["Inter"],
+            "title-md": ["Inter"],
+            "label-md": ["Inter"]
+          },
+          "fontSize": {
+            "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.015em", "fontWeight": "400" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "title-sm": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "letterSpacing": "0", "fontWeight": "600" }],
+            "headline-md": ["20px", { "lineHeight": "26px", "letterSpacing": "0", "fontWeight": "600" }],
+            "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "400" }],
+            "display-sm": ["30px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "title-md": ["16px", { "lineHeight": "22px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 24px;
+      line-height: 1;
+      letter-spacing: normal;
+      text-transform: none;
+      display: inline-block;
+      white-space: nowrap;
+      word-wrap: normal;
+      direction: ltr;
+      -webkit-font-feature-settings: 'liga';
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    /* Cartographic grid simulation for Map canvas */
+    .map-grid {
+      background-color: #f1f4fa;
+      background-image: 
+        radial-gradient(#c1c6d6 0.75px, transparent 0.75px),
+        linear-gradient(to right, #ebeef4 1px, transparent 1px),
+        linear-gradient(to bottom, #ebeef4 1px, transparent 1px);
+      background-size: 24px 24px, 72px 72px, 72px 72px;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body-md text-on-surface h-full w-full overflow-hidden select-none">
+<!-- MAP BASE CANVAS (Full Screen Background) -->
+<div class="fixed inset-0 w-full h-full map-grid z-0 overflow-hidden" data-location="Lomas de Zamora, Buenos Aires" style="">
+<!-- Simulated Urban Street Corridors -->
+<div class="absolute inset-0 opacity-80 pointer-events-none">
+<!-- Major Avenues -->
+<div class="absolute top-[28%] left-0 right-0 h-6 bg-surface-container-lowest shadow-sm -rotate-6 transform origin-left"></div>
+<div class="absolute top-0 bottom-0 left-[38%] w-8 bg-surface-container-lowest shadow-sm rotate-3 transform origin-top"></div>
+<div class="absolute top-[65%] left-0 right-0 h-5 bg-surface-container-lowest -rotate-2"></div>
+<div class="absolute top-0 bottom-0 right-[25%] w-6 bg-surface-container-lowest -rotate-3"></div>
+<!-- Secondary Streets -->
+<div class="absolute top-[18%] left-0 right-0 h-2 bg-surface-container-lowest"></div>
+<div class="absolute top-[48%] left-0 right-0 h-3 bg-surface-container-lowest rotate-12"></div>
+<div class="absolute top-0 bottom-0 left-[15%] w-2 bg-surface-container-lowest"></div>
+<div class="absolute top-0 bottom-0 left-[68%] w-3 bg-surface-container-lowest"></div>
+<!-- Public Green Park Square -->
+<div class="absolute top-[32%] left-[45%] w-36 h-28 bg-[#d2e3c8] rounded-2xl border border-[#b4d2a6] flex items-center justify-center">
+<span class="font-label-sm text-label-sm text-[#386a20] tracking-wide opacity-80">Plaza Ing. Budge</span>
+</div>
+</div>
+<!-- Background Inactive School Pins -->
+<div class="absolute top-[24%] left-[22%] -translate-x-1/2 -translate-y-full flex flex-col items-center opacity-70">
+<div class="w-8 h-8 rounded-full bg-tertiary-container shadow-md flex items-center justify-center text-white border-2 border-surface-container-lowest">
+<span class="material-symbols-outlined text-[18px]">school</span>
+</div>
+<div class="w-1.5 h-1.5 bg-tertiary-container rounded-full mt-0.5"></div>
+</div>
+<div class="absolute top-[38%] right-[18%] -translate-x-1/2 -translate-y-full flex flex-col items-center opacity-60">
+<div class="w-8 h-8 rounded-full bg-outline shadow-md flex items-center justify-center text-white border-2 border-surface-container-lowest">
+<span class="material-symbols-outlined text-[18px]">school</span>
+</div>
+<div class="w-1.5 h-1.5 bg-outline rounded-full mt-0.5"></div>
+</div>
+<!-- Active Target School Pin (Escuela Primaria 12) -->
+<div class="absolute top-[46%] left-[42%] -translate-x-1/2 -translate-y-full z-10 flex flex-col items-center">
+<!-- Outer ring pulse -->
+<div class="absolute -inset-3 bg-primary-container/20 rounded-full animate-ping"></div>
+<!-- Accent Pin Body -->
+<div class="relative w-12 h-12 rounded-full bg-tertiary-container shadow-xl flex items-center justify-center text-white ring-4 ring-primary-container transition-transform">
+<span class="material-symbols-outlined text-[26px]" style="font-variation-settings: 'FILL' 1;">school</span>
+</div>
+<!-- Pin Anchor Needle -->
+<div class="w-3 h-3 bg-tertiary-container rotate-45 -mt-1.5 border-r border-b border-surface-container-lowest"></div>
+<div class="w-2.5 h-1 bg-black/30 rounded-full mt-1 blur-[1px]"></div>
+</div>
+</div>
+<!-- FLOATING APP BAR & CHIPS (Contextual background layout) -->
+<div class="fixed top-0 left-0 right-0 z-10 max-w-lg mx-auto pointer-events-none">
+<!-- Top Search Header (Shared TopAppBar structure representation) -->
+<header class="bg-surface-container-lowest/90 backdrop-blur-md rounded-full mx-4 mt-3 mb-2 shadow-md border border-outline-variant/60 flex items-center justify-between px-4 py-2 pointer-events-auto">
+<div class="flex items-center gap-3">
+<button aria-label="Menú" class="w-10 h-10 flex items-center justify-center text-primary rounded-full hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<span class="font-title-md text-title-md font-bold text-on-surface tracking-tight">Actos Públicos</span>
+</div>
+<button aria-label="Filtros" class="w-10 h-10 flex items-center justify-center text-primary rounded-full hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined">tune</span>
+</button>
+</header>
+<!-- Search / Filter Chips Row -->
+<div class="flex items-center gap-2 px-4 py-1 overflow-x-auto no-scrollbar pointer-events-auto">
+<div class="flex items-center gap-1.5 bg-primary-fixed text-on-primary-fixed border border-primary px-3 py-1.5 rounded-full text-label-md font-label-md shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[16px]">check</span>
+<span>Vacantes Disponibles</span>
+</div>
+<div class="flex items-center gap-1 bg-surface-container-lowest text-on-surface-variant border border-outline-variant px-3 py-1.5 rounded-full text-label-md font-label-md shrink-0 shadow-sm">
+<span>Turno Mañana</span>
+</div>
+<div class="flex items-center gap-1 bg-surface-container-lowest text-on-surface-variant border border-outline-variant px-3 py-1.5 rounded-full text-label-md font-label-md shrink-0 shadow-sm">
+<span>Radio 5 km</span>
+</div>
+</div>
+</div>
+<!-- SCRIM / BACKDROP (Dark translucent overlay) -->
+<div aria-hidden="true" class="fixed inset-0 bg-black/45 z-20 transition-opacity backdrop-blur-[1.5px]"></div>
+<!-- MODAL BOTTOM SHEET CONTAINER -->
+<section aria-labelledby="sheet-title" aria-modal="true" class="fixed bottom-0 inset-x-0 z-30 max-w-lg mx-auto w-full bg-surface-container-lowest rounded-t-[28px] shadow-[0px_-4px_24px_rgba(0,0,0,0.18)] border-t border-outline-variant/40 flex flex-col max-h-[751px] animate-in slide-in-from-bottom duration-300" role="dialog">
+<!-- Drag Handle Indicator -->
+<div class="w-full flex items-center justify-center pt-3 pb-2 cursor-grab active:cursor-grabbing">
+<div class="w-10 h-1.5 rounded-full bg-outline-variant"></div>
+</div>
+<!-- Sheet Content Body (Scrollable if viewport is ultra-compact) -->
+<div class="px-5 pt-1 pb-6 overflow-y-auto">
+<!-- Header: Title & Subtitle + Badge -->
+<div class="flex items-start justify-between gap-3 mb-4">
+<div>
+<div class="flex items-center gap-2 mb-0.5">
+<span class="bg-[#E6F4EA] text-[#137333] font-label-sm text-label-sm px-2.5 py-0.5 rounded-full font-bold inline-flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-[#137333]"></span>
+              2 Vacantes activas
+            </span>
+<span class="font-label-sm text-label-sm text-on-surface-variant bg-surface-container px-2 py-0.5 rounded-full">
+              ID #0321
+            </span>
+</div>
+<h1 class="font-headline-lg text-headline-lg font-bold text-on-surface tracking-tight" id="sheet-title">
+            Escuela Primaria 12
+          </h1>
+<p class="font-title-sm text-title-sm font-medium text-on-surface-variant mt-0.5">
+            Zona 4: Ing. Budge
+          </p>
+</div>
+<!-- Quick Close / Dismiss Icon -->
+<button aria-label="Cerrar detalle" class="w-9 h-9 rounded-full bg-surface-container-low flex items-center justify-center text-on-surface-variant hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<!-- Information Rows (Address & Direct Phone) -->
+<div class="bg-surface-container-low/70 rounded-2xl p-3.5 space-y-2.5 mb-4 border border-outline-variant/40">
+<!-- Row 1: Location -->
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary-fixed flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[18px]">location_on</span>
+</div>
+<div class="flex-1 min-w-0">
+<span class="font-label-sm text-label-sm text-outline block leading-none mb-0.5">Dirección</span>
+<span class="font-title-sm text-title-sm font-semibold text-on-surface truncate block">
+              Quesada 2610
+            </span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary font-medium bg-secondary-fixed/50 px-2 py-0.5 rounded">
+            A 12 min
+          </span>
+</div>
+<div class="h-px bg-outline-variant/40 w-full"></div>
+<!-- Row 2: Phone -->
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant shrink-0">
+<span class="material-symbols-outlined text-[18px]">call</span>
+</div>
+<div class="flex-1 min-w-0">
+<span class="font-label-sm text-label-sm text-outline block leading-none mb-0.5">Teléfono institucional</span>
+<a class="font-title-sm text-title-sm font-semibold text-primary hover:underline truncate block" href="tel:42733265">
+              4273-3265
+            </a>
+</div>
+<a aria-label="Llamar" class="w-8 h-8 flex items-center justify-center text-primary hover:bg-surface-container rounded-full" href="tel:42733265">
+<span class="material-symbols-outlined text-[20px]">phone_in_talk</span>
+</a>
+</div>
+</div>
+<!-- Bus / Transit Section -->
+<div class="mb-5">
+<h2 class="font-title-sm text-title-sm font-semibold text-on-surface mb-2 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[18px]">directions_bus</span>
+          Líneas de Colectivo:
+        </h2>
+<div class="flex flex-wrap items-center gap-2">
+<!-- Chip 1: 540 A -->
+<div class="bg-primary-fixed text-on-primary-fixed px-3 py-1.5 rounded-full font-label-md text-label-md font-bold flex items-center gap-1.5 shadow-sm border border-primary/20">
+<span class="material-symbols-outlined text-[16px]">directions_bus</span>
+<span>540 A</span>
+</div>
+<!-- Chip 2: 540 B -->
+<div class="bg-primary-fixed text-on-primary-fixed px-3 py-1.5 rounded-full font-label-md text-label-md font-bold flex items-center gap-1.5 shadow-sm border border-primary/20">
+<span class="material-symbols-outlined text-[16px]">directions_bus</span>
+<span>540 B</span>
+</div>
+<!-- Chip 3: 117 -->
+<div class="bg-primary-fixed text-on-primary-fixed px-3 py-1.5 rounded-full font-label-md text-label-md font-bold flex items-center gap-1.5 shadow-sm border border-primary/20">
+<span class="material-symbols-outlined text-[16px]">directions_bus</span>
+<span>117</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline ml-1">
+            Parada a 80m
+          </span>
+</div>
+</div>
+<!-- Action Buttons Row -->
+<div class="flex items-center gap-3 pt-1">
+<!-- Primary Accent: Cómo llegar -->
+<button class="flex-1 bg-primary-container text-on-primary-container rounded-full py-3.5 px-4 font-label-lg text-label-lg font-semibold flex items-center justify-center gap-2 shadow-[0px_2px_8px_rgba(26,115,232,0.35)] hover:bg-primary transition-all active:scale-95 duration-150">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">directions</span>
+<span>Cómo llegar</span>
+</button>
+<!-- Secondary Outlined: Añadir a Comparativa -->
+<button class="flex-1 bg-surface-container-lowest text-primary border border-outline-variant hover:border-primary hover:bg-primary-fixed/20 rounded-full py-3.5 px-4 font-label-lg text-label-lg font-semibold flex items-center justify-center gap-2 transition-all active:scale-95 duration-150 shadow-sm">
+<span class="material-symbols-outlined text-[20px]">bookmark_add</span>
+<span class="truncate">Añadir a Comparativa</span>
+</button>
+</div>
+</div>
+</section>
+</body></html>

@@ -1,0 +1,390 @@
+<!DOCTYPE html><html class="h-full" lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>Actos Públicos - Mapa de Vacantes</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Inter Font -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container-lowest": "#ffffff",
+            "secondary-fixed": "#8ffa9b",
+            "on-secondary-fixed-variant": "#00531e",
+            "outline-variant": "#c1c6d6",
+            "tertiary": "#b81d17",
+            "on-tertiary-fixed-variant": "#930004",
+            "on-secondary-fixed": "#002108",
+            "surface-container": "#ebeef4",
+            "primary-fixed-dim": "#adc7ff",
+            "surface-tint": "#005bc0",
+            "inverse-primary": "#adc7ff",
+            "surface-bright": "#f7f9ff",
+            "on-tertiary": "#ffffff",
+            "surface-dim": "#d7dae0",
+            "tertiary-container": "#dc392c",
+            "error-container": "#ffdad6",
+            "error": "#ba1a1a",
+            "outline": "#727785",
+            "surface-container-high": "#e5e8ee",
+            "on-tertiary-container": "#ffffff",
+            "inverse-on-surface": "#eef1f7",
+            "secondary": "#006e2a",
+            "on-error-container": "#93000a",
+            "on-tertiary-fixed": "#410001",
+            "secondary-container": "#8ffa9b",
+            "on-primary-container": "#ffffff",
+            "surface-variant": "#dfe3e8",
+            "primary-fixed": "#d8e2ff",
+            "primary": "#005bbf",
+            "on-primary": "#ffffff",
+            "surface-container-low": "#f1f4fa",
+            "on-surface-variant": "#414754",
+            "secondary-fixed-dim": "#73dc82",
+            "primary-container": "#1a73e8",
+            "on-background": "#181c20",
+            "tertiary-fixed": "#ffdad5",
+            "tertiary-fixed-dim": "#ffb4a9",
+            "on-secondary": "#ffffff",
+            "surface-container-highest": "#dfe3e8",
+            "on-secondary-container": "#00752d",
+            "on-surface": "#181c20",
+            "on-primary-fixed-variant": "#004493",
+            "on-primary-fixed": "#001a41",
+            "surface": "#f7f9ff",
+            "inverse-surface": "#2d3135",
+            "background": "#f7f9ff",
+            "on-error": "#ffffff"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-lg": "1.5rem",
+            "space-md": "1rem",
+            "gutter": "1rem",
+            "space-xs": "0.25rem",
+            "space-xl": "2rem",
+            "margin": "1rem",
+            "space-sm": "0.5rem"
+          },
+          "fontFamily": {
+            "label-md": ["Inter"],
+            "label-lg": ["Inter"],
+            "body-lg": ["Inter"],
+            "headline-md": ["Inter"],
+            "title-md": ["Inter"],
+            "display-sm": ["Inter"],
+            "body-sm": ["Inter"],
+            "label-sm": ["Inter"],
+            "body-md": ["Inter"],
+            "headline-lg": ["Inter"],
+            "headline-sm": ["Inter"],
+            "title-sm": ["Inter"]
+          },
+          "fontSize": {
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "headline-md": ["20px", { "lineHeight": "26px", "letterSpacing": "0", "fontWeight": "600" }],
+            "title-md": ["16px", { "lineHeight": "22px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "display-sm": ["30px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "400" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.015em", "fontWeight": "400" }],
+            "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "letterSpacing": "0", "fontWeight": "600" }],
+            "title-sm": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      font-size: 20px;
+      line-height: 1;
+    }
+    .material-symbols-outlined.filled {
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    /* Hide scrollbar for clean chip rail */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    /* Map Marker Pin Shape */
+    .map-pin {
+      filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.25));
+      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .map-pin:active {
+      transform: scale(0.92);
+    }
+  </style>
+</head>
+<body class="bg-surface-container-lowest font-body-md text-on-surface antialiased h-full overflow-hidden select-none">
+<!-- MAP WRAPPER (Dynamic Background Simulation) -->
+<div class="relative w-full h-full overflow-hidden bg-[#e8ece9]">
+<!-- VECTOR MAP CANVAS LAYER (Streets, River, Parks, Labels) -->
+<svg class="absolute inset-0 w-full h-full object-cover pointer-events-none" preserveAspectRatio="none" viewBox="0 0 450 850" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<pattern height="120" id="urban-grid" patternUnits="userSpaceOnUse" width="120">
+<rect fill="#f4f5f0" height="120" width="120"></rect>
+<path d="M 0 30 L 120 30 M 0 60 L 120 60 M 0 90 L 120 90 M 30 0 L 30 120 M 60 0 L 60 120 M 90 0 L 90 120" stroke="#ffffff" stroke-width="3"></path>
+</pattern>
+</defs>
+<!-- Urban land base -->
+<rect fill="url(#urban-grid)" height="100%" width="100%"></rect>
+<!-- Natural River / Canal Curve (like Río Reconquista / La Plata tributary) -->
+<path d="M -20,180 C 140,210 260,110 470,160" fill="none" stroke="#aad3df" stroke-linecap="round" stroke-width="26"></path>
+<path d="M -20,180 C 140,210 260,110 470,160" fill="none" stroke="#bde2ee" stroke-width="16"></path>
+<!-- Green Urban Parks / Reservas -->
+<rect fill="#d2eecf" height="110" rx="8" stroke="#c0e5bc" stroke-width="1" width="85" x="22" y="240"></rect>
+<text fill="#4d7c48" font-family="Inter" font-size="9" font-weight="600" x="32" y="295">Plaza San Martín</text>
+<circle cx="340" cy="460" fill="#d2eecf" r="55" stroke="#c0e5bc" stroke-width="1"></circle>
+<text fill="#4d7c48" font-family="Inter" font-size="9" font-weight="600" x="306" y="462">Parque Mitre</text>
+<rect fill="#d2eecf" height="50" rx="6" stroke="#c0e5bc" stroke-width="1" width="130" x="280" y="70"></rect>
+<text fill="#4d7c48" font-family="Inter" font-size="8.5" font-weight="500" x="295" y="100">Reserva Urbana</text>
+<!-- Main Arterial Avenues (Google Maps Yellow & Orange strokes) -->
+<!-- Av. Rivadavia -->
+<path d="M -20,530 L 480,390" stroke="#ffffff" stroke-linecap="square" stroke-width="14"></path>
+<path d="M -20,530 L 480,390" stroke="#fcd183" stroke-width="10"></path>
+<!-- Av. Libertador / Corrientes -->
+<path d="M 120,-30 L 260,880" stroke="#ffffff" stroke-linecap="square" stroke-width="14"></path>
+<path d="M 120,-30 L 260,880" stroke="#fcd183" stroke-width="10"></path>
+<!-- Diagonal Expressway / Camino General Belgrano -->
+<path d="M 390,-20 L 30,820" stroke="#ffffff" stroke-width="10"></path>
+<path d="M 390,-20 L 30,820" stroke="#ffebaa" stroke-width="6"></path>
+<!-- Secondary Streets Network -->
+<path d="M 0,330 L 450,330 M 0,670 L 450,670 M 0,740 L 450,740" stroke="#ffffff" stroke-width="7"></path>
+<path d="M 50,0 L 50,850 M 200,0 L 200,850 M 370,0 L 370,850" stroke="#ffffff" stroke-width="7"></path>
+<!-- Street Label Typography (Authentic Google Maps Argentina Cartography) -->
+<g fill="#70757a" font-family="Inter" font-size="8" font-weight="500">
+<text x="145" y="325">Calle Belgrano</text>
+<text x="210" y="665">Calle 25 de Mayo</text>
+<text x="60" y="735">Av. 9 de Julio</text>
+<text transform="rotate(78 135,600)" x="135" y="600">Av. Hipólito Yrigoyen</text>
+<text fill="#5f6368" font-weight="600" transform="rotate(-15 180,475)" x="180" y="475">Av. Rivadavia</text>
+<text transform="rotate(-65 310,270)" x="310" y="270">Diagonal 74</text>
+</g>
+</svg>
+<!-- MAP PINS LAYER (5 Mandatory Pins) -->
+<!-- PIN 1: EP N° 12 'Domingo F. Sarmiento' (SELECTED / ACTIVE with Badge) -->
+<div class="absolute left-[36%] top-[45%] -translate-x-1/2 -translate-y-full z-20 cursor-pointer group">
+<!-- Active Pulsing Target Ring -->
+<span class="absolute -bottom-1 left-1/2 -translate-x-1/2 w-6 h-3 bg-primary-container/30 rounded-full blur-[2px] animate-pulse"></span>
+<!-- Dynamic Vacancy Tooltip Pill -->
+<div class="absolute -top-7 left-1/2 -translate-x-1/2 whitespace-nowrap bg-primary-container text-surface-container-lowest text-label-sm font-label-sm px-2 py-0.5 rounded-full shadow-md flex items-center gap-1 border border-surface-container-lowest">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed animate-ping"></span>
+<span class="">2 vacantes</span>
+</div>
+<!-- Google Maps Red Teardrop Marker Pin (Active 1.25x scale) -->
+<div class="map-pin scale-110 flex flex-col items-center">
+<div class="w-9 h-9 rounded-full bg-[#EA4335] text-surface-container-lowest flex items-center justify-center shadow-lg ring-2 ring-primary-container">
+<span class="material-symbols-outlined filled text-surface-container-lowest text-[18px]">school</span>
+</div>
+<div class="w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[8px] border-t-[#EA4335] -mt-[1px]"></div>
+</div>
+<!-- Label below pin -->
+<div class="mt-1 bg-surface-container-lowest/90 backdrop-blur-xs px-1.5 py-0.5 rounded text-[10px] font-semibold text-on-surface text-center shadow-xs border border-outline-variant/40">
+        EP N° 12
+      </div>
+</div>
+<!-- PIN 2: EES N° 5 'Manuel Belgrano' -->
+<div class="absolute left-[72%] top-[34%] -translate-x-1/2 -translate-y-full z-10 cursor-pointer">
+<div class="map-pin flex flex-col items-center">
+<div class="w-7 h-7 rounded-full bg-[#EA4335] text-surface-container-lowest flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined filled text-surface-container-lowest text-[15px]">school</span>
+</div>
+<div class="w-0 h-0 border-l-[5px] border-l-transparent border-r-[5px] border-r-transparent border-t-[7px] border-t-[#EA4335] -mt-[1px]"></div>
+</div>
+<div class="mt-1 bg-surface-container-lowest/90 px-1 py-0.2 rounded text-[9px] font-medium text-on-surface text-center shadow-xs border border-outline-variant/30">
+        EES N° 5
+      </div>
+</div>
+<!-- PIN 3: Jardín de Infantes N° 904 -->
+<div class="absolute left-[18%] top-[33%] -translate-x-1/2 -translate-y-full z-10 cursor-pointer">
+<div class="map-pin flex flex-col items-center">
+<div class="w-7 h-7 rounded-full bg-[#EA4335] text-surface-container-lowest flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined filled text-surface-container-lowest text-[15px]">child_care</span>
+</div>
+<div class="w-0 h-0 border-l-[5px] border-l-transparent border-r-[5px] border-r-transparent border-t-[7px] border-t-[#EA4335] -mt-[1px]"></div>
+</div>
+<div class="mt-1 bg-surface-container-lowest/90 px-1 py-0.2 rounded text-[9px] font-medium text-on-surface text-center shadow-xs border border-outline-variant/30">
+        Jardín 904
+      </div>
+</div>
+<!-- PIN 4: EEST N° 1 'Ingeniero Huergo' -->
+<div class="absolute left-[78%] top-[62%] -translate-x-1/2 -translate-y-full z-10 cursor-pointer">
+<div class="map-pin flex flex-col items-center">
+<div class="w-7 h-7 rounded-full bg-[#EA4335] text-surface-container-lowest flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined filled text-surface-container-lowest text-[15px]">build</span>
+</div>
+<div class="w-0 h-0 border-l-[5px] border-l-transparent border-r-[5px] border-r-transparent border-t-[7px] border-t-[#EA4335] -mt-[1px]"></div>
+</div>
+<div class="mt-1 bg-surface-container-lowest/90 px-1 py-0.2 rounded text-[9px] font-medium text-on-surface text-center shadow-xs border border-outline-variant/30">
+        EEST N° 1
+      </div>
+</div>
+<!-- PIN 5: EP N° 45 -->
+<div class="absolute left-[24%] top-[70%] -translate-x-1/2 -translate-y-full z-10 cursor-pointer">
+<div class="map-pin flex flex-col items-center">
+<div class="w-7 h-7 rounded-full bg-[#EA4335] text-surface-container-lowest flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined filled text-surface-container-lowest text-[15px]">school</span>
+</div>
+<div class="w-0 h-0 border-l-[5px] border-l-transparent border-r-[5px] border-r-transparent border-t-[7px] border-t-[#EA4335] -mt-[1px]"></div>
+</div>
+<div class="mt-1 bg-surface-container-lowest/90 px-1 py-0.2 rounded text-[9px] font-medium text-on-surface text-center shadow-xs border border-outline-variant/30">
+        EP N° 45
+      </div>
+</div>
+<!-- FLOATING TOP BAR & FILTERS WRAPPER -->
+<div class="fixed top-0 left-0 right-0 z-40 max-w-lg mx-auto pointer-events-none px-margin pt-3">
+<!-- 1. FLOATING SEARCH BAR (Material Design 3 Capsule) -->
+<div class="pointer-events-auto bg-surface-container-lowest h-13 w-full rounded-full shadow-[0px_2px_6px_rgba(60,64,67,0.15),0px_1px_2px_rgba(60,64,67,0.10)] border border-[#E0E2E6] flex items-center px-4 gap-3 transition-shadow focus-within:shadow-[0px_4px_12px_rgba(60,64,67,0.18)]">
+<!-- Leading Icon -->
+<span class="material-symbols-outlined text-[#5F6368] select-none text-[22px]">search</span>
+<!-- Input Text -->
+<input class="flex-1 bg-transparent border-none outline-none p-0 text-body-md font-body-md text-[#202124] placeholder-[#5F6368] focus:ring-0 focus:outline-none" placeholder="Buscar por número o nombre (ej. EP 12)" type="text">
+<!-- Trailing Voice / Filter Action -->
+<button class="w-9 h-9 rounded-full flex items-center justify-center hover:bg-surface-container-low active:scale-95 transition-transform text-[#5F6368]" type="button">
+<span class="material-symbols-outlined text-[20px]">mic</span>
+</button>
+<div class="w-px h-5 bg-outline-variant/60"></div>
+<!-- Trailing Profile Avatar / Settings -->
+<button class="w-7 h-7 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed-variant text-label-sm font-label-sm font-bold shadow-xs" type="button">
+          AP
+        </button>
+</div>
+<!-- 2. HORIZONTALLY SCROLLING FILTER CHIPS CAROUSEL -->
+<div class="pointer-events-auto mt-2.5 flex items-center gap-1.5 overflow-x-auto no-scrollbar py-1 -mx-margin px-margin">
+<!-- Chip: Todas -->
+<button class="flex-shrink-0 h-8 px-3.5 rounded-full bg-surface-container-lowest border border-[#DADCE0] text-[#3C4043] text-label-md font-label-md flex items-center gap-1.5 shadow-[0px_1px_2px_rgba(60,64,67,0.08)] hover:bg-surface-container-low active:scale-95 transition-all">
+<span class="">Todas</span>
+</button>
+<!-- Chip: Primarias (ACTIVO M3 Primary Style) -->
+<button class="flex-shrink-0 h-8 px-3.5 rounded-full bg-[#E8F0FE] border border-[#1A73E8] text-[#1A73E8] text-label-md font-label-md font-semibold flex items-center gap-1.5 shadow-[0px_1px_2px_rgba(60,64,67,0.12)] active:scale-95 transition-all">
+<span class="material-symbols-outlined filled text-[#1A73E8] text-[16px]">check</span>
+<span class="">Primarias</span>
+</button>
+<!-- Chip: Jardines -->
+<button class="flex-shrink-0 h-8 px-3.5 rounded-full bg-surface-container-lowest border border-[#DADCE0] text-[#3C4043] text-label-md font-label-md flex items-center gap-1.5 shadow-[0px_1px_2px_rgba(60,64,67,0.08)] hover:bg-surface-container-low active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[#5F6368] text-[16px]">toys</span>
+<span class="">Jardines</span>
+</button>
+<!-- Chip: Secundarias -->
+<button class="flex-shrink-0 h-8 px-3.5 rounded-full bg-surface-container-lowest border border-[#DADCE0] text-[#3C4043] text-label-md font-label-md flex items-center gap-1.5 shadow-[0px_1px_2px_rgba(60,64,67,0.08)] hover:bg-surface-container-low active:scale-95 transition-all">
+<span class="">Secundarias</span>
+</button>
+<!-- Chip: Técnicas -->
+<button class="flex-shrink-0 h-8 px-3.5 rounded-full bg-surface-container-lowest border border-[#DADCE0] text-[#3C4043] text-label-md font-label-md flex items-center gap-1.5 shadow-[0px_1px_2px_rgba(60,64,67,0.08)] hover:bg-surface-container-low active:scale-95 transition-all">
+<span class="">Técnicas</span>
+</button>
+<!-- Chip: Especial -->
+<button class="flex-shrink-0 h-8 px-3.5 rounded-full bg-surface-container-lowest border border-[#DADCE0] text-[#3C4043] text-label-md font-label-md flex items-center gap-1.5 shadow-[0px_1px_2px_rgba(60,64,67,0.08)] hover:bg-surface-container-low active:scale-95 transition-all">
+<span class="">Especial</span>
+</button>
+</div>
+</div>
+<!-- FLOATING ACTION BUTTON (Recenter GPS FAB) -->
+<div class="fixed right-4 bottom-[230px] z-30 max-w-lg mx-auto pointer-events-auto">
+<button aria-label="Centrar en mi ubicación" class="w-13 h-13 rounded-2xl bg-surface-container-lowest text-[#1A73E8] flex items-center justify-center shadow-[0px_4px_12px_rgba(60,64,67,0.22),0px_1px_3px_rgba(60,64,67,0.12)] border border-[#E0E2E6] hover:bg-surface-container-low active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined filled text-[24px]">my_location</span>
+</button>
+</div>
+<!-- PREVIEW CALLOUT CARD (Current Selected School) -->
+<div class="fixed bottom-16 left-0 right-0 z-30 max-w-lg mx-auto px-margin pointer-events-none">
+<div class="pointer-events-auto w-full bg-surface-container-lowest rounded-2xl p-4 shadow-[0px_4px_16px_rgba(60,64,67,0.18),0px_1px_3px_rgba(60,64,67,0.10)] border border-[#E0E2E6] transition-all">
+<!-- Header row of the preview card -->
+<div class="flex items-start justify-between gap-2 mb-1.5">
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-0.5">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-[#E6F4EA] text-[#137333] font-semibold">
+                Acto En Curso
+              </span>
+<span class="text-label-sm font-label-sm text-[#5F6368]">Distrito 001</span>
+</div>
+<h2 class="text-title-md font-title-md text-[#202124] leading-tight">
+              EP N° 12 - Domingo F. Sarmiento
+            </h2>
+<p class="text-body-sm font-body-sm text-[#5F6368] mt-0.5 flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-[#5F6368]">location_on</span>
+              Calle 48 N° 624, e/ 7 y 8 (A 450 m)
+            </p>
+</div>
+<!-- Quota Badge -->
+<div class="flex flex-col items-end">
+<div class="bg-[#E6F4EA] text-[#137333] px-2.5 py-1 rounded-xl text-center border border-[#ceead6]">
+<span class="block text-headline-sm font-headline-sm font-bold leading-none">2</span>
+<span class="text-[10px] font-semibold uppercase tracking-wider">Cargos</span>
+</div>
+</div>
+</div>
+<!-- Shift & Roster details -->
+<div class="bg-surface-container-low rounded-xl px-3 py-2 mt-2 flex items-center justify-between text-body-sm font-body-sm text-on-surface-variant">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary">schedule</span>
+<span class="">Turno Mañana / Tarde</span>
+</div>
+<span class="text-outline text-label-sm">•</span>
+<div class="flex items-center gap-1 text-label-md font-label-md text-on-surface">
+<span class="font-medium text-[#137333]">Portería / Limpieza</span>
+</div>
+</div>
+<!-- Callout Action Buttons -->
+<div class="grid grid-cols-2 gap-2.5 mt-3">
+<button class="h-10 rounded-full border border-[#DADCE0] bg-surface-container-lowest text-primary text-label-lg font-label-lg font-semibold flex items-center justify-center gap-1.5 hover:bg-surface-container-low active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[18px]">directions</span>
+<span class="">Cómo llegar</span>
+</button>
+<button class="h-10 rounded-full bg-primary-container text-surface-container-lowest text-label-lg font-label-lg font-semibold flex items-center justify-center gap-1.5 shadow-[0px_1px_3px_rgba(26,115,232,0.3)] hover:opacity-95 active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[18px]">compare_arrows</span>
+<span class="">+ Comparar</span>
+</button>
+</div>
+</div>
+</div>
+<!-- SHARED COMPONENT: BottomNavBar (Execution of JSON Specification) -->
+<!-- JSON: label_texts: ["Mapa", "Vacantes", "Mis Postulaciones", "Perfil"], icons: ["map", "school", "assignment_turned_in", "person"] -->
+<!-- Active State: 'Mapa' is the current intent of this screen -->
+<nav aria-label="Navegación principal" class="fixed bottom-0 w-full z-50 flex justify-around items-center px-2 py-2 max-w-lg mx-auto inset-x-0 bg-surface-container-lowest border-t border-outline-variant shadow-lg"><!-- 1. Destino Activo: Mapa -->
+<a class="flex flex-col items-center justify-center bg-primary-fixed text-on-primary-fixed rounded-full px-4 py-1 active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined filled text-[20px]">map</span>
+<span class="text-label-sm font-label-sm font-semibold mt-0.5">Mapa</span>
+</a>
+<!-- 2. Comparativa -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high rounded-full px-3 py-1 active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">compare_arrows</span>
+<span class="text-label-sm font-label-sm mt-0.5">Comparativa</span>
+</a>
+<!-- 3. Favoritos -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high rounded-full px-3 py-1 active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">bookmark</span>
+<span class="text-label-sm font-label-sm mt-0.5">Favoritos</span>
+</a>
+<!-- 4. Mi Ubicación -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high rounded-full px-3 py-1 active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">my_location</span>
+<span class="text-label-sm font-label-sm mt-0.5">Mi Ubicación</span>
+</a></nav>
+</div>
+
+
+</body></html>

@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ingreso de Aspirantes - Consejo Escolar de Lomas de Zamora</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Inter Google Font -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Theme Configuration Verbatim -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container-highest": "#dfe3e8",
+            "surface-container-high": "#e5e8ee",
+            "surface-bright": "#f7f9ff",
+            "on-primary": "#ffffff",
+            "on-primary-fixed": "#001a41",
+            "tertiary-container": "#dc392c",
+            "on-primary-fixed-variant": "#004493",
+            "inverse-surface": "#2d3135",
+            "on-primary-container": "#ffffff",
+            "on-secondary": "#ffffff",
+            "on-tertiary": "#ffffff",
+            "error": "#ba1a1a",
+            "on-surface-variant": "#414754",
+            "background": "#f7f9ff",
+            "surface-container-lowest": "#ffffff",
+            "on-tertiary-container": "#ffffff",
+            "secondary-fixed-dim": "#73dc82",
+            "secondary": "#006e2a",
+            "on-secondary-fixed": "#002108",
+            "secondary-fixed": "#8ffa9b",
+            "primary-fixed-dim": "#adc7ff",
+            "tertiary-fixed-dim": "#ffb4a9",
+            "on-secondary-container": "#00752d",
+            "on-error": "#ffffff",
+            "surface-container": "#ebeef4",
+            "inverse-on-surface": "#eef1f7",
+            "primary-fixed": "#d8e2ff",
+            "secondary-container": "#8ffa9b",
+            "surface-dim": "#d7dae0",
+            "on-tertiary-fixed": "#410001",
+            "surface-tint": "#005bc0",
+            "outline-variant": "#c1c6d6",
+            "error-container": "#ffdad6",
+            "inverse-primary": "#adc7ff",
+            "surface": "#f7f9ff",
+            "primary": "#005bbf",
+            "surface-container-low": "#f1f4fa",
+            "on-tertiary-fixed-variant": "#930004",
+            "primary-container": "#1a73e8",
+            "on-background": "#181c20",
+            "surface-variant": "#dfe3e8",
+            "tertiary": "#b81d17",
+            "on-secondary-fixed-variant": "#00531e",
+            "on-error-container": "#93000a",
+            "on-surface": "#181c20",
+            "tertiary-fixed": "#ffdad5",
+            "outline": "#727785"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "space-lg": "1.5rem",
+            "space-md": "1rem",
+            "space-xl": "2rem",
+            "margin": "1rem",
+            "gutter": "1rem",
+            "space-xs": "0.25rem"
+          },
+          "fontFamily": {
+            "body-lg": [
+              "Inter"
+            ],
+            "label-sm": [
+              "Inter"
+            ],
+            "headline-md": [
+              "Inter"
+            ],
+            "display-sm": [
+              "Inter"
+            ],
+            "headline-lg": [
+              "Inter"
+            ],
+            "body-md": [
+              "Inter"
+            ],
+            "label-lg": [
+              "Inter"
+            ],
+            "headline-sm": [
+              "Inter"
+            ],
+            "body-sm": [
+              "Inter"
+            ],
+            "title-md": [
+              "Inter"
+            ],
+            "label-md": [
+              "Inter"
+            ],
+            "title-sm": [
+              "Inter"
+            ]
+          },
+          "fontSize": {
+            "body-lg": [
+              "16px",
+              {
+                "lineHeight": "24px",
+                "letterSpacing": "0.01em",
+                "fontWeight": "400"
+              }
+            ],
+            "label-sm": [
+              "11px",
+              {
+                "lineHeight": "14px",
+                "letterSpacing": "0.04em",
+                "fontWeight": "600"
+              }
+            ],
+            "headline-md": [
+              "20px",
+              {
+                "lineHeight": "26px",
+                "letterSpacing": "0",
+                "fontWeight": "600"
+              }
+            ],
+            "display-sm": [
+              "30px",
+              {
+                "lineHeight": "36px",
+                "letterSpacing": "-0.02em",
+                "fontWeight": "700"
+              }
+            ],
+            "headline-lg": [
+              "24px",
+              {
+                "lineHeight": "32px",
+                "letterSpacing": "-0.01em",
+                "fontWeight": "600"
+              }
+            ],
+            "body-md": [
+              "14px",
+              {
+                "lineHeight": "20px",
+                "letterSpacing": "0.015em",
+                "fontWeight": "400"
+              }
+            ],
+            "label-lg": [
+              "14px",
+              {
+                "lineHeight": "20px",
+                "letterSpacing": "0.01em",
+                "fontWeight": "500"
+              }
+            ],
+            "headline-sm": [
+              "18px",
+              {
+                "lineHeight": "24px",
+                "letterSpacing": "0",
+                "fontWeight": "600"
+              }
+            ],
+            "body-sm": [
+              "12px",
+              {
+                "lineHeight": "16px",
+                "letterSpacing": "0.02em",
+                "fontWeight": "400"
+              }
+            ],
+            "title-md": [
+              "16px",
+              {
+                "lineHeight": "22px",
+                "letterSpacing": "0.01em",
+                "fontWeight": "600"
+              }
+            ],
+            "label-md": [
+              "12px",
+              {
+                "lineHeight": "16px",
+                "letterSpacing": "0.02em",
+                "fontWeight": "500"
+              }
+            ],
+            "title-sm": [
+              "14px",
+              {
+                "lineHeight": "20px",
+                "letterSpacing": "0.01em",
+                "fontWeight": "600"
+              }
+            ]
+          }
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-background text-on-surface font-body-md text-body-md antialiased min-h-full flex flex-col justify-between selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Mobile Screen Shell Container (Mobile-first Portrait, max-w-md centered) -->
+<main class="w-full max-w-md mx-auto flex-1 flex flex-col px-margin py-space-lg sm:py-space-xl">
+<!-- Top System Indicator & Municipal Status Badge -->
+<header class="w-full flex items-center justify-between mb-space-lg">
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm border border-outline-variant/60">
+<span class="w-2 h-2 rounded-full bg-secondary inline-block"></span>
+<span>Acto Público Activo</span>
+</div>
+<div class="inline-flex items-center gap-1 text-on-surface-variant font-label-sm text-label-sm bg-surface-container-lowest px-2.5 py-1 rounded-full border border-outline-variant/50 shadow-sm">
+<span class="material-symbols-outlined text-primary text-[15px]">cloud_sync</span>
+<span>Modo Offline listo</span>
+</div>
+</header>
+<!-- Institutional Brand Presentation -->
+<div class="w-full flex flex-col items-center text-center mt-space-xs mb-space-lg">
+<!-- Institutional Logo Asset -->
+<div class="w-full max-w-[280px] sm:max-w-[320px] px-2 py-3 bg-surface-container-lowest rounded-DEFAULT border border-outline-variant/40 shadow-sm mb-space-md flex items-center justify-center">
+<img alt="Consejo Escolar de Lomas de Zamora" class="w-full h-auto object-contain max-h-16" src="https://lh3.googleusercontent.com/aida/AEtjO1WK6TQU1R5N_Okv0K4gFzBWZUiPctj6rkb0nW09_7o6WmYtEOMYwqFR9wGSqxByhcd48Nd6E6EUwp0CHn8XD6-vNzIlvJyfXd8Qf1I5-ok6JxpLHaxipZz7DLJnvwEWxhK4wSyeDDBOraC-Au-IFuBmD0K7gz_j1JxnNMb9MXKA0bS4KZNl8ye-ghYHLrn6f0Old1-KRq3USygnRZKQuJh2G8HsrsbWyfn7Gf3Bfomy"/>
+</div>
+<!-- Section Title & Subtitle -->
+<h1 class="text-headline-lg font-headline-lg text-on-surface tracking-tight mb-space-xs">
+        Ingreso de Aspirantes
+      </h1>
+<p class="text-body-md font-body-md text-on-surface-variant max-w-[290px]">
+        Accede con tu documento para consultar las vacantes.
+      </p>
+</div>
+<!-- Login Form Card (Elevation Level 1 with subtle border) -->
+<section class="w-full bg-surface-container-lowest rounded-DEFAULT border border-outline-variant/80 p-space-md sm:p-space-lg shadow-sm">
+<form class="space-y-space-md" id="loginForm" onsubmit="event.preventDefault(); handleLogin();">
+<!-- Field 1: DNI (Material 3 Outlined Input) -->
+<div class="space-y-1">
+<label class="block font-label-md text-label-md text-on-surface-variant font-medium" for="dniInput">
+            Documento Nacional de Identidad (DNI)
+          </label>
+<div class="relative flex items-center">
+<span class="absolute left-3.5 flex items-center pointer-events-none text-outline">
+<span class="material-symbols-outlined text-[20px]">badge</span>
+</span>
+<input class="w-full h-14 pl-11 pr-4 rounded-lg bg-surface-container-lowest border border-outline text-on-surface placeholder:text-outline/70 font-body-md text-body-md focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-150" id="dniInput" inputmode="numeric" pattern="[0-9]*" placeholder="Ej: 35.123.456" required="" type="text"/>
+</div>
+<p class="font-label-sm text-label-sm text-outline px-1">Sin puntos ni espacios</p>
+</div>
+<!-- Field 2: Password (Material 3 Outlined Input with toggle) -->
+<div class="space-y-1">
+<label class="block font-label-md text-label-md text-on-surface-variant font-medium" for="passwordInput">
+            Contraseña
+          </label>
+<div class="relative flex items-center">
+<span class="absolute left-3.5 flex items-center pointer-events-none text-outline">
+<span class="material-symbols-outlined text-[20px]">lock</span>
+</span>
+<input class="w-full h-14 pl-11 pr-12 rounded-lg bg-surface-container-lowest border border-outline text-on-surface placeholder:text-outline/70 font-body-md text-body-md focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-150" id="passwordInput" placeholder="••••••••••••" required="" type="password"/>
+<button aria-label="Mostrar u ocultar contraseña" class="absolute right-2.5 h-10 w-10 flex items-center justify-center rounded-full text-outline hover:text-on-surface hover:bg-surface-container active:scale-95 transition-all" id="togglePasswordBtn" onclick="togglePasswordVisibility()" type="button">
+<span class="material-symbols-outlined text-[20px]" id="passwordIcon">visibility</span>
+</button>
+</div>
+</div>
+<!-- Remember Device Checkbox -->
+<div class="flex items-center justify-between pt-space-xs">
+<label class="flex items-center gap-2.5 cursor-pointer select-none">
+<input checked="" class="w-4 h-4 rounded border-outline text-primary focus:ring-primary/25 cursor-pointer accent-primary" id="rememberDni" type="checkbox"/>
+<span class="font-label-md text-label-md text-on-surface-variant">Recordar mi DNI en este dispositivo</span>
+</label>
+</div>
+<!-- Primary Action Button (Level 4 Elevation Style) -->
+<div class="pt-space-xs">
+<button class="w-full h-12 rounded-full bg-primary hover:bg-primary-container text-on-primary font-title-sm text-title-sm flex items-center justify-center gap-2 shadow-md hover:shadow-lg active:scale-[0.98] transition-all duration-150" type="submit">
+<span>Ingresar</span>
+<span class="material-symbols-outlined text-[19px]">arrow_forward</span>
+</button>
+</div>
+</form>
+<!-- Recovery Link -->
+<div class="mt-space-md text-center">
+<a class="inline-block font-label-md text-label-md text-primary font-semibold hover:underline active:opacity-80 py-1" href="#recuperar">
+          ¿Olvidaste tu contraseña?
+        </a>
+</div>
+</section>
+<!-- Support and First Time Access Card (Asymmetric Bento pattern) -->
+<aside class="w-full mt-space-md bg-surface-container-low rounded-DEFAULT p-3.5 border border-outline-variant/50 flex items-start gap-3">
+<div class="w-9 h-9 rounded-full bg-primary-fixed flex items-center justify-center text-primary shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[20px]">school</span>
+</div>
+<div class="flex-1">
+<h2 class="font-title-sm text-title-sm text-on-surface font-semibold">¿Primer ingreso o dudas con tu puntaje?</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+          Verifica tu número de legajo en el listado oficial de aspirantes o consulta en la mesa de ayuda de la sede distrital.
+        </p>
+<div class="mt-2 flex items-center gap-4">
+<a class="font-label-sm text-label-sm text-primary font-semibold inline-flex items-center gap-1 hover:underline" href="#mesa-ayuda">
+<span>Mesa de Ayuda</span>
+<span class="material-symbols-outlined text-[14px]">open_in_new</span>
+</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant font-medium inline-flex items-center gap-1 hover:text-on-surface hover:underline" href="#listados">
+<span>Listado 1047 / ABC</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Institutional Footer Anchor -->
+<footer class="w-full text-center py-space-md mt-auto">
+<p class="font-label-sm text-label-sm text-outline">
+        Consejo Escolar de Lomas de Zamora • Sector Auxiliares de Educación
+      </p>
+<p class="font-label-sm text-label-sm text-outline/80 mt-1 text-[10px]">
+        Dirección General de Cultura y Educación • Pcia. de Buenos Aires
+      </p>
+</footer>
+</main>
+<!-- Interactive Logic for Input visibility -->
+<script>
+    function togglePasswordVisibility() {
+      const passwordInput = document.getElementById('passwordInput');
+      const passwordIcon = document.getElementById('passwordIcon');
+      
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        passwordIcon.textContent = 'visibility_off';
+      } else {
+        passwordInput.type = 'password';
+        passwordIcon.textContent = 'visibility';
+      }
+    }
+
+    function handleLogin() {
+      const dni = document.getElementById('dniInput').value;
+      if (!dni) return;
+      // Visual feedback on click
+      const submitBtn = document.querySelector('button[type="submit"]');
+      const originalText = submitBtn.innerHTML;
+      submitBtn.innerHTML = `
+        <span class="material-symbols-outlined animate-spin text-[18px]">progress_activity</span>
+        <span>Validando credenciales...</span>
+      `;
+      submitBtn.disabled = true;
+      submitBtn.classList.add('opacity-90');
+
+      setTimeout(() => {
+        submitBtn.innerHTML = `
+          <span class="material-symbols-outlined text-[18px]">check_circle</span>
+          <span>Acceso correcto</span>
+        `;
+        submitBtn.classList.remove('bg-primary');
+        submitBtn.classList.add('bg-secondary');
+      }, 1000);
+    }
+  </script>
+</body></html>

@@ -1,0 +1,572 @@
+<!DOCTYPE html><html lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Mis Favoritas - Auxiliares Lomas de Zamora</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS with Forms and Container Queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "tertiary-fixed-dim": "#ffb4a9",
+            "on-tertiary-container": "#ffffff",
+            "surface-container": "#ebeef4",
+            "on-secondary": "#ffffff",
+            "primary": "#005bbf",
+            "inverse-primary": "#adc7ff",
+            "on-primary-container": "#ffffff",
+            "outline": "#727785",
+            "secondary-fixed": "#8ffa9b",
+            "surface": "#f7f9ff",
+            "surface-container-lowest": "#ffffff",
+            "on-secondary-container": "#00752d",
+            "on-primary-fixed-variant": "#004493",
+            "error": "#ba1a1a",
+            "on-surface-variant": "#414754",
+            "on-primary": "#ffffff",
+            "background": "#f7f9ff",
+            "secondary": "#006e2a",
+            "primary-fixed-dim": "#adc7ff",
+            "tertiary-container": "#dc392c",
+            "tertiary": "#b81d17",
+            "surface-container-highest": "#dfe3e8",
+            "on-error": "#ffffff",
+            "on-tertiary-fixed-variant": "#930004",
+            "primary-container": "#1a73e8",
+            "on-secondary-fixed": "#002108",
+            "primary-fixed": "#d8e2ff",
+            "surface-dim": "#d7dae0",
+            "error-container": "#ffdad6",
+            "surface-container-high": "#e5e8ee",
+            "secondary-fixed-dim": "#73dc82",
+            "surface-tint": "#005bc0",
+            "inverse-surface": "#2d3135",
+            "inverse-on-surface": "#eef1f7",
+            "on-secondary-fixed-variant": "#00531e",
+            "secondary-container": "#8ffa9b",
+            "on-surface": "#181c20",
+            "on-tertiary": "#ffffff",
+            "outline-variant": "#c1c6d6",
+            "on-error-container": "#93000a",
+            "on-background": "#181c20",
+            "surface-variant": "#dfe3e8",
+            "tertiary-fixed": "#ffdad5",
+            "on-primary-fixed": "#001a41",
+            "on-tertiary-fixed": "#410001",
+            "surface-bright": "#f7f9ff",
+            "surface-container-low": "#f1f4fa"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xs": "0.25rem",
+            "gutter": "1rem",
+            "margin": "1rem",
+            "space-lg": "1.5rem",
+            "space-xl": "2rem",
+            "space-sm": "0.5rem",
+            "space-md": "1rem"
+          },
+          "fontFamily": {
+            "title-sm": ["Inter"],
+            "body-sm": ["Inter"],
+            "display-sm": ["Inter"],
+            "label-lg": ["Inter"],
+            "label-sm": ["Inter"],
+            "body-md": ["Inter"],
+            "label-md": ["Inter"],
+            "title-md": ["Inter"],
+            "body-lg": ["Inter"],
+            "headline-sm": ["Inter"],
+            "headline-lg": ["Inter"],
+            "headline-md": ["Inter"]
+          },
+          "fontSize": {
+            "title-sm": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "400" }],
+            "display-sm": ["30px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.015em", "fontWeight": "400" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "title-md": ["16px", { "lineHeight": "22px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "letterSpacing": "0", "fontWeight": "600" }],
+            "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-md": ["20px", { "lineHeight": "26px", "letterSpacing": "0", "fontWeight": "600" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 24px;
+      line-height: 1;
+      display: inline-block;
+      text-transform: none;
+      letter-spacing: normal;
+      word-wrap: normal;
+      white-space: nowrap;
+      direction: ltr;
+      -webkit-font-smoothing: antialiased;
+    }
+    .custom-scroll::-webkit-scrollbar {
+      display: none;
+    }
+    .custom-scroll {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex flex-col font-body-md text-body-md select-none">
+<!-- TOP APP BAR (Shared Components JSON Anchor) -->
+<header class="fixed top-0 left-0 right-0 z-40 flex items-center justify-between px-4 py-2 mx-4 mt-2 max-w-lg mx-auto bg-surface-container-lowest dark:bg-inverse-surface rounded-full shadow-md dark:shadow-none border border-outline-variant dark:border-outline">
+<button aria-label="Menú principal" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low transition-colors active:scale-95 duration-150 text-on-surface">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<div class="flex flex-col items-center">
+<span class="text-title-md font-title-md font-bold text-on-surface dark:text-inverse-on-surface tracking-tight">Actos Públicos</span>
+<span class="text-[10px] uppercase font-label-sm font-semibold tracking-wider text-primary">Lomas de Zamora</span>
+</div>
+<button aria-label="Ajustes de filtro" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low transition-colors active:scale-95 duration-150 text-on-surface">
+<span class="material-symbols-outlined" data-icon="tune">tune</span>
+</button>
+</header>
+<!-- MAIN CANVAS (Content Scroll Area) -->
+<main class="flex-1 w-full max-w-lg mx-auto pt-20 pb-28 px-4 flex flex-col gap-4">
+<!-- Offline Sync Banner -->
+<div class="bg-secondary-fixed/50 border border-secondary text-on-secondary-fixed rounded-2xl p-2.5 px-3.5 flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]" data-icon="cloud_off">cloud_off</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Modo Offline Activo</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Matriz y tiempos guardados localmente</span>
+</div>
+</div>
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-secondary text-on-secondary font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-surface-container-lowest animate-pulse"></span>
+        Sincronizado
+      </span>
+</div>
+<!-- Section Header: Title & Badges -->
+<div class="flex flex-col gap-1.5 mt-1">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<h1 class="text-headline-md font-headline-md text-on-surface tracking-tight">Escuelas Guardadas</h1>
+<span class="material-symbols-outlined text-tertiary-container" data-icon="favorite" style="font-variation-settings: &quot;FILL&quot; 1;">favorite</span>
+</div>
+<span class="bg-primary-fixed text-on-primary-fixed font-label-md text-label-md px-2.5 py-0.5 rounded-full font-bold">
+          4 en lista
+        </span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+        Consulta prioritaria e inmediata para elección de cargos en asamblea de auxiliares.
+      </p>
+</div>
+<!-- Quick Action Banner: Comparar Todas en Ranking -->
+<section class="bg-surface-container-lowest border border-outline-variant/70 rounded-3xl p-3.5 shadow-sm flex items-center justify-between gap-3 hover:border-primary transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-2xl bg-primary-fixed flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[26px]" data-icon="leaderboard" style="font-variation-settings: &quot;FILL&quot; 1;">leaderboard</span>
+</div>
+<div>
+<h2 class="text-title-sm font-title-sm text-on-surface">Comparar todas en ranking</h2>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Módulo de contraste: distancia, colectivos y turnos</p>
+</div>
+</div>
+<button aria-label="Abrir ranking comparativo" class="bg-primary text-on-primary px-3 py-2 rounded-full font-label-md text-label-md font-semibold flex items-center gap-1 active:scale-95 transition-transform shrink-0 shadow-sm">
+<span class="">Ranking</span>
+<span class="material-symbols-outlined text-[18px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</section>
+<!-- Search & Filters Container -->
+<div class="flex flex-col gap-2.5">
+<!-- Search Input -->
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3.5 text-on-surface-variant text-[20px]" data-icon="search">search</span>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-full pl-10 pr-10 py-2 text-body-md font-body-md text-on-surface placeholder:text-on-surface-variant focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all shadow-sm" placeholder="Buscar por n°, calle o localidad..." type="text">
+<button aria-label="Limpiar búsqueda" class="absolute right-3 text-on-surface-variant hover:text-on-surface">
+<span class="material-symbols-outlined text-[18px]" data-icon="close">close</span>
+</button>
+</div>
+<!-- Horizontal Filter Chips Carousel -->
+<div class="flex items-center gap-2 overflow-x-auto custom-scroll py-0.5 -mx-1 px-1">
+<button class="h-8 px-3 rounded-full bg-primary-fixed border border-primary text-on-primary-fixed font-label-md text-label-md flex items-center gap-1.5 shrink-0 shadow-xs">
+<span class="material-symbols-outlined text-[16px]" data-icon="check">check</span>
+<span class="">Todas (4)</span>
+</button>
+<button class="h-8 px-3 rounded-full bg-surface-container-lowest border border-outline-variant text-on-surface-variant font-label-md text-label-md flex items-center gap-1 shrink-0 hover:bg-surface-container-low transition-colors">
+<span class="">Primaria (EP)</span>
+</button>
+<button class="h-8 px-3 rounded-full bg-surface-container-lowest border border-outline-variant text-on-surface-variant font-label-md text-label-md flex items-center gap-1 shrink-0 hover:bg-surface-container-low transition-colors">
+<span class="">Secundaria (EES)</span>
+</button>
+<button class="h-8 px-3 rounded-full bg-surface-container-lowest border border-outline-variant text-on-surface-variant font-label-md text-label-md flex items-center gap-1 shrink-0 hover:bg-surface-container-low transition-colors">
+<span class="">Inicial (JI)</span>
+</button>
+<button class="h-8 px-3 rounded-full bg-surface-container-lowest border border-outline-variant text-on-surface-variant font-label-md text-label-md flex items-center gap-1 shrink-0 hover:bg-surface-container-low transition-colors">
+<span class="">Especial (EEE)</span>
+</button>
+</div>
+<!-- Sorting Bar -->
+<div class="flex items-center justify-between px-1">
+<span class="text-body-sm font-body-sm text-on-surface-variant font-medium">Ordenar lista por:</span>
+<button class="flex items-center gap-1 text-primary font-label-md text-label-md font-semibold bg-surface-container-lowest px-2.5 py-1 rounded-full border border-outline-variant/60 shadow-xs">
+<span class="material-symbols-outlined text-[16px]" data-icon="near_me">near_me</span>
+<span class="">Más cercana (km)</span>
+<span class="material-symbols-outlined text-[18px]" data-icon="expand_more">expand_more</span>
+</button>
+</div>
+</div>
+<!-- CARDS LIST: Escuelas Guardadas -->
+<div class="flex flex-col gap-3.5">
+<!-- Card 1: EP N° 12 -->
+<article class="bg-surface-container-lowest border border-outline-variant rounded-3xl p-4 shadow-sm relative flex flex-col gap-3 transition-all hover:border-primary">
+<!-- Top row: Badge Nivel & Favorite toggle -->
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-center gap-2">
+<span class="px-2.5 py-0.5 rounded-full font-label-sm text-label-sm bg-primary-fixed text-on-primary-fixed-variant font-bold">
+              Primaria • EP N° 12
+            </span>
+<span class="text-label-sm font-label-sm text-secondary font-semibold bg-secondary-fixed/40 px-2 py-0.5 rounded-full">
+              2 Vacantes
+            </span>
+</div>
+<div class="flex items-center gap-1">
+<button aria-label="Quitar de favoritas" class="w-8 h-8 rounded-full flex items-center justify-center text-tertiary-container hover:bg-surface-container-low">
+<span class="material-symbols-outlined text-[22px]" data-icon="favorite" style="font-variation-settings: &quot;FILL&quot; 1;">favorite</span>
+</button>
+</div>
+</div>
+<!-- School info -->
+<div>
+<h2 class="text-title-md font-title-md text-on-surface leading-tight">Domingo Faustino Sarmiento</h2>
+<div class="flex items-center gap-1 text-on-surface-variant text-body-sm font-body-sm mt-0.5">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="location_on">location_on</span>
+<span class="font-medium text-on-surface">Gorriti 450</span>
+<span class="">•</span>
+<span class="">Lomas Centro</span>
+</div>
+</div>
+<!-- Offline Transit Metrics Strip -->
+<div class="bg-surface-container-low rounded-2xl p-2.5 flex items-center justify-between text-body-sm font-body-sm">
+<div class="flex items-center gap-1 font-semibold text-on-surface">
+<span class="material-symbols-outlined text-[18px] text-primary" data-icon="straighten">straighten</span>
+<span class="">1.2 km</span>
+</div>
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="flex items-center gap-1" title="En auto / moto">
+<span class="material-symbols-outlined text-[16px]" data-icon="directions_car">directions_car</span> 5m
+            </span>
+<span class="flex items-center gap-1 text-primary font-medium" title="En colectivo">
+<span class="material-symbols-outlined text-[16px]" data-icon="directions_bus">directions_bus</span> 12m
+            </span>
+<span class="flex items-center gap-1" title="Caminando">
+<span class="material-symbols-outlined text-[16px]" data-icon="directions_walk">directions_walk</span> 15m
+            </span>
+</div>
+</div>
+<!-- Auxiliary Personal Notes -->
+<div class="bg-surface-bright border border-outline-variant/60 rounded-xl p-2.5 flex flex-col gap-1">
+<div class="flex items-center gap-1 text-label-sm font-label-sm text-on-surface-variant font-bold">
+<span class="material-symbols-outlined text-[15px] text-primary" data-icon="edit_note">edit_note</span>
+<span class="">NOTAS DE ASAMBLEA:</span>
+</div>
+<div class="flex flex-wrap gap-1.5 mt-0.5">
+<span class="px-2 py-0.5 rounded-md bg-surface-container font-label-sm text-label-sm text-on-surface">
+              Turno Mañana (07:30 - 13:30)
+            </span>
+<span class="px-2 py-0.5 rounded-md bg-surface-container font-label-sm text-label-sm text-on-surface">
+              Colectivo 540 y 542 en puerta
+            </span>
+<span class="px-2 py-0.5 rounded-md bg-secondary-fixed/50 text-on-secondary-fixed-variant font-label-sm text-label-sm font-semibold">
+              Edificio nuevo / calefacción
+            </span>
+</div>
+</div>
+<!-- Action Bar -->
+<div class="pt-1 flex items-center gap-2">
+<button class="flex-1 bg-surface-container-low hover:bg-surface-container-high text-on-surface font-label-md text-label-md py-2.5 px-3 rounded-full flex items-center justify-center gap-1.5 border border-outline-variant active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[18px] text-primary" data-icon="directions">directions</span>
+<span class="">Ver Ruta Offline</span>
+</button>
+<button class="flex-1 bg-primary-container text-on-primary-container font-label-md text-label-md py-2.5 px-3 rounded-full flex items-center justify-center gap-1.5 shadow-xs active:scale-95 transition-all font-semibold">
+<span class="material-symbols-outlined text-[18px]" data-icon="compare_arrows">compare_arrows</span>
+<span class="">Al Comparador</span>
+</button>
+</div>
+</article>
+<!-- Card 2: EES N° 4 -->
+<article class="bg-surface-container-lowest border border-outline-variant rounded-3xl p-4 shadow-sm relative flex flex-col gap-3 transition-all hover:border-primary">
+<!-- Top row: Badge Nivel & Favorite toggle -->
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-center gap-2">
+<span class="px-2.5 py-0.5 rounded-full font-label-sm text-label-sm bg-primary-fixed text-on-primary-fixed-variant font-bold">
+              Secundaria • EES N° 4
+            </span>
+<span class="text-label-sm font-label-sm text-secondary font-semibold bg-secondary-fixed/40 px-2 py-0.5 rounded-full">
+              1 Vacante Portería
+            </span>
+</div>
+<button aria-label="Quitar de favoritas" class="w-8 h-8 rounded-full flex items-center justify-center text-tertiary-container hover:bg-surface-container-low">
+<span class="material-symbols-outlined text-[22px]" data-icon="favorite" style="font-variation-settings: &quot;FILL&quot; 1;">favorite</span>
+</button>
+</div>
+<!-- School info -->
+<div>
+<h2 class="text-title-md font-title-md text-on-surface leading-tight">Manuel Belgrano</h2>
+<div class="flex items-center gap-1 text-on-surface-variant text-body-sm font-body-sm mt-0.5">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="location_on">location_on</span>
+<span class="font-medium text-on-surface">Av. Alsina 1230</span>
+<span class="">•</span>
+<span class="">Banfield Oeste</span>
+</div>
+</div>
+<!-- Offline Transit Metrics Strip -->
+<div class="bg-surface-container-low rounded-2xl p-2.5 flex items-center justify-between text-body-sm font-body-sm">
+<div class="flex items-center gap-1 font-semibold text-on-surface">
+<span class="material-symbols-outlined text-[18px] text-primary" data-icon="straighten">straighten</span>
+<span class="">2.4 km</span>
+</div>
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="directions_car">directions_car</span> 8m
+            </span>
+<span class="flex items-center gap-1 text-primary font-medium">
+<span class="material-symbols-outlined text-[16px]" data-icon="directions_bus">directions_bus</span> 18m
+            </span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="directions_walk">directions_walk</span> 28m
+            </span>
+</div>
+</div>
+<!-- Auxiliary Personal Notes -->
+<div class="bg-surface-bright border border-outline-variant/60 rounded-xl p-2.5 flex flex-col gap-1">
+<div class="flex items-center gap-1 text-label-sm font-label-sm text-on-surface-variant font-bold">
+<span class="material-symbols-outlined text-[15px] text-primary" data-icon="edit_note">edit_note</span>
+<span class="">NOTAS DE ASAMBLEA:</span>
+</div>
+<div class="flex flex-wrap gap-1.5 mt-0.5">
+<span class="px-2 py-0.5 rounded-md bg-surface-container font-label-sm text-label-sm text-on-surface">
+              Turno Tarde (12:30 - 18:30)
+            </span>
+<span class="px-2 py-0.5 rounded-md bg-surface-container font-label-sm text-label-sm text-on-surface">
+              Colectivo 160 o 79 por Alsina
+            </span>
+<span class="px-2 py-0.5 rounded-md bg-surface-container font-label-sm text-label-sm text-on-surface">
+              Cercano a estación Banfield
+            </span>
+</div>
+</div>
+<!-- Action Bar -->
+<div class="pt-1 flex items-center gap-2">
+<button class="flex-1 bg-surface-container-low hover:bg-surface-container-high text-on-surface font-label-md text-label-md py-2.5 px-3 rounded-full flex items-center justify-center gap-1.5 border border-outline-variant active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[18px] text-primary" data-icon="directions">directions</span>
+<span class="">Ver Ruta Offline</span>
+</button>
+<button class="flex-1 bg-primary-container text-on-primary-container font-label-md text-label-md py-2.5 px-3 rounded-full flex items-center justify-center gap-1.5 shadow-xs active:scale-95 transition-all font-semibold">
+<span class="material-symbols-outlined text-[18px]" data-icon="compare_arrows">compare_arrows</span>
+<span class="">Al Comparador</span>
+</button>
+</div>
+</article>
+<!-- Card 3: JI N° 905 -->
+<article class="bg-surface-container-lowest border border-outline-variant rounded-3xl p-4 shadow-sm relative flex flex-col gap-3 transition-all hover:border-primary">
+<!-- Top row: Badge Nivel & Favorite toggle -->
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-center gap-2">
+<span class="px-2.5 py-0.5 rounded-full font-label-sm text-label-sm bg-primary-fixed text-on-primary-fixed-variant font-bold">
+              Inicial • JI N° 905
+            </span>
+<span class="text-label-sm font-label-sm text-on-surface-variant font-semibold bg-surface-container px-2 py-0.5 rounded-full">
+              Postulación en curso
+            </span>
+</div>
+<button aria-label="Quitar de favoritas" class="w-8 h-8 rounded-full flex items-center justify-center text-tertiary-container hover:bg-surface-container-low">
+<span class="material-symbols-outlined text-[22px]" data-icon="favorite" style="font-variation-settings: &quot;FILL&quot; 1;">favorite</span>
+</button>
+</div>
+<!-- School info -->
+<div>
+<h2 class="text-title-md font-title-md text-on-surface leading-tight">Jardín Merceditas de San Martín</h2>
+<div class="flex items-center gap-1 text-on-surface-variant text-body-sm font-body-sm mt-0.5">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="location_on">location_on</span>
+<span class="font-medium text-on-surface">Colombres 780</span>
+<span class="">•</span>
+<span class="">Lomas Centro</span>
+</div>
+</div>
+<!-- Offline Transit Metrics Strip -->
+<div class="bg-surface-container-low rounded-2xl p-2.5 flex items-center justify-between text-body-sm font-body-sm">
+<div class="flex items-center gap-1 font-semibold text-on-surface">
+<span class="material-symbols-outlined text-[18px] text-primary" data-icon="straighten">straighten</span>
+<span class="">0.9 km</span>
+</div>
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="directions_car">directions_car</span> 4m
+            </span>
+<span class="flex items-center gap-1 text-primary font-medium">
+<span class="material-symbols-outlined text-[16px]" data-icon="directions_bus">directions_bus</span> 9m
+            </span>
+<span class="flex items-center gap-1 font-semibold text-secondary">
+<span class="material-symbols-outlined text-[16px]" data-icon="directions_walk">directions_walk</span> 11m (A pie)
+            </span>
+</div>
+</div>
+<!-- Auxiliary Personal Notes -->
+<div class="bg-surface-bright border border-outline-variant/60 rounded-xl p-2.5 flex flex-col gap-1">
+<div class="flex items-center gap-1 text-label-sm font-label-sm text-on-surface-variant font-bold">
+<span class="material-symbols-outlined text-[15px] text-primary" data-icon="edit_note">edit_note</span>
+<span class="">NOTAS DE ASAMBLEA:</span>
+</div>
+<div class="flex flex-wrap gap-1.5 mt-0.5">
+<span class="px-2 py-0.5 rounded-md bg-secondary-fixed/50 text-on-secondary-fixed-variant font-label-sm text-label-sm font-semibold">
+              Prioridad Máxima por cercanía
+            </span>
+<span class="px-2 py-0.5 rounded-md bg-surface-container font-label-sm text-label-sm text-on-surface">
+              Cocina / Desayuno asistido
+            </span>
+</div>
+</div>
+<!-- Action Bar -->
+<div class="pt-1 flex items-center gap-2">
+<button class="flex-1 bg-surface-container-low hover:bg-surface-container-high text-on-surface font-label-md text-label-md py-2.5 px-3 rounded-full flex items-center justify-center gap-1.5 border border-outline-variant active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[18px] text-primary" data-icon="directions">directions</span>
+<span class="">Ver Ruta Offline</span>
+</button>
+<button class="flex-1 bg-primary-container text-on-primary-container font-label-md text-label-md py-2.5 px-3 rounded-full flex items-center justify-center gap-1.5 shadow-xs active:scale-95 transition-all font-semibold">
+<span class="material-symbols-outlined text-[18px]" data-icon="compare_arrows">compare_arrows</span>
+<span class="">Al Comparador</span>
+</button>
+</div>
+</article>
+<!-- Card 4: EEE N° 501 -->
+<article class="bg-surface-container-lowest border border-outline-variant rounded-3xl p-4 shadow-sm relative flex flex-col gap-3 transition-all hover:border-primary">
+<!-- Top row: Badge Nivel & Favorite toggle -->
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-center gap-2">
+<span class="px-2.5 py-0.5 rounded-full font-label-sm text-label-sm bg-primary-fixed text-on-primary-fixed-variant font-bold">
+              Especial • EEE N° 501
+            </span>
+<span class="text-label-sm font-label-sm text-secondary font-semibold bg-secondary-fixed/40 px-2 py-0.5 rounded-full">
+              Suplencia Larga
+            </span>
+</div>
+<button aria-label="Quitar de favoritas" class="w-8 h-8 rounded-full flex items-center justify-center text-tertiary-container hover:bg-surface-container-low">
+<span class="material-symbols-outlined text-[22px]" data-icon="favorite" style="font-variation-settings: &quot;FILL&quot; 1;">favorite</span>
+</button>
+</div>
+<!-- School info -->
+<div>
+<h2 class="text-title-md font-title-md text-on-surface leading-tight">Escuela de Educación Especial N° 501</h2>
+<div class="flex items-center gap-1 text-on-surface-variant text-body-sm font-body-sm mt-0.5">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="location_on">location_on</span>
+<span class="font-medium text-on-surface">Pringles 210</span>
+<span class="">•</span>
+<span class="">Temperley Este</span>
+</div>
+</div>
+<!-- Offline Transit Metrics Strip -->
+<div class="bg-surface-container-low rounded-2xl p-2.5 flex items-center justify-between text-body-sm font-body-sm">
+<div class="flex items-center gap-1 font-semibold text-on-surface">
+<span class="material-symbols-outlined text-[18px] text-primary" data-icon="straighten">straighten</span>
+<span class="">3.8 km</span>
+</div>
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="directions_car">directions_car</span> 12m
+            </span>
+<span class="flex items-center gap-1 text-primary font-medium">
+<span class="material-symbols-outlined text-[16px]" data-icon="directions_bus">directions_bus</span> 24m
+            </span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="directions_walk">directions_walk</span> 45m
+            </span>
+</div>
+</div>
+<!-- Auxiliary Personal Notes -->
+<div class="bg-surface-bright border border-outline-variant/60 rounded-xl p-2.5 flex flex-col gap-1">
+<div class="flex items-center gap-1 text-label-sm font-label-sm text-on-surface-variant font-bold">
+<span class="material-symbols-outlined text-[15px] text-primary" data-icon="edit_note">edit_note</span>
+<span class="">NOTAS DE ASAMBLEA:</span>
+</div>
+<div class="flex flex-wrap gap-1.5 mt-0.5">
+<span class="px-2 py-0.5 rounded-md bg-surface-container font-label-sm text-label-sm text-on-surface">
+              Turno Vespertino
+            </span>
+<span class="px-2 py-0.5 rounded-md bg-surface-container font-label-sm text-label-sm text-on-surface">
+              Colectivo 278 ramal A directo
+            </span>
+<span class="px-2 py-0.5 rounded-md bg-surface-container font-label-sm text-label-sm text-on-surface">
+              Plus diferencial por modalidad
+            </span>
+</div>
+</div>
+<!-- Action Bar -->
+<div class="pt-1 flex items-center gap-2">
+<button class="flex-1 bg-surface-container-low hover:bg-surface-container-high text-on-surface font-label-md text-label-md py-2.5 px-3 rounded-full flex items-center justify-center gap-1.5 border border-outline-variant active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[18px] text-primary" data-icon="directions">directions</span>
+<span class="">Ver Ruta Offline</span>
+</button>
+<button class="flex-1 bg-primary-container text-on-primary-container font-label-md text-label-md py-2.5 px-3 rounded-full flex items-center justify-center gap-1.5 shadow-xs active:scale-95 transition-all font-semibold">
+<span class="material-symbols-outlined text-[18px]" data-icon="compare_arrows">compare_arrows</span>
+<span class="">Al Comparador</span>
+</button>
+</div>
+</article>
+</div>
+<!-- Quick Helper Footer in Canvas -->
+<div class="bg-surface-container-lowest border border-outline-variant/70 rounded-2xl p-3 text-center flex flex-col items-center gap-1 mt-2">
+<span class="material-symbols-outlined text-outline text-[22px]" data-icon="info">info</span>
+<p class="text-body-sm font-body-sm text-on-surface-variant max-w-xs">
+        Las instituciones guardadas permanecen accesibles durante el acto público sin consumir paquete de datos móviles.
+      </p>
+</div>
+</main>
+<!-- BOTTOM NAVIGATION BAR (Shared Components JSON Anchor) -->
+<!-- 
+    Destination rule: Top-level ecosystem tab "Vacantes" / "Mis Favoritas" active.
+    Executing exact JSON commands: 
+    - container: fixed bottom-0 w-full z-50 flex justify-around items-center px-2 py-2 max-w-lg mx-auto inset-x-0 bg-surface-container-lowest dark:bg-inverse-surface border-t border-outline-variant dark:border-outline shadow-lg dark:shadow-none
+    - active: flex flex-col items-center justify-center bg-primary-fixed dark:bg-primary text-on-primary-fixed dark:text-on-primary rounded-full px-4 py-1
+    - inactive: flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-3 py-1
+  -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-2 py-2 max-w-lg mx-auto inset-x-0 bg-surface-container-lowest dark:bg-inverse-surface border-t border-outline-variant dark:border-outline shadow-lg dark:shadow-none"><!-- Item 1: Mapa (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-3 py-1 hover:bg-surface-container-high dark:hover:bg-surface-variant rounded-full active:scale-95 transition-transform duration-150" href="#">
+  <span class="material-symbols-outlined text-[24px]" data-icon="map">map</span>
+  <span class="text-label-sm font-label-sm mt-0.5">Mapa</span>
+</a>
+<!-- Item 2: Comparativa (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-3 py-1 hover:bg-surface-container-high dark:hover:bg-surface-variant rounded-full active:scale-95 transition-transform duration-150" href="#">
+  <span class="material-symbols-outlined text-[24px]" data-icon="compare_arrows">compare_arrows</span>
+  <span class="text-label-sm font-label-sm mt-0.5">Comparativa</span>
+</a>
+<!-- Item 3: Favoritos (Active) -->
+<a class="flex flex-col items-center justify-center bg-primary-fixed dark:bg-primary text-on-primary-fixed dark:text-on-primary rounded-full px-4 py-1 active:scale-95 transition-transform duration-150" href="#">
+  <span class="material-symbols-outlined text-[24px]" data-icon="bookmark" style="font-variation-settings: 'FILL' 1;">bookmark</span>
+  <span class="text-label-sm font-label-sm font-bold mt-0.5">Favoritos</span>
+</a>
+<!-- Item 4: Mi Ubicación (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-3 py-1 hover:bg-surface-container-high dark:hover:bg-surface-variant rounded-full active:scale-95 transition-transform duration-150" href="#">
+  <span class="material-symbols-outlined text-[24px]" data-icon="my_location">my_location</span>
+  <span class="text-label-sm font-label-sm mt-0.5">Mi Ubicación</span>
+</a></nav>
+
+
+</body></html>

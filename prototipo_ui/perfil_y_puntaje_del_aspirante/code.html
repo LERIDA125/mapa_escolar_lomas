@@ -1,0 +1,323 @@
+<!DOCTYPE html><html class="h-full bg-surface" lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Perfil y Puntaje del Aspirante - Actos Públicos LDZ</title>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container": "#ebeef4",
+            "surface-container-low": "#f1f4fa",
+            "tertiary-fixed": "#ffdad5",
+            "on-tertiary-container": "#ffffff",
+            "error-container": "#ffdad6",
+            "on-primary-fixed": "#001a41",
+            "surface-bright": "#f7f9ff",
+            "on-surface-variant": "#414754",
+            "primary": "#005bbf",
+            "on-background": "#181c20",
+            "surface-container-high": "#e5e8ee",
+            "outline": "#727785",
+            "secondary-fixed": "#8ffa9b",
+            "tertiary-container": "#dc392c",
+            "primary-container": "#1a73e8",
+            "background": "#f7f9ff",
+            "on-primary-container": "#ffffff",
+            "inverse-primary": "#adc7ff",
+            "inverse-surface": "#2d3135",
+            "primary-fixed": "#d8e2ff",
+            "on-secondary-container": "#00752d",
+            "on-primary-fixed-variant": "#004493",
+            "surface-variant": "#dfe3e8",
+            "surface-container-lowest": "#ffffff",
+            "secondary": "#006e2a",
+            "on-primary": "#ffffff",
+            "on-secondary-fixed-variant": "#00531e",
+            "error": "#ba1a1a",
+            "on-tertiary-fixed-variant": "#930004",
+            "on-secondary-fixed": "#002108",
+            "surface-dim": "#d7dae0",
+            "on-surface": "#181c20",
+            "secondary-fixed-dim": "#73dc82",
+            "surface-container-highest": "#dfe3e8",
+            "primary-fixed-dim": "#adc7ff",
+            "outline-variant": "#c1c6d6",
+            "on-secondary": "#ffffff",
+            "surface": "#f7f9ff",
+            "tertiary": "#b81d17",
+            "on-error": "#ffffff",
+            "tertiary-fixed-dim": "#ffb4a9",
+            "inverse-on-surface": "#eef1f7",
+            "secondary-container": "#8ffa9b",
+            "on-error-container": "#93000a",
+            "on-tertiary-fixed": "#410001",
+            "on-tertiary": "#ffffff",
+            "surface-tint": "#005bc0"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xl": "2rem",
+            "gutter": "1rem",
+            "space-sm": "0.5rem",
+            "space-lg": "1.5rem",
+            "space-xs": "0.25rem",
+            "space-md": "1rem",
+            "margin": "1rem"
+          },
+          "fontFamily": {
+            "body-md": ["Inter"],
+            "headline-md": ["Inter"],
+            "body-lg": ["Inter"],
+            "title-sm": ["Inter"],
+            "title-md": ["Inter"],
+            "label-lg": ["Inter"],
+            "label-sm": ["Inter"],
+            "headline-lg": ["Inter"],
+            "label-md": ["Inter"],
+            "display-sm": ["Inter"],
+            "body-sm": ["Inter"],
+            "headline-sm": ["Inter"]
+          },
+          "fontSize": {
+            "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.015em", "fontWeight": "400" }],
+            "headline-md": ["20px", { "lineHeight": "26px", "letterSpacing": "0", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "title-sm": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "title-md": ["16px", { "lineHeight": "22px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600" }],
+            "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "display-sm": ["30px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "400" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "letterSpacing": "0", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .material-symbols-outlined.fill-icon {
+      font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+    }
+    /* Hide scrollbar for horizontal chip bars */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="min-h-full bg-surface text-on-surface antialiased flex flex-col items-center">
+<!-- Mobile Screen Container -->
+<div class="w-full max-w-lg min-h-screen bg-background relative flex flex-col pb-28">
+<!-- Top Bar Component from Shared Components JSON Structure -->
+<header class="fixed top-0 left-0 right-0 z-40 flex items-center justify-between px-4 py-2 mx-4 mt-2 max-w-lg mx-auto bg-surface-container-lowest dark:bg-inverse-surface rounded-full shadow-md dark:shadow-none border border-outline-variant dark:border-outline">
+<div class="flex items-center gap-2">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low dark:hover:bg-surface-variant transition-colors active:scale-95 text-on-surface" type="button">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<div class="flex flex-col">
+<span class="text-title-md font-title-md font-bold text-on-surface dark:text-inverse-on-surface leading-tight">Actos Públicos</span>
+<span class="text-label-sm font-label-sm text-outline">Lomas de Zamora • 062</span>
+</div>
+</div>
+<div class="flex items-center gap-1">
+<!-- Offline sync pill badge -->
+<div class="flex items-center gap-1 bg-[#E6F4EA] text-[#137333] px-2.5 py-1 rounded-full text-label-sm font-label-sm shadow-sm" title="Datos sincronizados con DGCyE">
+<span class="material-symbols-outlined text-[15px] fill-icon" data-icon="cloud_done" style="font-variation-settings: 'FILL' 1;">cloud_done</span>
+<span class="">Offline OK</span>
+</div>
+<button class="w-9 h-9 flex items-center justify-center rounded-full hover:bg-surface-container-low dark:hover:bg-surface-variant transition-colors text-on-surface-variant" title="Ajustes" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="tune">tune</span>
+</button>
+</div>
+</header>
+<!-- Main Content Area (padding-top accounts for fixed top bar) -->
+<main class="flex-1 px-4 pt-20 flex flex-col gap-4">
+<!-- Institutional Branding Banner -->
+<section class="bg-surface-container-lowest rounded-2xl p-3 border border-outline-variant shadow-sm flex items-center justify-between gap-3 overflow-hidden">
+<div class="flex items-center gap-3">
+<img alt="Consejo Escolar Lomas de Zamora" class="h-9 max-w-[210px] object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WK6TQU1R5N_Okv0K4gFzBWZUiPctj6rkb0nW09_7o6WmYtEOMYwqFR9wGSqxByhcd48Nd6E6EUwp0CHn8XD6-vNzIlvJyfXd8Qf1I5-ok6JxpLHaxipZz7DLJnvwEWxhK4wSyeDDBOraC-Au-IFuBmD0K7gz_j1JxnNMb9MXKA0bS4KZNl8ye-ghYHLrn6f0Old1-KRq3USygnRZKQuJh2G8HsrsbWyfn7Gf3Bfomy">
+</div>
+<div class="text-right">
+<span class="inline-block text-label-sm font-label-sm px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed">Listado Oficial 2025</span>
+</div>
+</section>
+<!-- Aspirante Identity Profile Card -->
+<section class="bg-surface-container-lowest rounded-3xl p-5 border border-outline-variant shadow-sm relative overflow-hidden">
+<div class="flex items-start gap-4">
+<!-- Avatar + Status indicator -->
+<div class="relative shrink-0">
+<div class="w-16 h-16 rounded-full bg-primary-fixed flex items-center justify-center text-primary font-bold text-headline-sm border-2 border-primary-container shadow-inner">
+              MG
+            </div>
+<div class="absolute -bottom-1 -right-1 bg-secondary text-on-secondary rounded-full p-0.5 flex items-center justify-center ring-2 ring-surface-container-lowest" title="Aspirante Habilitado">
+<span class="material-symbols-outlined text-[16px] fill-icon" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+<!-- Personal Data & Role -->
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-2 flex-wrap">
+<h1 class="text-headline-sm font-headline-sm text-on-surface truncate">Mariana Gómez</h1>
+<span class="px-2 py-0.5 rounded-full bg-[#E6F4EA] text-[#137333] text-label-sm font-label-sm font-semibold tracking-wide">
+                Habilitada
+              </span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-0.5">
+              DNI <span class="font-medium text-on-surface">34.892.104</span> • Legajo ABC: <span class="font-medium text-on-surface">062/48192</span>
+</p>
+<div class="mt-2 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-surface-container text-on-surface text-label-md font-label-md">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="badge">badge</span>
+<span class="truncate">Auxiliar: Portería y Peón de Cocina</span>
+</div>
+</div>
+</div>
+<!-- Reference Departure Address for routing -->
+<div class="mt-4 pt-3.5 border-t border-surface-container flex items-center justify-between gap-2">
+<div class="flex items-center gap-2.5 min-w-0">
+<div class="w-8 h-8 rounded-full bg-tertiary-container/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-tertiary-container text-[18px] fill-icon" data-icon="location_on" style="font-variation-settings: 'FILL' 1;">location_on</span>
+</div>
+<div class="min-w-0">
+<span class="text-label-sm font-label-sm text-outline block leading-none">Punto de partida (Ruteo en vivo)</span>
+<span class="text-body-sm font-body-sm font-semibold text-on-surface truncate block mt-0.5">Av. Meeks 850, Temperley Oeste</span>
+</div>
+</div>
+<button class="shrink-0 px-2.5 py-1.5 rounded-full text-label-sm font-label-sm text-primary hover:bg-surface-container-low transition-colors font-medium flex items-center gap-1 border border-outline-variant" type="button">
+<span class="">Cambiar</span>
+<span class="material-symbols-outlined text-[14px]" data-icon="edit">edit</span>
+</button>
+</div>
+</section>
+<!-- Official Score Spotlight Module (Bento / Glassmorphism Accent) -->
+
+<!-- Assignment & Offline Routing Preferences -->
+<section class="bg-surface-container-lowest rounded-3xl p-5 border border-outline-variant shadow-sm space-y-4">
+<div class="flex items-center justify-between">
+<div>
+<h2 class="text-title-md font-title-md text-on-surface">Preferencias de Asignación y Ruteo</h2>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Filtros predeterminados para la vista de Mapa</p>
+</div>
+<span class="material-symbols-outlined text-primary text-[22px]" data-icon="tune">tune</span>
+</div>
+<!-- Transit Mode Selector -->
+<div>
+<span class="text-label-sm font-label-sm font-semibold text-on-surface-variant block mb-2">Transporte para cálculo de llegada</span>
+<div class="grid grid-cols-3 gap-2">
+<button class="py-2.5 px-3 rounded-2xl bg-primary-fixed text-on-primary-fixed border border-primary flex flex-col items-center justify-center gap-1 font-semibold text-label-md" type="button">
+<span class="material-symbols-outlined text-[20px] fill-icon" data-icon="directions_bus" style="font-variation-settings: 'FILL' 1;">directions_bus</span>
+<span class="">Colectivo</span>
+</button>
+<button class="py-2.5 px-3 rounded-2xl bg-surface-container-lowest text-on-surface-variant border border-outline-variant hover:bg-surface-container transition-colors flex flex-col items-center justify-center gap-1 font-medium text-label-md" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="directions_walk">directions_walk</span>
+<span class="">A pie</span>
+</button>
+<button class="py-2.5 px-3 rounded-2xl bg-surface-container-lowest text-on-surface-variant border border-outline-variant hover:bg-surface-container transition-colors flex flex-col items-center justify-center gap-1 font-medium text-label-md" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="directions_car">directions_car</span>
+<span class="">Vehículo</span>
+</button>
+</div>
+</div>
+<!-- Distance Radius & Preferred Shifts -->
+<div class="grid grid-cols-2 gap-3 pt-1">
+<div class="p-3 rounded-2xl bg-surface-container-low border border-outline-variant/60">
+<span class="text-label-sm font-label-sm text-outline block">Radio de acción</span>
+<div class="flex items-center justify-between mt-1">
+<span class="text-title-sm font-title-sm font-bold text-on-surface">Hasta 5 km</span>
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+<div class="p-3 rounded-2xl bg-surface-container-low border border-outline-variant/60">
+<span class="text-label-sm font-label-sm text-outline block">Turnos de interés</span>
+<div class="flex items-center justify-between mt-1">
+<span class="text-title-sm font-title-sm font-bold text-on-surface">Mañana / Tarde</span>
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Shift Quick Chips -->
+<div class="flex flex-wrap gap-1.5 pt-1">
+<span class="px-2.5 py-1 rounded-full bg-primary-fixed text-on-primary-fixed text-label-sm font-label-sm font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] fill-icon" data-icon="wb_sunny" style="font-variation-settings: 'FILL' 1;">wb_sunny</span>
+            Mañana (07:30 a 13:30)
+          </span>
+<span class="px-2.5 py-1 rounded-full bg-primary-fixed text-on-primary-fixed text-label-sm font-label-sm font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] fill-icon" data-icon="wb_twilight" style="font-variation-settings: 'FILL' 1;">wb_twilight</span>
+            Tarde (12:30 a 18:30)
+          </span>
+<span class="px-2.5 py-1 rounded-full bg-surface-container text-outline text-label-sm font-label-sm font-normal">
+            Noche (Desactivado)
+          </span>
+</div>
+</section>
+<!-- Document Download & Support Quick Actions -->
+<section class="space-y-2.5">
+<!-- Download Official PDF -->
+
+<!-- Help Desk Button -->
+
+<!-- Institutional Legal / App version footer -->
+<div class="pt-2 text-center text-label-sm font-label-sm text-outline">
+<p class="">Dirección General de Cultura y Educación (DGCyE)</p>
+<p class="mt-0.5 text-[10px]">Consejo Escolar de Lomas de Zamora • Versión 2.4.1 (Build 2025)</p>
+</div>
+<!-- Log out button -->
+<div class="pt-1 text-center">
+<button class="inline-flex items-center gap-1.5 px-4 py-2 text-label-md font-label-md text-tertiary hover:bg-error-container/20 rounded-full transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]" data-icon="logout">logout</span>
+<span class="">Cerrar sesión en este dispositivo</span>
+</button>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar (Material Design 3 Docked Shell from JSON) -->
+<!-- Destination 4: "Perfil" is strictly ACTIVE based on Semantic Shell Mandate -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-2 py-2 max-w-lg mx-auto inset-x-0 bg-surface-container-lowest dark:bg-inverse-surface border-t border-outline-variant dark:border-outline shadow-lg dark:shadow-none"><!-- Tab 1: Mapa (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-3 py-1 hover:bg-surface-container-high dark:hover:bg-surface-variant rounded-full active:scale-95 transition-transform duration-150" href="#mapa">
+  <span class="material-symbols-outlined text-[22px]" data-icon="map">map</span>
+  <span class="text-label-sm font-label-sm mt-0.5">Mapa</span>
+</a>
+<!-- Tab 2: Comparativa (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-3 py-1 hover:bg-surface-container-high dark:hover:bg-surface-variant rounded-full active:scale-95 transition-transform duration-150" href="#comparativa">
+  <span class="material-symbols-outlined text-[22px]" data-icon="compare_arrows">compare_arrows</span>
+  <span class="text-label-sm font-label-sm mt-0.5">Comparativa</span>
+</a>
+<!-- Tab 3: Favoritos (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-3 py-1 hover:bg-surface-container-high dark:hover:bg-surface-variant rounded-full active:scale-95 transition-transform duration-150" href="#favoritos">
+  <span class="material-symbols-outlined text-[22px]" data-icon="bookmark">bookmark</span>
+  <span class="text-label-sm font-label-sm mt-0.5">Favoritos</span>
+</a>
+<!-- Tab 4: Perfil (ACTIVE) -->
+<a class="flex flex-col items-center justify-center bg-primary-fixed dark:bg-primary text-on-primary-fixed dark:text-on-primary rounded-full px-4 py-1 active:scale-95 transition-transform duration-150" href="#perfil">
+  <span class="material-symbols-outlined text-[22px] fill-icon" data-icon="person" style="font-variation-settings: 'FILL' 1;">person</span>
+  <span class="text-label-sm font-label-sm font-semibold mt-0.5">Perfil</span>
+</a></nav>
+</div>
+
+
+</body></html>
