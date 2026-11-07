@@ -34,25 +34,26 @@ abstract final class AppColors {
 
 abstract final class AppTheme {
   static ThemeData get light {
-    final colorScheme = ColorScheme.fromSeed(
-      seedColor: AppColors.primary,
-      brightness: Brightness.light,
-    ).copyWith(
-      primary: AppColors.primary,
-      onPrimary: Colors.white,
-      primaryContainer: AppColors.primaryContainer,
-      onPrimaryContainer: Colors.white,
-      secondary: AppColors.secondary,
-      onSecondary: Colors.white,
-      tertiary: AppColors.tertiary,
-      onTertiary: Colors.white,
-      error: AppColors.error,
-      surface: AppColors.background,
-      onSurface: AppColors.onSurface,
-      onSurfaceVariant: AppColors.onSurfaceVariant,
-      outline: AppColors.outline,
-      outlineVariant: AppColors.outlineVariant,
-    );
+    final colorScheme =
+        ColorScheme.fromSeed(
+          seedColor: AppColors.primary,
+          brightness: Brightness.light,
+        ).copyWith(
+          primary: AppColors.primary,
+          onPrimary: Colors.white,
+          primaryContainer: AppColors.primaryContainer,
+          onPrimaryContainer: Colors.white,
+          secondary: AppColors.secondary,
+          onSecondary: Colors.white,
+          tertiary: AppColors.tertiary,
+          onTertiary: Colors.white,
+          error: AppColors.error,
+          surface: AppColors.background,
+          onSurface: AppColors.onSurface,
+          onSurfaceVariant: AppColors.onSurfaceVariant,
+          outline: AppColors.outline,
+          outlineVariant: AppColors.outlineVariant,
+        );
 
     return ThemeData(
       useMaterial3: true,

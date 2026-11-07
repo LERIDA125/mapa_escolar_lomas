@@ -79,7 +79,9 @@ class _SplashScreenState extends State<SplashScreen> {
                                     child: Column(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
-                                        const InstitutionalLogoCard(onDark: true),
+                                        const InstitutionalLogoCard(
+                                          onDark: true,
+                                        ),
                                         const SizedBox(height: 24),
                                         const _SplashHeadline(),
                                         const SizedBox(height: 24),
@@ -111,27 +113,35 @@ class _SplashHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return Wrap(
+      alignment: WrapAlignment.spaceBetween,
+      crossAxisAlignment: WrapCrossAlignment.center,
+      spacing: 8,
+      runSpacing: 8,
       children: [
-        Container(
-          width: 8,
-          height: 8,
-          decoration: const BoxDecoration(
-            color: Color(0xFF34D399),
-            shape: BoxShape.circle,
-          ),
+        Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              width: 8,
+              height: 8,
+              decoration: const BoxDecoration(
+                color: Color(0xFF34D399),
+                shape: BoxShape.circle,
+              ),
+            ),
+            const SizedBox(width: 8),
+            Text(
+              'LOMAS DE ZAMORA',
+              style: TextStyle(
+                color: AppColors.sky.withValues(alpha: 0.9),
+                fontSize: 11,
+                fontWeight: FontWeight.w600,
+                letterSpacing: 1.1,
+              ),
+            ),
+          ],
         ),
-        const SizedBox(width: 8),
-        Text(
-          'LOMAS DE ZAMORA',
-          style: TextStyle(
-            color: AppColors.sky.withValues(alpha: 0.9),
-            fontSize: 11,
-            fontWeight: FontWeight.w600,
-            letterSpacing: 1.1,
-          ),
-        ),
-        const Spacer(),
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
           decoration: BoxDecoration(
@@ -195,19 +205,22 @@ class _SplashHeadline extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            _DividerLine(alignment: Alignment.centerLeft),
+            const _DividerLine(alignment: Alignment.centerLeft),
             const SizedBox(width: 8),
-            Text(
-              'ACTOS PÚBLICOS • GUÍA DE ESCUELAS',
-              style: TextStyle(
-                color: AppColors.sky.withValues(alpha: 0.8),
-                fontSize: 11,
-                fontWeight: FontWeight.w500,
-                letterSpacing: 0.8,
+            Expanded(
+              child: Text(
+                'ACTOS PÚBLICOS • GUÍA DE ESCUELAS',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: AppColors.sky.withValues(alpha: 0.8),
+                  fontSize: 11,
+                  fontWeight: FontWeight.w500,
+                  letterSpacing: 0.8,
+                ),
               ),
             ),
             const SizedBox(width: 8),
-            _DividerLine(alignment: Alignment.centerRight),
+            const _DividerLine(alignment: Alignment.centerRight),
           ],
         ),
       ],
@@ -231,10 +244,7 @@ class _DividerLine extends StatelessWidget {
           end: alignment == Alignment.centerLeft
               ? Alignment.centerRight
               : Alignment.centerLeft,
-          colors: [
-            Colors.transparent,
-            AppColors.sky.withValues(alpha: 0.5),
-          ],
+          colors: [Colors.transparent, AppColors.sky.withValues(alpha: 0.5)],
         ),
       ),
     );
@@ -258,12 +268,15 @@ class _FeaturePill extends StatelessWidget {
         children: [
           const Icon(Icons.map_outlined, size: 16, color: AppColors.sky),
           const SizedBox(width: 8),
-          Text(
-            'Geolocalización y Ruteo Inmediato',
-            style: TextStyle(
-              color: AppColors.sky.withValues(alpha: 0.95),
-              fontSize: 12,
-              fontWeight: FontWeight.w500,
+          Flexible(
+            child: Text(
+              'Geolocalización y Ruteo Inmediato',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: AppColors.sky.withValues(alpha: 0.95),
+                fontSize: 12,
+                fontWeight: FontWeight.w500,
+              ),
             ),
           ),
         ],
@@ -327,8 +340,10 @@ class _SplashFooter extends StatelessWidget {
         const SizedBox(height: 12),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          child: Wrap(
+            alignment: WrapAlignment.spaceBetween,
+            spacing: 8,
+            runSpacing: 4,
             children: [
               Text(
                 'Distrito Lomas de Zamora (062)',
@@ -387,18 +402,12 @@ class _SplashBackdrop extends StatelessWidget {
         Positioned(
           top: -160,
           right: -160,
-          child: _Ring(
-            size: 384,
-            color: AppColors.sky.withValues(alpha: 0.10),
-          ),
+          child: _Ring(size: 384, color: AppColors.sky.withValues(alpha: 0.10)),
         ),
         Positioned(
           top: -80,
           right: -80,
-          child: _Ring(
-            size: 288,
-            color: AppColors.sky.withValues(alpha: 0.10),
-          ),
+          child: _Ring(size: 288, color: AppColors.sky.withValues(alpha: 0.10)),
         ),
       ],
     );
@@ -418,9 +427,7 @@ class _Glow extends StatelessWidget {
       height: size,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        gradient: RadialGradient(
-          colors: [color, color.withValues(alpha: 0)],
-        ),
+        gradient: RadialGradient(colors: [color, color.withValues(alpha: 0)]),
       ),
     );
   }
