@@ -26,6 +26,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   final _mapController = MapController();
   String? _selectedSchoolId;
   bool _isSchoolDetailsOpen = false;
+  bool _showMap = true;
 
   @override
   void dispose() {
@@ -52,7 +53,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       previous,
       next,
     ) {
-      if (!mounted || !next.hasValue) return;
+      if (!mounted || !_showMap || !next.hasValue) return;
       _fitCameraTo(_validSchools(next.requireValue));
     });
 
@@ -61,32 +62,35 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       child: Stack(
         fit: StackFit.expand,
         children: [
-          FlutterMap(
-            mapController: _mapController,
-            options: MapOptions(
-              initialCenter: _lomasCenter,
-              initialZoom: 13.5,
-              minZoom: 3,
-              maxZoom: 19,
-              backgroundColor: AppColors.surfaceContainer,
-              onTap: _handleMapTap,
-            ),
-            children: [
-              TileLayer(
-                urlTemplate: _osmTileUrl,
-                userAgentPackageName: 'com.example.mapa_escolar',
-                maxNativeZoom: 19,
+          if (_showMap)
+            FlutterMap(
+              mapController: _mapController,
+              options: MapOptions(
+                initialCenter: _lomasCenter,
+                initialZoom: 13.5,
+                minZoom: 3,
+                maxZoom: 19,
+                backgroundColor: AppColors.surfaceContainer,
+                onTap: _handleMapTap,
               ),
-              MarkerLayer(
-                markers: _buildMarkers(context, validSchools, originLocation),
-              ),
-              const RichAttributionWidget(
-                attributions: [
-                  TextSourceAttribution('OpenStreetMap contributors'),
-                ],
-              ),
-            ],
-          ),
+              children: [
+                TileLayer(
+                  urlTemplate: _osmTileUrl,
+                  userAgentPackageName: 'com.example.mapa_escolar',
+                  maxNativeZoom: 19,
+                ),
+                MarkerLayer(
+                  markers: _buildMarkers(context, validSchools, originLocation),
+                ),
+                const RichAttributionWidget(
+                  attributions: [
+                    TextSourceAttribution('OpenStreetMap contributors'),
+                  ],
+                ),
+              ],
+            )
+          else
+            _buildSchoolList(validSchools, originLocation),
           if (schoolsAsync.isLoading) const _LoadingOverlay(),
           if (schoolsAsync.hasError)
             _ErrorOverlay(
@@ -110,9 +114,78 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               ),
             ),
           ),
+          Positioned(
+            left: 0,
+            right: 0,
+            bottom: 20,
+            child: Center(
+              child: FloatingActionButton.extended(
+                onPressed: () => setState(() => _showMap = !_showMap),
+                icon: Icon(_showMap ? Icons.list_rounded : Icons.map_rounded),
+                label: Text(_showMap ? 'Ver Lista' : 'Ver Mapa'),
+              ),
+            ),
+          ),
         ],
       ),
     );
+  }
+
+  Widget _buildSchoolList(List<School> schools, LatLng originLocation) {
+    return ListView.builder(
+      padding: const EdgeInsets.fromLTRB(16, 104, 16, 96),
+      itemCount: schools.length,
+      itemBuilder: (context, index) {
+        final school = schools[index];
+        final distanceKm = calculateDistanceKm(
+          origin: originLocation,
+          destination: LatLng(school.latitude, school.longitude),
+        );
+
+        return Card(
+          margin: const EdgeInsets.only(bottom: 10),
+          color: AppColors.surface,
+          child: ListTile(
+            contentPadding: const EdgeInsets.symmetric(
+              horizontal: 16,
+              vertical: 8,
+            ),
+            title: Text(school.name),
+            subtitle: Padding(
+              padding: const EdgeInsets.only(top: 4),
+              child: Text(
+                [
+                  if (school.level.isNotEmpty) school.level,
+                  if (school.address.isNotEmpty) school.address,
+                ].join('\n'),
+              ),
+            ),
+            trailing: Text(
+              '${distanceKm.toStringAsFixed(1)} km',
+              style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                color: AppColors.primary,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+            onTap: () => _selectSchoolFromList(school),
+          ),
+        );
+      },
+    );
+  }
+
+  void _selectSchoolFromList(School school) {
+    setState(() {
+      _showMap = true;
+      _selectedSchoolId = school.id;
+    });
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      final point = LatLng(school.latitude, school.longitude);
+      _mapController.move(point, 16);
+      _showSchoolDetails(context, school, ref.read(originLocationProvider));
+    });
   }
 
   List<School> _validSchools(List<School> schools) {
