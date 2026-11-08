@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:latlong2/latlong.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../domain/models/school_models.dart';
 import '../../providers/school_providers.dart';
@@ -22,6 +23,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   static const _osmTileUrl = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
 
   final _mapController = MapController();
+  String? _selectedSchoolId;
+  bool _isSchoolDetailsOpen = false;
 
   @override
   void dispose() {
@@ -58,12 +61,13 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         children: [
           FlutterMap(
             mapController: _mapController,
-            options: const MapOptions(
+            options: MapOptions(
               initialCenter: _lomasCenter,
               initialZoom: 13.5,
               minZoom: 3,
               maxZoom: 19,
               backgroundColor: AppColors.surfaceContainer,
+              onTap: _handleMapTap,
             ),
             children: [
               TileLayer(
@@ -113,6 +117,15 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         .toList();
   }
 
+  void _handleMapTap(TapPosition tapPosition, LatLng point) {
+    if (_selectedSchoolId == null) return;
+
+    setState(() => _selectedSchoolId = null);
+    if (_isSchoolDetailsOpen) {
+      Navigator.of(context).pop();
+    }
+  }
+
   void _fitCameraTo(List<School> schools) {
     if (schools.isEmpty) return;
 
@@ -157,155 +170,198 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   }
 
   List<Marker> _buildMarkers(BuildContext context, List<School> schools) {
-    return [
-      for (final school in schools)
-        Marker(
-          point: LatLng(school.latitude, school.longitude),
-          width: 80,
-          height: 60,
-          alignment: Alignment.bottomCenter,
-          child: GestureDetector(
-            behavior: HitTestBehavior.opaque,
-            onTap: () => _showSchoolDetails(context, school),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 3,
-                    vertical: 1,
-                  ),
-                  decoration: BoxDecoration(
-                    color: Colors.white.withValues(alpha: 0.8),
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                  child: Text(
-                    _getSchoolShortName('${school.level} ${school.name}'),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
-                      color: Colors.black87,
-                      fontSize: 10,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
+    return schools.map((school) => _buildMarker(context, school)).toList();
+  }
+
+  Marker _buildMarker(BuildContext context, School school) {
+    final isSelected = school.id == _selectedSchoolId;
+    return Marker(
+      point: LatLng(school.latitude, school.longitude),
+      width: 80,
+      height: 68,
+      alignment: Alignment.bottomCenter,
+      child: GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: () {
+          setState(() => _selectedSchoolId = school.id);
+          _showSchoolDetails(context, school);
+        },
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 3, vertical: 1),
+              decoration: BoxDecoration(
+                color: Colors.white.withValues(alpha: 0.8),
+                borderRadius: BorderRadius.circular(4),
+              ),
+              child: Text(
+                _getSchoolShortName('${school.level} ${school.name}'),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                  color: isSelected ? AppColors.primary : Colors.black87,
+                  fontSize: isSelected ? 11 : 10,
+                  fontWeight: FontWeight.bold,
                 ),
-                const Icon(
-                  Icons.location_on_rounded,
-                  color: AppColors.mapMarker,
-                  size: 40,
-                  shadows: [
-                    Shadow(
-                      color: Color(0x66000000),
-                      blurRadius: 6,
-                      offset: Offset(0, 2),
-                    ),
-                  ],
+              ),
+            ),
+            Icon(
+              Icons.location_on_rounded,
+              color: isSelected ? AppColors.primary : AppColors.mapMarker,
+              size: isSelected ? 48 : 40,
+              shadows: const [
+                Shadow(
+                  color: Color(0x66000000),
+                  blurRadius: 6,
+                  offset: Offset(0, 2),
                 ),
               ],
             ),
-          ),
+          ],
         ),
-    ];
+      ),
+    );
   }
 
-  Future<void> _showSchoolDetails(BuildContext context, School school) {
+  Future<void> _showSchoolDetails(BuildContext context, School school) async {
     final textTheme = Theme.of(context).textTheme;
     final hasLocation =
         school.address.isNotEmpty || school.locality.name.isNotEmpty;
     final hasPhone = school.phone.trim().isNotEmpty;
 
-    return showModalBottomSheet<void>(
-      context: context,
-      isScrollControlled: true,
-      useSafeArea: true,
-      showDragHandle: true,
-      backgroundColor: AppColors.surface,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
-      ),
-      builder: (_) {
-        return SafeArea(
-          top: false,
-          minimum: const EdgeInsets.only(bottom: 8),
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.fromLTRB(24, 4, 24, 16),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  school.name,
-                  style: textTheme.titleLarge?.copyWith(
-                    color: AppColors.onSurface,
-                  ),
-                ),
-                if (school.level.isNotEmpty) ...[
-                  const SizedBox(height: 10),
-                  Chip(
-                    label: Text(school.level),
-                    labelStyle: textTheme.labelMedium?.copyWith(
-                      color: AppColors.onPrimaryFixedVariant,
-                      fontWeight: FontWeight.w600,
+    _isSchoolDetailsOpen = true;
+    try {
+      await showModalBottomSheet<void>(
+        context: context,
+        isScrollControlled: true,
+        useSafeArea: true,
+        showDragHandle: true,
+        backgroundColor: AppColors.surface,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
+        ),
+        builder: (_) {
+          return SafeArea(
+            top: false,
+            minimum: const EdgeInsets.only(bottom: 8),
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.fromLTRB(24, 4, 24, 16),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    school.name,
+                    style: textTheme.titleLarge?.copyWith(
+                      color: AppColors.onSurface,
                     ),
-                    backgroundColor: AppColors.primaryFixed,
-                    side: BorderSide.none,
-                    shape: const StadiumBorder(),
-                    visualDensity: VisualDensity.compact,
-                    materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                    padding: const EdgeInsets.symmetric(horizontal: 4),
                   ),
-                ],
-                if (hasLocation) ...[
-                  const SizedBox(height: 20),
-                  _SchoolDetailRow(
-                    icon: Icons.location_on_rounded,
-                    title: school.address.isNotEmpty
-                        ? school.address
-                        : school.locality.name,
-                    subtitle: school.address.isNotEmpty
-                        ? school.locality.name
-                        : null,
-                  ),
-                ],
-                if (hasPhone) ...[
-                  const SizedBox(height: 16),
-                  _SchoolDetailRow(
-                    icon: Icons.phone_rounded,
-                    title: school.phone.trim(),
-                  ),
-                ],
-                const SizedBox(height: 24),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Flexible(
-                      child: FilledButton.icon(
-                        onPressed: () {
-                          debugPrint('Cómo llegar: ${school.name}');
-                        },
-                        icon: const Icon(Icons.directions_bus_rounded),
-                        label: const Text('Cómo llegar'),
+                  if (school.level.isNotEmpty) ...[
+                    const SizedBox(height: 10),
+                    Chip(
+                      label: Text(school.level),
+                      labelStyle: textTheme.labelMedium?.copyWith(
+                        color: AppColors.onPrimaryFixedVariant,
+                        fontWeight: FontWeight.w600,
                       ),
+                      backgroundColor: AppColors.primaryFixed,
+                      side: BorderSide.none,
+                      shape: const StadiumBorder(),
+                      visualDensity: VisualDensity.compact,
+                      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                      padding: const EdgeInsets.symmetric(horizontal: 4),
                     ),
-                    Flexible(
-                      child: OutlinedButton.icon(
-                        onPressed: () {
-                          debugPrint('Comparar: ${school.name}');
-                        },
-                        icon: const Icon(Icons.compare_arrows_rounded),
-                        label: const Text('Comparar'),
+                  ],
+                  if (hasLocation) ...[
+                    const SizedBox(height: 20),
+                    _SchoolDetailRow(
+                      icon: Icons.location_on_rounded,
+                      title: school.address.isNotEmpty
+                          ? school.address
+                          : school.locality.name,
+                      subtitle: school.address.isNotEmpty
+                          ? school.locality.name
+                          : null,
+                    ),
+                  ],
+                  const SizedBox(height: 16),
+                  const _SchoolDetailRow(
+                    icon: Icons.directions_car_rounded,
+                    title: '🚗 A aprox. 2.5 km de tu ubicación',
+                  ),
+                  const SizedBox(height: 12),
+                  const _SchoolDetailRow(
+                    icon: Icons.directions_bus_rounded,
+                    title: '🚌 Líneas: 540, 277, 164',
+                  ),
+                  if (hasPhone) ...[
+                    const SizedBox(height: 16),
+                    _SchoolDetailRow(
+                      icon: Icons.phone_rounded,
+                      title: school.phone.trim(),
+                      trailing: IconButton(
+                        tooltip: 'Llamar a la escuela',
+                        onPressed: () => _callSchool(school),
+                        icon: const Icon(Icons.call_rounded),
+                        color: AppColors.primary,
                       ),
                     ),
                   ],
-                ),
-              ],
+                  const SizedBox(height: 24),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Flexible(
+                        child: FilledButton.icon(
+                          onPressed: () {
+                            debugPrint('Cómo llegar: ${school.name}');
+                          },
+                          icon: const Icon(Icons.directions_bus_rounded),
+                          label: const Text('Cómo llegar'),
+                        ),
+                      ),
+                      Flexible(
+                        child: OutlinedButton.icon(
+                          onPressed: () {
+                            debugPrint('Comparar: ${school.name}');
+                          },
+                          icon: const Icon(Icons.compare_arrows_rounded),
+                          label: const Text('Comparar'),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
-          ),
+          );
+        },
+      );
+    } finally {
+      _isSchoolDetailsOpen = false;
+      if (mounted && _selectedSchoolId == school.id) {
+        setState(() => _selectedSchoolId = null);
+      }
+    }
+  }
+
+  Future<void> _callSchool(School school) async {
+    try {
+      final launched = await launchUrl(Uri.parse('tel:${school.phone.trim()}'));
+      if (!launched && mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('No se pudo iniciar la llamada.')),
         );
-      },
-    );
+      }
+    } on PlatformException {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('No se pudo iniciar la llamada.')),
+        );
+      }
+    }
   }
 }
 
@@ -314,11 +370,13 @@ class _SchoolDetailRow extends StatelessWidget {
     required this.icon,
     required this.title,
     this.subtitle,
+    this.trailing,
   });
 
   final IconData icon;
   final String title;
   final String? subtitle;
+  final Widget? trailing;
 
   @override
   Widget build(BuildContext context) {
@@ -352,6 +410,7 @@ class _SchoolDetailRow extends StatelessWidget {
             ],
           ),
         ),
+        ?trailing,
       ],
     );
   }
