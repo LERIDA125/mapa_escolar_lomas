@@ -19,9 +19,8 @@ class MapaEscolarApp extends StatelessWidget {
       title: 'Mapa Escolar Lomas',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.light,
-      initialRoute: SplashScreen.routeName,
+      home: const SplashScreen(),
       routes: {
-        SplashScreen.routeName: (_) => const SplashScreen(),
         LoginScreen.routeName: (_) => const LoginScreen(),
         MainScreen.routeName: (_) => const MainScreen(),
       },

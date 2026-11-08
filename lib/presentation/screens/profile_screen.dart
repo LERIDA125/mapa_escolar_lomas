@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../providers/auth_providers.dart';
 import '../../providers/location_providers.dart';
 import '../theme/app_theme.dart';
 import 'login_screen.dart';
@@ -18,6 +19,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
   bool _eveningShift = false;
 
   void _signOut() {
+    ref.read(sessionProvider.notifier).signOut();
     Navigator.of(context)
         .pushNamedAndRemoveUntil(LoginScreen.routeName, (route) => false);
   }
@@ -26,6 +28,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     final maxRadius = ref.watch(safeZoneRadiusProvider);
+    final userDni = ref.watch(sessionProvider);
 
     return Scaffold(
       appBar: AppBar(title: const Text('Perfil')),
@@ -53,7 +56,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
               ),
               const SizedBox(height: 4),
               Text(
-                'DNI 12.345.678',
+                'DNI ${userDni ?? ''}',
                 style: textTheme.bodyMedium?.copyWith(
                   color: AppColors.onSurfaceVariant,
                 ),

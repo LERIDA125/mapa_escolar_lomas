@@ -1,25 +1,96 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../providers/auth_providers.dart';
 import '../theme/app_theme.dart';
 import '../widgets/institutional_logo_card.dart';
-import 'home_screen.dart';
+import 'main_screen.dart';
 
-class LoginScreen extends StatefulWidget {
+class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({super.key});
 
   static const routeName = '/login';
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  ConsumerState<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
-  bool _obscurePassword = true;
-  bool _rememberDni = true;
+class _LoginScreenState extends ConsumerState<LoginScreen> {
+  final _dniController = TextEditingController();
+  bool _rememberDni = false;
+  bool _rememberedDniLoaded = false;
+  bool _isSubmitting = false;
 
-  void _openHome() {
-    Navigator.of(context).pushReplacementNamed(HomeScreen.routeName);
+  @override
+  void initState() {
+    super.initState();
+    ref.listenManual<AsyncValue<String?>>(rememberedDniProvider, (
+      previous,
+      next,
+    ) {
+      next.when(
+        data: (dni) {
+          if (_rememberedDniLoaded || !mounted) return;
+          setState(() {
+            _rememberedDniLoaded = true;
+            if (dni != null) {
+              _rememberDni = true;
+              _dniController.text = dni;
+            }
+          });
+        },
+        loading: () {},
+        error: (error, stackTrace) {
+          if (!mounted) return;
+          setState(() => _rememberedDniLoaded = true);
+          _showPending(context, 'No se pudo cargar el DNI guardado.');
+        },
+      );
+    }, fireImmediately: true);
+  }
+
+  @override
+  void dispose() {
+    _dniController.dispose();
+    super.dispose();
+  }
+
+  Future<void> _submit() async {
+    if (!_rememberedDniLoaded) {
+      _showPending(context, 'Cargando las preferencias del dispositivo.');
+      return;
+    }
+
+    final dni = _dniController.text.trim();
+    if (!isValidDni(dni)) {
+      _showPending(context, 'Ingresa un DNI o legajo de 7 u 8 números.');
+      return;
+    }
+
+    FocusScope.of(context).unfocus();
+    setState(() => _isSubmitting = true);
+    try {
+      await ref
+          .read(authPreferencesProvider)
+          .saveRememberedDni(_rememberDni ? dni : null);
+      ref.invalidate(rememberedDniProvider);
+      ref.read(sessionProvider.notifier).signIn(dni);
+      if (mounted) {
+        Navigator.of(context).pushReplacementNamed(MainScreen.routeName);
+      }
+    } on PlatformException {
+      if (!mounted) return;
+      _showPending(context, 'No se pudo guardar la preferencia del DNI.');
+    } on MissingPluginException {
+      if (!mounted) return;
+      _showPending(context, 'El almacenamiento local no está disponible.');
+    } on StateError {
+      if (!mounted) return;
+      _showPending(context, 'No se pudo guardar el DNI en este dispositivo.');
+    } finally {
+      if (mounted) setState(() => _isSubmitting = false);
+    }
   }
 
   void _showPending(BuildContext context, String message) {
@@ -73,8 +144,6 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                             const SizedBox(height: 24),
                             _buildLoginCard(context),
-                            const SizedBox(height: 16),
-                            _buildHelpCard(context),
                             const SizedBox(height: 24),
                             _buildFooter(textTheme),
                           ],
@@ -112,12 +181,18 @@ class _LoginScreenState extends State<LoginScreen> {
           children: [
             const _FieldLabel(text: 'Documento Nacional de Identidad (DNI)'),
             const SizedBox(height: 6),
-            const TextField(
+            TextField(
+              controller: _dniController,
               keyboardType: TextInputType.number,
-              textInputAction: TextInputAction.next,
+              textInputAction: TextInputAction.done,
               autofillHints: [AutofillHints.username],
+              inputFormatters: [
+                FilteringTextInputFormatter.digitsOnly,
+                LengthLimitingTextInputFormatter(8),
+              ],
+              onSubmitted: (_) => _submit(),
               decoration: InputDecoration(
-                hintText: 'Ej: 35.123.456',
+                hintText: 'Ej: 35123456',
                 prefixIcon: Icon(
                   Icons.badge_outlined,
                   size: 20,
@@ -131,38 +206,6 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Text(
                 'Sin puntos ni espacios',
                 style: textTheme.labelSmall?.copyWith(color: AppColors.outline),
-              ),
-            ),
-            const SizedBox(height: 16),
-            const _FieldLabel(text: 'Contraseña'),
-            const SizedBox(height: 6),
-            TextField(
-              obscureText: _obscurePassword,
-              textInputAction: TextInputAction.done,
-              autofillHints: const [AutofillHints.password],
-              onSubmitted: (_) => _openHome(),
-              decoration: InputDecoration(
-                hintText: '••••••••••••',
-                prefixIcon: const Icon(
-                  Icons.lock_outline_rounded,
-                  size: 20,
-                  color: AppColors.outline,
-                ),
-                suffixIcon: IconButton(
-                  tooltip: _obscurePassword
-                      ? 'Mostrar contraseña'
-                      : 'Ocultar contraseña',
-                  onPressed: () {
-                    setState(() => _obscurePassword = !_obscurePassword);
-                  },
-                  icon: Icon(
-                    _obscurePassword
-                        ? Icons.visibility_outlined
-                        : Icons.visibility_off_outlined,
-                    size: 20,
-                    color: AppColors.outline,
-                  ),
-                ),
               ),
             ),
             const SizedBox(height: 8),
@@ -198,103 +241,55 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             const SizedBox(height: 12),
             FilledButton(
-              onPressed: _openHome,
-              child: const Row(
+              onPressed: _isSubmitting || !_rememberedDniLoaded
+                  ? null
+                  : _submit,
+              child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text('Ingresar'),
-                  SizedBox(width: 8),
-                  Icon(Icons.arrow_forward_rounded, size: 19),
-                ],
-              ),
-            ),
-            const SizedBox(height: 12),
-            TextButton(
-              onPressed: () => _showPending(
-                context,
-                'La recuperación de contraseña estará disponible próximamente.',
-              ),
-              child: const Text('¿Olvidaste tu contraseña?'),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildHelpCard(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-
-    return Material(
-      color: AppColors.surfaceContainerLow,
-      clipBehavior: Clip.antiAlias,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
-        side: BorderSide(
-          color: AppColors.outlineVariant.withValues(alpha: 0.5),
-        ),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(14),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              width: 36,
-              height: 36,
-              decoration: const BoxDecoration(
-                color: AppColors.primaryFixed,
-                shape: BoxShape.circle,
-              ),
-              child: const Icon(
-                Icons.school_outlined,
-                size: 20,
-                color: AppColors.primary,
-              ),
-            ),
-            const SizedBox(width: 12),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
                   Text(
-                    '¿Primer ingreso o dudas con tu puntaje?',
-                    style: textTheme.titleSmall,
+                    !_rememberedDniLoaded
+                        ? 'Preparando…'
+                        : _isSubmitting
+                        ? 'Ingresando…'
+                        : 'Ingresar',
                   ),
-                  const SizedBox(height: 2),
-                  Text(
-                    'Verifica tu número de legajo en el listado oficial de '
-                    'aspirantes o consulta en la mesa de ayuda de la sede '
-                    'distrital.',
-                    style: textTheme.bodySmall?.copyWith(
-                      color: AppColors.onSurfaceVariant,
+                  if (_isSubmitting) ...[
+                    const SizedBox(width: 10),
+                    const SizedBox(
+                      width: 18,
+                      height: 18,
+                      child: CircularProgressIndicator(
+                        strokeWidth: 2,
+                        color: Colors.white,
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 8),
-                  Wrap(
-                    spacing: 16,
-                    runSpacing: 4,
-                    children: [
-                      _HelpLink(
-                        label: 'Mesa de Ayuda',
-                        icon: Icons.open_in_new_rounded,
-                        onTap: () => _showPending(
-                          context,
-                          'La mesa de ayuda estará disponible próximamente.',
-                        ),
-                      ),
-                      _HelpLink(
-                        label: 'Listado 1047 / ABC',
-                        muted: true,
-                        onTap: () => _showPending(
-                          context,
-                          'El listado oficial estará disponible próximamente.',
-                        ),
-                      ),
-                    ],
-                  ),
+                  ] else ...[
+                    const SizedBox(width: 8),
+                    const Icon(Icons.arrow_forward_rounded, size: 19),
+                  ],
                 ],
               ),
+            ),
+            const SizedBox(height: 8),
+            Wrap(
+              alignment: WrapAlignment.center,
+              children: [
+                TextButton(
+                  onPressed: () => _showPending(
+                    context,
+                    'La mesa de ayuda estará disponible próximamente.',
+                  ),
+                  child: const Text('Mesa de Ayuda'),
+                ),
+                TextButton(
+                  onPressed: () => _showPending(
+                    context,
+                    'El listado oficial estará disponible próximamente.',
+                  ),
+                  child: const Text('Listado Oficial'),
+                ),
+              ],
             ),
           ],
         ),
@@ -414,50 +409,6 @@ class _StatusHeader extends StatelessWidget {
           ),
         ),
       ],
-    );
-  }
-}
-
-class _HelpLink extends StatelessWidget {
-  const _HelpLink({
-    required this.label,
-    required this.onTap,
-    this.icon,
-    this.muted = false,
-  });
-
-  final String label;
-  final VoidCallback onTap;
-  final IconData? icon;
-  final bool muted;
-
-  @override
-  Widget build(BuildContext context) {
-    final color = muted ? AppColors.onSurfaceVariant : AppColors.primary;
-
-    return Material(
-      type: MaterialType.transparency,
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(4),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 2),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                label,
-                style: Theme.of(context).textTheme.labelSmall
-                    ?.copyWith(color: color, fontWeight: FontWeight.w600),
-              ),
-              if (icon != null) ...[
-                const SizedBox(width: 4),
-                Icon(icon!, size: 14, color: color),
-              ],
-            ],
-          ),
-        ),
-      ),
     );
   }
 }

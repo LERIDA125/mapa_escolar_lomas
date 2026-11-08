@@ -1,20 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../providers/auth_providers.dart';
 import 'comparator_screen.dart';
 import 'favorites_screen.dart';
 import 'home_screen.dart';
+import 'login_screen.dart';
 import 'profile_screen.dart';
 
-class MainScreen extends StatefulWidget {
+class MainScreen extends ConsumerStatefulWidget {
   const MainScreen({super.key});
 
   static const routeName = HomeScreen.routeName;
 
   @override
-  State<MainScreen> createState() => _MainScreenState();
+  ConsumerState<MainScreen> createState() => _MainScreenState();
 }
 
-class _MainScreenState extends State<MainScreen> {
+class _MainScreenState extends ConsumerState<MainScreen> {
   int _selectedIndex = 0;
 
   static const _destinations = [
@@ -32,6 +35,10 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
+    if (ref.watch(sessionProvider) == null) {
+      return const LoginScreen();
+    }
+
     return Scaffold(
       body: IndexedStack(
         index: _selectedIndex,
