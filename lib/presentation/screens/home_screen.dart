@@ -40,15 +40,29 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     final originLocation = ref.watch(originLocationProvider);
     final safeZoneRadiusKm = ref.watch(safeZoneRadiusProvider);
     final schools = schoolsAsync.value ?? const <School>[];
+    final catalogSchools = ref.watch(schoolsProvider).value ?? const <School>[];
 
     // Capa defensiva: nunca dibujamos pines en el par de coordenadas default.
     // Protege la UI si en el futuro entra un registro sin geocodificar.
     final validSchools = _validSchools(schools);
+    final selectedSchools = _selectedSchoolId == null
+        ? const <School>[]
+        : _validSchools(
+            catalogSchools
+                .where((school) => school.id == _selectedSchoolId)
+                .toList(),
+          );
+    final schoolsForMap = [
+      ...validSchools,
+      ...selectedSchools.where(
+        (selected) => !validSchools.any((school) => school.id == selected.id),
+      ),
+    ];
 
     final showEmptyState =
         !schoolsAsync.isLoading &&
         !schoolsAsync.hasError &&
-        validSchools.isEmpty;
+        schoolsForMap.isEmpty;
 
     ref.listen<AsyncValue<List<School>>>(filteredSchoolsProvider, (
       previous,
@@ -93,7 +107,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   ],
                 ),
                 MarkerLayer(
-                  markers: _buildMarkers(context, validSchools, originLocation),
+                  markers: _buildMarkers(
+                    context,
+                    schoolsForMap,
+                    originLocation,
+                  ),
                 ),
                 const RichAttributionWidget(
                   attributions: [
@@ -119,7 +137,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const _SearchBar(),
+                    _SearchBar(onSelected: _selectSchoolFromList),
                     const SizedBox(height: 8),
                     const _LevelFilterChips(),
                   ],
@@ -188,6 +206,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   }
 
   void _selectSchoolFromList(School school) {
+    FocusManager.instance.primaryFocus?.unfocus();
     setState(() {
       _showMap = true;
       _selectedSchoolId = school.id;
@@ -582,10 +601,14 @@ class _SchoolDetailRow extends StatelessWidget {
 }
 
 class _SearchBar extends ConsumerWidget {
-  const _SearchBar();
+  const _SearchBar({required this.onSelected});
+
+  final ValueChanged<School> onSelected;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final schools = ref.watch(schoolsProvider).value ?? const <School>[];
+
     return Container(
       height: 52,
       padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -608,78 +631,144 @@ class _SearchBar extends ConsumerWidget {
       ),
       child: Material(
         type: MaterialType.transparency,
-        child: Row(
-          children: [
-            const Icon(
-              Icons.search_rounded,
-              size: 22,
-              color: AppColors.neutral,
-            ),
-            const SizedBox(width: 12),
-            Expanded(
-              child: TextField(
-                textInputAction: TextInputAction.search,
-                onChanged: (value) {
-                  ref.read(searchQueryProvider.notifier).state = value;
-                },
-                style: Theme.of(context).textTheme.bodyMedium
-                    ?.copyWith(color: AppColors.onSurface),
-                decoration: const InputDecoration(
-                  hintText: 'Buscar por número o nombre (ej. EP 12)',
-                  border: InputBorder.none,
-                  enabledBorder: InputBorder.none,
-                  focusedBorder: InputBorder.none,
-                  filled: false,
-                  isDense: true,
-                  contentPadding: EdgeInsets.zero,
-                ),
-              ),
-            ),
-            IconButton(
-              tooltip: 'Buscar por voz',
-              onPressed: () {
-                ScaffoldMessenger.of(context)
-                  ..hideCurrentSnackBar()
-                  ..showSnackBar(
-                    const SnackBar(
-                      content: Text(
-                        'La búsqueda por voz estará disponible próximamente.',
-                      ),
-                    ),
-                  );
-              },
-              icon: const Icon(
-                Icons.mic_none_rounded,
-                size: 20,
-                color: AppColors.neutral,
-              ),
-            ),
-            Container(
-              width: 1,
-              height: 20,
-              color: AppColors.outlineVariant.withValues(alpha: 0.6),
-            ),
-            const SizedBox(width: 8),
-            Tooltip(
-              message: 'Aspirante',
-              child: Container(
-                width: 28,
-                height: 28,
-                decoration: const BoxDecoration(
-                  color: AppColors.primaryFixed,
-                  shape: BoxShape.circle,
-                ),
-                alignment: Alignment.center,
-                child: Text(
-                  'AP',
-                  style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                    color: AppColors.onPrimaryFixedVariant,
-                    fontWeight: FontWeight.w700,
+        child: Autocomplete<School>(
+          displayStringForOption: (school) => school.name,
+          optionsBuilder: (textEditingValue) {
+            final query = textEditingValue.text.trim().toLowerCase();
+            if (query.isEmpty) return const Iterable<School>.empty();
+
+            return schools
+                .where((school) {
+                  return school.name.toLowerCase().contains(query) ||
+                      (school.codigoOficial?.toLowerCase().contains(query) ??
+                          false);
+                })
+                .take(8);
+          },
+          onSelected: (school) {
+            ref.read(searchQueryProvider.notifier).state = school.name;
+            onSelected(school);
+          },
+          optionsViewBuilder: (context, onSelected, options) {
+            return Align(
+              alignment: Alignment.topLeft,
+              child: Material(
+                elevation: 8,
+                borderRadius: BorderRadius.circular(16),
+                clipBehavior: Clip.antiAlias,
+                child: ConstrainedBox(
+                  constraints: const BoxConstraints(
+                    maxHeight: 320,
+                    maxWidth: 480,
+                  ),
+                  child: ListView.builder(
+                    padding: EdgeInsets.zero,
+                    shrinkWrap: true,
+                    itemCount: options.length,
+                    itemBuilder: (context, index) {
+                      final school = options.elementAt(index);
+                      return ListTile(
+                        leading: const Icon(
+                          Icons.location_on_outlined,
+                          color: AppColors.primary,
+                        ),
+                        title: Text(school.name),
+                        subtitle: Text(
+                          [
+                            if (school.level.isNotEmpty) school.level,
+                            if (school.address.isNotEmpty) school.address,
+                          ].join(' · '),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        onTap: () => onSelected(school),
+                      );
+                    },
                   ),
                 ),
               ),
-            ),
-          ],
+            );
+          },
+          fieldViewBuilder:
+              (context, textController, focusNode, onFieldSubmitted) {
+                return Row(
+                  children: [
+                    const Icon(
+                      Icons.search_rounded,
+                      size: 22,
+                      color: AppColors.neutral,
+                    ),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: TextField(
+                        controller: textController,
+                        focusNode: focusNode,
+                        textInputAction: TextInputAction.search,
+                        onChanged: (value) {
+                          ref.read(searchQueryProvider.notifier).state = value;
+                        },
+                        onSubmitted: (_) => onFieldSubmitted(),
+                        style: Theme.of(context).textTheme.bodyMedium
+                            ?.copyWith(color: AppColors.onSurface),
+                        decoration: const InputDecoration(
+                          hintText: 'Buscar por número o nombre (ej. EP 12)',
+                          border: InputBorder.none,
+                          enabledBorder: InputBorder.none,
+                          focusedBorder: InputBorder.none,
+                          filled: false,
+                          isDense: true,
+                          contentPadding: EdgeInsets.zero,
+                        ),
+                      ),
+                    ),
+                    IconButton(
+                      tooltip: 'Buscar por voz',
+                      onPressed: () {
+                        ScaffoldMessenger.of(context)
+                          ..hideCurrentSnackBar()
+                          ..showSnackBar(
+                            const SnackBar(
+                              content: Text(
+                                'La búsqueda por voz estará disponible próximamente.',
+                              ),
+                            ),
+                          );
+                      },
+                      icon: const Icon(
+                        Icons.mic_none_rounded,
+                        size: 20,
+                        color: AppColors.neutral,
+                      ),
+                    ),
+                    Container(
+                      width: 1,
+                      height: 20,
+                      color: AppColors.outlineVariant.withValues(alpha: 0.6),
+                    ),
+                    const SizedBox(width: 8),
+                    Tooltip(
+                      message: 'Aspirante',
+                      child: Container(
+                        width: 28,
+                        height: 28,
+                        decoration: const BoxDecoration(
+                          color: AppColors.primaryFixed,
+                          shape: BoxShape.circle,
+                        ),
+                        alignment: Alignment.center,
+                        child: Text(
+                          'AP',
+                          style: Theme.of(context).textTheme.labelSmall
+                              ?.copyWith(
+                                color: AppColors.onPrimaryFixedVariant,
+                                fontWeight: FontWeight.w700,
+                              ),
+                        ),
+                      ),
+                    ),
+                  ],
+                );
+              },
         ),
       ),
     );
