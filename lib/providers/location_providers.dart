@@ -12,6 +12,19 @@ final originLocationProvider = Provider<LatLng>(
 /// Maximum distance in kilometers for the safe-zone school filter.
 final safeZoneRadiusProvider = StateProvider<double>((ref) => 3.0);
 
+/// Estimated travel durations in whole minutes for each travel mode.
+class EstimatedTravelTimes {
+  const EstimatedTravelTimes({
+    required this.walkingMinutes,
+    required this.drivingMinutes,
+    required this.transitMinutes,
+  });
+
+  final int walkingMinutes;
+  final int drivingMinutes;
+  final int transitMinutes;
+}
+
 /// Calculates the great-circle distance between two points in kilometers.
 double calculateDistanceKm({
   required LatLng origin,
@@ -38,6 +51,28 @@ double calculateDistanceKm({
       math.atan2(math.sqrt(boundedHaversine), math.sqrt(1 - boundedHaversine));
 
   return earthRadiusKm * centralAngle;
+}
+
+/// Estimates trip duration using typical urban speeds, not live routing data.
+EstimatedTravelTimes calculateEstimatedTimes(double distanceKm) {
+  if (!distanceKm.isFinite || distanceKm < 0) {
+    throw ArgumentError.value(
+      distanceKm,
+      'distanceKm',
+      'Must be a finite, non-negative distance.',
+    );
+  }
+
+  int minutesAt(double speedKmPerHour) {
+    if (distanceKm == 0) return 0;
+    return (distanceKm / speedKmPerHour * 60).ceil();
+  }
+
+  return EstimatedTravelTimes(
+    walkingMinutes: minutesAt(5),
+    drivingMinutes: minutesAt(30),
+    transitMinutes: minutesAt(15),
+  );
 }
 
 double _degreesToRadians(double degrees) => degrees * math.pi / 180;

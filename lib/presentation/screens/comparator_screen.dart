@@ -6,6 +6,7 @@ import '../../domain/models/school_models.dart';
 import '../../providers/location_providers.dart';
 import '../../providers/school_providers.dart';
 import '../theme/app_theme.dart';
+import '../widgets/estimated_travel_times_row.dart';
 
 class ComparatorScreen extends ConsumerWidget {
   const ComparatorScreen({super.key});
@@ -143,6 +144,8 @@ class _ComparisonCard extends StatelessWidget {
               label: 'Distancia',
               value: '${distanceKm.toStringAsFixed(1)} km',
             ),
+            const SizedBox(height: 12),
+            EstimatedTravelTimesRow(times: calculateEstimatedTimes(distanceKm)),
           ],
         ),
       ),

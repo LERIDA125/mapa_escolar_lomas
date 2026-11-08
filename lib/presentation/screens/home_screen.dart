@@ -9,6 +9,7 @@ import '../../domain/models/school_models.dart';
 import '../../providers/location_providers.dart';
 import '../../providers/school_providers.dart';
 import '../theme/app_theme.dart';
+import '../widgets/estimated_travel_times_row.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
@@ -357,6 +358,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       origin: originLocation,
       destination: LatLng(school.latitude, school.longitude),
     );
+    final estimatedTimes = calculateEstimatedTimes(distanceKm);
 
     _isSchoolDetailsOpen = true;
     try {
@@ -450,6 +452,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     title:
                         '🚗 A ${distanceKm.toStringAsFixed(1)} km de tu ubicación',
                   ),
+                  const SizedBox(height: 12),
+                  EstimatedTravelTimesRow(times: estimatedTimes),
                   const SizedBox(height: 12),
                   const _SchoolDetailRow(
                     icon: Icons.directions_bus_rounded,
