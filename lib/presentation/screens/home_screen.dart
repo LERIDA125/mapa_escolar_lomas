@@ -18,7 +18,7 @@ class HomeScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final schoolsAsync = ref.watch(schoolsProvider);
+    final schoolsAsync = ref.watch(filteredSchoolsProvider);
     final schools = schoolsAsync.value ?? const <School>[];
 
     return AnnotatedRegion<SystemUiOverlayStyle>(
@@ -95,11 +95,11 @@ class HomeScreen extends ConsumerWidget {
   }
 }
 
-class _SearchBar extends StatelessWidget {
+class _SearchBar extends ConsumerWidget {
   const _SearchBar();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Container(
       height: 52,
       padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -133,6 +133,9 @@ class _SearchBar extends StatelessWidget {
             Expanded(
               child: TextField(
                 textInputAction: TextInputAction.search,
+                onChanged: (value) {
+                  ref.read(searchQueryProvider.notifier).state = value;
+                },
                 style: Theme.of(context).textTheme.bodyMedium
                     ?.copyWith(color: AppColors.onSurface),
                 decoration: const InputDecoration(

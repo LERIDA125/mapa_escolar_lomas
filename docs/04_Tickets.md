@@ -6,4 +6,4 @@
 | **TICK-004** | UI         | Traducir prototipos de Stitch (Splash, Login, Home) a Flutter integrando `flutter_map` (OpenStreetMap) con pines renderizados vía Riverpod. | 🟢 DONE        |
 | **TICK-005** | Data (ETL) | Geocodificar direcciones del seed con Nominatim, normalizando localidades abreviadas e intersecciones.                                       | 🟢 DONE        |
 | **TICK-006** | State      | Crear `searchQueryProvider` y `filteredSchoolsProvider` con filtrado case-insensitive por nombre, dirección y localidad, preservando `AsyncValue`. | 🟢 DONE        |
-| **TICK-007** | UI         | Conectar el buscador de Home al `searchQueryProvider` y renderizar los resultados de `filteredSchoolsProvider` en mapa y lista.              | 🟡 IN PROGRESS |
+| **TICK-007** | UI         | Conectar el buscador de Home al `searchQueryProvider` y renderizar los resultados de `filteredSchoolsProvider` en mapa y lista.              | 🟢 DONE        |
