@@ -49,6 +49,9 @@ class School {
     required this.longitude,
     required this.locality,
     required this.transportLines,
+    this.turnos,
+    this.modalidad,
+    this.codigoOficial,
   });
 
   final String id;
@@ -60,6 +63,28 @@ class School {
   final double longitude;
   final Locality locality;
   final List<TransportLine> transportLines;
+
+  /// Shift(s) offered by the school (e.g. "Mañana", "Tarde"). Null when the
+  /// source data does not inform it.
+  final String? turnos;
+
+  /// Educational modality (e.g. "Común", "Especial"). Null when unknown.
+  final String? modalidad;
+
+  /// Official establishment code from the nomenclador. Null when unknown.
+  final String? codigoOficial;
+
+  /// Human-readable placeholder for fields the nomenclador does not provide.
+  static const notInformed = 'No informado';
+
+  /// Shift label ready for UI. Never invents data: falls back to [notInformed].
+  String get turnosLabel => turnos ?? notInformed;
+
+  /// Modality label ready for UI.
+  String get modalidadLabel => modalidad ?? notInformed;
+
+  /// Official code label ready for UI.
+  String get codigoOficialLabel => codigoOficial ?? notInformed;
 
   factory School.fromJson(Map<String, dynamic> json) {
     final locality = json['locality'] as Map<String, dynamic>?;
@@ -79,6 +104,9 @@ class School {
       transportLines: (transportLines ?? const <dynamic>[])
           .map((line) => TransportLine.fromJson(line as Map<String, dynamic>))
           .toList(growable: false),
+      turnos: json['turnos'] as String?,
+      modalidad: json['modalidad'] as String?,
+      codigoOficial: json['codigoOficial'] as String?,
     );
   }
 
@@ -92,5 +120,8 @@ class School {
     'longitude': longitude,
     'locality': locality.toJson(),
     'transportLines': transportLines.map((line) => line.toJson()).toList(),
+    'turnos': turnos,
+    'modalidad': modalidad,
+    'codigoOficial': codigoOficial,
   };
 }

@@ -52,6 +52,38 @@ HomeScreen
 Regla de oro: los widgets no leen archivos, no calculan distancias y no
 conocen la fuente de datos. Solo consumen providers.
 
+### 3.1 Modelo de dominio `School`
+
+| Campo            | Tipo                   | Origen                          | Ausencia |
+| ---------------- | ---------------------- | ------------------------------- | -------- |
+| `id`             | `String`               | seed                            | `''`     |
+| `name`           | `String`               | seed                            | `''`     |
+| `level`          | `String`               | seed                            | `''`     |
+| `address`        | `String`               | seed                            | `''`     |
+| `phone`          | `String`               | seed                            | `''`     |
+| `latitude`       | `double`               | seed / geocoder                 | `0`      |
+| `longitude`      | `double`               | seed / geocoder                 | `0`      |
+| `locality`       | `Locality`             | seed (`locality`)               | objeto vacío |
+| `transportLines` | `List<TransportLine>`  | seed (`transportLines`)         | lista vacía |
+| `turnos`         | `String?`              | seed (`turnos`), pendiente ETL   | `null`   |
+| `modalidad`      | `String?`              | seed (`modalidad`), pendiente ETL | `null`  |
+| `codigoOficial`  | `String?`              | seed (`codigoOficial`), pendiente ETL | `null` |
+
+`turnos`, `modalidad` y `codigoOficial` son opcionales porque el seed actual
+todavía no los trae: el nomenclador de origen no está versionado en el repo y
+no se completan por inferencia. `fromJson` los lee con `as String?` y `toJson`
+los vuelve a escribir tal cual, incluido `null`.
+
+La app nunca muestra el valor crudo cuando es `null`. El fallback de
+presentación vive en el dominio para no duplicarlo en cada widget:
+
+```dart
+School.notInformed        // 'No informado'
+school.turnosLabel        // turnos    ?? School.notInformed
+school.modalidadLabel     // modalidad ?? School.notInformed
+school.codigoOficialLabel // codigoOficial ?? School.notInformed
+```
+
 ## 4. Búsqueda
 
 El estado de búsqueda vive en `lib/providers/school_providers.dart`:
