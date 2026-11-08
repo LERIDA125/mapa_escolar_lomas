@@ -163,15 +163,15 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       useSafeArea: true,
       showDragHandle: true,
       backgroundColor: AppColors.surface,
-      dragHandleColor: AppColors.outlineVariant,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
       ),
       builder: (_) {
         return SafeArea(
           top: false,
+          minimum: const EdgeInsets.only(bottom: 8),
           child: SingleChildScrollView(
-            padding: const EdgeInsets.fromLTRB(24, 4, 24, 24),
+            padding: const EdgeInsets.fromLTRB(24, 4, 24, 16),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -217,6 +217,30 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     title: school.phone.trim(),
                   ),
                 ],
+                const SizedBox(height: 24),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Flexible(
+                      child: FilledButton.icon(
+                        onPressed: () {
+                          debugPrint('Cómo llegar: ${school.name}');
+                        },
+                        icon: const Icon(Icons.directions_bus_rounded),
+                        label: const Text('Cómo llegar'),
+                      ),
+                    ),
+                    Flexible(
+                      child: OutlinedButton.icon(
+                        onPressed: () {
+                          debugPrint('Comparar: ${school.name}');
+                        },
+                        icon: const Icon(Icons.compare_arrows_rounded),
+                        label: const Text('Comparar'),
+                      ),
+                    ),
+                  ],
+                ),
               ],
             ),
           ),
