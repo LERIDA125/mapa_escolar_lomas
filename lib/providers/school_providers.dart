@@ -94,21 +94,54 @@ String _normalizeLevel(String value) {
       .replaceAll('ú', 'u');
 }
 
-/// Applies the current search query on top of [schoolsProvider].
+/// Applies the active level, bus-line and safe-zone controls to the catalog.
+///
+/// The search query is intentionally excluded so autocomplete can suggest
+/// matching schools from this already narrowed set.
+final schoolsMatchingControlsProvider = Provider<AsyncValue<List<School>>>((
+  ref,
+) {
+  final schoolsAsync = ref.watch(schoolsProvider);
+  final selectedLevel = ref.watch(levelFilterProvider);
+  final selectedBusLine = ref.watch(busLineFilterProvider).trim().toLowerCase();
+  final safeZoneEnabled = ref.watch(safeZoneEnabledProvider);
+  final safeZoneRadiusBlocks = ref.watch(safeZoneRadiusProvider);
+  final origin = ref.watch(originLocationProvider);
+  final normalizedLevel = selectedLevel == 'Todas'
+      ? ''
+      : _normalizeLevel(selectedLevel);
+  final safeZoneRadiusKm = safeZoneRadiusBlocks / 10;
+
+  return schoolsAsync.whenData(
+    (schools) => schools
+        .where(
+          (school) =>
+              (normalizedLevel.isEmpty ||
+                  _normalizeLevel(school.level).contains(normalizedLevel)) &&
+              (selectedBusLine == 'todas' ||
+                  school.transportLines.any(
+                    (transport) =>
+                        transport.line.trim().toLowerCase() == selectedBusLine,
+                  )) &&
+              (!safeZoneEnabled ||
+                  calculateDistanceKm(
+                        origin: origin,
+                        destination: LatLng(school.latitude, school.longitude),
+                      ) <=
+                      safeZoneRadiusKm),
+        )
+        .toList(growable: false),
+  );
+});
+
+/// Applies the current search query on top of [schoolsMatchingControlsProvider].
 ///
 /// Loading and error states are forwarded untouched, so widgets can keep
 /// showing the same spinners and error views. Matching is case-insensitive
 /// across the school name, address and locality, and can be narrowed by level.
 final filteredSchoolsProvider = Provider<AsyncValue<List<School>>>((ref) {
-  final schoolsAsync = ref.watch(schoolsProvider);
+  final schoolsAsync = ref.watch(schoolsMatchingControlsProvider);
   final normalizedQuery = ref.watch(searchQueryProvider).trim().toLowerCase();
-  final selectedLevel = ref.watch(levelFilterProvider);
-  final selectedBusLine = ref.watch(busLineFilterProvider).trim().toLowerCase();
-  final origin = ref.watch(originLocationProvider);
-  final safeZoneRadiusKm = ref.watch(safeZoneRadiusProvider);
-  final normalizedLevel = selectedLevel == 'Todas'
-      ? ''
-      : _normalizeLevel(selectedLevel);
 
   return schoolsAsync.whenData(
     (schools) => schools
@@ -119,19 +152,7 @@ final filteredSchoolsProvider = Provider<AsyncValue<List<School>>>((ref) {
                   school.address.toLowerCase().contains(normalizedQuery) ||
                   school.locality.name.toLowerCase().contains(
                     normalizedQuery,
-                  )) &&
-              (normalizedLevel.isEmpty ||
-                  _normalizeLevel(school.level).contains(normalizedLevel)) &&
-              (selectedBusLine == 'todas' ||
-                  school.transportLines.any(
-                    (transport) =>
-                        transport.line.trim().toLowerCase() == selectedBusLine,
-                  )) &&
-              calculateDistanceKm(
-                    origin: origin,
-                    destination: LatLng(school.latitude, school.longitude),
-                  ) <=
-                  safeZoneRadiusKm,
+                  )),
         )
         .toList(growable: false),
   );

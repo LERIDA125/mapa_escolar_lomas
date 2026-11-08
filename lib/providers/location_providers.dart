@@ -9,8 +9,11 @@ final originLocationProvider = Provider<LatLng>(
   (ref) => const LatLng(-34.7618, -58.4022),
 );
 
-/// Maximum distance in kilometers for the safe-zone school filter.
-final safeZoneRadiusProvider = StateProvider<double>((ref) => 3.0);
+/// Whether schools outside the selected safe-zone radius are hidden.
+final safeZoneEnabledProvider = StateProvider<bool>((ref) => true);
+
+/// Maximum safe-zone radius in blocks. One block is assumed to be 100 meters.
+final safeZoneRadiusProvider = StateProvider<int>((ref) => 30);
 
 /// Estimated travel durations in whole minutes for each travel mode.
 class EstimatedTravelTimes {

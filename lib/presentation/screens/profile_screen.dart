@@ -27,7 +27,8 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-    final maxRadius = ref.watch(safeZoneRadiusProvider);
+    final maxRadiusBlocks = ref.watch(safeZoneRadiusProvider);
+    final safeZoneEnabled = ref.watch(safeZoneEnabledProvider);
     final userDni = ref.watch(sessionProvider);
 
     return Scaffold(
@@ -79,10 +80,28 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                   subtitle: Text('Av. Hipólito Yrigoyen 8700, Lomas de Zamora'),
                 ),
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
+                  padding: const EdgeInsets.fromLTRB(8, 0, 8, 12),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      SwitchListTile(
+                        contentPadding: const EdgeInsets.symmetric(
+                          horizontal: 8,
+                        ),
+                        secondary: const Icon(
+                          Icons.radar_rounded,
+                          color: AppColors.primary,
+                        ),
+                        title: const Text('Zona segura'),
+                        subtitle: const Text(
+                          'Mostrar escuelas dentro del radio elegido',
+                        ),
+                        value: safeZoneEnabled,
+                        onChanged: (enabled) {
+                          ref.read(safeZoneEnabledProvider.notifier).state =
+                              enabled;
+                        },
+                      ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -94,7 +113,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                             ),
                           ),
                           Text(
-                            '${maxRadius.toStringAsFixed(0)} km',
+                            '$maxRadiusBlocks cuadras',
                             style: textTheme.labelLarge?.copyWith(
                               color: AppColors.primary,
                               fontWeight: FontWeight.w700,
@@ -103,15 +122,41 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                         ],
                       ),
                       Slider(
-                        value: maxRadius,
-                        min: 1,
-                        max: 10,
+                        value: maxRadiusBlocks.toDouble(),
+                        min: 5,
+                        max: 50,
                         divisions: 9,
-                        label: '${maxRadius.toStringAsFixed(0)} km',
-                        onChanged: (value) {
-                          ref.read(safeZoneRadiusProvider.notifier).state =
-                              value;
-                        },
+                        label: '$maxRadiusBlocks cuadras',
+                        semanticFormatterCallback: (value) =>
+                            '${value.round()} cuadras',
+                        onChanged: safeZoneEnabled
+                            ? (value) {
+                                ref
+                                    .read(safeZoneRadiusProvider.notifier)
+                                    .state = value
+                                    .round();
+                              }
+                            : null,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              '5 cuadras',
+                              style: textTheme.labelSmall?.copyWith(
+                                color: AppColors.onSurfaceVariant,
+                              ),
+                            ),
+                            Text(
+                              '50 cuadras',
+                              style: textTheme.labelSmall?.copyWith(
+                                color: AppColors.onSurfaceVariant,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),

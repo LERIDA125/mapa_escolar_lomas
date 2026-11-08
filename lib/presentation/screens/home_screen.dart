@@ -39,9 +39,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   Widget build(BuildContext context) {
     final schoolsAsync = ref.watch(filteredSchoolsProvider);
     final originLocation = ref.watch(originLocationProvider);
-    final safeZoneRadiusKm = ref.watch(safeZoneRadiusProvider);
+    final safeZoneRadiusBlocks = ref.watch(safeZoneRadiusProvider);
+    final safeZoneEnabled = ref.watch(safeZoneEnabledProvider);
     final schools = schoolsAsync.value ?? const <School>[];
-    final catalogSchools = ref.watch(schoolsProvider).value ?? const <School>[];
+    final controlFilteredSchools =
+        ref.watch(schoolsMatchingControlsProvider).value ?? const <School>[];
 
     // Capa defensiva: nunca dibujamos pines en el par de coordenadas default.
     // Protege la UI si en el futuro entra un registro sin geocodificar.
@@ -49,7 +51,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     final selectedSchools = _selectedSchoolId == null
         ? const <School>[]
         : _validSchools(
-            catalogSchools
+            controlFilteredSchools
                 .where((school) => school.id == _selectedSchoolId)
                 .toList(),
           );
@@ -95,18 +97,19 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   userAgentPackageName: 'com.example.mapa_escolar',
                   maxNativeZoom: 19,
                 ),
-                CircleLayer(
-                  circles: [
-                    CircleMarker(
-                      point: originLocation,
-                      radius: safeZoneRadiusKm * 1000,
-                      useRadiusInMeter: true,
-                      color: Colors.blue.withValues(alpha: 0.2),
-                      borderStrokeWidth: 2,
-                      borderColor: Colors.blue,
-                    ),
-                  ],
-                ),
+                if (safeZoneEnabled)
+                  CircleLayer(
+                    circles: [
+                      CircleMarker(
+                        point: originLocation,
+                        radius: safeZoneRadiusBlocks * 100,
+                        useRadiusInMeter: true,
+                        color: Colors.blue.withValues(alpha: 0.2),
+                        borderStrokeWidth: 2,
+                        borderColor: Colors.blue,
+                      ),
+                    ],
+                  ),
                 MarkerLayer(
                   markers: _buildMarkers(
                     context,
@@ -611,7 +614,8 @@ class _SearchBar extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final schools = ref.watch(schoolsProvider).value ?? const <School>[];
+    final schools =
+        ref.watch(schoolsMatchingControlsProvider).value ?? const <School>[];
 
     return Container(
       height: 52,

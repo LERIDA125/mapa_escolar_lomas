@@ -38,7 +38,7 @@ Cierra las brechas entre los prototipos de `prototipo_ui/`, el PRD y el código 
 | **TICK-024** | Map/Infra | Implementar caché offline de tiles y banner de conectividad. El PRD promete funcionamiento 100% offline, pero hoy sin red el mapa queda vacío. Cachear tiles visitados y avisar `Sin conexión` sin bloquear búsqueda ni fichas. | ⚪ TO DO |
 | **TICK-025** | State/UI | Mostrar tiempos estimados a pie, en auto y en colectivo según distancia y velocidades urbanas asumidas, en la ficha y en la comparativa. El ruteo real queda diferido. | 🟢 DONE |
 | **TICK-026** | Splash/UI | Diseñar Splash institucional con identidad del Consejo Escolar, indicador de modo offline y carga visual; al finalizar, dirigir según el estado de sesión local. | 🟢 DONE |
-| **TICK-027** | UI/Map | Segunda iteración de la ficha: estado visual de pin seleccionado, cierre al tocar el mapa, distancia y líneas de colectivo de ejemplo, llamada real a la escuela y acciones de ficha. | 🟢 DONE |
+| **TICK-027** | UI/State | Mejoras UX de Zona Segura y autocompletado sincronizado: activar/desactivar el filtro, ajustar el radio en cuadras y sugerir solo escuelas que cumplen nivel, colectivo y zona seleccionados. | 🟢 DONE |
 | **TICK-028** | Bugfix/Map | La app crashea al escribir en el buscador. Revisar el provider y el ajuste de cámara cuando el filtro deja un solo resultado, sin casts ni parseos inválidos. | 🟢 DONE |
 | **TICK-029** | UI/Map | Agregar etiquetas de texto con la sigla de cada escuela (ej. `PP 32`, `ES`, `JI 940`, `CENS`) sobre los pines del mapa. | 🟢 DONE |
 
@@ -56,8 +56,8 @@ Cierra las brechas entre los prototipos de `prototipo_ui/`, el PRD y el código 
   acciones `Cómo llegar` / `Comparar` con `debugPrint` como placeholder.
   El resto del alcance original (pin seleccionado, tarjeta peek, mini-mapa
   embebido, distancia desde el origen, llamada real, líneas de colectivo,
-  conexión con el comparador y cierre al tocar el mapa) se difiere a
-  **TICK-027** para no bloquear la UI base.
+  conexión con el comparador y cierre al tocar el mapa) se implementó en una
+  iteración posterior.
 - **TICK-013** arranca antes que **TICK-012** por decisión de producto: la ficha
   se puede construir con el modelo actual y el origen de distancia se enchufa
   después.
