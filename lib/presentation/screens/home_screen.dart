@@ -274,11 +274,42 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    school.name,
-                    style: textTheme.titleLarge?.copyWith(
-                      color: AppColors.onSurface,
-                    ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        child: Text(
+                          school.name,
+                          style: textTheme.titleLarge?.copyWith(
+                            color: AppColors.onSurface,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 8),
+                      Consumer(
+                        builder: (context, ref, _) {
+                          final isFavorite = ref
+                              .watch(favoritesProvider)
+                              .contains(school.id);
+                          return IconButton(
+                            tooltip: isFavorite
+                                ? 'Quitar de favoritos'
+                                : 'Agregar a favoritos',
+                            onPressed: () => ref
+                                .read(favoritesProvider.notifier)
+                                .toggle(school.id),
+                            icon: Icon(
+                              isFavorite
+                                  ? Icons.favorite_rounded
+                                  : Icons.favorite_border_rounded,
+                              color: isFavorite
+                                  ? AppColors.error
+                                  : AppColors.onSurfaceVariant,
+                            ),
+                          );
+                        },
+                      ),
+                    ],
                   ),
                   if (school.level.isNotEmpty) ...[
                     const SizedBox(height: 10),

@@ -23,6 +23,22 @@ final searchQueryProvider = StateProvider<String>((ref) => '');
 /// Holds the selected education level filter.
 final levelFilterProvider = StateProvider<String>((ref) => 'Todas');
 
+/// Keeps favorite school IDs in memory for the current app session.
+final favoritesProvider = NotifierProvider<FavoritesNotifier, List<String>>(
+  FavoritesNotifier.new,
+);
+
+class FavoritesNotifier extends Notifier<List<String>> {
+  @override
+  List<String> build() => const [];
+
+  void toggle(String schoolId) {
+    state = state.contains(schoolId)
+        ? state.where((id) => id != schoolId).toList(growable: false)
+        : [...state, schoolId];
+  }
+}
+
 String _normalizeLevel(String value) {
   return value
       .toLowerCase()

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../theme/app_theme.dart';
+import 'favorites_screen.dart';
 import 'home_screen.dart';
 import 'profile_screen.dart';
 
@@ -37,7 +38,7 @@ class _MainScreenState extends State<MainScreen> {
         children: const [
           HomeScreen(),
           _ComingSoonScreen(tabName: 'Comparativa'),
-          _ComingSoonScreen(tabName: 'Favoritos'),
+          FavoritesScreen(),
           ProfileScreen(),
         ],
       ),
