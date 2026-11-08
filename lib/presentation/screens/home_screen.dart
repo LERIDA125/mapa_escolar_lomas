@@ -21,6 +21,17 @@ class HomeScreen extends ConsumerWidget {
     final schoolsAsync = ref.watch(filteredSchoolsProvider);
     final schools = schoolsAsync.value ?? const <School>[];
 
+    // Capa defensiva: nunca dibujamos pines en el par de coordenadas default.
+    // Protege la UI si en el futuro entra un registro sin geocodificar.
+    final validSchools = schools
+        .where((s) => s.latitude != -34.7628 || s.longitude != -58.4022)
+        .toList();
+
+    final showEmptyState =
+        !schoolsAsync.isLoading &&
+        !schoolsAsync.hasError &&
+        validSchools.isEmpty;
+
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle.dark,
       child: Scaffold(
@@ -41,7 +52,7 @@ class HomeScreen extends ConsumerWidget {
                   userAgentPackageName: 'com.example.mapa_escolar',
                   maxNativeZoom: 19,
                 ),
-                MarkerLayer(markers: _buildMarkers(schools)),
+                MarkerLayer(markers: _buildMarkers(validSchools)),
                 const RichAttributionWidget(
                   attributions: [
                     TextSourceAttribution('OpenStreetMap contributors'),
@@ -55,6 +66,7 @@ class HomeScreen extends ConsumerWidget {
                 error: schoolsAsync.error!,
                 onRetry: () => ref.invalidate(schoolsProvider),
               ),
+            if (showEmptyState) const _EmptyStateOverlay(),
             const SafeArea(
               child: Align(
                 alignment: Alignment.topCenter,
@@ -194,6 +206,64 @@ class _SearchBar extends ConsumerWidget {
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class _EmptyStateOverlay extends StatelessWidget {
+  const _EmptyStateOverlay();
+
+  @override
+  Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+
+    return Positioned.fill(
+      child: IgnorePointer(
+        child: Center(
+          child: Container(
+            margin: const EdgeInsets.symmetric(horizontal: 32),
+            padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 24),
+            decoration: BoxDecoration(
+              color: AppColors.surface,
+              borderRadius: BorderRadius.circular(20),
+              border: Border.all(color: AppColors.outlineVariant),
+              boxShadow: const [
+                BoxShadow(
+                  color: Color(0x263C4043),
+                  blurRadius: 12,
+                  offset: Offset(0, 4),
+                ),
+              ],
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Icon(
+                  Icons.search_off_rounded,
+                  size: 40,
+                  color: AppColors.onSurfaceVariant,
+                ),
+                const SizedBox(height: 12),
+                Text(
+                  'No se encontraron escuelas',
+                  textAlign: TextAlign.center,
+                  style: textTheme.titleSmall?.copyWith(
+                    color: AppColors.onSurface,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  'Probá con otro número o nombre.',
+                  textAlign: TextAlign.center,
+                  style: textTheme.bodySmall?.copyWith(
+                    color: AppColors.onSurfaceVariant,
+                  ),
+                ),
+              ],
+            ),
+          ),
         ),
       ),
     );
