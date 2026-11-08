@@ -377,12 +377,23 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                         ),
                       ),
                       Flexible(
-                        child: OutlinedButton.icon(
-                          onPressed: () {
-                            debugPrint('Comparar: ${school.name}');
+                        child: Consumer(
+                          builder: (context, ref, _) {
+                            final isInComparison = ref
+                                .watch(comparatorProvider)
+                                .contains(school.id);
+                            return OutlinedButton.icon(
+                              onPressed: () => _toggleComparison(school),
+                              icon: Icon(
+                                isInComparison
+                                    ? Icons.remove_circle_outline_rounded
+                                    : Icons.compare_arrows_rounded,
+                              ),
+                              label: Text(
+                                isInComparison ? 'Quitar' : 'Comparar',
+                              ),
+                            );
                           },
-                          icon: const Icon(Icons.compare_arrows_rounded),
-                          label: const Text('Comparar'),
                         ),
                       ),
                     ],
@@ -416,6 +427,20 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         );
       }
     }
+  }
+
+  void _toggleComparison(School school) {
+    final wasSelected = ref.read(comparatorProvider).contains(school.id);
+    final wasAdded = ref.read(comparatorProvider.notifier).toggle(school.id);
+    final message = wasSelected
+        ? '${school.name} se quitó de la comparativa.'
+        : wasAdded
+        ? '${school.name} se agregó a la comparativa.'
+        : 'La comparativa admite hasta 4 escuelas.';
+
+    ScaffoldMessenger.of(context)
+      ..hideCurrentSnackBar()
+      ..showSnackBar(SnackBar(content: Text(message)));
   }
 }
 

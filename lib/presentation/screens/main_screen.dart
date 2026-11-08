@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../theme/app_theme.dart';
+import 'comparator_screen.dart';
 import 'favorites_screen.dart';
 import 'home_screen.dart';
 import 'profile_screen.dart';
@@ -37,7 +37,7 @@ class _MainScreenState extends State<MainScreen> {
         index: _selectedIndex,
         children: const [
           HomeScreen(),
-          _ComingSoonScreen(tabName: 'Comparativa'),
+          ComparatorScreen(),
           FavoritesScreen(),
           ProfileScreen(),
         ],
@@ -48,25 +48,6 @@ class _MainScreenState extends State<MainScreen> {
           setState(() => _selectedIndex = index);
         },
         destinations: _destinations,
-      ),
-    );
-  }
-}
-
-class _ComingSoonScreen extends StatelessWidget {
-  const _ComingSoonScreen({required this.tabName});
-
-  final String tabName;
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Text(
-          'Próximamente: $tabName',
-          style: Theme.of(context).textTheme.titleMedium
-              ?.copyWith(color: AppColors.onSurface),
-        ),
       ),
     );
   }

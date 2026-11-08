@@ -39,6 +39,30 @@ class FavoritesNotifier extends Notifier<List<String>> {
   }
 }
 
+/// Keeps up to four school IDs for the in-memory comparison list.
+final comparatorProvider = NotifierProvider<ComparatorNotifier, List<String>>(
+  ComparatorNotifier.new,
+);
+
+class ComparatorNotifier extends Notifier<List<String>> {
+  static const maxSchools = 4;
+
+  @override
+  List<String> build() => const [];
+
+  bool toggle(String schoolId) {
+    if (state.contains(schoolId)) {
+      state = state.where((id) => id != schoolId).toList(growable: false);
+      return false;
+    }
+
+    if (state.length >= maxSchools) return false;
+
+    state = [...state, schoolId];
+    return true;
+  }
+}
+
 String _normalizeLevel(String value) {
   return value
       .toLowerCase()
