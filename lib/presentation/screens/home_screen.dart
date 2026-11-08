@@ -87,12 +87,19 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 onRetry: () => ref.invalidate(schoolsProvider),
               ),
             if (showEmptyState) const _EmptyStateOverlay(),
-            const SafeArea(
+            SafeArea(
               child: Align(
                 alignment: Alignment.topCenter,
                 child: Padding(
                   padding: EdgeInsets.fromLTRB(16, 12, 16, 0),
-                  child: _SearchBar(),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const _SearchBar(),
+                      const SizedBox(height: 8),
+                      const _LevelFilterChips(),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -452,6 +459,58 @@ class _SearchBar extends ConsumerWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class _LevelFilterChips extends ConsumerWidget {
+  const _LevelFilterChips();
+
+  static const _levels = [
+    'Todas',
+    'Jardín',
+    'Primaria',
+    'Secundaria',
+    'Técnica',
+    'Especial',
+    'Adultos',
+  ];
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final selectedLevel = ref.watch(levelFilterProvider);
+
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        children: [
+          for (final level in _levels) ...[
+            if (level != _levels.first) const SizedBox(width: 8),
+            ChoiceChip(
+              label: Text(level),
+              selected: selectedLevel == level,
+              showCheckmark: false,
+              visualDensity: VisualDensity.compact,
+              labelStyle: Theme.of(context).textTheme.labelMedium?.copyWith(
+                color: selectedLevel == level
+                    ? Colors.white
+                    : AppColors.onSurface,
+                fontWeight: FontWeight.w600,
+              ),
+              selectedColor: AppColors.primary,
+              backgroundColor: AppColors.surface,
+              side: BorderSide(
+                color: selectedLevel == level
+                    ? AppColors.primary
+                    : AppColors.outlineVariant,
+              ),
+              onSelected: (_) {
+                ref.read(levelFilterProvider.notifier).state = level;
+              },
+            ),
+          ],
+        ],
       ),
     );
   }

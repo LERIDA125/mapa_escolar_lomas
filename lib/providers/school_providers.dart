@@ -20,17 +20,34 @@ final schoolsProvider = FutureProvider<List<School>>(
 /// types something.
 final searchQueryProvider = StateProvider<String>((ref) => '');
 
+/// Holds the selected education level filter.
+final levelFilterProvider = StateProvider<String>((ref) => 'Todas');
+
+String _normalizeLevel(String value) {
+  return value
+      .toLowerCase()
+      .replaceAll('ã©', 'e')
+      .replaceAll('á', 'a')
+      .replaceAll('é', 'e')
+      .replaceAll('í', 'i')
+      .replaceAll('ó', 'o')
+      .replaceAll('ú', 'u');
+}
+
 /// Applies the current search query on top of [schoolsProvider].
 ///
 /// Loading and error states are forwarded untouched, so widgets can keep
-/// showing the same spinners and error views. An empty query returns the full
-/// catalog. Matching is case-insensitive across the school name, the address
-/// and the locality name.
+/// showing the same spinners and error views. Matching is case-insensitive
+/// across the school name, address and locality, and can be narrowed by level.
 final filteredSchoolsProvider = Provider<AsyncValue<List<School>>>((ref) {
   final schoolsAsync = ref.watch(schoolsProvider);
   final normalizedQuery = ref.watch(searchQueryProvider).trim().toLowerCase();
+  final selectedLevel = ref.watch(levelFilterProvider);
+  final normalizedLevel = selectedLevel == 'Todas'
+      ? ''
+      : _normalizeLevel(selectedLevel);
 
-  if (normalizedQuery.isEmpty) {
+  if (normalizedQuery.isEmpty && normalizedLevel.isEmpty) {
     return schoolsAsync;
   }
 
@@ -38,9 +55,14 @@ final filteredSchoolsProvider = Provider<AsyncValue<List<School>>>((ref) {
     (schools) => schools
         .where(
           (school) =>
-              school.name.toLowerCase().contains(normalizedQuery) ||
-              school.address.toLowerCase().contains(normalizedQuery) ||
-              school.locality.name.toLowerCase().contains(normalizedQuery),
+              (normalizedQuery.isEmpty ||
+                  school.name.toLowerCase().contains(normalizedQuery) ||
+                  school.address.toLowerCase().contains(normalizedQuery) ||
+                  school.locality.name.toLowerCase().contains(
+                    normalizedQuery,
+                  )) &&
+              (normalizedLevel.isEmpty ||
+                  _normalizeLevel(school.level).contains(normalizedLevel)),
         )
         .toList(growable: false),
   );
