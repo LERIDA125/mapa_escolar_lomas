@@ -22,12 +22,18 @@ lib/
 ├── main.dart
 ├── domain/models/          # School, Locality, TransportLine
 ├── data/repositories/      # SchoolRepository
-├── providers/              # Riverpod
+├── providers/              # Riverpod (catálogo, búsqueda y filtros)
 └── presentation/
     ├── screens/            # Splash, Login, Home
     ├── widgets/
     └── theme/
 ```
+
+## Búsqueda
+
+El buscador de Home escribe en `searchQueryProvider` y el mapa consume
+`filteredSchoolsProvider`. El filtro es local, case-insensitive y busca en
+nombre, dirección y localidad. No requiere conexión.
 
 ## Puesta en marcha
 

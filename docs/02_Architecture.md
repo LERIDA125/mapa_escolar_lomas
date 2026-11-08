@@ -27,27 +27,53 @@ lib/
 ├── main.dart                     # ProviderScope + rutas nombradas
 ├── domain/models/                # School, Locality, TransportLine
 ├── data/repositories/            # SchoolRepository (lectura del asset)
-├── providers/                    # schoolRepositoryProvider, schoolsProvider
+├── providers/                    # schoolRepositoryProvider, schoolsProvider,
+│                                 # searchQueryProvider, filteredSchoolsProvider
 └── presentation/
     ├── screens/                  # Splash, Login, Home
     ├── widgets/                  # Componentes reutilizables
     └── theme/                    # Tokens y ThemeData
 ```
 
-Flujo de datos del mapa:
+Flujo de datos del mapa y la búsqueda:
 
 ```text
 HomeScreen
-  └── ref.watch(schoolsProvider)
-        └── SchoolRepository.getSchools()
-              └── rootBundle.loadString('assets/escuelas_seed.json')
-                    └── List<School> con latitude / longitude
+  ├── ref.watch(filteredSchoolsProvider)
+  │     ├── ref.watch(schoolsProvider)
+  │     │     └── SchoolRepository.getSchools()
+  │     │           └── rootBundle.loadString('assets/escuelas_seed.json')
+  │     │                 └── List<School> con latitude / longitude
+  │     └── ref.watch(searchQueryProvider)   // texto del buscador
+  └── _SearchBar.onChanged
+        └── ref.read(searchQueryProvider.notifier).state = value
 ```
 
 Regla de oro: los widgets no leen archivos, no calculan distancias y no
 conocen la fuente de datos. Solo consumen providers.
 
-## 4. Mapa
+## 4. Búsqueda
+
+El estado de búsqueda vive en `lib/providers/school_providers.dart`:
+
+- `searchQueryProvider`: `StateProvider<String>` que arranca en `''`.
+- `filteredSchoolsProvider`: `Provider<AsyncValue<List<School>>>` que combina
+  `schoolsProvider` con el query.
+
+Reglas de filtrado:
+
+1. Si el query está vacío, se devuelve el catálogo completo.
+2. Los estados `loading` y `error` se reenvían sin transformar.
+3. La comparación es case-insensitive (`toLowerCase`) y usa `contains` sobre
+   `name`, `address` y `locality.name`.
+4. La UI solo escribe el query y consume el resultado; no filtra listas.
+
+En Riverpod 3.x `StateProvider` ya no se exporta desde
+`flutter_riverpod.dart`. Se importa desde `package:flutter_riverpod/legacy.dart`.
+Ese import vive únicamente en la capa de providers; la UI sigue importando
+`flutter_riverpod.dart` y no necesita `legacy.dart`.
+
+## 5. Mapa
 
 - `FlutterMap` con `MapOptions(initialCenter:, initialZoom:)`.
 - `TileLayer` apuntando a `https://tile.openstreetmap.org/{z}/{x}/{y}.png`
@@ -58,7 +84,7 @@ conocen la fuente de datos. Solo consumen providers.
 - Android requiere `android.permission.INTERNET` para descargar tiles en
   release.
 
-## 5. Geocodificación (ETL)
+## 6. Geocodificación (ETL)
 
 `geocoder.py` es un script de un solo uso que:
 
@@ -71,7 +97,7 @@ conocen la fuente de datos. Solo consumen providers.
 No se ejecuta en runtime: el APK consume las coordenadas ya persistidas.
 El detalle operativo está en `docs/05_Geocoding.md`.
 
-## 6. Decisiones y restricciones
+## 7. Decisiones y restricciones
 
 - **Offline-first para datos:** el catálogo no depende de la red.
 - **Online solo para tiles:** sin conexión el mapa queda vacío, pero la
@@ -81,7 +107,7 @@ El detalle operativo está en `docs/05_Geocoding.md`.
   de `MAPS_API_KEY`.
 - **Nominatim:** máximo 1 request por segundo y User-Agent identificable.
 
-## 7. Validación
+## 8. Validación
 
 Antes de cerrar un ticket de código:
 
@@ -92,7 +118,7 @@ flutter test
 flutter build apk --debug
 ```
 
-## 8. Documentación relacionada
+## 9. Documentación relacionada
 
 - `docs/01_PRD_Mapa_Escolar_Lomas.md` — alcance y modelo de dominio.
 - `docs/03_Guidelines.md` — ramas, commits y convenciones.

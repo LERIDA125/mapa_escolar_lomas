@@ -72,7 +72,7 @@
 
 5.  Módulos del Sistema
     Módulo 1: Data Ingestion (ETL): Script Python para parsear el documento base, limpiar la data, geocodificar direcciones con Nominatim (`geocoder.py`) y exportar un escuelas_seed.json.
-    Módulo 2: Interfaz de Búsqueda: Buscador local en Dart para filtrado fuzzy sobre el JSON embebido en los assets.
+    Módulo 2: Interfaz de Búsqueda: Buscador local en Dart con filtrado case-insensitive por nombre, dirección y localidad sobre el JSON embebido en los assets.
     Módulo 3: Motor de Mapas: FlutterMap con tiles de OpenStreetMap y marcadores alimentados por Riverpod. El ruteo y las matrices de distancia quedan fuera del MMP actual.
     Módulo 4: Motor de Comparación: Gestor de estado que mantiene hasta 4 entidades en memoria y ordena por cercanía usando las coordenadas locales.
 6.  Historias de Usuario (User Stories)
@@ -84,7 +84,10 @@
     TICK-001 [Docs]: Inicializar repositorio en Github, configurar ramas y armar estructura SDD (/docs/01_PRD, 02_Architecture, 03_Guidelines, 04_Tickets).
     TICK-002 [ETL]: Crear script base en Python para extraer, limpiar y exportar las escuelas del PDF a escuelas_seed.json.
     TICK-003 [Infra]: Inicializar proyecto en Flutter, configurar dependencias base (riverpod, flutter_map, latlong2) y empaquetar el JSON en la carpeta assets.
+    TICK-004 [UI]: Traducir los prototipos de Splash, Login y Home a Flutter con flutter_map y marcadores vía Riverpod.
     TICK-005 [ETL]: Geocodificar las direcciones del seed con Nominatim, normalizando localidades abreviadas e intersecciones.
+    TICK-006 [State]: Crear searchQueryProvider y filteredSchoolsProvider con filtrado case-insensitive y preservación de AsyncValue.
+    TICK-007 [UI]: Conectar el buscador de Home a los providers de búsqueda y renderizar el mapa filtrado.
 8.  Casos de Uso Opcionales (Futuras Iteraciones / Sprint 2)
     CU-Opcional 01: Lista de Favoritos (Pre-selección): Búsqueda previa al acto público para marcar escuelas con una estrella y guardarlas en una pestaña de "Favoritos", generando un subconjunto filtrado listo para comparar bajo presión.
     CU-Opcional 02: Búsqueda Inversa por Línea de Colectivo: Filtrado del mapa iluminando únicamente las escuelas servidas por una línea de transporte específica (ej. "544"), basándose en los datos del nomenclador.
