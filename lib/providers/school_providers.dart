@@ -1,8 +1,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/legacy.dart';
+import 'package:latlong2/latlong.dart';
 
 import '../data/repositories/school_repository.dart';
 import '../domain/models/school_models.dart';
+import 'location_providers.dart';
 
 /// Exposes the repository so widgets and other providers never instantiate it.
 final schoolRepositoryProvider = Provider<SchoolRepository>(
@@ -83,13 +85,11 @@ final filteredSchoolsProvider = Provider<AsyncValue<List<School>>>((ref) {
   final schoolsAsync = ref.watch(schoolsProvider);
   final normalizedQuery = ref.watch(searchQueryProvider).trim().toLowerCase();
   final selectedLevel = ref.watch(levelFilterProvider);
+  final origin = ref.watch(originLocationProvider);
+  final safeZoneRadiusKm = ref.watch(safeZoneRadiusProvider);
   final normalizedLevel = selectedLevel == 'Todas'
       ? ''
       : _normalizeLevel(selectedLevel);
-
-  if (normalizedQuery.isEmpty && normalizedLevel.isEmpty) {
-    return schoolsAsync;
-  }
 
   return schoolsAsync.whenData(
     (schools) => schools
@@ -102,7 +102,12 @@ final filteredSchoolsProvider = Provider<AsyncValue<List<School>>>((ref) {
                     normalizedQuery,
                   )) &&
               (normalizedLevel.isEmpty ||
-                  _normalizeLevel(school.level).contains(normalizedLevel)),
+                  _normalizeLevel(school.level).contains(normalizedLevel)) &&
+              calculateDistanceKm(
+                    origin: origin,
+                    destination: LatLng(school.latitude, school.longitude),
+                  ) <=
+                  safeZoneRadiusKm,
         )
         .toList(growable: false),
   );

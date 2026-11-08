@@ -38,6 +38,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   Widget build(BuildContext context) {
     final schoolsAsync = ref.watch(filteredSchoolsProvider);
     final originLocation = ref.watch(originLocationProvider);
+    final safeZoneRadiusKm = ref.watch(safeZoneRadiusProvider);
     final schools = schoolsAsync.value ?? const <School>[];
 
     // Capa defensiva: nunca dibujamos pines en el par de coordenadas default.
@@ -78,6 +79,18 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   urlTemplate: _osmTileUrl,
                   userAgentPackageName: 'com.example.mapa_escolar',
                   maxNativeZoom: 19,
+                ),
+                CircleLayer(
+                  circles: [
+                    CircleMarker(
+                      point: originLocation,
+                      radius: safeZoneRadiusKm * 1000,
+                      useRadiusInMeter: true,
+                      color: Colors.blue.withValues(alpha: 0.2),
+                      borderStrokeWidth: 2,
+                      borderColor: Colors.blue,
+                    ),
+                  ],
                 ),
                 MarkerLayer(
                   markers: _buildMarkers(context, validSchools, originLocation),

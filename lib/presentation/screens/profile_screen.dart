@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../providers/location_providers.dart';
 import '../theme/app_theme.dart';
 import 'login_screen.dart';
 
-class ProfileScreen extends StatefulWidget {
+class ProfileScreen extends ConsumerStatefulWidget {
   const ProfileScreen({super.key});
 
   @override
-  State<ProfileScreen> createState() => _ProfileScreenState();
+  ConsumerState<ProfileScreen> createState() => _ProfileScreenState();
 }
 
-class _ProfileScreenState extends State<ProfileScreen> {
-  double _maxRadius = 5;
+class _ProfileScreenState extends ConsumerState<ProfileScreen> {
   bool _morningShift = true;
   bool _afternoonShift = true;
   bool _eveningShift = false;
@@ -24,6 +25,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final maxRadius = ref.watch(safeZoneRadiusProvider);
 
     return Scaffold(
       appBar: AppBar(title: const Text('Perfil')),
@@ -89,7 +91,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ),
                           ),
                           Text(
-                            '${_maxRadius.toStringAsFixed(0)} km',
+                            '${maxRadius.toStringAsFixed(0)} km',
                             style: textTheme.labelLarge?.copyWith(
                               color: AppColors.primary,
                               fontWeight: FontWeight.w700,
@@ -98,13 +100,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ],
                       ),
                       Slider(
-                        value: _maxRadius,
+                        value: maxRadius,
                         min: 1,
                         max: 10,
                         divisions: 9,
-                        label: '${_maxRadius.toStringAsFixed(0)} km',
+                        label: '${maxRadius.toStringAsFixed(0)} km',
                         onChanged: (value) {
-                          setState(() => _maxRadius = value);
+                          ref.read(safeZoneRadiusProvider.notifier).state =
+                              value;
                         },
                       ),
                     ],

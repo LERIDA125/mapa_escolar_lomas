@@ -1,12 +1,16 @@
 import 'dart:math' as math;
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_riverpod/legacy.dart';
 import 'package:latlong2/latlong.dart';
 
 /// Simulated user location at Plaza Grigera, Lomas de Zamora.
 final originLocationProvider = Provider<LatLng>(
   (ref) => const LatLng(-34.7618, -58.4022),
 );
+
+/// Maximum distance in kilometers for the safe-zone school filter.
+final safeZoneRadiusProvider = StateProvider<double>((ref) => 3.0);
 
 /// Calculates the great-circle distance between two points in kilometers.
 double calculateDistanceKm({
