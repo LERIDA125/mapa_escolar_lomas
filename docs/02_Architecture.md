@@ -1,0 +1,100 @@
+# 02_Architecture.md (Arquitectura de la Solución)
+
+## 1. Visión general
+
+Mapa Escolar Lomas es una aplicación Flutter offline-first para consultar el
+nomenclador de escuelas del partido de Lomas de Zamora durante los actos
+públicos de auxiliares. El catálogo de escuelas viaja dentro del binario; el
+mapa consume tiles de OpenStreetMap cuando hay conectividad.
+
+## 2. Stack tecnológico
+
+| Capa            | Tecnología                                      |
+| --------------- | ----------------------------------------------- |
+| UI              | Flutter + Material Design 3                     |
+| Gestión de estado | Riverpod (`flutter_riverpod`)                 |
+| Mapas           | `flutter_map` + `latlong2`                      |
+| Tiles           | OpenStreetMap raster (`tile.openstreetmap.org`) |
+| Datos locales   | JSON embebido (`assets/escuelas_seed.json`)     |
+| Geocodificación | Python + Nominatim (ETL, fuera del runtime)     |
+
+No se utiliza Google Maps ni ninguna API key de mapas.
+
+## 3. Capas y dependencias
+
+```text
+lib/
+├── main.dart                     # ProviderScope + rutas nombradas
+├── domain/models/                # School, Locality, TransportLine
+├── data/repositories/            # SchoolRepository (lectura del asset)
+├── providers/                    # schoolRepositoryProvider, schoolsProvider
+└── presentation/
+    ├── screens/                  # Splash, Login, Home
+    ├── widgets/                  # Componentes reutilizables
+    └── theme/                    # Tokens y ThemeData
+```
+
+Flujo de datos del mapa:
+
+```text
+HomeScreen
+  └── ref.watch(schoolsProvider)
+        └── SchoolRepository.getSchools()
+              └── rootBundle.loadString('assets/escuelas_seed.json')
+                    └── List<School> con latitude / longitude
+```
+
+Regla de oro: los widgets no leen archivos, no calculan distancias y no
+conocen la fuente de datos. Solo consumen providers.
+
+## 4. Mapa
+
+- `FlutterMap` con `MapOptions(initialCenter:, initialZoom:)`.
+- `TileLayer` apuntando a `https://tile.openstreetmap.org/{z}/{x}/{y}.png`
+  con `userAgentPackageName: 'com.example.mapa_escolar'`.
+- `MarkerLayer` con un `Marker` genérico por escuela, ubicado en
+  `LatLng(school.latitude, school.longitude)`.
+- `RichAttributionWidget` con atribución a OpenStreetMap contributors.
+- Android requiere `android.permission.INTERNET` para descargar tiles en
+  release.
+
+## 5. Geocodificación (ETL)
+
+`geocoder.py` es un script de un solo uso que:
+
+1. Lee `assets/escuelas_seed.json`.
+2. Normaliza localidades abreviadas e intersecciones.
+3. Consulta Nominatim para cada escuela que todavía tiene las coordenadas
+   default.
+4. Reescribe el JSON con las coordenadas encontradas.
+
+No se ejecuta en runtime: el APK consume las coordenadas ya persistidas.
+El detalle operativo está en `docs/05_Geocoding.md`.
+
+## 6. Decisiones y restricciones
+
+- **Offline-first para datos:** el catálogo no depende de la red.
+- **Online solo para tiles:** sin conexión el mapa queda vacío, pero la
+  búsqueda y las fichas siguen funcionando.
+- **Riverpod exclusivo:** no se usa `setState` para estado de negocio.
+- **Sin Google Maps:** se eliminó `google_maps_flutter` y todo el plumbing
+  de `MAPS_API_KEY`.
+- **Nominatim:** máximo 1 request por segundo y User-Agent identificable.
+
+## 7. Validación
+
+Antes de cerrar un ticket de código:
+
+```powershell
+dart format lib test
+flutter analyze
+flutter test
+flutter build apk --debug
+```
+
+## 8. Documentación relacionada
+
+- `docs/01_PRD_Mapa_Escolar_Lomas.md` — alcance y modelo de dominio.
+- `docs/03_Guidelines.md` — ramas, commits y convenciones.
+- `docs/04_Tickets.md` — estado de los tickets.
+- `docs/05_Geocoding.md` — operación del geocoder.
