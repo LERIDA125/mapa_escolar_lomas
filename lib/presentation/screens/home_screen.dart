@@ -115,12 +115,40 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         .map((s) => LatLng(s.latitude, s.longitude))
         .toList(growable: false);
 
+    final distinctPoints = points.toSet();
+    if (distinctPoints.length == 1) {
+      _mapController.move(distinctPoints.first, 16);
+      return;
+    }
+
     _mapController.fitCamera(
       CameraFit.bounds(
         bounds: LatLngBounds.fromPoints(points),
         padding: const EdgeInsets.all(50),
+        maxZoom: 17,
       ),
     );
+  }
+
+  String _getSchoolShortName(String name) {
+    final normalized = name.toLowerCase();
+    final abbreviation = switch (true) {
+      _ when normalized.contains('cens') => 'CENS',
+      _ when normalized.contains('jardin') || normalized.contains('jardín') =>
+        'JI',
+      _ when normalized.contains('primaria') => 'PP',
+      _ when normalized.contains('secundaria') => 'ES',
+      _
+          when normalized.contains('técnica') ||
+              normalized.contains('tecnica') ||
+              normalized.contains('tã©cnica') =>
+        'MT',
+      _ when normalized.contains('adulto') => 'EEPA',
+      _ => '',
+    };
+    final number = RegExp(r'\b\d+\b').firstMatch(name)?.group(0);
+
+    return [abbreviation, ?number].join(' ');
   }
 
   List<Marker> _buildMarkers(BuildContext context, List<School> schools) {
@@ -128,21 +156,47 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       for (final school in schools)
         Marker(
           point: LatLng(school.latitude, school.longitude),
-          width: 40,
-          height: 40,
-          alignment: Alignment.topCenter,
+          width: 80,
+          height: 60,
+          alignment: Alignment.bottomCenter,
           child: GestureDetector(
             behavior: HitTestBehavior.opaque,
             onTap: () => _showSchoolDetails(context, school),
-            child: const Icon(
-              Icons.location_on_rounded,
-              color: AppColors.mapMarker,
-              size: 40,
-              shadows: [
-                Shadow(
-                  color: Color(0x66000000),
-                  blurRadius: 6,
-                  offset: Offset(0, 2),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 3,
+                    vertical: 1,
+                  ),
+                  decoration: BoxDecoration(
+                    color: Colors.white.withValues(alpha: 0.8),
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                  child: Text(
+                    _getSchoolShortName('${school.level} ${school.name}'),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
+                      color: Colors.black87,
+                      fontSize: 10,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                const Icon(
+                  Icons.location_on_rounded,
+                  color: AppColors.mapMarker,
+                  size: 40,
+                  shadows: [
+                    Shadow(
+                      color: Color(0x66000000),
+                      blurRadius: 6,
+                      offset: Offset(0, 2),
+                    ),
+                  ],
                 ),
               ],
             ),

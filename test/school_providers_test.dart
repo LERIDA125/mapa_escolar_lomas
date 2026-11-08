@@ -86,6 +86,18 @@ void main() {
     expect(result!.single.name, 'EP 8');
   });
 
+  test('trims text query before filtering school names', () async {
+    final container = createContainer();
+    await container.read(schoolsProvider.future);
+
+    container.read(searchQueryProvider.notifier).state = '  ep 8  ';
+
+    final result = container.read(filteredSchoolsProvider).value;
+
+    expect(result, hasLength(1));
+    expect(result!.single.name, 'EP 8');
+  });
+
   test('filters by address', () async {
     final container = createContainer();
     await container.read(schoolsProvider.future);

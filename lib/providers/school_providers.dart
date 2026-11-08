@@ -28,9 +28,9 @@ final searchQueryProvider = StateProvider<String>((ref) => '');
 /// and the locality name.
 final filteredSchoolsProvider = Provider<AsyncValue<List<School>>>((ref) {
   final schoolsAsync = ref.watch(schoolsProvider);
-  final query = ref.watch(searchQueryProvider).trim().toLowerCase();
+  final normalizedQuery = ref.watch(searchQueryProvider).trim().toLowerCase();
 
-  if (query.isEmpty) {
+  if (normalizedQuery.isEmpty) {
     return schoolsAsync;
   }
 
@@ -38,9 +38,9 @@ final filteredSchoolsProvider = Provider<AsyncValue<List<School>>>((ref) {
     (schools) => schools
         .where(
           (school) =>
-              school.name.toLowerCase().contains(query) ||
-              school.address.toLowerCase().contains(query) ||
-              school.locality.name.toLowerCase().contains(query),
+              school.name.toLowerCase().contains(normalizedQuery) ||
+              school.address.toLowerCase().contains(normalizedQuery) ||
+              school.locality.name.toLowerCase().contains(normalizedQuery),
         )
         .toList(growable: false),
   );
