@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../theme/app_theme.dart';
 import 'home_screen.dart';
+import 'profile_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -37,7 +38,7 @@ class _MainScreenState extends State<MainScreen> {
           HomeScreen(),
           _ComingSoonScreen(tabName: 'Comparativa'),
           _ComingSoonScreen(tabName: 'Favoritos'),
-          _ComingSoonScreen(tabName: 'Perfil'),
+          ProfileScreen(),
         ],
       ),
       bottomNavigationBar: NavigationBar(
