@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'presentation/screens/home_screen.dart';
 import 'presentation/screens/login_screen.dart';
+import 'presentation/screens/main_screen.dart';
 import 'presentation/screens/splash_screen.dart';
 import 'presentation/theme/app_theme.dart';
 
@@ -23,7 +23,7 @@ class MapaEscolarApp extends StatelessWidget {
       routes: {
         SplashScreen.routeName: (_) => const SplashScreen(),
         LoginScreen.routeName: (_) => const LoginScreen(),
-        HomeScreen.routeName: (_) => const HomeScreen(),
+        MainScreen.routeName: (_) => const MainScreen(),
       },
     );
   }

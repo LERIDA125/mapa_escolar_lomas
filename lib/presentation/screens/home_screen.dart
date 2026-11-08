@@ -53,58 +53,56 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle.dark,
-      child: Scaffold(
-        body: Stack(
-          fit: StackFit.expand,
-          children: [
-            FlutterMap(
-              mapController: _mapController,
-              options: const MapOptions(
-                initialCenter: _lomasCenter,
-                initialZoom: 13.5,
-                minZoom: 3,
-                maxZoom: 19,
-                backgroundColor: AppColors.surfaceContainer,
+      child: Stack(
+        fit: StackFit.expand,
+        children: [
+          FlutterMap(
+            mapController: _mapController,
+            options: const MapOptions(
+              initialCenter: _lomasCenter,
+              initialZoom: 13.5,
+              minZoom: 3,
+              maxZoom: 19,
+              backgroundColor: AppColors.surfaceContainer,
+            ),
+            children: [
+              TileLayer(
+                urlTemplate: _osmTileUrl,
+                userAgentPackageName: 'com.example.mapa_escolar',
+                maxNativeZoom: 19,
               ),
-              children: [
-                TileLayer(
-                  urlTemplate: _osmTileUrl,
-                  userAgentPackageName: 'com.example.mapa_escolar',
-                  maxNativeZoom: 19,
-                ),
-                MarkerLayer(markers: _buildMarkers(context, validSchools)),
-                const RichAttributionWidget(
-                  attributions: [
-                    TextSourceAttribution('OpenStreetMap contributors'),
+              MarkerLayer(markers: _buildMarkers(context, validSchools)),
+              const RichAttributionWidget(
+                attributions: [
+                  TextSourceAttribution('OpenStreetMap contributors'),
+                ],
+              ),
+            ],
+          ),
+          if (schoolsAsync.isLoading) const _LoadingOverlay(),
+          if (schoolsAsync.hasError)
+            _ErrorOverlay(
+              error: schoolsAsync.error!,
+              onRetry: () => ref.invalidate(schoolsProvider),
+            ),
+          if (showEmptyState) const _EmptyStateOverlay(),
+          SafeArea(
+            child: Align(
+              alignment: Alignment.topCenter,
+              child: Padding(
+                padding: EdgeInsets.fromLTRB(16, 12, 16, 0),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const _SearchBar(),
+                    const SizedBox(height: 8),
+                    const _LevelFilterChips(),
                   ],
                 ),
-              ],
-            ),
-            if (schoolsAsync.isLoading) const _LoadingOverlay(),
-            if (schoolsAsync.hasError)
-              _ErrorOverlay(
-                error: schoolsAsync.error!,
-                onRetry: () => ref.invalidate(schoolsProvider),
-              ),
-            if (showEmptyState) const _EmptyStateOverlay(),
-            SafeArea(
-              child: Align(
-                alignment: Alignment.topCenter,
-                child: Padding(
-                  padding: EdgeInsets.fromLTRB(16, 12, 16, 0),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      const _SearchBar(),
-                      const SizedBox(height: 8),
-                      const _LevelFilterChips(),
-                    ],
-                  ),
-                ),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
