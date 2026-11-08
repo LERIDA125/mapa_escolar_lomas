@@ -792,35 +792,121 @@ class _LevelFilterChips extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final selectedLevel = ref.watch(levelFilterProvider);
 
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
+    return Row(
+      children: [
+        Expanded(
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                for (final level in _levels) ...[
+                  if (level != _levels.first) const SizedBox(width: 8),
+                  ChoiceChip(
+                    label: Text(level),
+                    selected: selectedLevel == level,
+                    showCheckmark: false,
+                    visualDensity: VisualDensity.compact,
+                    labelStyle: Theme.of(context).textTheme.labelMedium
+                        ?.copyWith(
+                          color: selectedLevel == level
+                              ? Colors.white
+                              : AppColors.onSurface,
+                          fontWeight: FontWeight.w600,
+                        ),
+                    selectedColor: AppColors.primary,
+                    backgroundColor: AppColors.surface,
+                    side: BorderSide(
+                      color: selectedLevel == level
+                          ? AppColors.primary
+                          : AppColors.outlineVariant,
+                    ),
+                    onSelected: (_) {
+                      ref.read(levelFilterProvider.notifier).state = level;
+                    },
+                  ),
+                ],
+              ],
+            ),
+          ),
+        ),
+        const SizedBox(width: 8),
+        const _BusLineFilter(),
+      ],
+    );
+  }
+}
+
+class _BusLineFilter extends ConsumerWidget {
+  const _BusLineFilter();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final selectedLine = ref.watch(busLineFilterProvider);
+    final availableLines = ref.watch(availableBusLinesProvider);
+
+    return Container(
+      height: 40,
+      width: 140,
+      padding: const EdgeInsets.only(left: 10, right: 4),
+      decoration: BoxDecoration(
+        color: AppColors.surface,
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(color: AppColors.outlineVariant),
+      ),
       child: Row(
         children: [
-          for (final level in _levels) ...[
-            if (level != _levels.first) const SizedBox(width: 8),
-            ChoiceChip(
-              label: Text(level),
-              selected: selectedLevel == level,
-              showCheckmark: false,
-              visualDensity: VisualDensity.compact,
-              labelStyle: Theme.of(context).textTheme.labelMedium?.copyWith(
-                color: selectedLevel == level
-                    ? Colors.white
-                    : AppColors.onSurface,
-                fontWeight: FontWeight.w600,
+          const Icon(
+            Icons.directions_bus_rounded,
+            size: 18,
+            color: AppColors.primary,
+          ),
+          const SizedBox(width: 4),
+          Expanded(
+            child: availableLines.when(
+              data: (lines) => DropdownButtonHideUnderline(
+                child: DropdownButton<String>(
+                  value: lines.contains(selectedLine) ? selectedLine : 'Todas',
+                  isExpanded: true,
+                  isDense: true,
+                  borderRadius: BorderRadius.circular(12),
+                  dropdownColor: AppColors.surface,
+                  icon: const Icon(Icons.arrow_drop_down_rounded),
+                  style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                    color: AppColors.onSurface,
+                    fontWeight: FontWeight.w600,
+                  ),
+                  items: [
+                    for (final line in lines)
+                      DropdownMenuItem(
+                        value: line,
+                        child: Text(line, overflow: TextOverflow.ellipsis),
+                      ),
+                  ],
+                  onChanged: (line) {
+                    if (line != null) {
+                      ref.read(busLineFilterProvider.notifier).state = line;
+                    }
+                  },
+                ),
               ),
-              selectedColor: AppColors.primary,
-              backgroundColor: AppColors.surface,
-              side: BorderSide(
-                color: selectedLevel == level
-                    ? AppColors.primary
-                    : AppColors.outlineVariant,
+              loading: () => Text(
+                'Colectivo',
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: Theme.of(context).textTheme.labelSmall,
               ),
-              onSelected: (_) {
-                ref.read(levelFilterProvider.notifier).state = level;
-              },
+              error: (error, stackTrace) => Tooltip(
+                message: 'No se pudieron cargar las líneas: $error',
+                child: Text(
+                  'Sin líneas',
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: Theme.of(context).textTheme.labelSmall
+                      ?.copyWith(color: Theme.of(context).colorScheme.error),
+                ),
+              ),
             ),
-          ],
+          ),
         ],
       ),
     );

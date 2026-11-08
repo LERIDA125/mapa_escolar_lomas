@@ -25,6 +25,24 @@ final searchQueryProvider = StateProvider<String>((ref) => '');
 /// Holds the selected education level filter.
 final levelFilterProvider = StateProvider<String>((ref) => 'Todas');
 
+/// Holds the selected bus line filter.
+final busLineFilterProvider = StateProvider<String>((ref) => 'Todas');
+
+/// Returns the unique bus lines present in the complete local school catalog.
+final availableBusLinesProvider = Provider<AsyncValue<List<String>>>((ref) {
+  return ref.watch(schoolsProvider).whenData((schools) {
+    final lines = schools
+        .expand((school) => school.transportLines)
+        .map((transport) => transport.line.trim())
+        .where((line) => line.isNotEmpty)
+        .toSet()
+        .toList()
+      ..sort((a, b) => a.toLowerCase().compareTo(b.toLowerCase()));
+
+    return ['Todas', ...lines];
+  });
+});
+
 /// Keeps favorite school IDs in memory for the current app session.
 final favoritesProvider = NotifierProvider<FavoritesNotifier, List<String>>(
   FavoritesNotifier.new,
@@ -85,6 +103,7 @@ final filteredSchoolsProvider = Provider<AsyncValue<List<School>>>((ref) {
   final schoolsAsync = ref.watch(schoolsProvider);
   final normalizedQuery = ref.watch(searchQueryProvider).trim().toLowerCase();
   final selectedLevel = ref.watch(levelFilterProvider);
+  final selectedBusLine = ref.watch(busLineFilterProvider).trim().toLowerCase();
   final origin = ref.watch(originLocationProvider);
   final safeZoneRadiusKm = ref.watch(safeZoneRadiusProvider);
   final normalizedLevel = selectedLevel == 'Todas'
@@ -103,6 +122,11 @@ final filteredSchoolsProvider = Provider<AsyncValue<List<School>>>((ref) {
                   )) &&
               (normalizedLevel.isEmpty ||
                   _normalizeLevel(school.level).contains(normalizedLevel)) &&
+              (selectedBusLine == 'todas' ||
+                  school.transportLines.any(
+                    (transport) =>
+                        transport.line.trim().toLowerCase() == selectedBusLine,
+                  )) &&
               calculateDistanceKm(
                     origin: origin,
                     destination: LatLng(school.latitude, school.longitude),
