@@ -72,7 +72,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   userAgentPackageName: 'com.example.mapa_escolar',
                   maxNativeZoom: 19,
                 ),
-                MarkerLayer(markers: _buildMarkers(validSchools)),
+                MarkerLayer(markers: _buildMarkers(context, validSchools)),
                 const RichAttributionWidget(
                   attributions: [
                     TextSourceAttribution('OpenStreetMap contributors'),
@@ -123,7 +123,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     );
   }
 
-  List<Marker> _buildMarkers(List<School> schools) {
+  List<Marker> _buildMarkers(BuildContext context, List<School> schools) {
     return [
       for (final school in schools)
         Marker(
@@ -131,20 +131,146 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           width: 40,
           height: 40,
           alignment: Alignment.topCenter,
-          child: const Icon(
-            Icons.location_on_rounded,
-            color: AppColors.mapMarker,
-            size: 40,
-            shadows: [
-              Shadow(
-                color: Color(0x66000000),
-                blurRadius: 6,
-                offset: Offset(0, 2),
-              ),
-            ],
+          child: GestureDetector(
+            behavior: HitTestBehavior.opaque,
+            onTap: () => _showSchoolDetails(context, school),
+            child: const Icon(
+              Icons.location_on_rounded,
+              color: AppColors.mapMarker,
+              size: 40,
+              shadows: [
+                Shadow(
+                  color: Color(0x66000000),
+                  blurRadius: 6,
+                  offset: Offset(0, 2),
+                ),
+              ],
+            ),
           ),
         ),
     ];
+  }
+
+  Future<void> _showSchoolDetails(BuildContext context, School school) {
+    final textTheme = Theme.of(context).textTheme;
+    final hasLocation =
+        school.address.isNotEmpty || school.locality.name.isNotEmpty;
+    final hasPhone = school.phone.trim().isNotEmpty;
+
+    return showModalBottomSheet<void>(
+      context: context,
+      isScrollControlled: true,
+      useSafeArea: true,
+      showDragHandle: true,
+      backgroundColor: AppColors.surface,
+      dragHandleColor: AppColors.outlineVariant,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
+      ),
+      builder: (_) {
+        return SafeArea(
+          top: false,
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.fromLTRB(24, 4, 24, 24),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  school.name,
+                  style: textTheme.titleLarge?.copyWith(
+                    color: AppColors.onSurface,
+                  ),
+                ),
+                if (school.level.isNotEmpty) ...[
+                  const SizedBox(height: 10),
+                  Chip(
+                    label: Text(school.level),
+                    labelStyle: textTheme.labelMedium?.copyWith(
+                      color: AppColors.onPrimaryFixedVariant,
+                      fontWeight: FontWeight.w600,
+                    ),
+                    backgroundColor: AppColors.primaryFixed,
+                    side: BorderSide.none,
+                    shape: const StadiumBorder(),
+                    visualDensity: VisualDensity.compact,
+                    materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    padding: const EdgeInsets.symmetric(horizontal: 4),
+                  ),
+                ],
+                if (hasLocation) ...[
+                  const SizedBox(height: 20),
+                  _SchoolDetailRow(
+                    icon: Icons.location_on_rounded,
+                    title: school.address.isNotEmpty
+                        ? school.address
+                        : school.locality.name,
+                    subtitle: school.address.isNotEmpty
+                        ? school.locality.name
+                        : null,
+                  ),
+                ],
+                if (hasPhone) ...[
+                  const SizedBox(height: 16),
+                  _SchoolDetailRow(
+                    icon: Icons.phone_rounded,
+                    title: school.phone.trim(),
+                  ),
+                ],
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
+
+class _SchoolDetailRow extends StatelessWidget {
+  const _SchoolDetailRow({
+    required this.icon,
+    required this.title,
+    this.subtitle,
+  });
+
+  final IconData icon;
+  final String title;
+  final String? subtitle;
+
+  @override
+  Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    final subtitle = this.subtitle;
+
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Icon(icon, size: 20, color: AppColors.primary),
+        const SizedBox(width: 12),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                title,
+                style: textTheme.bodyMedium?.copyWith(
+                  color: AppColors.onSurface,
+                ),
+              ),
+              if (subtitle != null && subtitle.isNotEmpty) ...[
+                const SizedBox(height: 2),
+                Text(
+                  subtitle,
+                  style: textTheme.bodySmall?.copyWith(
+                    color: AppColors.onSurfaceVariant,
+                  ),
+                ),
+              ],
+            ],
+          ),
+        ),
+      ],
+    );
   }
 }
 
