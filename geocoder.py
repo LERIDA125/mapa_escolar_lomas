@@ -5,6 +5,8 @@ import time
 
 import requests
 
+PARTIDO_QUERY = "Lomas de Zamora, Buenos Aires, Argentina"
+
 
 def clean_address_string(address):
     # Elimina intersecciones para buscar solo la calle principal, ignorando mayúsculas/minúsculas
@@ -38,7 +40,14 @@ def normalize_locality(locality):
         "S. JOSE": "Barrio San José",
         "SAN JOSE": "Barrio San José",
         "CTEL IX": "Lomas de Zamora", # Nominatim no mapea Cuartel IX, hacemos fallback al partido
-        "CTEL. IX": "Lomas de Zamora"
+        "CTEL. IX": "Lomas de Zamora",
+        "BO EL FARO": "Barrio El Faro",
+        "BO. LA LOMA": "La Loma",
+        "BO. 2 DE ABRIL": "Barrio 2 de Abril",
+        "JUAN M. DE ROS": "Barrio Juan Manuel de Rosas",
+        "JUAN M. DE ROSA": "Barrio Juan Manuel de Rosas",
+        "V URBANA": "Villa Urbana",
+        "SIN ESPECIFICAR": "Lomas de Zamora"
     }
     for key, val in mapping.items():
         if key in loc:
@@ -104,6 +113,12 @@ def geocode_address(address, locality, school_name):
         lat_offset, lon_offset = get_deterministic_offset(school_name)
         return lat + lat_offset, lon + lon_offset, "FALLBACK BARRIO"
 
+    # Intento 3: centroide del partido + offset (garantiza cobertura total)
+    lat, lon = search_nominatim(PARTIDO_QUERY)
+    if lat is not None:
+        lat_offset, lon_offset = get_deterministic_offset(school_name)
+        return lat + lat_offset, lon + lon_offset, "FALLBACK PARTIDO"
+
     return None, None, "FALLO TOTAL"
 
 
@@ -117,6 +132,7 @@ def update_seed():
     ya_geocodificadas = 0
     exactos = 0
     fallbacks = 0
+    fallbacks_partido = 0
     fallidos = 0
 
     for idx, school in enumerate(schools):
@@ -140,6 +156,11 @@ def update_seed():
             school['longitude'] = lon
             fallbacks += 1
             print(f"    -> FALLBACK BARRIO: {lat}, {lon}")
+        elif modo == "FALLBACK PARTIDO":
+            school['latitude'] = lat
+            school['longitude'] = lon
+            fallbacks_partido += 1
+            print(f"    -> FALLBACK PARTIDO: {lat}, {lon}")
         else:
             fallidos += 1
             print("    -> FALLO TOTAL")
@@ -152,8 +173,8 @@ def update_seed():
 
     print("\n--- FIN ---")
     print(f"Total: {total} | Ya geocodificadas: {ya_geocodificadas}")
-    print(f"Exactos: {exactos} | Fallback barrio: {fallbacks} | Fallos totales: {fallidos}")
-    print(f"Exitosos: {exactos + fallbacks} | Fallidos: {fallidos}")
+    print(f"Exactos: {exactos} | Fallback barrio: {fallbacks} | Fallback partido: {fallbacks_partido} | Fallos totales: {fallidos}")
+    print(f"Exitosos: {exactos + fallbacks + fallbacks_partido} | Fallidos: {fallidos}")
 
 
 if __name__ == "__main__":

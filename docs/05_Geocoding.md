@@ -73,11 +73,22 @@ se amplió en TICK-008:
 | `LAVALLOL` (dentro de `LLAVALLOL`) | `Llavallol`         |
 | `S. JOSE`, `SAN JOSE`           | `Barrio San José`      |
 | `CTEL IX`, `CTEL. IX`           | `Lomas de Zamora`      |
+| `BO EL FARO`                    | `Barrio El Faro`       |
+| `BO. LA LOMA`                   | `La Loma`              |
+| `BO. 2 DE ABRIL`                | `Barrio 2 de Abril`    |
+| `JUAN M. DE ROS`, `JUAN M. DE ROSA` | `Barrio Juan Manuel de Rosas` |
+| `V URBANA`                      | `Villa Urbana`         |
+| `SIN ESPECIFICAR`               | `Lomas de Zamora`      |
 
-El matching es por substring sobre la localidad en mayúsculas, así que las
-variantes sin punto o sin espacio (`V URBANA`, `V LAMADRID`, `V.FIORITO`,
-`V.CENTENARIO`, `BO EL FARO`) **no** entran en el mapping y caen en
-`title()`. `BUDGE` tampoco está mapeado; solo `ING. BUDGE`.
+El matching es por substring sobre la localidad en mayúsculas. Quedan
+variantes sin punto o sin espacio que no entran en el mapping y caen en
+`title()`: `V LAMADRID`, `V.FIORITO`, `V.CENTENARIO`. `BUDGE` tampoco está
+mapeado; solo `ING. BUDGE`.
+
+Además, varios nombres de barrio no existen como entidad en Nominatim:
+`Barrio El Faro`, `La Loma`, `Barrio 2 de Abril` y `Barrio Juan Manuel de
+Rosas` devuelven cero resultados. Esos casos los absorbe el fallback al
+centroide del partido (ver abajo).
 
 Si la localidad normalizada es `Lomas de Zamora`, la query no repite el
 partido. Para el resto se arma:
@@ -88,7 +99,7 @@ partido. Para el resto se arma:
 
 ### Fallback en cascada (TICK-008)
 
-`geocode_address()` intenta dos veces antes de rendirse:
+`geocode_address()` intenta tres veces antes de rendirse:
 
 1. **Intento 1 — dirección exacta:** `<calle>, <localidad>, Lomas de Zamora,
    Buenos Aires, Argentina`. Si Nominatim devuelve un resultado, se guarda tal
@@ -97,7 +108,11 @@ partido. Para el resto se arma:
    Aires, Argentina`. Si resuelve, se le suma un offset determinístico de hasta
    ±0.005 grados generado con MD5 del nombre de la escuela. El log dice
    `-> FALLBACK BARRIO`.
-3. Si ambos fallan, la escuela conserva el default y el log dice
+3. **Intento 3 — centroide del partido:** `Lomas de Zamora, Buenos Aires,
+   Argentina` (constante `PARTIDO_QUERY`). Absorbe los barrios que no existen
+   como entidad en Nominatim. También suma el offset determinístico y el log
+   dice `-> FALLBACK PARTIDO`.
+4. Si los tres fallan, la escuela conserva el default y el log dice
    `-> FALLO TOTAL`.
 
 El offset es reproducible: correr el script dos veces produce las mismas
@@ -108,8 +123,8 @@ no queden apilados en un único punto.
 
 ## 7. Resultados de la corrida (TICK-008)
 
-Corrida del fallback en cascada sobre las 106 escuelas que seguían en el
-default:
+Segunda pasada sobre las 106 escuelas que seguían en el default, con el mapping
+ampliado y el fallback en cascada:
 
 ```text
 Total: 307 | Ya geocodificadas: 201
@@ -117,19 +132,30 @@ Exactos: 6 | Fallback barrio: 86 | Fallos totales: 14
 Exitosos: 92 | Fallidos: 14
 ```
 
-- 293 de 307 escuelas tienen coordenadas propias.
-- 226 pares de coordenadas únicos (varias escuelas comparten dirección exacta).
-- Quedan 14 escuelas en el default, concentradas en localidades que no
-  resuelven ni como centroide: `BO. 2 DE ABRIL` (2), `BO. LA LOMA` (3),
-  `BO EL FARO` (4), `BO. EL FARO` (1), `V URBANA` (1), `JUAN M. DE ROS/Rosa`
-  (2) y `Sin Especificar` (1).
+Tercera pasada, solo sobre esas 14 rebeldes, con el mapping final y el fallback
+al partido:
+
+```text
+Total: 307 | Ya geocodificadas: 293
+Exactos: 1 | Fallback barrio: 1 | Fallback partido: 12 | Fallos totales: 0
+Exitosos: 14 | Fallidos: 0
+```
+
+- **307 de 307 escuelas tienen coordenadas propias. Cero defaults.**
+- 239 pares de coordenadas únicos: varias escuelas comparten edificio o
+  dirección exacta, y los fallbacks al partido se separan solo por el offset.
+- Ninguna coordenada cae fuera del bounding box del partido.
+- Las 12 escuelas que no resolvían ni por barrio quedaron sobre el centroide de
+  Lomas de Zamora con el offset determinístico. Es la precisión más baja de
+  todo el dataset: sirven para ubicar la escuela en el mapa general, no para
+  navegar hasta la puerta.
 
 ## 8. Limitaciones conocidas
 
-- El mapping ampliado (TICK-008) cubre las abreviaturas más frecuentes, pero
-  quedan variantes sin punto/espacio y barrios sin mapear (`BUDGE`,
-  `BO. LA LOMA`, `BO. 2 DE ABRIL`, `OLIMPO`, `CEMENTERIO`, `TRIBUNALES`,
-  `Sin Especificar`).
+- El mapping (TICK-008) cubre las abreviaturas más frecuentes, pero quedan
+  variantes sin punto/espacio sin mapear (`V LAMADRID`, `V.FIORITO`,
+  `V.CENTENARIO`, `BUDGE`) y barrios sin entidad en Nominatim (`BO. LA LOMA`,
+  `BO. 2 DE ABRIL`, `OLIMPO`, `CEMENTERIO`, `TRIBUNALES`).
 - **La normalización de localidades no es el cuello de botella principal.**
   De las 106 escuelas que quedaron en el default, 50 ya tenían una localidad
   que se normalizaba bien (`BANFIELD`, `TEMPERLEY`, `LOMAS DE Z`) y aun así
@@ -141,6 +167,9 @@ Exitosos: 92 | Fallidos: 14
 - **El fallback tiene precisión de barrio, no de puerta.** El pin puede quedar
   a unos 500 metros de la escuela real. Es aceptable para decidir durante un
   acto, pero no para navegación.
+- **El fallback al partido es todavía menos preciso:** 12 escuelas quedaron
+  sobre el centroide de Lomas de Zamora. Se distinguen entre sí por el offset
+  determinístico, pero no representan su ubicación real.
 - No hay validación por bounding box: un resultado puede pertenecer a otra
   localidad del partido.
 - Las intersecciones se reducen a la primera calle; se pierde la esquina
@@ -149,9 +178,9 @@ Exitosos: 92 | Fallidos: 14
 
 ## 9. Verificación posterior
 
-1. Leer el resumen `Exactos / Fallback barrio / Fallos totales` que imprime el
-   script. Un `FALLO TOTAL` significa que ni la dirección ni la localidad
-   resolvieron en Nominatim.
+1. Leer el resumen `Exactos / Fallback barrio / Fallback partido / Fallos
+   totales` que imprime el script. Un `FALLO TOTAL` significa que ni la
+   dirección, ni la localidad, ni el partido resolvieron en Nominatim.
 2. Confirmar que el seed dejó de tener un único par de coordenadas:
 
    ```powershell
