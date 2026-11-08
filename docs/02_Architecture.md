@@ -91,7 +91,8 @@ Ese import vive únicamente en la capa de providers; la UI sigue importando
 1. Lee `assets/escuelas_seed.json`.
 2. Normaliza localidades abreviadas e intersecciones.
 3. Consulta Nominatim para cada escuela que todavía tiene las coordenadas
-   default.
+   default: primero la dirección exacta y, si falla, el centroide de la
+   localidad más un offset determinístico por escuela.
 4. Reescribe el JSON con las coordenadas encontradas.
 
 No se ejecuta en runtime: el APK consume las coordenadas ya persistidas.
