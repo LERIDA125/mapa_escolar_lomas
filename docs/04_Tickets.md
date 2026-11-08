@@ -39,6 +39,8 @@ Cierra las brechas entre los prototipos de `prototipo_ui/`, el PRD y el código 
 | **TICK-025** | State/Map | Calcular tiempos estimados por modo (a pie, auto, colectivo) desde el punto de partida y resolver `Cómo llegar`: distancia + velocidades configurables, líneas directas del seed y polyline simple. El ruteo real por calles queda para una iteración posterior. | ⚪ TO DO |
 | **TICK-026** | Splash/Infra | Reemplazar el timer fijo del Splash por precarga real del seed y validación de coordenadas. Mostrar la versión y fecha real del paquete de datos en lugar del texto hardcodeado `v2.4.0`. | ⚪ TO DO |
 | **TICK-027** | UI/Map | Segunda iteración de la ficha de escuela (alcance diferido de TICK-013): estado de pin seleccionado, tarjeta peek previa al bottom sheet, mini-mapa embebido, distancia desde el origen, teléfono con acción de llamada real, líneas de colectivo, `Añadir a comparativa` conectado al comparador y cierre de la ficha al tocar el mapa. | ⚪ TO DO |
+| **TICK-028** | Bugfix/Map | La app crashea al escribir en el buscador. Revisar el provider y el ajuste de cámara cuando el filtro deja un solo resultado, sin casts ni parseos inválidos. | 🟡 IN PROGRESS |
+| **TICK-029** | UI/Map | Agregar etiquetas de texto con la sigla de cada escuela (ej. `PP 32`, `ES`, `JI 940`, `CENS`) sobre los pines del mapa. | 🟡 IN PROGRESS |
 
 ### Notas de estado
 
