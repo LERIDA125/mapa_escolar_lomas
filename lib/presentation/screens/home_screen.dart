@@ -8,29 +8,48 @@ import '../../domain/models/school_models.dart';
 import '../../providers/school_providers.dart';
 import '../theme/app_theme.dart';
 
-class HomeScreen extends ConsumerWidget {
+class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
 
   static const routeName = '/home';
 
+  @override
+  ConsumerState<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends ConsumerState<HomeScreen> {
   static const _lomasCenter = LatLng(-34.7616, -58.4027);
   static const _osmTileUrl = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
 
+  final _mapController = MapController();
+
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  void dispose() {
+    _mapController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final schoolsAsync = ref.watch(filteredSchoolsProvider);
     final schools = schoolsAsync.value ?? const <School>[];
 
     // Capa defensiva: nunca dibujamos pines en el par de coordenadas default.
     // Protege la UI si en el futuro entra un registro sin geocodificar.
-    final validSchools = schools
-        .where((s) => s.latitude != -34.7628 || s.longitude != -58.4022)
-        .toList();
+    final validSchools = _validSchools(schools);
 
     final showEmptyState =
         !schoolsAsync.isLoading &&
         !schoolsAsync.hasError &&
         validSchools.isEmpty;
+
+    ref.listen<AsyncValue<List<School>>>(filteredSchoolsProvider, (
+      previous,
+      next,
+    ) {
+      if (!mounted || !next.hasValue) return;
+      _fitCameraTo(_validSchools(next.requireValue));
+    });
 
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle.dark,
@@ -39,6 +58,7 @@ class HomeScreen extends ConsumerWidget {
           fit: StackFit.expand,
           children: [
             FlutterMap(
+              mapController: _mapController,
               options: const MapOptions(
                 initialCenter: _lomasCenter,
                 initialZoom: 13.5,
@@ -78,6 +98,27 @@ class HomeScreen extends ConsumerWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  List<School> _validSchools(List<School> schools) {
+    return schools
+        .where((s) => s.latitude != -34.7628 || s.longitude != -58.4022)
+        .toList();
+  }
+
+  void _fitCameraTo(List<School> schools) {
+    if (schools.isEmpty) return;
+
+    final points = schools
+        .map((s) => LatLng(s.latitude, s.longitude))
+        .toList(growable: false);
+
+    _mapController.fitCamera(
+      CameraFit.bounds(
+        bounds: LatLngBounds.fromPoints(points),
+        padding: const EdgeInsets.all(50),
       ),
     );
   }

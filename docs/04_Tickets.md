@@ -13,4 +13,4 @@
 |---|---|---|---|
 | **TICK-008** | Data (Script) | Ampliar el diccionario de localidades en `geocoder.py` para mapear las 106 escuelas fallidas (V. URBANA, STA. MARTA, etc.) y re-ejecutar. | 🟢 DONE |
 | **TICK-009** | UX/UI | Mostrar un overlay o feedback visual de "Sin resultados" en el mapa cuando `filteredSchoolsProvider` devuelva una lista vacía. | 🟢 DONE |
-| **TICK-010** | UX/Map | Implementar lógica con `MapController` de `flutter_map` para recentrar y ajustar el zoom dinámicamente a los bounds de los resultados filtrados. | 🟡 IN PROGRESS |
+| **TICK-010** | UX/Map | Implementar lógica con `MapController` de `flutter_map` para recentrar y ajustar el zoom dinámicamente a los bounds de los resultados filtrados. | 🟢 DONE |
