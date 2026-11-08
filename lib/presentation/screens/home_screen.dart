@@ -6,6 +6,7 @@ import 'package:latlong2/latlong.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../domain/models/school_models.dart';
+import '../../providers/location_providers.dart';
 import '../../providers/school_providers.dart';
 import '../theme/app_theme.dart';
 
@@ -35,6 +36,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final schoolsAsync = ref.watch(filteredSchoolsProvider);
+    final originLocation = ref.watch(originLocationProvider);
     final schools = schoolsAsync.value ?? const <School>[];
 
     // Capa defensiva: nunca dibujamos pines en el par de coordenadas default.
@@ -75,7 +77,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 userAgentPackageName: 'com.example.mapa_escolar',
                 maxNativeZoom: 19,
               ),
-              MarkerLayer(markers: _buildMarkers(context, validSchools)),
+              MarkerLayer(
+                markers: _buildMarkers(context, validSchools, originLocation),
+              ),
               const RichAttributionWidget(
                 attributions: [
                   TextSourceAttribution('OpenStreetMap contributors'),
@@ -169,11 +173,21 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     return [abbreviation, ?number].join(' ');
   }
 
-  List<Marker> _buildMarkers(BuildContext context, List<School> schools) {
-    return schools.map((school) => _buildMarker(context, school)).toList();
+  List<Marker> _buildMarkers(
+    BuildContext context,
+    List<School> schools,
+    LatLng originLocation,
+  ) {
+    return schools
+        .map((school) => _buildMarker(context, school, originLocation))
+        .toList();
   }
 
-  Marker _buildMarker(BuildContext context, School school) {
+  Marker _buildMarker(
+    BuildContext context,
+    School school,
+    LatLng originLocation,
+  ) {
     final isSelected = school.id == _selectedSchoolId;
     return Marker(
       point: LatLng(school.latitude, school.longitude),
@@ -184,7 +198,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         behavior: HitTestBehavior.opaque,
         onTap: () {
           setState(() => _selectedSchoolId = school.id);
-          _showSchoolDetails(context, school);
+          _showSchoolDetails(context, school, originLocation);
         },
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -225,11 +239,19 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     );
   }
 
-  Future<void> _showSchoolDetails(BuildContext context, School school) async {
+  Future<void> _showSchoolDetails(
+    BuildContext context,
+    School school,
+    LatLng originLocation,
+  ) async {
     final textTheme = Theme.of(context).textTheme;
     final hasLocation =
         school.address.isNotEmpty || school.locality.name.isNotEmpty;
     final hasPhone = school.phone.trim().isNotEmpty;
+    final distanceKm = calculateDistanceKm(
+      origin: originLocation,
+      destination: LatLng(school.latitude, school.longitude),
+    );
 
     _isSchoolDetailsOpen = true;
     try {
@@ -287,9 +309,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     ),
                   ],
                   const SizedBox(height: 16),
-                  const _SchoolDetailRow(
+                  _SchoolDetailRow(
                     icon: Icons.directions_car_rounded,
-                    title: '🚗 A aprox. 2.5 km de tu ubicación',
+                    title:
+                        '🚗 A ${distanceKm.toStringAsFixed(1)} km de tu ubicación',
                   ),
                   const SizedBox(height: 12),
                   const _SchoolDetailRow(
