@@ -111,13 +111,14 @@ String _normalizeLevel(String value) {
       .replaceAll('ú', 'u');
 }
 
-/// Applies the active level, bus-line and safe-zone controls to the catalog.
+/// Schools that pass every active control except the text search: level, bus
+/// line and safe zone.
 ///
-/// The search query is intentionally excluded so autocomplete can suggest
-/// matching schools from this already narrowed set.
-final schoolsMatchingControlsProvider = Provider<AsyncValue<List<School>>>((
-  ref,
-) {
+/// Single shared source for the map pins, the list and the autocomplete
+/// suggestions, so the buscador can never offer a school that the map hides.
+/// The text query is intentionally excluded: it is applied later by
+/// [filteredSchoolsProvider] (map/list) and by the autocomplete itself.
+final mapVisibleSchoolsProvider = Provider<AsyncValue<List<School>>>((ref) {
   final schoolsAsync = ref.watch(schoolsProvider);
   final selectedLevel = ref.watch(levelFilterProvider);
   final selectedBusLine = ref.watch(busLineFilterProvider).trim().toLowerCase();
@@ -151,26 +152,33 @@ final schoolsMatchingControlsProvider = Provider<AsyncValue<List<School>>>((
   );
 });
 
-/// Applies the current search query on top of [schoolsMatchingControlsProvider].
+/// Whether [school] matches the free-text [query].
+///
+/// Single source of truth shared by [filteredSchoolsProvider] and the
+/// autocomplete, so both apply the exact same rules (case-insensitive over
+/// name, address, locality and official code). Keeping them in sync avoids the
+/// buscador suggesting schools the map filters out.
+bool schoolMatchesQuery(School school, String query) {
+  final normalizedQuery = query.trim().toLowerCase();
+  if (normalizedQuery.isEmpty) return true;
+
+  return school.name.toLowerCase().contains(normalizedQuery) ||
+      school.address.toLowerCase().contains(normalizedQuery) ||
+      school.locality.name.toLowerCase().contains(normalizedQuery) ||
+      (school.codigoOficial?.toLowerCase().contains(normalizedQuery) ?? false);
+}
+
+/// Applies the current search query on top of [mapVisibleSchoolsProvider].
 ///
 /// Loading and error states are forwarded untouched, so widgets can keep
-/// showing the same spinners and error views. Matching is case-insensitive
-/// across the school name, address and locality, and can be narrowed by level.
+/// showing the same spinners and error views.
 final filteredSchoolsProvider = Provider<AsyncValue<List<School>>>((ref) {
-  final schoolsAsync = ref.watch(schoolsMatchingControlsProvider);
-  final normalizedQuery = ref.watch(searchQueryProvider).trim().toLowerCase();
+  final schoolsAsync = ref.watch(mapVisibleSchoolsProvider);
+  final query = ref.watch(searchQueryProvider);
 
   return schoolsAsync.whenData(
     (schools) => schools
-        .where(
-          (school) =>
-              (normalizedQuery.isEmpty ||
-                  school.name.toLowerCase().contains(normalizedQuery) ||
-                  school.address.toLowerCase().contains(normalizedQuery) ||
-                  school.locality.name.toLowerCase().contains(
-                    normalizedQuery,
-                  )),
-        )
+        .where((school) => schoolMatchesQuery(school, query))
         .toList(growable: false),
   );
 });

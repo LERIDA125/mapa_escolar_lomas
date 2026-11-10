@@ -43,7 +43,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     final safeZoneEnabled = ref.watch(safeZoneEnabledProvider);
     final schools = schoolsAsync.value ?? const <School>[];
     final controlFilteredSchools =
-        ref.watch(schoolsMatchingControlsProvider).value ?? const <School>[];
+        ref.watch(mapVisibleSchoolsProvider).value ?? const <School>[];
 
     // Capa defensiva: nunca dibujamos pines en el par de coordenadas default.
     // Protege la UI si en el futuro entra un registro sin geocodificar.
@@ -629,8 +629,10 @@ class _SearchBar extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // Suggestions come from the same map-visible set (level + bus line + safe
+    // zone, without text) so the buscador never offers a school the map hides.
     final schools =
-        ref.watch(schoolsMatchingControlsProvider).value ?? const <School>[];
+        ref.watch(mapVisibleSchoolsProvider).value ?? const <School>[];
 
     return Container(
       height: 52,
@@ -657,15 +659,13 @@ class _SearchBar extends ConsumerWidget {
         child: Autocomplete<School>(
           displayStringForOption: (school) => school.name,
           optionsBuilder: (textEditingValue) {
-            final query = textEditingValue.text.trim().toLowerCase();
-            if (query.isEmpty) return const Iterable<School>.empty();
+            final query = textEditingValue.text;
+            if (query.trim().isEmpty) return const Iterable<School>.empty();
 
+            // Same matcher as the map: if a school is suggested, it is also
+            // part of the filtered result set shown on the map.
             return schools
-                .where((school) {
-                  return school.name.toLowerCase().contains(query) ||
-                      (school.codigoOficial?.toLowerCase().contains(query) ??
-                          false);
-                })
+                .where((school) => schoolMatchesQuery(school, query))
                 .take(8);
           },
           onSelected: (school) {
