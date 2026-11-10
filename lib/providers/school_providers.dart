@@ -28,6 +28,23 @@ final levelFilterProvider = StateProvider<String>((ref) => 'Todas');
 /// Holds the selected bus line filter.
 final busLineFilterProvider = StateProvider<String>((ref) => 'Todas');
 
+/// Snapshot of the filters that drive the map camera auto-fit.
+typedef CameraFitFilters = ({String level, String busLine, String query});
+
+/// Filters that trigger the camera auto-fit, excluding the safe zone.
+///
+/// Changing the safe-zone radius must not re-frame the map: the circle has to
+/// stay visible contracting against a static camera. Records use structural
+/// equality, so this only notifies when search, level or bus line really
+/// change.
+final cameraFitFiltersProvider = Provider<CameraFitFilters>((ref) {
+  return (
+    level: ref.watch(levelFilterProvider),
+    busLine: ref.watch(busLineFilterProvider),
+    query: ref.watch(searchQueryProvider),
+  );
+});
+
 /// Returns the unique bus lines present in the complete local school catalog.
 final availableBusLinesProvider = Provider<AsyncValue<List<String>>>((ref) {
   return ref.watch(schoolsProvider).whenData((schools) {

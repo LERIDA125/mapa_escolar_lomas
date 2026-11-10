@@ -67,12 +67,22 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         !schoolsAsync.hasError &&
         schoolsForMap.isEmpty;
 
-    ref.listen<AsyncValue<List<School>>>(filteredSchoolsProvider, (
-      previous,
-      next,
-    ) {
+    // Encuadre inicial: cuando el catálogo termina de cargar, ajustamos la
+    // cámara al resultado ya filtrado (mismo comportamiento que antes).
+    ref.listen<AsyncValue<List<School>>>(schoolsProvider, (previous, next) {
       if (!mounted || !_showMap || !next.hasValue) return;
-      _fitCameraTo(_validSchools(next.requireValue));
+      final filtered = ref.read(filteredSchoolsProvider);
+      if (filtered.hasValue) _fitCameraTo(_validSchools(filtered.requireValue));
+    });
+
+    // Reencuadre por búsqueda, nivel o línea de colectivo. La Zona Segura queda
+    // deliberadamente fuera de esta suscripción: si la cámara se re-encuadrara
+    // al mover el radio, el círculo siempre llenaría la pantalla y parecería
+    // no contraerse. Con el mapa estático la contracción es visible.
+    ref.listen<CameraFitFilters>(cameraFitFiltersProvider, (previous, next) {
+      if (!mounted || !_showMap) return;
+      final filtered = ref.read(filteredSchoolsProvider);
+      if (filtered.hasValue) _fitCameraTo(_validSchools(filtered.requireValue));
     });
 
     return AnnotatedRegion<SystemUiOverlayStyle>(
@@ -362,6 +372,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       destination: LatLng(school.latitude, school.longitude),
     );
     final estimatedTimes = calculateEstimatedTimes(distanceKm);
+    final busLines = school.transportLines
+        .map((transport) => transport.line.trim())
+        .where((line) => line.isNotEmpty)
+        .join(', ');
 
     _isSchoolDetailsOpen = true;
     try {
@@ -458,9 +472,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   const SizedBox(height: 12),
                   EstimatedTravelTimesRow(times: estimatedTimes),
                   const SizedBox(height: 12),
-                  const _SchoolDetailRow(
+                  _SchoolDetailRow(
                     icon: Icons.directions_bus_rounded,
-                    title: '🚌 Líneas: 540, 277, 164',
+                    title:
+                        '🚌 Líneas: ${busLines.isEmpty ? School.notInformed : busLines}',
                   ),
                   if (hasPhone) ...[
                     const SizedBox(height: 16),

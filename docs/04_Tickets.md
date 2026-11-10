@@ -70,3 +70,12 @@ Cierra las brechas entre los prototipos de `prototipo_ui/`, el PRD y el código 
 - **Votación remota, reclamos de puntaje u obleas:** fuera del propósito de la app.
 - **Ruteo con tráfico en tiempo real:** incompatible con el requisito offline.
 - **Login contra un backend oficial:** no hay API disponible; TICK-023 valida localmente.
+
+## Sprint 5: Bugs y Estabilización
+
+| Ticket | Módulo | Descripción | Estado |
+|---|---|---|---|
+| **TICK-030** | Bugfix/UI | La ficha mostraba `'🚌 Líneas: 540, 277, 164'` hardcodeado para toda escuela. Ahora renderiza `school.transportLines` (solo el campo `line`, unido por comas) con fallback `No informado` cuando no hay datos. | 🟢 DONE |
+| **TICK-031** | Bugfix/Map | Zona Segura: el auto-fit de cámara ya no se dispara al cambiar el radio (el mapa queda estático y el círculo se ve contraerse), slider ampliado a 90 cuadras y contador `N de 307 escuelas visibles` en Perfil. | 🟢 DONE |
+| **TICK-032** | Data (ETL) | Normalizar las variantes de líneas de colectivo del seed (`79 SAN JOSE` / `79 S. JOSÉ` / `79 SJOSE`, letras sueltas como `B`, `C`) a ramales canónicos y completar las 14 escuelas sin líneas. Base de auditoría: `auditoria_escuelas.csv`. | ⚪ TO DO |
+| **TICK-033** | State/UX | Punto de partida editable (HU-02): `UserOrigin` persistido en `shared_preferences`, picker en mapa + etiqueta en Perfil, `originLocationProvider` derivado para que ficha, lista, comparador y Zona Segura recalculen desde ahí. | ⚪ TO DO |
