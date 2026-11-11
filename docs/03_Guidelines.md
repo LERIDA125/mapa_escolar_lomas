@@ -31,8 +31,9 @@ El agente y los desarrolladores deben usar prefijos estandarizados en cada commi
 - Las coordenadas del seed no se editan a mano. Se regeneran con el ETL (`reparador_automatico.py`).
 - Antes de correr el geocoder, guardar un backup de `assets/escuelas_seed.json`.
 - El script espacia los requests 0.5 s (`DELAY_ARCGIS`) y cachea cada respuesta en `reparador_geocode_cache.json`, así una re-corrida no vuelve a consultar el servicio.
+- Las escuelas que ArcGIS no puede resolver se corrigen a mano en `overrides_manual.json`, nunca en el CSV de salida: el script las aplica con prioridad sobre el geocoder y valida que caigan dentro del partido.
 - El `User-Agent` del geocoder debe identificar la app y un contacto real.
-- Toda corrida debe cerrar con revisión del resumen `Coordenadas reparadas / Geocodificadas / Sin match confiable / Errores` y del conteo de filas de `revision_manual.csv`.
+- Toda corrida debe cerrar con revisión del resumen `Coordenadas reparadas / Geocodificadas / Manuales / Sin match confiable / Errores` y del conteo de filas de `revision_manual.csv`.
 - El detalle operativo vive en `docs/05_Geocoding.md`.
 
 ## 5. Documentación SDD

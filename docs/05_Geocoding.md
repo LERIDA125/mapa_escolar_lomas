@@ -50,16 +50,40 @@ El proceso genera dos *artifacts* principales:
 
 Las columnas del reporte son: `fila`, `nombre`, `direccion`, `zona`, `motivos`, `lat_csv`, `lon_csv`, `lat_final`, `lon_final`, `desvio_m`, `score`, `address`. La columna `motivos` acumula todas las advertencias de una fila separadas por ` | `, así que sirve para filtrar en Excel por tipo de problema.
 
-## 5. Resultado de la Última Corrida
+## 5. Overrides Manuales
+
+Algunas intersecciones no se pueden resolver automáticamente: ArcGIS devuelve el centroide de una calle, la localidad entera o un punto de otro partido. Esas escuelas se revisan a mano y su coordenada se guarda en `overrides_manual.json`, indexada por el nombre exacto de la escuela:
+
+```json
+{
+  "EEE 503": {
+    "lat": -34.7762052,
+    "lon": -58.4092203,
+    "fuente": "Google Maps, revision manual TICK-036"
+  }
+}
+```
+
+- El override tiene prioridad sobre ArcGIS: si la escuela está en el archivo, el script no consulta el servicio.
+- Al cargar, cada entrada se valida: `lat`/`lon` numéricos y dentro del bbox del partido. Una entrada inválida se descarta con un aviso y la escuela sigue el camino automático.
+- Si un override no coincide con ninguna fila del CSV, se reporta como huérfano al final de la corrida.
+- Las escuelas con override no se agregan a `revision_manual.csv`: la coordenada manual es la resolución del caso.
+
+Esto evita editar el CSV de salida a mano, que la próxima corrida pisaría.
+
+## 6. Resultado de la Última Corrida
 
 | Métrica | Valor |
 | --- | --- |
 | Filas procesadas | 310 |
 | Coordenadas reparadas | 310 |
 | Geocodificadas por ArcGIS | 68 |
-| Sin match confiable (conservan la coordenada reparada del CSV) | 10 |
+| Coordenadas manuales aplicadas | 10 |
+| Sin match confiable | 0 |
 | Filas con desvío mayor a 3 km | 18 |
-| Filas en `revision_manual.csv` | 54 |
+| Filas en `revision_manual.csv` | 44 |
 | Errores de parseo de coordenada | 0 |
+
+De las 44 filas del reporte, 31 marcan localidad distinta (18 de ellas sin otro motivo), 8 tienen coincidencia parcial de calles y 18 superan los 3 km de desvío. Los motivos se solapan.
 
 Una corrida posterior reutiliza el caché y produce archivos byte a byte idénticos.

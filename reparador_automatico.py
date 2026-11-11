@@ -37,12 +37,14 @@ from geopy.geocoders import ArcGIS
 ARCHIVO_ENTRADA = "auditoria_escuelas.csv"
 ARCHIVO_SALIDA = "escuelas_reparadas_final.csv"
 ARCHIVO_REVISION = "revision_manual.csv"
+ARCHIVO_OVERRIDES = "overrides_manual.json"
 ARCHIVO_CACHE = "reparador_geocode_cache.json"
 
 BASE_DIR = Path(__file__).resolve().parent
 RUTA_ENTRADA = BASE_DIR / ARCHIVO_ENTRADA
 RUTA_SALIDA = BASE_DIR / ARCHIVO_SALIDA
 RUTA_REVISION = BASE_DIR / ARCHIVO_REVISION
+RUTA_OVERRIDES = BASE_DIR / ARCHIVO_OVERRIDES
 RUTA_CACHE = BASE_DIR / ARCHIVO_CACHE
 
 DELIMITADOR = ";"
@@ -423,6 +425,55 @@ def dentro_del_partido(lat: float, lon: float) -> bool:
     return LAT_MIN <= lat <= LAT_MAX and LON_MIN <= lon <= LON_MAX
 
 
+def cargar_overrides(ruta: Path) -> dict[str, dict]:
+    """Coordenadas corregidas a mano, indexadas por nombre de escuela.
+
+    ArcGIS no puede resolver algunas intersecciones (devuelve centroides de
+    calle o directamente otro partido). Esas coordenadas se cargan desde un
+    archivo aparte para que una nueva corrida del script no las pise.
+    """
+    if not ruta.exists():
+        return {}
+
+    try:
+        crudo = json.loads(ruta.read_text(encoding="utf-8"))
+    except (OSError, ValueError) as exc:
+        print(f"! No se pudo leer {ruta.name}: {exc}; se ignora")
+        return {}
+
+    if not isinstance(crudo, dict):
+        print(f"! {ruta.name} no contiene un objeto JSON; se ignora")
+        return {}
+
+    overrides: dict[str, dict] = {}
+    for nombre, datos in crudo.items():
+        clave = colapsar(nombre)
+        if not clave:
+            print(f"! override sin nombre en {ruta.name}; se ignora")
+            continue
+        if not isinstance(datos, dict):
+            print(f"! override de {clave!r} mal formado; se ignora")
+            continue
+        try:
+            lat = float(datos["lat"])
+            lon = float(datos["lon"])
+        except (KeyError, TypeError, ValueError):
+            print(f"! override de {clave!r} sin lat/lon validas; se ignora")
+            continue
+        if not dentro_del_partido(lat, lon):
+            print(
+                f"! override de {clave!r} fuera del partido "
+                f"({lat:.7f}, {lon:.7f}); se ignora"
+            )
+            continue
+        overrides[clave] = {
+            "lat": lat,
+            "lon": lon,
+            "fuente": str(datos.get("fuente") or "override manual"),
+        }
+    return overrides
+
+
 CAMPOS_REVISION = [
     "fila",
     "nombre",
@@ -573,13 +624,16 @@ def main() -> int:
 
     geolocalizador = ArcGIS(user_agent=USER_AGENT)
     cache = Cache(RUTA_CACHE)
+    overrides = cargar_overrides(RUTA_OVERRIDES)
 
     total = len(filas)
     reparadas = 0
     geocodificadas = 0
+    manuales = 0
     sin_resultado = 0
     candidatas_descartadas = 0
     errores = 0
+    aplicados: set[str] = set()
     revisiones: list[dict[str, str]] = []
 
     print(f"Reparando {total} escuelas desde {ARCHIVO_ENTRADA}...")
@@ -598,6 +652,21 @@ def main() -> int:
             continue
 
         lat, lon = lat_reparada, lon_reparada
+
+        if nombre in overrides:
+            manual = overrides[nombre]
+            lat, lon = manual["lat"], manual["lon"]
+            desvio = geodesic((lat_reparada, lon_reparada), (lat, lon)).meters
+            manuales += 1
+            aplicados.add(nombre)
+            print(
+                f"[{indice}/{total}] {nombre}: override manual -> "
+                f"{lat:.7f}, {lon:.7f} ({desvio:.0f} m del CSV)"
+            )
+            print(f"      fuente: {manual['fuente']}")
+            fila["latitude"] = f"{lat:.7f}"
+            fila["longitude"] = f"{lon:.7f}"
+            continue
 
         if es_interseccion(direccion):
             consultas = construir_consultas(direccion, fila.get("zone", ""))
@@ -680,6 +749,9 @@ def main() -> int:
         fila["latitude"] = f"{lat:.7f}"
         fila["longitude"] = f"{lon:.7f}"
 
+    for nombre in sorted(set(overrides) - aplicados):
+        print(f"! override de {nombre!r} no coincide con ninguna escuela; se ignora")
+
     with RUTA_SALIDA.open("w", encoding=ENCODING, newline="") as archivo:
         escritor = csv.DictWriter(
             archivo, fieldnames=campos, delimiter=DELIMITADOR
@@ -698,7 +770,7 @@ def main() -> int:
     print("--- FIN ---")
     print(
         f"Total: {total} | Coordenadas reparadas: {reparadas} | "
-        f"Geocodificadas: {geocodificadas}"
+        f"Geocodificadas: {geocodificadas} | Manuales: {manuales}"
     )
     print(
         f"Sin match confiable: {sin_resultado} | "

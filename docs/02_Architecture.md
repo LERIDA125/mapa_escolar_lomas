@@ -140,7 +140,9 @@ El ETL corre fuera del runtime y se apoya en dos scripts.
    que ArcGIS devuelve cuando no encuentra el cruce, los puntos fuera del
    bounding box del partido y los que pertenecen a partidos o localidades
    vecinas.
-4. Escribe `escuelas_reparadas_final.csv` y un reporte de revisión humana en
+4. Aplica las coordenadas corregidas a mano en `overrides_manual.json` (las
+   escuelas que ArcGIS no pudo resolver) con prioridad sobre el geocoder.
+5. Escribe `escuelas_reparadas_final.csv` y un reporte de revisión humana en
    `revision_manual.csv`.
 
 Ninguno se ejecuta en runtime: el APK consume las coordenadas ya persistidas.
