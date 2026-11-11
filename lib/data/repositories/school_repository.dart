@@ -23,8 +23,18 @@ class SchoolRepository {
       );
     }
 
-    return decoded
+    final schools = decoded
         .map((item) => School.fromJson(item as Map<String, dynamic>))
         .toList(growable: false);
+
+    // The seed must honour the contract documented in
+    // docs/02_Architecture.md §3.1. Without this guard a renamed key degrades
+    // into a catalog of blank cards instead of failing loudly in debug.
+    assert(
+      schools.every((school) => school.name.isNotEmpty),
+      'Seed contract mismatch: some schools parsed with an empty name.',
+    );
+
+    return schools;
   }
 }

@@ -1,0 +1,52 @@
+{
+  "EEE 503": {
+    "lat": -34.7762052,
+    "lon": -58.4092203,
+    "fuente": "Google Maps, revision manual TICK-036"
+  },
+  "ES 2": {
+    "lat": -34.8045751,
+    "lon": -58.4245222,
+    "fuente": "Google Maps, revision manual TICK-036"
+  },
+  "EEST 2": {
+    "lat": -34.7766306,
+    "lon": -58.408252,
+    "fuente": "Google Maps, revision manual TICK-036"
+  },
+  "942": {
+    "lat": -34.7344028,
+    "lon": -58.4754955,
+    "fuente": "Google Maps, revision manual TICK-036"
+  },
+  "952": {
+    "lat": -34.7278016,
+    "lon": -58.4971949,
+    "fuente": "Google Maps, revision manual TICK-036"
+  },
+  "EP 79": {
+    "lat": -34.7012184,
+    "lon": -58.4432762,
+    "fuente": "Google Maps, revision manual TICK-036"
+  },
+  "ES 35 (302)": {
+    "lat": -34.742191,
+    "lon": -58.4820213,
+    "fuente": "Google Maps, revision manual TICK-036"
+  },
+  "ES 71 (EP 94)": {
+    "lat": -34.7498983,
+    "lon": -58.4767221,
+    "fuente": "Google Maps, revision manual TICK-036"
+  },
+  "EEA 727": {
+    "lat": -34.7338108,
+    "lon": -58.4754043,
+    "fuente": "Google Maps, revision manual TICK-036"
+  },
+  "CENS 462": {
+    "lat": -34.71715,
+    "lon": -58.4607437,
+    "fuente": "Google Maps, revision manual TICK-036"
+  }
+}

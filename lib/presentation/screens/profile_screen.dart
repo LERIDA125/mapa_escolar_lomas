@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../providers/auth_providers.dart';
 import '../../providers/location_providers.dart';
+import '../../providers/school_providers.dart';
 import '../theme/app_theme.dart';
 import 'login_screen.dart';
 
@@ -29,6 +30,9 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
     final textTheme = Theme.of(context).textTheme;
     final maxRadiusBlocks = ref.watch(safeZoneRadiusProvider);
     final safeZoneEnabled = ref.watch(safeZoneEnabledProvider);
+    final visibleSchools =
+        ref.watch(filteredSchoolsProvider).value?.length ?? 0;
+    final totalSchools = ref.watch(schoolsProvider).value?.length ?? 0;
     final userDni = ref.watch(sessionProvider);
 
     return Scaffold(
@@ -124,8 +128,8 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                       Slider(
                         value: maxRadiusBlocks.toDouble(),
                         min: 5,
-                        max: 50,
-                        divisions: 9,
+                        max: 90,
+                        divisions: 17,
                         label: '$maxRadiusBlocks cuadras',
                         semanticFormatterCallback: (value) =>
                             '${value.round()} cuadras',
@@ -150,8 +154,27 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                               ),
                             ),
                             Text(
-                              '50 cuadras',
+                              '90 cuadras',
                               style: textTheme.labelSmall?.copyWith(
+                                color: AppColors.onSurfaceVariant,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(8, 8, 8, 0),
+                        child: Row(
+                          children: [
+                            const Icon(
+                              Icons.visibility_rounded,
+                              size: 16,
+                              color: AppColors.onSurfaceVariant,
+                            ),
+                            const SizedBox(width: 6),
+                            Text(
+                              '$visibleSchools de $totalSchools escuelas visibles',
+                              style: textTheme.bodySmall?.copyWith(
                                 color: AppColors.onSurfaceVariant,
                               ),
                             ),

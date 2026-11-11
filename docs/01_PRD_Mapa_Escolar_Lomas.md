@@ -7,7 +7,7 @@
     Frontend / Framework: Flutter (Dart). Permite empaquetar un APK de alto rendimiento, ideal para dispositivos Android de gama entrada/media.
     Almacenamiento Local (Offline): La base de datos de escuelas (nomenclador, direcciones, colectivos) reside estáticamente dentro del binario de la aplicación (assets/escuelas_seed.json), permitiendo búsquedas instantáneas sin depender de la conectividad.
     Gestión de Estado: Riverpod (exclusivo) para manejar la UI del comparador de escuelas.
-    Mapas (Online): flutter_map + latlong2 sobre tiles raster de OpenStreetMap. La geocodificación se resuelve en el ETL con Nominatim; la app no usa Google Maps ni API keys de mapas.
+    Mapas (Online): flutter_map + latlong2 sobre tiles raster de OpenStreetMap. La geocodificación se resuelve en el ETL con ArcGIS; la app no usa Google Maps ni API keys de mapas.
 3.  Alcance y MMP (Minimum Marketable Product)
     Buscador Autocompletado (Offline): Filtrado instantáneo por nombre/número de escuela desde los datos locales.
     Geolocalización Base: Punto de partida manual o automático por GPS.
@@ -71,7 +71,7 @@
     School "_" --> "\*" TransportLine : servida_por
 
 5.  Módulos del Sistema
-    Módulo 1: Data Ingestion (ETL): Script Python para parsear el documento base, limpiar la data, geocodificar direcciones con Nominatim (`geocoder.py`) y exportar un escuelas_seed.json.
+    Módulo 1: Data Ingestion (ETL): Script Python para parsear el documento base, limpiar la data, reparar coordenadas corruptas por Excel, geocodificar direcciones con ArcGIS (`reparador_automatico.py`) y exportar un escuelas_seed.json.
     Módulo 2: Interfaz de Búsqueda: Buscador local en Dart con filtrado case-insensitive por nombre, dirección y localidad sobre el JSON embebido en los assets.
     Módulo 3: Motor de Mapas: FlutterMap con tiles de OpenStreetMap y marcadores alimentados por Riverpod. El ruteo y las matrices de distancia quedan fuera del MMP actual.
     Módulo 4: Motor de Comparación: Gestor de estado que mantiene hasta 4 entidades en memoria y ordena por cercanía usando las coordenadas locales.
