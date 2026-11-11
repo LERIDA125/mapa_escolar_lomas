@@ -152,3 +152,53 @@ Salida esperada con el dataset actual:
 
 El seed que produce este script se versiona junto con el CSV: si cambia uno, cambia el otro en el mismo commit.
 
+## 8. Índice de Calles Offline
+
+La app es offline-first, así que el punto de partida del aspirante no puede depender de un geocodificador web. `generar_indice_calles.py` reutiliza el padrón de escuelas: agrupando las 310 direcciones por calle se obtiene un punto representativo por calle, suficiente para que el selector de origen vuele al barrio correcto y el usuario afine arrastrando el pin.
+
+```powershell
+python generar_indice_calles.py
+```
+
+| Entrada | Salida |
+| --- | --- |
+| `assets/escuelas_seed.json` | `assets/calles_lomas.json` |
+
+### Formato
+
+```json
+{
+  "name": "H. YRIGOYEN",
+  "search": "h yrigoyen",
+  "latitude": -34.763885,
+  "longitude": -58.403237,
+  "bounds": { "south": -34.790976, "west": -58.408799,
+              "north": -34.740736, "east": -58.398457 }
+}
+```
+
+- `search` viene prenormalizado (minúsculas, sin tildes, sin puntuación) para que el lado Dart solo tenga que normalizar la consulta.
+- `bounds` permite encuadrar la calle completa: `H. YRIGOYEN` tiene 9 escuelas repartidas en 5,5 km y un solo punto no la representa.
+- Las calles con un único punto de referencia se detectan en runtime (`isSinglePoint`) y el mapa hace `move` con zoom fijo en vez de `fitCamera`.
+
+### Extracción del nombre de calle
+
+| Dirección en el padrón | Calle derivada |
+| --- | --- |
+| `PENNA 93` | `PENNA` |
+| `ELIZALDE Y CALLE 7` | `ELIZALDE` |
+| `CAMPANA 534 E/PLUMERILLO Y M BRAVO` | `CAMPANA` |
+
+Se corta en la primera intersección (`Y`, `E/`, `ESQ.`) y se quita la altura final. `CALLE 7` conserva el número: sin él quedaría la calle genérica `CALLE`.
+
+### Búsqueda en la app
+
+El campo de domicilio usa matching por tokens, no substrings: el índice guarda nombres abreviados (`H. YRIGOYEN`, `ALTE. BROWN`), así que exigir la consulta completa haría que `Hipólito Yrigoyen` no encontrara nada. Los tokens de menos de 3 caracteres se descartan (`av`, `de`, `y`) para no contaminar el ranking, y las coincidencias de palabra completa puntúan más que las de prefijo (`san` muestra `SAN BLAS` antes que `F. SANCHEZ`).
+
+### Límite conocido
+
+El índice no resuelve altura de puerta: `Campana 534` lleva a la calle Campana, no al número 534. Con el radio de Zona Segura por defecto (30 cuadras ≈ 3 km), el desvío de unos cientos de metros no altera la decisión del filtro.
+
+Salida esperada con el seed actual: **165 calles**.
+
+

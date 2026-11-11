@@ -1,0 +1,1982 @@
+[
+  {
+    "name": "14 DE JULIO",
+    "search": "14 de julio",
+    "latitude": -34.744914,
+    "longitude": -58.395425,
+    "bounds": {
+      "south": -34.744914,
+      "west": -58.395425,
+      "north": -34.744914,
+      "east": -58.395425
+    }
+  },
+  {
+    "name": "9 DE FEBRERO",
+    "search": "9 de febrero",
+    "latitude": -34.793975,
+    "longitude": -58.434867,
+    "bounds": {
+      "south": -34.793975,
+      "west": -58.434867,
+      "north": -34.793975,
+      "east": -58.434867
+    }
+  },
+  {
+    "name": "9 DE JULIO",
+    "search": "9 de julio",
+    "latitude": -34.790073,
+    "longitude": -58.415447,
+    "bounds": {
+      "south": -34.790073,
+      "west": -58.415447,
+      "north": -34.790073,
+      "east": -58.415447
+    }
+  },
+  {
+    "name": "ACEVEDO",
+    "search": "acevedo",
+    "latitude": -34.758452,
+    "longitude": -58.400777,
+    "bounds": {
+      "south": -34.758452,
+      "west": -58.400777,
+      "north": -34.758452,
+      "east": -58.400777
+    }
+  },
+  {
+    "name": "ADOLFO ALSINA",
+    "search": "adolfo alsina",
+    "latitude": -34.74864,
+    "longitude": -58.396571,
+    "bounds": {
+      "south": -34.74864,
+      "west": -58.396571,
+      "north": -34.74864,
+      "east": -58.396571
+    }
+  },
+  {
+    "name": "ALAZAN",
+    "search": "alazan",
+    "latitude": -34.804575,
+    "longitude": -58.424522,
+    "bounds": {
+      "south": -34.804575,
+      "west": -58.424522,
+      "north": -34.804575,
+      "east": -58.424522
+    }
+  },
+  {
+    "name": "ALBARRACIN",
+    "search": "albarracin",
+    "latitude": -34.775651,
+    "longitude": -58.388937,
+    "bounds": {
+      "south": -34.775651,
+      "west": -58.388937,
+      "north": -34.775651,
+      "east": -58.388937
+    }
+  },
+  {
+    "name": "ALEMANDRI",
+    "search": "alemandri",
+    "latitude": -34.77107,
+    "longitude": -58.396928,
+    "bounds": {
+      "south": -34.77107,
+      "west": -58.396928,
+      "north": -34.77107,
+      "east": -58.396928
+    }
+  },
+  {
+    "name": "ALSINA",
+    "search": "alsina",
+    "latitude": -34.742572,
+    "longitude": -58.392987,
+    "bounds": {
+      "south": -34.745055,
+      "west": -58.393378,
+      "north": -34.737604,
+      "east": -58.392205
+    }
+  },
+  {
+    "name": "ALTE. BROWN",
+    "search": "alte brown",
+    "latitude": -34.754104,
+    "longitude": -58.398545,
+    "bounds": {
+      "south": -34.761765,
+      "west": -58.401393,
+      "north": -34.744128,
+      "east": -58.39464
+    }
+  },
+  {
+    "name": "ALVEAR",
+    "search": "alvear",
+    "latitude": -34.747682,
+    "longitude": -58.405912,
+    "bounds": {
+      "south": -34.747682,
+      "west": -58.405912,
+      "north": -34.747682,
+      "east": -58.405912
+    }
+  },
+  {
+    "name": "ANDRES BELLO",
+    "search": "andres bello",
+    "latitude": -34.727141,
+    "longitude": -58.46081,
+    "bounds": {
+      "south": -34.727141,
+      "west": -58.46081,
+      "north": -34.727141,
+      "east": -58.46081
+    }
+  },
+  {
+    "name": "ANGEL GALLARDO",
+    "search": "angel gallardo",
+    "latitude": -34.769373,
+    "longitude": -58.395231,
+    "bounds": {
+      "south": -34.769373,
+      "west": -58.395231,
+      "north": -34.769373,
+      "east": -58.395231
+    }
+  },
+  {
+    "name": "ANT. ARGENTINA",
+    "search": "ant argentina",
+    "latitude": -34.800896,
+    "longitude": -58.43151,
+    "bounds": {
+      "south": -34.804639,
+      "west": -58.43935,
+      "north": -34.793411,
+      "east": -58.415831
+    }
+  },
+  {
+    "name": "ANTARTIDA ARGENTINA",
+    "search": "antartida argentina",
+    "latitude": -34.793091,
+    "longitude": -58.415342,
+    "bounds": {
+      "south": -34.793091,
+      "west": -58.415342,
+      "north": -34.793091,
+      "east": -58.415342
+    }
+  },
+  {
+    "name": "ARAGON",
+    "search": "aragon",
+    "latitude": -34.788131,
+    "longitude": -58.419635,
+    "bounds": {
+      "south": -34.788131,
+      "west": -58.419635,
+      "north": -34.788131,
+      "east": -58.419635
+    }
+  },
+  {
+    "name": "ARAGUAYA",
+    "search": "araguaya",
+    "latitude": -34.78835,
+    "longitude": -58.420801,
+    "bounds": {
+      "south": -34.78835,
+      "west": -58.420801,
+      "north": -34.78835,
+      "east": -58.420801
+    }
+  },
+  {
+    "name": "ARAOZ 24 DE MAYO",
+    "search": "araoz 24 de mayo",
+    "latitude": -34.747573,
+    "longitude": -58.400505,
+    "bounds": {
+      "south": -34.747573,
+      "west": -58.400505,
+      "north": -34.747573,
+      "east": -58.400505
+    }
+  },
+  {
+    "name": "AV. EVA PERON",
+    "search": "av eva peron",
+    "latitude": -34.77281,
+    "longitude": -58.383615,
+    "bounds": {
+      "south": -34.77281,
+      "west": -58.383615,
+      "north": -34.77281,
+      "east": -58.383615
+    }
+  },
+  {
+    "name": "AYOLAS",
+    "search": "ayolas",
+    "latitude": -34.708243,
+    "longitude": -58.436543,
+    "bounds": {
+      "south": -34.708243,
+      "west": -58.436543,
+      "north": -34.708243,
+      "east": -58.436543
+    }
+  },
+  {
+    "name": "AZAMOR",
+    "search": "azamor",
+    "latitude": -34.701218,
+    "longitude": -58.443276,
+    "bounds": {
+      "south": -34.701218,
+      "west": -58.443276,
+      "north": -34.701218,
+      "east": -58.443276
+    }
+  },
+  {
+    "name": "AÑO DEL LIBERTADOR",
+    "search": "ano del libertador",
+    "latitude": -34.773171,
+    "longitude": -58.442131,
+    "bounds": {
+      "south": -34.773171,
+      "west": -58.442131,
+      "north": -34.773171,
+      "east": -58.442131
+    }
+  },
+  {
+    "name": "B DE IRIGOYEN",
+    "search": "b de irigoyen",
+    "latitude": -34.774308,
+    "longitude": -58.399459,
+    "bounds": {
+      "south": -34.778773,
+      "west": -58.4009,
+      "north": -34.769843,
+      "east": -58.398018
+    }
+  },
+  {
+    "name": "BALCARCE",
+    "search": "balcarce",
+    "latitude": -34.76229,
+    "longitude": -58.393058,
+    "bounds": {
+      "south": -34.76229,
+      "west": -58.393058,
+      "north": -34.76229,
+      "east": -58.393058
+    }
+  },
+  {
+    "name": "BARBIERI",
+    "search": "barbieri",
+    "latitude": -34.745191,
+    "longitude": -58.429058,
+    "bounds": {
+      "south": -34.745191,
+      "west": -58.429058,
+      "north": -34.745191,
+      "east": -58.429058
+    }
+  },
+  {
+    "name": "BARCELO",
+    "search": "barcelo",
+    "latitude": -34.745721,
+    "longitude": -58.366767,
+    "bounds": {
+      "south": -34.745721,
+      "west": -58.366767,
+      "north": -34.745721,
+      "east": -58.366767
+    }
+  },
+  {
+    "name": "BELEN",
+    "search": "belen",
+    "latitude": -34.7485,
+    "longitude": -58.443405,
+    "bounds": {
+      "south": -34.7485,
+      "west": -58.443405,
+      "north": -34.7485,
+      "east": -58.443405
+    }
+  },
+  {
+    "name": "BELGRANO",
+    "search": "belgrano",
+    "latitude": -34.752426,
+    "longitude": -58.39331,
+    "bounds": {
+      "south": -34.752426,
+      "west": -58.39331,
+      "north": -34.752426,
+      "east": -58.39331
+    }
+  },
+  {
+    "name": "BENAVENTE",
+    "search": "benavente",
+    "latitude": -34.759866,
+    "longitude": -58.434263,
+    "bounds": {
+      "south": -34.759866,
+      "west": -58.434263,
+      "north": -34.759866,
+      "east": -58.434263
+    }
+  },
+  {
+    "name": "BOULOGNE SUR MER",
+    "search": "boulogne sur mer",
+    "latitude": -34.75047,
+    "longitude": -58.3715,
+    "bounds": {
+      "south": -34.75047,
+      "west": -58.3715,
+      "north": -34.75047,
+      "east": -58.3715
+    }
+  },
+  {
+    "name": "BUCAREST",
+    "search": "bucarest",
+    "latitude": -34.725832,
+    "longitude": -58.446576,
+    "bounds": {
+      "south": -34.725969,
+      "west": -58.446695,
+      "north": -34.725696,
+      "east": -58.446457
+    }
+  },
+  {
+    "name": "BUCARET",
+    "search": "bucaret",
+    "latitude": -34.737821,
+    "longitude": -58.449149,
+    "bounds": {
+      "south": -34.737821,
+      "west": -58.449149,
+      "north": -34.737821,
+      "east": -58.449149
+    }
+  },
+  {
+    "name": "BUCARETT",
+    "search": "bucarett",
+    "latitude": -34.736768,
+    "longitude": -58.456896,
+    "bounds": {
+      "south": -34.739002,
+      "west": -58.457048,
+      "north": -34.734534,
+      "east": -58.456745
+    }
+  },
+  {
+    "name": "BUSTOS",
+    "search": "bustos",
+    "latitude": -34.760135,
+    "longitude": -58.447738,
+    "bounds": {
+      "south": -34.760135,
+      "west": -58.447738,
+      "north": -34.760135,
+      "east": -58.447738
+    }
+  },
+  {
+    "name": "C. VIGIL",
+    "search": "c vigil",
+    "latitude": -34.749804,
+    "longitude": -58.44632,
+    "bounds": {
+      "south": -34.749804,
+      "west": -58.44632,
+      "north": -34.749804,
+      "east": -58.44632
+    }
+  },
+  {
+    "name": "CAMPANA",
+    "search": "campana",
+    "latitude": -34.706085,
+    "longitude": -58.444831,
+    "bounds": {
+      "south": -34.713491,
+      "west": -58.454437,
+      "north": -34.701773,
+      "east": -58.439078
+    }
+  },
+  {
+    "name": "CAMPOAMOR",
+    "search": "campoamor",
+    "latitude": -34.707309,
+    "longitude": -58.460763,
+    "bounds": {
+      "south": -34.709319,
+      "west": -58.461486,
+      "north": -34.706517,
+      "east": -58.459002
+    }
+  },
+  {
+    "name": "CAMPOS",
+    "search": "campos",
+    "latitude": -34.755195,
+    "longitude": -58.378154,
+    "bounds": {
+      "south": -34.755195,
+      "west": -58.378154,
+      "north": -34.755195,
+      "east": -58.378154
+    }
+  },
+  {
+    "name": "CARAZA",
+    "search": "caraza",
+    "latitude": -34.734103,
+    "longitude": -58.425875,
+    "bounds": {
+      "south": -34.734103,
+      "west": -58.425875,
+      "north": -34.734103,
+      "east": -58.425875
+    }
+  },
+  {
+    "name": "CAROLINA MUZZILLI",
+    "search": "carolina muzzilli",
+    "latitude": -34.772224,
+    "longitude": -58.434617,
+    "bounds": {
+      "south": -34.772224,
+      "west": -58.434617,
+      "north": -34.772224,
+      "east": -58.434617
+    }
+  },
+  {
+    "name": "CASTELLI",
+    "search": "castelli",
+    "latitude": -34.751815,
+    "longitude": -58.412318,
+    "bounds": {
+      "south": -34.752656,
+      "west": -58.419836,
+      "north": -34.750642,
+      "east": -58.407197
+    }
+  },
+  {
+    "name": "CASTRO",
+    "search": "castro",
+    "latitude": -34.751691,
+    "longitude": -58.443277,
+    "bounds": {
+      "south": -34.751691,
+      "west": -58.443277,
+      "north": -34.751691,
+      "east": -58.443277
+    }
+  },
+  {
+    "name": "CELINA MINETTO",
+    "search": "celina minetto",
+    "latitude": -34.741029,
+    "longitude": -58.399983,
+    "bounds": {
+      "south": -34.741029,
+      "west": -58.399983,
+      "north": -34.741029,
+      "east": -58.399983
+    }
+  },
+  {
+    "name": "CHAMPAGNAT",
+    "search": "champagnat",
+    "latitude": -34.757923,
+    "longitude": -58.402566,
+    "bounds": {
+      "south": -34.758842,
+      "west": -58.406545,
+      "north": -34.757003,
+      "east": -58.398587
+    }
+  },
+  {
+    "name": "CHOPIN",
+    "search": "chopin",
+    "latitude": -34.751339,
+    "longitude": -58.432499,
+    "bounds": {
+      "south": -34.751339,
+      "west": -58.432499,
+      "north": -34.751339,
+      "east": -58.432499
+    }
+  },
+  {
+    "name": "CIPOLETTI",
+    "search": "cipoletti",
+    "latitude": -34.717905,
+    "longitude": -58.461843,
+    "bounds": {
+      "south": -34.717905,
+      "west": -58.461843,
+      "north": -34.717905,
+      "east": -58.461843
+    }
+  },
+  {
+    "name": "CIPOLLETTI",
+    "search": "cipolletti",
+    "latitude": -34.718077,
+    "longitude": -58.462362,
+    "bounds": {
+      "south": -34.718077,
+      "west": -58.462362,
+      "north": -34.718077,
+      "east": -58.462362
+    }
+  },
+  {
+    "name": "CNO. CINTURA",
+    "search": "cno cintura",
+    "latitude": -34.71715,
+    "longitude": -58.460744,
+    "bounds": {
+      "south": -34.71715,
+      "west": -58.460744,
+      "north": -34.71715,
+      "east": -58.460744
+    }
+  },
+  {
+    "name": "CONCEPCION",
+    "search": "concepcion",
+    "latitude": -34.753175,
+    "longitude": -58.340403,
+    "bounds": {
+      "south": -34.753175,
+      "west": -58.340403,
+      "north": -34.753175,
+      "east": -58.340403
+    }
+  },
+  {
+    "name": "CUYO",
+    "search": "cuyo",
+    "latitude": -34.808641,
+    "longitude": -58.422407,
+    "bounds": {
+      "south": -34.808641,
+      "west": -58.422407,
+      "north": -34.808641,
+      "east": -58.422407
+    }
+  },
+  {
+    "name": "DARWIN",
+    "search": "darwin",
+    "latitude": -34.693644,
+    "longitude": -58.445713,
+    "bounds": {
+      "south": -34.693644,
+      "west": -58.445713,
+      "north": -34.693644,
+      "east": -58.445713
+    }
+  },
+  {
+    "name": "DR MELBER",
+    "search": "dr melber",
+    "latitude": -34.808077,
+    "longitude": -58.424879,
+    "bounds": {
+      "south": -34.808077,
+      "west": -58.424879,
+      "north": -34.808077,
+      "east": -58.424879
+    }
+  },
+  {
+    "name": "EJERCITO DE LOS ANDES",
+    "search": "ejercito de los andes",
+    "latitude": -34.721748,
+    "longitude": -58.443222,
+    "bounds": {
+      "south": -34.721748,
+      "west": -58.443222,
+      "north": -34.721748,
+      "east": -58.443222
+    }
+  },
+  {
+    "name": "EL PLUMERILLO",
+    "search": "el plumerillo",
+    "latitude": -34.710292,
+    "longitude": -58.438577,
+    "bounds": {
+      "south": -34.710292,
+      "west": -58.438577,
+      "north": -34.710292,
+      "east": -58.438577
+    }
+  },
+  {
+    "name": "EL TORDO",
+    "search": "el tordo",
+    "latitude": -34.759467,
+    "longitude": -58.361186,
+    "bounds": {
+      "south": -34.760317,
+      "west": -58.368788,
+      "north": -34.758616,
+      "east": -58.353584
+    }
+  },
+  {
+    "name": "EL TREBOL",
+    "search": "el trebol",
+    "latitude": -34.755064,
+    "longitude": -58.357273,
+    "bounds": {
+      "south": -34.758219,
+      "west": -58.366765,
+      "north": -34.753233,
+      "east": -58.35252
+    }
+  },
+  {
+    "name": "EL ZORZAL",
+    "search": "el zorzal",
+    "latitude": -34.769936,
+    "longitude": -58.370437,
+    "bounds": {
+      "south": -34.770022,
+      "west": -58.370921,
+      "north": -34.769807,
+      "east": -58.369712
+    }
+  },
+  {
+    "name": "ELIZALDE",
+    "search": "elizalde",
+    "latitude": -34.734434,
+    "longitude": -58.486653,
+    "bounds": {
+      "south": -34.739282,
+      "west": -58.497195,
+      "north": -34.727802,
+      "east": -58.474021
+    }
+  },
+  {
+    "name": "ENTRE COLON",
+    "search": "entre colon",
+    "latitude": -34.776205,
+    "longitude": -58.40922,
+    "bounds": {
+      "south": -34.776205,
+      "west": -58.40922,
+      "north": -34.776205,
+      "east": -58.40922
+    }
+  },
+  {
+    "name": "ESMERALDA",
+    "search": "esmeralda",
+    "latitude": -34.771032,
+    "longitude": -58.39248,
+    "bounds": {
+      "south": -34.771032,
+      "west": -58.39248,
+      "north": -34.771032,
+      "east": -58.39248
+    }
+  },
+  {
+    "name": "ESPRONCEDA",
+    "search": "espronceda",
+    "latitude": -34.734092,
+    "longitude": -58.447166,
+    "bounds": {
+      "south": -34.738879,
+      "west": -58.463083,
+      "north": -34.7142,
+      "east": -58.443536
+    }
+  },
+  {
+    "name": "EVA PERON",
+    "search": "eva peron",
+    "latitude": -34.775651,
+    "longitude": -58.388937,
+    "bounds": {
+      "south": -34.775651,
+      "west": -58.388937,
+      "north": -34.775651,
+      "east": -58.388937
+    }
+  },
+  {
+    "name": "F. SANCHEZ",
+    "search": "f sanchez",
+    "latitude": -34.751691,
+    "longitude": -58.443277,
+    "bounds": {
+      "south": -34.751691,
+      "west": -58.443277,
+      "north": -34.751691,
+      "east": -58.443277
+    }
+  },
+  {
+    "name": "FIGUEREDO",
+    "search": "figueredo",
+    "latitude": -34.710028,
+    "longitude": -58.455933,
+    "bounds": {
+      "south": -34.710028,
+      "west": -58.455933,
+      "north": -34.710028,
+      "east": -58.455933
+    }
+  },
+  {
+    "name": "G. MIRO",
+    "search": "g miro",
+    "latitude": -34.708819,
+    "longitude": -58.451766,
+    "bounds": {
+      "south": -34.709397,
+      "west": -58.452284,
+      "north": -34.708241,
+      "east": -58.451248
+    }
+  },
+  {
+    "name": "G. MISTRAL",
+    "search": "g mistral",
+    "latitude": -34.734553,
+    "longitude": -58.410898,
+    "bounds": {
+      "south": -34.744645,
+      "west": -58.421233,
+      "north": -34.729239,
+      "east": -58.391232
+    }
+  },
+  {
+    "name": "GARIBALDI",
+    "search": "garibaldi",
+    "latitude": -34.7741,
+    "longitude": -58.410007,
+    "bounds": {
+      "south": -34.776678,
+      "west": -58.414503,
+      "north": -34.768943,
+      "east": -58.401014
+    }
+  },
+  {
+    "name": "GARONA",
+    "search": "garona",
+    "latitude": -34.764328,
+    "longitude": -58.409444,
+    "bounds": {
+      "south": -34.764328,
+      "west": -58.409444,
+      "north": -34.764328,
+      "east": -58.409444
+    }
+  },
+  {
+    "name": "GASCON 150 ALSINA",
+    "search": "gascon 150 alsina",
+    "latitude": -34.741124,
+    "longitude": -58.396505,
+    "bounds": {
+      "south": -34.741124,
+      "west": -58.396505,
+      "north": -34.741124,
+      "east": -58.396505
+    }
+  },
+  {
+    "name": "GINEBRA 1819 (O 48)",
+    "search": "ginebra 1819 o 48",
+    "latitude": -34.734715,
+    "longitude": -58.456092,
+    "bounds": {
+      "south": -34.734715,
+      "west": -58.456092,
+      "north": -34.734715,
+      "east": -58.456092
+    }
+  },
+  {
+    "name": "GOLONDRINA",
+    "search": "golondrina",
+    "latitude": -34.762265,
+    "longitude": -58.353649,
+    "bounds": {
+      "south": -34.762265,
+      "west": -58.353649,
+      "north": -34.762265,
+      "east": -58.353649
+    }
+  },
+  {
+    "name": "GORRITI",
+    "search": "gorriti",
+    "latitude": -34.762278,
+    "longitude": -58.398217,
+    "bounds": {
+      "south": -34.762278,
+      "west": -58.398217,
+      "north": -34.762278,
+      "east": -58.398217
+    }
+  },
+  {
+    "name": "GUIDY DE FRANC",
+    "search": "guidy de franc",
+    "latitude": -34.758118,
+    "longitude": -58.402922,
+    "bounds": {
+      "south": -34.761278,
+      "west": -58.405662,
+      "north": -34.754958,
+      "east": -58.400182
+    }
+  },
+  {
+    "name": "H. YRIGOYEN",
+    "search": "h yrigoyen",
+    "latitude": -34.763885,
+    "longitude": -58.403237,
+    "bounds": {
+      "south": -34.790976,
+      "west": -58.408799,
+      "north": -34.740736,
+      "east": -58.398457
+    }
+  },
+  {
+    "name": "HEREDIA",
+    "search": "heredia",
+    "latitude": -34.771178,
+    "longitude": -58.360766,
+    "bounds": {
+      "south": -34.771178,
+      "west": -58.360766,
+      "north": -34.771178,
+      "east": -58.360766
+    }
+  },
+  {
+    "name": "HIPÓLITO YRIGOYEN",
+    "search": "hipolito yrigoyen",
+    "latitude": -34.764567,
+    "longitude": -58.419704,
+    "bounds": {
+      "south": -34.764567,
+      "west": -58.419704,
+      "north": -34.764567,
+      "east": -58.419704
+    }
+  },
+  {
+    "name": "HOMERO",
+    "search": "homero",
+    "latitude": -34.736895,
+    "longitude": -58.460695,
+    "bounds": {
+      "south": -34.742916,
+      "west": -58.465249,
+      "north": -34.730641,
+      "east": -58.456179
+    }
+  },
+  {
+    "name": "HOMERO MANZI",
+    "search": "homero manzi",
+    "latitude": -34.754479,
+    "longitude": -58.397839,
+    "bounds": {
+      "south": -34.754479,
+      "west": -58.397839,
+      "north": -34.754479,
+      "east": -58.397839
+    }
+  },
+  {
+    "name": "HUERGO",
+    "search": "huergo",
+    "latitude": -34.780821,
+    "longitude": -58.411593,
+    "bounds": {
+      "south": -34.780821,
+      "west": -58.411593,
+      "north": -34.780821,
+      "east": -58.411593
+    }
+  },
+  {
+    "name": "I. GOMEZ",
+    "search": "i gomez",
+    "latitude": -34.782762,
+    "longitude": -58.38768,
+    "bounds": {
+      "south": -34.782762,
+      "west": -58.38768,
+      "north": -34.782762,
+      "east": -58.38768
+    }
+  },
+  {
+    "name": "ISLANDIA",
+    "search": "islandia",
+    "latitude": -34.715888,
+    "longitude": -58.437959,
+    "bounds": {
+      "south": -34.715888,
+      "west": -58.437959,
+      "north": -34.715888,
+      "east": -58.437959
+    }
+  },
+  {
+    "name": "J. M. DE ROSAS",
+    "search": "j m de rosas",
+    "latitude": -34.739282,
+    "longitude": -58.488745,
+    "bounds": {
+      "south": -34.739282,
+      "west": -58.488745,
+      "north": -34.739282,
+      "east": -58.488745
+    }
+  },
+  {
+    "name": "J. M. PENNA",
+    "search": "j m penna",
+    "latitude": -34.759095,
+    "longitude": -58.4022,
+    "bounds": {
+      "south": -34.762086,
+      "west": -58.403942,
+      "north": -34.756104,
+      "east": -58.400459
+    }
+  },
+  {
+    "name": "JUNCAL",
+    "search": "juncal",
+    "latitude": -34.769299,
+    "longitude": -58.394874,
+    "bounds": {
+      "south": -34.769299,
+      "west": -58.394874,
+      "north": -34.769299,
+      "east": -58.394874
+    }
+  },
+  {
+    "name": "L. DE LA TORRE",
+    "search": "l de la torre",
+    "latitude": -34.75084,
+    "longitude": -58.419776,
+    "bounds": {
+      "south": -34.753436,
+      "west": -58.438754,
+      "north": -34.748243,
+      "east": -58.400799
+    }
+  },
+  {
+    "name": "LA HAYA",
+    "search": "la haya",
+    "latitude": -34.729498,
+    "longitude": -58.452196,
+    "bounds": {
+      "south": -34.729498,
+      "west": -58.452196,
+      "north": -34.729498,
+      "east": -58.452196
+    }
+  },
+  {
+    "name": "LA MADRESELVA",
+    "search": "la madreselva",
+    "latitude": -34.777275,
+    "longitude": -58.392688,
+    "bounds": {
+      "south": -34.777275,
+      "west": -58.392688,
+      "north": -34.777275,
+      "east": -58.392688
+    }
+  },
+  {
+    "name": "LABARDEN",
+    "search": "labarden",
+    "latitude": -34.733227,
+    "longitude": -58.456431,
+    "bounds": {
+      "south": -34.733227,
+      "west": -58.456431,
+      "north": -34.733227,
+      "east": -58.456431
+    }
+  },
+  {
+    "name": "LAPRIDA",
+    "search": "laprida",
+    "latitude": -34.758073,
+    "longitude": -58.419913,
+    "bounds": {
+      "south": -34.758203,
+      "west": -58.420828,
+      "north": -34.757955,
+      "east": -58.419348
+    }
+  },
+  {
+    "name": "LARRAZABAL",
+    "search": "larrazabal",
+    "latitude": -34.697491,
+    "longitude": -58.444513,
+    "bounds": {
+      "south": -34.697491,
+      "west": -58.444513,
+      "north": -34.697491,
+      "east": -58.444513
+    }
+  },
+  {
+    "name": "LARROQUE",
+    "search": "larroque",
+    "latitude": -34.742989,
+    "longitude": -58.412188,
+    "bounds": {
+      "south": -34.745252,
+      "west": -58.426521,
+      "north": -34.740981,
+      "east": -58.397184
+    }
+  },
+  {
+    "name": "LAS HERAS",
+    "search": "las heras",
+    "latitude": -34.749519,
+    "longitude": -58.401432,
+    "bounds": {
+      "south": -34.749732,
+      "west": -58.402558,
+      "north": -34.749306,
+      "east": -58.400306
+    }
+  },
+  {
+    "name": "LAS TROPAS",
+    "search": "las tropas",
+    "latitude": -34.740844,
+    "longitude": -58.435801,
+    "bounds": {
+      "south": -34.740844,
+      "west": -58.435801,
+      "north": -34.740844,
+      "east": -58.435801
+    }
+  },
+  {
+    "name": "LAVALLE",
+    "search": "lavalle",
+    "latitude": -34.777027,
+    "longitude": -58.40909,
+    "bounds": {
+      "south": -34.777027,
+      "west": -58.40909,
+      "north": -34.777027,
+      "east": -58.40909
+    }
+  },
+  {
+    "name": "LOS ROBLES",
+    "search": "los robles",
+    "latitude": -34.765209,
+    "longitude": -58.43151,
+    "bounds": {
+      "south": -34.765209,
+      "west": -58.43151,
+      "north": -34.765209,
+      "east": -58.43151
+    }
+  },
+  {
+    "name": "M. ARROTEA",
+    "search": "m arrotea",
+    "latitude": -34.76706,
+    "longitude": -58.416,
+    "bounds": {
+      "south": -34.76706,
+      "west": -58.416,
+      "north": -34.76706,
+      "east": -58.416
+    }
+  },
+  {
+    "name": "M. CANE",
+    "search": "m cane",
+    "latitude": -34.74933,
+    "longitude": -58.378596,
+    "bounds": {
+      "south": -34.74933,
+      "west": -58.378596,
+      "north": -34.74933,
+      "east": -58.378596
+    }
+  },
+  {
+    "name": "M. CASTRO",
+    "search": "m castro",
+    "latitude": -34.746604,
+    "longitude": -58.401235,
+    "bounds": {
+      "south": -34.75963,
+      "west": -58.403863,
+      "north": -34.742262,
+      "east": -58.400359
+    }
+  },
+  {
+    "name": "M. J. TELLO",
+    "search": "m j tello",
+    "latitude": -34.742191,
+    "longitude": -58.482021,
+    "bounds": {
+      "south": -34.742191,
+      "west": -58.482021,
+      "north": -34.742191,
+      "east": -58.482021
+    }
+  },
+  {
+    "name": "MACHADO",
+    "search": "machado",
+    "latitude": -34.714892,
+    "longitude": -58.465839,
+    "bounds": {
+      "south": -34.714927,
+      "west": -58.465854,
+      "north": -34.714856,
+      "east": -58.465824
+    }
+  },
+  {
+    "name": "MANUELA PEDRAZA",
+    "search": "manuela pedraza",
+    "latitude": -34.741877,
+    "longitude": -58.473073,
+    "bounds": {
+      "south": -34.741877,
+      "west": -58.473073,
+      "north": -34.741877,
+      "east": -58.473073
+    }
+  },
+  {
+    "name": "MASCAGNI",
+    "search": "mascagni",
+    "latitude": -34.751542,
+    "longitude": -58.432924,
+    "bounds": {
+      "south": -34.751759,
+      "west": -58.432961,
+      "north": -34.751326,
+      "east": -58.432887
+    }
+  },
+  {
+    "name": "MASSAD",
+    "search": "massad",
+    "latitude": -34.734403,
+    "longitude": -58.475496,
+    "bounds": {
+      "south": -34.734403,
+      "west": -58.475496,
+      "north": -34.734403,
+      "east": -58.475496
+    }
+  },
+  {
+    "name": "MEDRANO",
+    "search": "medrano",
+    "latitude": -34.748419,
+    "longitude": -58.393011,
+    "bounds": {
+      "south": -34.748419,
+      "west": -58.393011,
+      "north": -34.748419,
+      "east": -58.393011
+    }
+  },
+  {
+    "name": "MEEKS",
+    "search": "meeks",
+    "latitude": -34.770626,
+    "longitude": -58.397982,
+    "bounds": {
+      "south": -34.770626,
+      "west": -58.397982,
+      "north": -34.770626,
+      "east": -58.397982
+    }
+  },
+  {
+    "name": "MERCEDES",
+    "search": "mercedes",
+    "latitude": -34.807034,
+    "longitude": -58.420894,
+    "bounds": {
+      "south": -34.807104,
+      "west": -58.421091,
+      "north": -34.806997,
+      "east": -58.420839
+    }
+  },
+  {
+    "name": "MEXICO",
+    "search": "mexico",
+    "latitude": -34.74709,
+    "longitude": -58.361044,
+    "bounds": {
+      "south": -34.772172,
+      "west": -58.400765,
+      "north": -34.740819,
+      "east": -58.351114
+    }
+  },
+  {
+    "name": "MINETTO",
+    "search": "minetto",
+    "latitude": -34.7483,
+    "longitude": -58.391416,
+    "bounds": {
+      "south": -34.7483,
+      "west": -58.391416,
+      "north": -34.7483,
+      "east": -58.391416
+    }
+  },
+  {
+    "name": "MIRO",
+    "search": "miro",
+    "latitude": -34.734823,
+    "longitude": -58.410688,
+    "bounds": {
+      "south": -34.747276,
+      "west": -58.452347,
+      "north": -34.708064,
+      "east": -58.393179
+    }
+  },
+  {
+    "name": "MONROE",
+    "search": "monroe",
+    "latitude": -34.773944,
+    "longitude": -58.40242,
+    "bounds": {
+      "south": -34.773944,
+      "west": -58.40242,
+      "north": -34.773944,
+      "east": -58.40242
+    }
+  },
+  {
+    "name": "MONSEÑOR PIAGGIO",
+    "search": "monsenor piaggio",
+    "latitude": -34.764812,
+    "longitude": -58.420905,
+    "bounds": {
+      "south": -34.764812,
+      "west": -58.420905,
+      "north": -34.764812,
+      "east": -58.420905
+    }
+  },
+  {
+    "name": "MONTEZUMA",
+    "search": "montezuma",
+    "latitude": -34.771569,
+    "longitude": -58.398733,
+    "bounds": {
+      "south": -34.771931,
+      "west": -58.400487,
+      "north": -34.771208,
+      "east": -58.396979
+    }
+  },
+  {
+    "name": "MUZZILLI",
+    "search": "muzzilli",
+    "latitude": -34.773618,
+    "longitude": -58.437204,
+    "bounds": {
+      "south": -34.775013,
+      "west": -58.43979,
+      "north": -34.772224,
+      "east": -58.434617
+    }
+  },
+  {
+    "name": "N. DE LA PEÑA",
+    "search": "n de la pena",
+    "latitude": -34.785949,
+    "longitude": -58.431562,
+    "bounds": {
+      "south": -34.785949,
+      "west": -58.431562,
+      "north": -34.785949,
+      "east": -58.431562
+    }
+  },
+  {
+    "name": "NUÑEZ DE ARCE",
+    "search": "nunez de arce",
+    "latitude": -34.710214,
+    "longitude": -58.452178,
+    "bounds": {
+      "south": -34.710214,
+      "west": -58.452178,
+      "north": -34.710214,
+      "east": -58.452178
+    }
+  },
+  {
+    "name": "OLIMPO",
+    "search": "olimpo",
+    "latitude": -34.733811,
+    "longitude": -58.475404,
+    "bounds": {
+      "south": -34.733811,
+      "west": -58.475404,
+      "north": -34.733811,
+      "east": -58.475404
+    }
+  },
+  {
+    "name": "OLLEROS",
+    "search": "olleros",
+    "latitude": -34.792279,
+    "longitude": -58.432261,
+    "bounds": {
+      "south": -34.792279,
+      "west": -58.432261,
+      "north": -34.792279,
+      "east": -58.432261
+    }
+  },
+  {
+    "name": "OLMOS",
+    "search": "olmos",
+    "latitude": -34.761913,
+    "longitude": -58.446621,
+    "bounds": {
+      "south": -34.762738,
+      "west": -58.450632,
+      "north": -34.761098,
+      "east": -58.444452
+    }
+  },
+  {
+    "name": "ORAN",
+    "search": "oran",
+    "latitude": -34.727007,
+    "longitude": -58.477407,
+    "bounds": {
+      "south": -34.727007,
+      "west": -58.477407,
+      "north": -34.727007,
+      "east": -58.477407
+    }
+  },
+  {
+    "name": "P. MORENO",
+    "search": "p moreno",
+    "latitude": -34.783208,
+    "longitude": -58.392455,
+    "bounds": {
+      "south": -34.783208,
+      "west": -58.392455,
+      "north": -34.783208,
+      "east": -58.392455
+    }
+  },
+  {
+    "name": "PALACIOS",
+    "search": "palacios",
+    "latitude": -34.745093,
+    "longitude": -58.431301,
+    "bounds": {
+      "south": -34.745093,
+      "west": -58.431301,
+      "north": -34.745093,
+      "east": -58.431301
+    }
+  },
+  {
+    "name": "PASAJE GONZALEZ",
+    "search": "pasaje gonzalez",
+    "latitude": -34.758523,
+    "longitude": -58.401434,
+    "bounds": {
+      "south": -34.758523,
+      "west": -58.401434,
+      "north": -34.758523,
+      "east": -58.401434
+    }
+  },
+  {
+    "name": "PENNA",
+    "search": "penna",
+    "latitude": -34.758194,
+    "longitude": -58.41092,
+    "bounds": {
+      "south": -34.758194,
+      "west": -58.41092,
+      "north": -34.758194,
+      "east": -58.41092
+    }
+  },
+  {
+    "name": "PEREZ GALDOS",
+    "search": "perez galdos",
+    "latitude": -34.708379,
+    "longitude": -58.44904,
+    "bounds": {
+      "south": -34.708379,
+      "west": -58.44904,
+      "north": -34.708379,
+      "east": -58.44904
+    }
+  },
+  {
+    "name": "PERON",
+    "search": "peron",
+    "latitude": -34.72327,
+    "longitude": -58.444006,
+    "bounds": {
+      "south": -34.72327,
+      "west": -58.444006,
+      "north": -34.72327,
+      "east": -58.444006
+    }
+  },
+  {
+    "name": "PIEDRABUENA",
+    "search": "piedrabuena",
+    "latitude": -34.795072,
+    "longitude": -58.43232,
+    "bounds": {
+      "south": -34.795072,
+      "west": -58.43232,
+      "north": -34.795072,
+      "east": -58.43232
+    }
+  },
+  {
+    "name": "PILAR",
+    "search": "pilar",
+    "latitude": -34.702407,
+    "longitude": -58.440248,
+    "bounds": {
+      "south": -34.702407,
+      "west": -58.440248,
+      "north": -34.702407,
+      "east": -58.440248
+    }
+  },
+  {
+    "name": "PINTOS",
+    "search": "pintos",
+    "latitude": -34.748151,
+    "longitude": -58.374133,
+    "bounds": {
+      "south": -34.748151,
+      "west": -58.374133,
+      "north": -34.748151,
+      "east": -58.374133
+    }
+  },
+  {
+    "name": "PIO BAROJA",
+    "search": "pio baroja",
+    "latitude": -34.712354,
+    "longitude": -58.447543,
+    "bounds": {
+      "south": -34.714581,
+      "west": -58.448417,
+      "north": -34.711241,
+      "east": -58.445793
+    }
+  },
+  {
+    "name": "PIO COLLIVADINO",
+    "search": "pio collivadino",
+    "latitude": -34.774607,
+    "longitude": -58.394463,
+    "bounds": {
+      "south": -34.774607,
+      "west": -58.394463,
+      "north": -34.774607,
+      "east": -58.394463
+    }
+  },
+  {
+    "name": "PJE. SALADO",
+    "search": "pje salado",
+    "latitude": -34.779643,
+    "longitude": -58.379787,
+    "bounds": {
+      "south": -34.779643,
+      "west": -58.379787,
+      "north": -34.779643,
+      "east": -58.379787
+    }
+  },
+  {
+    "name": "POBLADORA",
+    "search": "pobladora",
+    "latitude": -34.791915,
+    "longitude": -58.433645,
+    "bounds": {
+      "south": -34.791915,
+      "west": -58.433645,
+      "north": -34.791915,
+      "east": -58.433645
+    }
+  },
+  {
+    "name": "PRINGLES",
+    "search": "pringles",
+    "latitude": -34.770683,
+    "longitude": -58.401539,
+    "bounds": {
+      "south": -34.770683,
+      "west": -58.401539,
+      "north": -34.770683,
+      "east": -58.401539
+    }
+  },
+  {
+    "name": "PTE. PERON",
+    "search": "pte peron",
+    "latitude": -34.72385,
+    "longitude": -58.444444,
+    "bounds": {
+      "south": -34.72385,
+      "west": -58.444444,
+      "north": -34.72385,
+      "east": -58.444444
+    }
+  },
+  {
+    "name": "PUEYRREDON",
+    "search": "pueyrredon",
+    "latitude": -34.749096,
+    "longitude": -58.391199,
+    "bounds": {
+      "south": -34.749096,
+      "west": -58.391199,
+      "north": -34.749096,
+      "east": -58.391199
+    }
+  },
+  {
+    "name": "QUESADA",
+    "search": "quesada",
+    "latitude": -34.724974,
+    "longitude": -58.463185,
+    "bounds": {
+      "south": -34.725294,
+      "west": -58.463696,
+      "north": -34.724652,
+      "east": -58.462807
+    }
+  },
+  {
+    "name": "QUILMES",
+    "search": "quilmes",
+    "latitude": -34.770063,
+    "longitude": -58.366177,
+    "bounds": {
+      "south": -34.770063,
+      "west": -58.366177,
+      "north": -34.770063,
+      "east": -58.366177
+    }
+  },
+  {
+    "name": "QUINTANA",
+    "search": "quintana",
+    "latitude": -34.743114,
+    "longitude": -58.379791,
+    "bounds": {
+      "south": -34.743114,
+      "west": -58.379791,
+      "north": -34.743114,
+      "east": -58.379791
+    }
+  },
+  {
+    "name": "QUIROGA",
+    "search": "quiroga",
+    "latitude": -34.749638,
+    "longitude": -58.475973,
+    "bounds": {
+      "south": -34.749898,
+      "west": -58.476722,
+      "north": -34.749378,
+      "east": -58.475224
+    }
+  },
+  {
+    "name": "R. FALCON",
+    "search": "r falcon",
+    "latitude": -34.764377,
+    "longitude": -58.425734,
+    "bounds": {
+      "south": -34.764377,
+      "west": -58.425734,
+      "north": -34.764377,
+      "east": -58.425734
+    }
+  },
+  {
+    "name": "R. PALMA",
+    "search": "r palma",
+    "latitude": -34.722688,
+    "longitude": -58.457882,
+    "bounds": {
+      "south": -34.738522,
+      "west": -58.464174,
+      "north": -34.714771,
+      "east": -58.445298
+    }
+  },
+  {
+    "name": "RAWSON",
+    "search": "rawson",
+    "latitude": -34.737882,
+    "longitude": -58.444073,
+    "bounds": {
+      "south": -34.737882,
+      "west": -58.444073,
+      "north": -34.737882,
+      "east": -58.444073
+    }
+  },
+  {
+    "name": "RICARDO PALMA",
+    "search": "ricardo palma",
+    "latitude": -34.738593,
+    "longitude": -58.445065,
+    "bounds": {
+      "south": -34.738593,
+      "west": -58.445065,
+      "north": -34.738593,
+      "east": -58.445065
+    }
+  },
+  {
+    "name": "SAENZ",
+    "search": "saenz",
+    "latitude": -34.757975,
+    "longitude": -58.402956,
+    "bounds": {
+      "south": -34.758,
+      "west": -58.403132,
+      "north": -34.75795,
+      "east": -58.40278
+    }
+  },
+  {
+    "name": "SAN BLAS",
+    "search": "san blas",
+    "latitude": -34.789749,
+    "longitude": -58.414434,
+    "bounds": {
+      "south": -34.789749,
+      "west": -58.414434,
+      "north": -34.789749,
+      "east": -58.414434
+    }
+  },
+  {
+    "name": "SANTA CRUZ",
+    "search": "santa cruz",
+    "latitude": -34.747728,
+    "longitude": -58.356073,
+    "bounds": {
+      "south": -34.747728,
+      "west": -58.356073,
+      "north": -34.747728,
+      "east": -58.356073
+    }
+  },
+  {
+    "name": "SANTA FE",
+    "search": "santa fe",
+    "latitude": -34.740917,
+    "longitude": -58.418281,
+    "bounds": {
+      "south": -34.740917,
+      "west": -58.418281,
+      "north": -34.740917,
+      "east": -58.418281
+    }
+  },
+  {
+    "name": "SANTOS VEGA",
+    "search": "santos vega",
+    "latitude": -34.804311,
+    "longitude": -58.424132,
+    "bounds": {
+      "south": -34.804311,
+      "west": -58.424132,
+      "north": -34.804311,
+      "east": -58.424132
+    }
+  },
+  {
+    "name": "SENILLOSA",
+    "search": "senillosa",
+    "latitude": -34.769518,
+    "longitude": -58.369372,
+    "bounds": {
+      "south": -34.769518,
+      "west": -58.369372,
+      "north": -34.769518,
+      "east": -58.369372
+    }
+  },
+  {
+    "name": "SICILIANO",
+    "search": "siciliano",
+    "latitude": -34.741803,
+    "longitude": -58.410541,
+    "bounds": {
+      "south": -34.745187,
+      "west": -58.429765,
+      "north": -34.73842,
+      "east": -58.391317
+    }
+  },
+  {
+    "name": "SIRITO",
+    "search": "sirito",
+    "latitude": -34.760547,
+    "longitude": -58.39804,
+    "bounds": {
+      "south": -34.760547,
+      "west": -58.39804,
+      "north": -34.760547,
+      "east": -58.39804
+    }
+  },
+  {
+    "name": "SOLDADO BENITEZ",
+    "search": "soldado benitez",
+    "latitude": -34.744426,
+    "longitude": -58.469939,
+    "bounds": {
+      "south": -34.744426,
+      "west": -58.469939,
+      "north": -34.744426,
+      "east": -58.469939
+    }
+  },
+  {
+    "name": "SOLER",
+    "search": "soler",
+    "latitude": -34.776631,
+    "longitude": -58.408252,
+    "bounds": {
+      "south": -34.776631,
+      "west": -58.408252,
+      "north": -34.776631,
+      "east": -58.408252
+    }
+  },
+  {
+    "name": "STA. MARÍA DE ORO",
+    "search": "sta maria de oro",
+    "latitude": -34.775312,
+    "longitude": -58.395108,
+    "bounds": {
+      "south": -34.775312,
+      "west": -58.395108,
+      "north": -34.775312,
+      "east": -58.395108
+    }
+  },
+  {
+    "name": "STA. TERESA",
+    "search": "sta teresa",
+    "latitude": -34.795991,
+    "longitude": -58.406546,
+    "bounds": {
+      "south": -34.795991,
+      "west": -58.406546,
+      "north": -34.795991,
+      "east": -58.406546
+    }
+  },
+  {
+    "name": "STOS. VEGA",
+    "search": "stos vega",
+    "latitude": -34.804311,
+    "longitude": -58.424132,
+    "bounds": {
+      "south": -34.804311,
+      "west": -58.424132,
+      "north": -34.804311,
+      "east": -58.424132
+    }
+  },
+  {
+    "name": "SUIPACHA",
+    "search": "suipacha",
+    "latitude": -34.767407,
+    "longitude": -58.402305,
+    "bounds": {
+      "south": -34.790806,
+      "west": -58.409332,
+      "north": -34.744008,
+      "east": -58.395278
+    }
+  },
+  {
+    "name": "TAVANO (EX VIRGILIO)",
+    "search": "tavano ex virgilio",
+    "latitude": -34.734061,
+    "longitude": -58.452347,
+    "bounds": {
+      "south": -34.734061,
+      "west": -58.452347,
+      "north": -34.734061,
+      "east": -58.452347
+    }
+  },
+  {
+    "name": "VERNET",
+    "search": "vernet",
+    "latitude": -34.736607,
+    "longitude": -58.430945,
+    "bounds": {
+      "south": -34.740094,
+      "west": -58.436588,
+      "north": -34.729633,
+      "east": -58.419658
+    }
+  },
+  {
+    "name": "VIAMONTE",
+    "search": "viamonte",
+    "latitude": -34.750451,
+    "longitude": -58.390028,
+    "bounds": {
+      "south": -34.750451,
+      "west": -58.390028,
+      "north": -34.750451,
+      "east": -58.390028
+    }
+  },
+  {
+    "name": "VIEYTES",
+    "search": "vieytes",
+    "latitude": -34.739213,
+    "longitude": -58.403408,
+    "bounds": {
+      "south": -34.739213,
+      "west": -58.403408,
+      "north": -34.739213,
+      "east": -58.403408
+    }
+  },
+  {
+    "name": "VOLTAIRE",
+    "search": "voltaire",
+    "latitude": -34.74985,
+    "longitude": -58.450209,
+    "bounds": {
+      "south": -34.74985,
+      "west": -58.450209,
+      "north": -34.74985,
+      "east": -58.450209
+    }
+  },
+  {
+    "name": "VUCETICH",
+    "search": "vucetich",
+    "latitude": -34.742679,
+    "longitude": -58.434806,
+    "bounds": {
+      "south": -34.759093,
+      "west": -58.480317,
+      "north": -34.726264,
+      "east": -58.389295
+    }
+  },
+  {
+    "name": "YATAY 500 ESQ/MADRESELVA",
+    "search": "yatay 500 esq madreselva",
+    "latitude": -34.770128,
+    "longitude": -58.394723,
+    "bounds": {
+      "south": -34.770128,
+      "west": -58.394723,
+      "north": -34.770128,
+      "east": -58.394723
+    }
+  },
+  {
+    "name": "ZAMORA",
+    "search": "zamora",
+    "latitude": -34.72991,
+    "longitude": -58.419683,
+    "bounds": {
+      "south": -34.72991,
+      "west": -58.419683,
+      "north": -34.72991,
+      "east": -58.419683
+    }
+  }
+]
