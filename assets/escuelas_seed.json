@@ -117,8 +117,8 @@
     "level": "Jardines de Infantes",
     "address": "14 DE JULIO 122",
     "phone": "4288-2009",
-    "latitude": -34.744914265017336,
-    "longitude": -58.395425143818855,
+    "latitude": -34.7449142650173,
+    "longitude": -58.3954251438188,
     "locality": {
       "id": "a580b616-402f-40ae-938e-7b7e5015a2f7",
       "name": "BANFIELD",
@@ -169,8 +169,8 @@
     "level": "Jardines de Infantes",
     "address": "ALTE. BROWN 2129",
     "phone": "4264-8585",
-    "latitude": -34.74412805071859,
-    "longitude": -58.39463962543227,
+    "latitude": -34.7441280507185,
+    "longitude": -58.3946396254322,
     "locality": {
       "id": "a580b616-402f-40ae-938e-7b7e5015a2f7",
       "name": "BANFIELD",
@@ -225,8 +225,8 @@
     "level": "Jardines de Infantes",
     "address": "ARAOZ 24 DE MAYO 649",
     "phone": "4288-2797",
-    "latitude": -34.74757279699109,
-    "longitude": -58.40050533073795,
+    "latitude": -34.747572796991,
+    "longitude": -58.4005053307379,
     "locality": {
       "id": "a580b616-402f-40ae-938e-7b7e5015a2f7",
       "name": "BANFIELD",
@@ -481,8 +481,8 @@
     "level": "Primarias",
     "address": "ALTE. BROWN 2153",
     "phone": "4244-0928",
-    "latitude": -34.75468944917206,
-    "longitude": -58.401393372760346,
+    "latitude": -34.754689449172,
+    "longitude": -58.4013933727603,
     "locality": {
       "id": "e8a23a0e-5f17-48d2-b2fa-fe0a407a00e8",
       "name": "LOMAS DE Z",
@@ -626,7 +626,7 @@
     "address": "J. M. PENNA 99",
     "phone": "4243-4071",
     "latitude": -34.7620858676796,
-    "longitude": -58.400458698590725,
+    "longitude": -58.4004586985907,
     "locality": {
       "id": "e8a23a0e-5f17-48d2-b2fa-fe0a407a00e8",
       "name": "LOMAS DE Z",
@@ -742,16 +742,8 @@
         "line": "406"
       },
       {
-        "id": "9823995b-91a6-4337-bded-c46499c6a076",
-        "line": "540 A"
-      },
-      {
-        "id": "de04699c-75b8-4e99-91ad-86de36c87262",
-        "line": "B"
-      },
-      {
-        "id": "9fb51f32-31e1-426a-9a09-7c85072dcea1",
-        "line": "C"
+        "id": "9f7eb88e-5760-4623-9ace-15c54681e8e7",
+        "line": "540"
       },
       {
         "id": "23494102-e6e2-4b39-bdc6-d6f1577d88b7",
@@ -829,8 +821,8 @@
     "level": "Primarias",
     "address": "SUIPACHA 1824",
     "phone": "4248-5151",
-    "latitude": -34.744008011331886,
-    "longitude": -58.39527769656804,
+    "latitude": -34.7440080113318,
+    "longitude": -58.395277696568,
     "locality": {
       "id": "a580b616-402f-40ae-938e-7b7e5015a2f7",
       "name": "BANFIELD",
@@ -1032,7 +1024,32 @@
       "name": "BANFIELD",
       "zone": "1 - Lomas/Banfield"
     },
-    "transportLines": []
+    "transportLines": [
+      {
+        "id": "49220e85-e052-4a90-ae65-139956023241",
+        "line": "79"
+      },
+      {
+        "id": "cfca2f67-eb4b-4924-b6c1-88b743557763",
+        "line": "160"
+      },
+      {
+        "id": "833c3234-b9f2-4f3e-9d35-f8f1a64dbb4c",
+        "line": "74"
+      },
+      {
+        "id": "f5c7c8bf-3000-4fd0-8a70-cc8240cdd751",
+        "line": "239"
+      },
+      {
+        "id": "3316ceaf-1822-409b-9ad3-1f321bcb1c6d",
+        "line": "278"
+      },
+      {
+        "id": "c8298eb6-000c-4ac2-9879-849398d28251",
+        "line": "299"
+      }
+    ]
   },
   {
     "id": "c94934ca-a101-4ea1-82a3-c28f25439e07",
@@ -1180,7 +1197,7 @@
     "level": "Secundarias",
     "address": "J. M. PENNA 99",
     "phone": "4392-2646",
-    "latitude": -34.75610394054598,
+    "latitude": -34.7561039405459,
     "longitude": -58.4039416710053,
     "locality": {
       "id": "e8a23a0e-5f17-48d2-b2fa-fe0a407a00e8",
@@ -1320,8 +1337,8 @@
     "level": "Secundarias",
     "address": "ALTE. BROWN 2153",
     "phone": "4292-1916",
-    "latitude": -34.755832566954524,
-    "longitude": -58.39889448201617,
+    "latitude": -34.7558325669545,
+    "longitude": -58.3988944820161,
     "locality": {
       "id": "e8a23a0e-5f17-48d2-b2fa-fe0a407a00e8",
       "name": "LOMAS DE Z",
@@ -1556,8 +1573,8 @@
     "level": "Técnicas",
     "address": "GASCON 150 ALSINA",
     "phone": "4242-1716",
-    "latitude": -34.74112422417606,
-    "longitude": -58.396505392961934,
+    "latitude": -34.741124224176,
+    "longitude": -58.3965053929619,
     "locality": {
       "id": "a580b616-402f-40ae-938e-7b7e5015a2f7",
       "name": "BANFIELD",
@@ -1616,8 +1633,8 @@
     "level": "Adultos",
     "address": "ALTE. BROWN 2153",
     "phone": "",
-    "latitude": -34.758370444053774,
-    "longitude": -58.404465149010036,
+    "latitude": -34.7583704440537,
+    "longitude": -58.40446514901,
     "locality": {
       "id": "e8a23a0e-5f17-48d2-b2fa-fe0a407a00e8",
       "name": "LOMAS DE Z",
@@ -1796,8 +1813,8 @@
     "level": "Especiales",
     "address": "ENTRE COLON Y GUIDO SPANO",
     "phone": "4243-4061",
-    "latitude": -34.76180385240293,
-    "longitude": -58.40447006037689,
+    "latitude": -34.7618038524029,
+    "longitude": -58.4044700603768,
     "locality": {
       "id": "e8a23a0e-5f17-48d2-b2fa-fe0a407a00e8",
       "name": "LOMAS DE Z",
@@ -1844,8 +1861,8 @@
     "level": "Especiales",
     "address": "PASAJE GONZALEZ 47",
     "phone": "4392-2694",
-    "latitude": -34.758523089919265,
-    "longitude": -58.40143354001149,
+    "latitude": -34.7585230899192,
+    "longitude": -58.4014335400114,
     "locality": {
       "id": "e8a23a0e-5f17-48d2-b2fa-fe0a407a00e8",
       "name": "LOMAS DE Z",
@@ -1853,20 +1870,24 @@
     },
     "transportLines": [
       {
-        "id": "00e225bb-d332-4139-aaad-782a171e3c62",
-        "line": "31"
+        "id": "1d1b9cb7-5278-4643-9811-19b3ecb53f69",
+        "line": "51"
+      },
+      {
+        "id": "1e95f29e-0cce-43b3-a1d4-a9e9b8355dce",
+        "line": "318"
+      },
+      {
+        "id": "42716e16-c996-48b2-9913-ac141c354d39",
+        "line": "561"
+      },
+      {
+        "id": "ae3e18f8-0e85-4142-aa99-1c9341330111",
+        "line": "164"
       },
       {
         "id": "f4f61586-ba6e-40eb-99d3-0c15b27eb946",
         "line": "542"
-      },
-      {
-        "id": "d1474702-186b-45f8-8c74-71d58991e439",
-        "line": "550"
-      },
-      {
-        "id": "ec921d99-9fc8-4f16-93ff-886fa17977da",
-        "line": "540"
       }
     ]
   },
@@ -1923,8 +1944,8 @@
     ]
   },
   {
-    "id": "fd57bb9c-581c-4313-98fd-86d8ac67ff75",
-    "name": "CENS 192",
+    "id": "a4697d95-ea33-4931-93be-831ed83d9235",
+    "name": "CENS 452 (EP 9)",
     "level": "CENS",
     "address": "H. YRIGOYEN 9243",
     "phone": "",
@@ -1935,11 +1956,28 @@
       "name": "LOMAS DE Z",
       "zone": "1 - Lomas/Banfield"
     },
-    "transportLines": []
+    "transportLines": [
+      {
+        "id": "80d8346f-f1a3-4a81-a951-5d34fe2198f5",
+        "line": "51"
+      },
+      {
+        "id": "3f63da56-da40-4f88-b50a-54d2daa055a5",
+        "line": "542"
+      },
+      {
+        "id": "f02c49dd-ae0e-49da-adca-e118fdfd80b7",
+        "line": "318"
+      },
+      {
+        "id": "383644ef-5144-4113-95e9-1d18e6754c2b",
+        "line": "552"
+      }
+    ]
   },
   {
-    "id": "c0812c62-a178-4c49-be87-d79b645ed146",
-    "name": "CENS 283",
+    "id": "9726f30e-81d3-47bd-bd91-55907b9e23d0",
+    "name": "CENS 454 (EP 29)",
     "level": "CENS",
     "address": "M. ARROTEA 1505",
     "phone": "",
@@ -1950,22 +1988,20 @@
       "name": "LOMAS DE Z",
       "zone": "1 - Lomas/Banfield"
     },
-    "transportLines": []
-  },
-  {
-    "id": "a4697d95-ea33-4931-93be-831ed83d9235",
-    "name": "CENS 452 (EP 9)",
-    "level": "CENS",
-    "address": "MEDRANO 175",
-    "phone": "",
-    "latitude": -34.7484194,
-    "longitude": -58.393011,
-    "locality": {
-      "id": "a580b616-402f-40ae-938e-7b7e5015a2f7",
-      "name": "BANFIELD",
-      "zone": "1 - Lomas/Banfield"
-    },
-    "transportLines": []
+    "transportLines": [
+      {
+        "id": "6817d930-610d-4ef0-a0b4-538cc2c59689",
+        "line": "406"
+      },
+      {
+        "id": "66a84fb2-d255-410e-a1d1-b8ce3ae61170",
+        "line": "540"
+      },
+      {
+        "id": "a6c6f651-ff8c-4e1c-9bbe-9cda3c662cbe",
+        "line": "338"
+      }
+    ]
   },
   {
     "id": "54259b00-e8bd-4e63-b93e-de719f829863",
@@ -1980,12 +2016,33 @@
       "name": "BANFIELD",
       "zone": "1 - Lomas/Banfield"
     },
-    "transportLines": []
+    "transportLines": [
+      {
+        "id": "50ab3a03-0e0d-4353-b0db-d82f79961b42",
+        "line": "40"
+      },
+      {
+        "id": "03a36d8f-d03a-4c1a-a42b-aa29ab10257a",
+        "line": "51"
+      },
+      {
+        "id": "4b045e68-40bf-4a7b-a4d6-0da36d7f323e",
+        "line": "318"
+      },
+      {
+        "id": "9a6ddd38-5aa6-4191-a184-6975b4367ca0",
+        "line": "548"
+      },
+      {
+        "id": "2f7f80ee-a8ec-4425-b59c-8130d68c1ef8",
+        "line": "165"
+      }
+    ]
   },
   {
-    "id": "c5c00ad0-1a91-475a-9010-81e8ae633eda",
-    "name": "CENS 463",
-    "level": "CENS",
+    "id": "cdd1c9e9-9ee7-44e1-97ae-00c0738a8492",
+    "name": "ISFD 102",
+    "level": "Superior",
     "address": "M. CASTRO 990",
     "phone": "",
     "latitude": -34.7422623,
@@ -1995,7 +2052,28 @@
       "name": "BANFIELD",
       "zone": "1 - Lomas/Banfield"
     },
-    "transportLines": []
+    "transportLines": [
+      {
+        "id": "025fb726-cfa2-421b-a2af-e45fbe1fcec8",
+        "line": "51"
+      },
+      {
+        "id": "9f7a3fac-39f4-4b84-bac4-a4f49e1741cf",
+        "line": "406"
+      },
+      {
+        "id": "394677cc-90b9-4cdb-b22a-34d576ecc850",
+        "line": "318"
+      },
+      {
+        "id": "6d018bb1-aabc-40ad-8e95-c3ea0ebd6523",
+        "line": "165"
+      },
+      {
+        "id": "94776142-78a9-44f3-94d5-d7de37b7a293",
+        "line": "552"
+      }
+    ]
   },
   {
     "id": "ff2abdcd-e046-46ff-b93e-8328c914173f",
@@ -2003,8 +2081,8 @@
     "level": "Jardines de Infantes",
     "address": "MONTEZUMA 498",
     "phone": "4260-7309",
-    "latitude": -34.771930942874405,
-    "longitude": -58.40048679357443,
+    "latitude": -34.7719309428744,
+    "longitude": -58.4004867935744,
     "locality": {
       "id": "cd05d7a9-a318-43a4-95a0-24596780b62d",
       "name": "TEMPERLEY",
@@ -2055,8 +2133,8 @@
     "level": "Jardines de Infantes",
     "address": "BARCELO 480",
     "phone": "4264-4004",
-    "latitude": -34.778366015160564,
-    "longitude": -58.39419272737945,
+    "latitude": -34.7783660151605,
+    "longitude": -58.3941927273794,
     "locality": {
       "id": "cd05d7a9-a318-43a4-95a0-24596780b62d",
       "name": "TEMPERLEY",
@@ -2079,8 +2157,8 @@
     "level": "Jardines de Infantes",
     "address": "MONROE 185",
     "phone": "4260-3961",
-    "latitude": -34.77394389023493,
-    "longitude": -58.402420221598355,
+    "latitude": -34.7739438902349,
+    "longitude": -58.4024202215983,
     "locality": {
       "id": "cd05d7a9-a318-43a4-95a0-24596780b62d",
       "name": "TEMPERLEY",
@@ -2143,14 +2221,27 @@
     "level": "Jardines de Infantes",
     "address": "SANTA CRUZ 290",
     "phone": "",
-    "latitude": -34.77318747567648,
-    "longitude": -58.40152997496843,
+    "latitude": -34.7731874756764,
+    "longitude": -58.4015299749684,
     "locality": {
       "id": "cd05d7a9-a318-43a4-95a0-24596780b62d",
       "name": "TEMPERLEY",
       "zone": "2 - Temperley Este/Pasco/San José"
     },
-    "transportLines": []
+    "transportLines": [
+      {
+        "id": "ccdeae8e-82c8-4097-a397-5950c19e884b",
+        "line": "179"
+      },
+      {
+        "id": "b937f12b-4a57-4611-a352-72e973f7d822",
+        "line": "299 S"
+      },
+      {
+        "id": "4f9c3fa1-3329-448d-9775-511b894b82e2",
+        "line": "239 W"
+      }
+    ]
   },
   {
     "id": "d9f7c5a2-39de-4e05-a509-1356e0716c6a",
@@ -2158,8 +2249,8 @@
     "level": "Primarias",
     "address": "MEXICO Y BARILARI",
     "phone": "4260-7308",
-    "latitude": -34.73973858351544,
-    "longitude": -58.39947953352521,
+    "latitude": -34.7397385835154,
+    "longitude": -58.3994795335252,
     "locality": {
       "id": "a580b616-402f-40ae-938e-7b7e5015a2f7",
       "name": "BANFIELD",
@@ -2298,8 +2389,8 @@
     "level": "Primarias",
     "address": "EL TREBOL 3786",
     "phone": "4260-7213/7300",
-    "latitude": -34.77799440504333,
-    "longitude": -58.396585529367016,
+    "latitude": -34.7779944050433,
+    "longitude": -58.396585529367,
     "locality": {
       "id": "cd05d7a9-a318-43a4-95a0-24596780b62d",
       "name": "TEMPERLEY",
@@ -2326,8 +2417,8 @@
     "level": "Primarias",
     "address": "HEREDIA 250 Y JURAMENTO",
     "phone": "4264-7990/7991",
-    "latitude": -34.76969890135661,
-    "longitude": -58.39784430164132,
+    "latitude": -34.7696989013566,
+    "longitude": -58.3978443016413,
     "locality": {
       "id": "cd05d7a9-a318-43a4-95a0-24596780b62d",
       "name": "TEMPERLEY",
@@ -2335,8 +2426,8 @@
     },
     "transportLines": [
       {
-        "id": "acb5a056-8d36-4f6b-a270-e96ee297be1f",
-        "line": "2663"
+        "id": "36551131-6f48-4fc7-9acb-04faa524203d",
+        "line": "266 3"
       }
     ]
   },
@@ -2378,8 +2469,8 @@
     "level": "Primarias",
     "address": "EL TORDO 233",
     "phone": "4269-9878/9846",
-    "latitude": -34.773265464235415,
-    "longitude": -58.40030904331987,
+    "latitude": -34.7732654642354,
+    "longitude": -58.4003090433198,
     "locality": {
       "id": "cd05d7a9-a318-43a4-95a0-24596780b62d",
       "name": "TEMPERLEY",
@@ -2434,8 +2525,8 @@
     "level": "Primarias",
     "address": "B DE IRIGOYEN 750",
     "phone": "4245-5480",
-    "latitude": -34.76984334483601,
-    "longitude": -58.39801811920469,
+    "latitude": -34.769843344836,
+    "longitude": -58.3980181192046,
     "locality": {
       "id": "cd05d7a9-a318-43a4-95a0-24596780b62d",
       "name": "TEMPERLEY",
@@ -2470,8 +2561,8 @@
     "level": "Primarias",
     "address": "MONTEZUMA 400",
     "phone": "4260-7297/7296",
-    "latitude": -34.77120773831972,
-    "longitude": -58.39697922513787,
+    "latitude": -34.7712077383197,
+    "longitude": -58.3969792251378,
     "locality": {
       "id": "cd05d7a9-a318-43a4-95a0-24596780b62d",
       "name": "TEMPERLEY",
@@ -2494,8 +2585,8 @@
     "level": "Primarias",
     "address": "CONCEPCION Y HORNERO",
     "phone": "4212-0491",
-    "latitude": -34.77853431704981,
-    "longitude": -58.39432525955511,
+    "latitude": -34.7785343170498,
+    "longitude": -58.3943252595551,
     "locality": {
       "id": "cd05d7a9-a318-43a4-95a0-24596780b62d",
       "name": "TEMPERLEY",
@@ -2522,8 +2613,8 @@
     "level": "Secundarias",
     "address": "YATAY 500 ESQ/MADRESELVA",
     "phone": "4260-1573/4297",
-    "latitude": -34.77012795184604,
-    "longitude": -58.39472351182399,
+    "latitude": -34.770127951846,
+    "longitude": -58.3947235118239,
     "locality": {
       "id": "cd05d7a9-a318-43a4-95a0-24596780b62d",
       "name": "TEMPERLEY",
@@ -2546,7 +2637,7 @@
     "level": "Secundarias",
     "address": "PIO COLLIVADINO 237",
     "phone": "4264-7402",
-    "latitude": -34.774606672082726,
+    "latitude": -34.7746066720827,
     "longitude": -58.3944625046095,
     "locality": {
       "id": "cd05d7a9-a318-43a4-95a0-24596780b62d",
@@ -2578,8 +2669,8 @@
     "level": "Secundarias",
     "address": "EL TREBOL 3785",
     "phone": "4260-7213",
-    "latitude": -34.77621680123739,
-    "longitude": -58.396131672730604,
+    "latitude": -34.7762168012373,
+    "longitude": -58.3961316727306,
     "locality": {
       "id": "cd05d7a9-a318-43a4-95a0-24596780b62d",
       "name": "TEMPERLEY",
@@ -2606,8 +2697,8 @@
     "level": "Secundarias",
     "address": "CONCEPCION Y HORNERO",
     "phone": "4212-5419",
-    "latitude": -34.77533977741362,
-    "longitude": -58.39476057406662,
+    "latitude": -34.7753397774136,
+    "longitude": -58.3947605740666,
     "locality": {
       "id": "cd05d7a9-a318-43a4-95a0-24596780b62d",
       "name": "TEMPERLEY",
@@ -2634,8 +2725,8 @@
     "level": "Secundarias",
     "address": "LA MADRESELVA 2550",
     "phone": "4264-7739",
-    "latitude": -34.77727544683529,
-    "longitude": -58.39268748757529,
+    "latitude": -34.7772754468352,
+    "longitude": -58.3926874875752,
     "locality": {
       "id": "cd05d7a9-a318-43a4-95a0-24596780b62d",
       "name": "TEMPERLEY",
@@ -2667,7 +2758,7 @@
     "address": "B DE IRIGOYEN 750",
     "phone": "4243-3074",
     "latitude": -34.7787729271508,
-    "longitude": -58.40090021306939,
+    "longitude": -58.4009002130693,
     "locality": {
       "id": "cd05d7a9-a318-43a4-95a0-24596780b62d",
       "name": "TEMPERLEY",
@@ -2766,8 +2857,8 @@
     "level": "Secundarias",
     "address": "HEREDIA Y JURAMENTO",
     "phone": "4264-7990/7991",
-    "latitude": -34.77905728295752,
-    "longitude": -58.398525103691526,
+    "latitude": -34.7790572829575,
+    "longitude": -58.3985251036915,
     "locality": {
       "id": "cd05d7a9-a318-43a4-95a0-24596780b62d",
       "name": "TEMPERLEY",
@@ -2786,7 +2877,7 @@
     "level": "Secundarias",
     "address": "MEXICO Y BARILARI",
     "phone": "4260-7308/7311",
-    "latitude": -34.74057550678938,
+    "latitude": -34.7405755067893,
     "longitude": -58.3992377513535,
     "locality": {
       "id": "a580b616-402f-40ae-938e-7b7e5015a2f7",
@@ -2922,8 +3013,8 @@
     "level": "Adultos",
     "address": "MEXICO Y BARILARI",
     "phone": "4260-7299",
-    "latitude": -34.74148577311773,
-    "longitude": -58.39492439360068,
+    "latitude": -34.7414857731177,
+    "longitude": -58.3949243936006,
     "locality": {
       "id": "a580b616-402f-40ae-938e-7b7e5015a2f7",
       "name": "BANFIELD",
@@ -2978,8 +3069,8 @@
     "level": "Adultos",
     "address": "EL TREBOL 3785",
     "phone": "",
-    "latitude": -34.77683062850519,
-    "longitude": -58.39649504820306,
+    "latitude": -34.7768306285051,
+    "longitude": -58.396495048203,
     "locality": {
       "id": "cd05d7a9-a318-43a4-95a0-24596780b62d",
       "name": "TEMPERLEY",
@@ -3013,7 +3104,36 @@
       "name": "TEMPERLEY",
       "zone": "2 - Temperley Este/Pasco/San José"
     },
-    "transportLines": []
+    "transportLines": [
+      {
+        "id": "caec13db-24ab-45ad-9f88-019248c9dd12",
+        "line": "266 1"
+      },
+      {
+        "id": "4e1be6e0-3285-41ab-8f0b-25aaec3f99b4",
+        "line": "4"
+      },
+      {
+        "id": "ff18015b-4852-44b9-8153-b8aa6554bb37",
+        "line": "7"
+      },
+      {
+        "id": "79974402-a287-46ee-ab9f-b46bfd6efe10",
+        "line": "8"
+      },
+      {
+        "id": "cae55aaf-3ba3-4a1b-9ad6-cc84325659cb",
+        "line": "278A"
+      },
+      {
+        "id": "8d44734f-4912-4eb1-8da1-218dbfcbe3f3",
+        "line": "B"
+      },
+      {
+        "id": "b2567502-d464-4f52-b2f7-c8bef872dba3",
+        "line": "239S"
+      }
+    ]
   },
   {
     "id": "8836685b-c12e-4563-9080-8a92973219fe",
@@ -3021,8 +3141,8 @@
     "level": "CENS",
     "address": "MEXICO Y BARILARI",
     "phone": "",
-    "latitude": -34.744088613011996,
-    "longitude": -58.39348907697157,
+    "latitude": -34.7440886130119,
+    "longitude": -58.3934890769715,
     "locality": {
       "id": "a580b616-402f-40ae-938e-7b7e5015a2f7",
       "name": "BANFIELD",
@@ -3065,8 +3185,8 @@
     "level": "Centros Educativos Complementarios",
     "address": "MEXICO 163",
     "phone": "4260-295",
-    "latitude": -34.77217222530075,
-    "longitude": -58.400764583224046,
+    "latitude": -34.7721722253007,
+    "longitude": -58.400764583224,
     "locality": {
       "id": "cd05d7a9-a318-43a4-95a0-24596780b62d",
       "name": "TEMPERLEY",
@@ -3345,7 +3465,7 @@
     "level": "Jardines de Infantes",
     "address": "PJE. SALADO 1002 E/ACHUPALLA",
     "phone": "4392-2751/2866",
-    "latitude": -34.77846383621277,
+    "latitude": -34.7784638362127,
     "longitude": -58.3991958776514,
     "locality": {
       "id": "cd05d7a9-a318-43a4-95a0-24596780b62d",
@@ -3373,8 +3493,8 @@
     "level": "Jardines de Infantes",
     "address": "ANT. ARGENTINA Y STA. CATALINA",
     "phone": "4298-9981",
-    "latitude": -34.79333487015663,
-    "longitude": -58.43346867377952,
+    "latitude": -34.7933348701566,
+    "longitude": -58.4334686737795,
     "locality": {
       "id": "2ef3a749-0029-4aac-a09a-ee470921d307",
       "name": "LLAVALLOL",
@@ -3493,8 +3613,8 @@
     "level": "Primarias",
     "address": "ANT. ARGENTINA Y STA. CATALINA",
     "phone": "4231-2261",
-    "latitude": -34.797441700746596,
-    "longitude": -58.433468357406916,
+    "latitude": -34.7974417007465,
+    "longitude": -58.4334683574069,
     "locality": {
       "id": "2ef3a749-0029-4aac-a09a-ee470921d307",
       "name": "LLAVALLOL",
@@ -3637,8 +3757,8 @@
     "level": "Primarias",
     "address": "POBLADORA 2050",
     "phone": "4298-5016",
-    "latitude": -34.79191472116106,
-    "longitude": -58.433644805220815,
+    "latitude": -34.791914721161,
+    "longitude": -58.4336448052208,
     "locality": {
       "id": "2ef3a749-0029-4aac-a09a-ee470921d307",
       "name": "LLAVALLOL",
@@ -4173,8 +4293,8 @@
     "level": "Secundarias",
     "address": "ANT. ARGENTINA 2200 Y STA. CATALI",
     "phone": "4231-2261",
-    "latitude": -34.79337758998367,
-    "longitude": -58.43109780955854,
+    "latitude": -34.7933775899836,
+    "longitude": -58.4310978095585,
     "locality": {
       "id": "2ef3a749-0029-4aac-a09a-ee470921d307",
       "name": "LLAVALLOL",
@@ -4673,8 +4793,8 @@
     "level": "Jardines de Infantes",
     "address": "CAMPANA 1216",
     "phone": "4267-5045",
-    "latitude": -34.71349121078229,
-    "longitude": -58.454436893330765,
+    "latitude": -34.7134912107822,
+    "longitude": -58.4544368933307,
     "locality": {
       "id": "0461a3a4-32d0-4614-b480-0af5cc5f505e",
       "name": "V. URBANA",
@@ -4713,8 +4833,8 @@
     "level": "Jardines de Infantes",
     "address": "ELIZALDE Y DIAG. 62",
     "phone": "4693-5589/6200",
-    "latitude": -34.73818831941306,
-    "longitude": -58.49152631447956,
+    "latitude": -34.738188319413,
+    "longitude": -58.4915263144795,
     "locality": {
       "id": "76b479f4-8a20-4e9a-871e-9d1248961984",
       "name": "BO. OLIMPO",
@@ -4817,8 +4937,8 @@
     "level": "Jardines de Infantes",
     "address": "MASSAD Y J. M. DE ROSAS",
     "phone": "4693-4072",
-    "latitude": -34.73307172827766,
-    "longitude": -58.48095732707662,
+    "latitude": -34.7330717282776,
+    "longitude": -58.4809573270766,
     "locality": {
       "id": "166f195e-f40f-4d16-b2bc-d46dc1369853",
       "name": "J. M. DE ROSAS",
@@ -4841,8 +4961,8 @@
     "level": "Jardines de Infantes",
     "address": "MANUELA PEDRAZA Y RODRIGUEZ",
     "phone": "4693-4511",
-    "latitude": -34.75931306736192,
-    "longitude": -58.40476859869906,
+    "latitude": -34.7593130673619,
+    "longitude": -58.404768598699,
     "locality": {
       "id": "c16033f4-4143-4f99-b1cc-e5c340f3ca55",
       "name": "BO. 2 DE ABRIL",
@@ -4861,8 +4981,8 @@
     "level": "Jardines de Infantes",
     "address": "CIPOLLETTI 2200 y R. PALMA",
     "phone": "4273-7801",
-    "latitude": -34.712211275910015,
-    "longitude": -58.455637329532784,
+    "latitude": -34.71221127591,
+    "longitude": -58.4556373295327,
     "locality": {
       "id": "fc822394-dbf2-48e7-8292-2f5ed54ea745",
       "name": "BUDGE",
@@ -4932,11 +5052,16 @@
     "latitude": -34.7425878,
     "longitude": -58.4863964,
     "locality": {
-      "id": "48ae882a-5525-41ce-9f1c-dede54e542ea",
-      "name": "Sin Especificar",
-      "zone": "4 - Fiorito/Budge/Albertina"
+      "id": "ad592644-d313-4612-80f9-2a6c7ce71349",
+      "name": "B NUEVA ESPERANZA",
+      "zone": "Sin Especificar"
     },
-    "transportLines": []
+    "transportLines": [
+      {
+        "id": "d537ae00-521d-41c0-b119-25992dd1a9da",
+        "line": "306"
+      }
+    ]
   },
   {
     "id": "6e048b8f-61d3-49aa-a079-e16ceebf49b3",
@@ -4980,8 +5105,8 @@
     "level": "Primarias",
     "address": "ELIZALDE 3971",
     "phone": "4693-4386",
-    "latitude": -34.73621973661054,
-    "longitude": -58.47402086385784,
+    "latitude": -34.7362197366105,
+    "longitude": -58.4740208638578,
     "locality": {
       "id": "2b64c351-bcb7-4d78-9fcc-d364640fce0a",
       "name": "OLIMPO",
@@ -5376,8 +5501,8 @@
     "level": "Primarias",
     "address": "MIRO 944",
     "phone": "4267-6042",
-    "latitude": -34.74727586479758,
-    "longitude": -58.40045779962398,
+    "latitude": -34.7472758647975,
+    "longitude": -58.4004577996239,
     "locality": {
       "id": "a580b616-402f-40ae-938e-7b7e5015a2f7",
       "name": "BANFIELD",
@@ -5408,8 +5533,8 @@
     "level": "Primarias",
     "address": "BUCARET 1780",
     "phone": "4273-7814/4132",
-    "latitude": -34.737820617761294,
-    "longitude": -58.449148721112685,
+    "latitude": -34.7378206177612,
+    "longitude": -58.4491487211126,
     "locality": {
       "id": "106575b8-6e00-4940-ae90-8d9f32349096",
       "name": "V. ALBERTINA",
@@ -5632,8 +5757,8 @@
     "level": "Primarias",
     "address": "VUCETICH 4834",
     "phone": "4273-2062",
-    "latitude": -34.75909342623646,
-    "longitude": -58.38929499179522,
+    "latitude": -34.7590934262364,
+    "longitude": -58.3892949917952,
     "locality": {
       "id": "43387516-7762-4631-8959-d67d46e38863",
       "name": "V LAMADRID",
@@ -5684,8 +5809,8 @@
     "level": "Primarias",
     "address": "J. M. DE ROSAS Y OLIMPO",
     "phone": "4693-4741",
-    "latitude": -34.75894923628181,
-    "longitude": -58.403403885394525,
+    "latitude": -34.7589492362818,
+    "longitude": -58.4034038853945,
     "locality": {
       "id": "b2ace693-bd79-4e2e-86e0-9e331a300d09",
       "name": "JUAN M. DE ROS",
@@ -5712,8 +5837,8 @@
     "level": "Primarias",
     "address": "G. MIRO 2550 y Saradero",
     "phone": "4276-4395",
-    "latitude": -34.70690932067735,
-    "longitude": -58.44907410294891,
+    "latitude": -34.7069093206773,
+    "longitude": -58.4490741029489,
     "locality": {
       "id": "0461a3a4-32d0-4614-b480-0af5cc5f505e",
       "name": "V. URBANA",
@@ -5752,8 +5877,8 @@
     "level": "Primarias",
     "address": "SOLDADO BENITEZ Y PEDRAZA",
     "phone": "4693-3355/6",
-    "latitude": -34.76872718289895,
-    "longitude": -58.429944735115136,
+    "latitude": -34.7687271828989,
+    "longitude": -58.4299447351151,
     "locality": {
       "id": "c6de3481-0b6c-4a79-8b73-f62cb0068181",
       "name": "2 DE ABRIL",
@@ -5956,8 +6081,8 @@
     "level": "Secundarias",
     "address": "CAMPANA 1216",
     "phone": "4286-4079",
-    "latitude": -34.70795698692041,
-    "longitude": -58.45275159705891,
+    "latitude": -34.7079569869204,
+    "longitude": -58.4527515970589,
     "locality": {
       "id": "483fba8b-17c2-4be4-90ad-672c23f43fca",
       "name": "V URBANA",
@@ -5992,8 +6117,8 @@
     "level": "Secundarias",
     "address": "G. MIRO Y BARADERO",
     "phone": "4267-5045/1488",
-    "latitude": -34.70663995995338,
-    "longitude": -58.448544576036646,
+    "latitude": -34.7066399599533,
+    "longitude": -58.4485445760366,
     "locality": {
       "id": "0461a3a4-32d0-4614-b480-0af5cc5f505e",
       "name": "V. URBANA",
@@ -6032,8 +6157,8 @@
     "level": "Secundarias",
     "address": "CIPOLLETTI E/ PALMA Y ESPRONCEDA",
     "phone": "4273-7803",
-    "latitude": -34.714798586675556,
-    "longitude": -58.44845413683748,
+    "latitude": -34.7147985866755,
+    "longitude": -58.4484541368374,
     "locality": {
       "id": "fc822394-dbf2-48e7-8292-2f5ed54ea745",
       "name": "BUDGE",
@@ -6116,8 +6241,8 @@
     "level": "Secundarias",
     "address": "PTE. PERON Y GINEBRA",
     "phone": "4285-5571",
-    "latitude": -34.73237741608262,
-    "longitude": -58.44762977718787,
+    "latitude": -34.7323774160826,
+    "longitude": -58.4476297771878,
     "locality": {
       "id": "106575b8-6e00-4940-ae90-8d9f32349096",
       "name": "V. ALBERTINA",
@@ -6204,8 +6329,8 @@
     "level": "Secundarias",
     "address": "BUCARETT 1722",
     "phone": "4273-8348",
-    "latitude": -34.73453361638263,
-    "longitude": -58.45704796080876,
+    "latitude": -34.7345336163826,
+    "longitude": -58.4570479608087,
     "locality": {
       "id": "106575b8-6e00-4940-ae90-8d9f32349096",
       "name": "V. ALBERTINA",
@@ -6240,8 +6365,8 @@
     "level": "Secundarias",
     "address": "BUCARETT 1780",
     "phone": "4273-8348",
-    "latitude": -34.739002494695704,
-    "longitude": -58.456744755198436,
+    "latitude": -34.7390024946957,
+    "longitude": -58.4567447551984,
     "locality": {
       "id": "106575b8-6e00-4940-ae90-8d9f32349096",
       "name": "V. ALBERTINA",
@@ -6276,8 +6401,8 @@
     "level": "Secundarias",
     "address": "SOLDADO BENITEZ Y PEDRAZA",
     "phone": "4693-3356/3355",
-    "latitude": -34.77113113007034,
-    "longitude": -58.43636365946692,
+    "latitude": -34.7711311300703,
+    "longitude": -58.4363636594669,
     "locality": {
       "id": "c6de3481-0b6c-4a79-8b73-f62cb0068181",
       "name": "2 DE ABRIL",
@@ -6360,8 +6485,8 @@
     "level": "Secundarias",
     "address": "M. J. TELLO 2061 Y OLIMPO",
     "phone": "4693-4386",
-    "latitude": -34.73619480084674,
-    "longitude": -58.473075499285514,
+    "latitude": -34.7361948008467,
+    "longitude": -58.4730754992855,
     "locality": {
       "id": "2b64c351-bcb7-4d78-9fcc-d364640fce0a",
       "name": "OLIMPO",
@@ -6508,8 +6633,8 @@
     "level": "Secundarias",
     "address": "CAMPANA 360",
     "phone": "4267-4832",
-    "latitude": -34.701773133388734,
-    "longitude": -58.441907454594315,
+    "latitude": -34.7017731333887,
+    "longitude": -58.4419074545943,
     "locality": {
       "id": "423cbcd9-34cb-40a4-bc55-97a5f91b2c0b",
       "name": "V.FIORITO",
@@ -6544,8 +6669,8 @@
     "level": "Secundarias",
     "address": "HOMERO MANZI 3054",
     "phone": "4693-4741",
-    "latitude": -34.75447895833758,
-    "longitude": -58.397839198525354,
+    "latitude": -34.7544789583375,
+    "longitude": -58.3978391985253,
     "locality": {
       "id": "57979927-5f99-4947-b66d-440bed146bc3",
       "name": "JUAN M. DE ROSA",
@@ -6804,8 +6929,8 @@
     "level": "Secundarias",
     "address": "MIRO 944",
     "phone": "4267-2988",
-    "latitude": -34.74180262641987,
-    "longitude": -58.39676750814761,
+    "latitude": -34.7418026264198,
+    "longitude": -58.3967675081476,
     "locality": {
       "id": "a580b616-402f-40ae-938e-7b7e5015a2f7",
       "name": "BANFIELD",
@@ -6836,8 +6961,8 @@
     "level": "Técnicas",
     "address": "SOLDADO BENITEZ Y PEDRAZA",
     "phone": "4693-3009/5223",
-    "latitude": -34.756358261516304,
-    "longitude": -58.40188966268611,
+    "latitude": -34.7563582615163,
+    "longitude": -58.4018896626861,
     "locality": {
       "id": "c16033f4-4143-4f99-b1cc-e5c340f3ca55",
       "name": "BO. 2 DE ABRIL",
@@ -6896,8 +7021,8 @@
     "level": "Adultos",
     "address": "EL PLUMERILLO 2380",
     "phone": "4267-7908",
-    "latitude": -34.71029214756204,
-    "longitude": -58.43857669997444,
+    "latitude": -34.710292147562,
+    "longitude": -58.4385766999744,
     "locality": {
       "id": "4fe7e985-7763-4c27-9e93-2f90ccbe78e3",
       "name": "FIORITO",
@@ -6956,8 +7081,8 @@
     "level": "Adultos",
     "address": "LA HAYA Y R. PALMA",
     "phone": "S/T",
-    "latitude": -34.711184537663335,
-    "longitude": -58.45252248034975,
+    "latitude": -34.7111845376633,
+    "longitude": -58.4525224803497,
     "locality": {
       "id": "fc822394-dbf2-48e7-8292-2f5ed54ea745",
       "name": "BUDGE",
@@ -6988,8 +7113,8 @@
     "level": "Adultos",
     "address": "MIRO 944",
     "phone": "S/T",
-    "latitude": -34.74214999388219,
-    "longitude": -58.39317894644705,
+    "latitude": -34.7421499938821,
+    "longitude": -58.393178946447,
     "locality": {
       "id": "a580b616-402f-40ae-938e-7b7e5015a2f7",
       "name": "BANFIELD",
@@ -7048,8 +7173,8 @@
     "level": "Adultos",
     "address": "CAMPOAMOR Y LA RIBERA",
     "phone": "4693-4147",
-    "latitude": -34.738120370093554,
-    "longitude": -58.47860744609305,
+    "latitude": -34.7381203700935,
+    "longitude": -58.478607446093,
     "locality": {
       "id": "6ea37c8f-a346-427e-8681-be8ceb600829",
       "name": "J. M de Rosas",
@@ -7072,7 +7197,7 @@
     "level": "Adultos",
     "address": "Olimpo y las vías (Ep 89)",
     "phone": "S/T",
-    "latitude": -34.70212981431429,
+    "latitude": -34.7021298143142,
     "longitude": -58.436203128124,
     "locality": {
       "id": "4fe7e985-7763-4c27-9e93-2f90ccbe78e3",
@@ -7112,7 +7237,7 @@
     "level": "Especiales",
     "address": "TAVANO (ex Virgilio) 3870",
     "phone": "4285-6456",
-    "latitude": -34.73406109434215,
+    "latitude": -34.7340610943421,
     "longitude": -58.4523467989807,
     "locality": {
       "id": "106575b8-6e00-4940-ae90-8d9f32349096",
@@ -7148,8 +7273,8 @@
     "level": "CENS",
     "address": "GINEBRA 1819 (O 48)",
     "phone": "",
-    "latitude": -34.734715331631286,
-    "longitude": -58.45609233777182,
+    "latitude": -34.7347153316312,
+    "longitude": -58.4560923377718,
     "locality": {
       "id": "106575b8-6e00-4940-ae90-8d9f32349096",
       "name": "V. ALBERTINA",
@@ -7204,14 +7329,27 @@
     "level": "CENS",
     "address": "PERON Y GINEBRA",
     "phone": "",
-    "latitude": -34.73967868756226,
-    "longitude": -58.392752806322044,
+    "latitude": -34.7396786875622,
+    "longitude": -58.392752806322,
     "locality": {
       "id": "a580b616-402f-40ae-938e-7b7e5015a2f7",
       "name": "BANFIELD",
       "zone": "1 - Lomas/Banfield"
     },
-    "transportLines": []
+    "transportLines": [
+      {
+        "id": "0ae1bec1-7268-4576-bd8e-d92be884175b",
+        "line": "318"
+      },
+      {
+        "id": "6cbb0f15-664d-415f-95cb-fa1c4fb96f16",
+        "line": "188"
+      },
+      {
+        "id": "871d6626-6bd1-4705-84d8-710b3bba8922",
+        "line": "21 J"
+      }
+    ]
   },
   {
     "id": "6b718a7c-681e-46b4-9964-7cadfa0eb0ce",
@@ -7226,13 +7364,18 @@
       "name": "FIORITO",
       "zone": "4 - Fiorito/Budge/Albertina"
     },
-    "transportLines": []
+    "transportLines": [
+      {
+        "id": "de8fc930-36c2-497c-aa8b-295630273f07",
+        "line": "28"
+      }
+    ]
   },
   {
     "id": "68c3075e-d737-453a-bde3-d70766995147",
     "name": "CEC 804",
     "level": "Centros Educativos Complementarios",
-    "address": "",
+    "address": "MACHADO 2546",
     "phone": "",
     "latitude": -34.7150537,
     "longitude": -58.4515906,
@@ -7241,7 +7384,16 @@
       "name": "BUDGE",
       "zone": "4 - Fiorito/Budge/Albertina"
     },
-    "transportLines": []
+    "transportLines": [
+      {
+        "id": "b022ad7b-39b2-4078-9ee2-b181100b9824",
+        "line": "553 E"
+      },
+      {
+        "id": "cc9e1c6d-0f8a-45e5-b720-a4fc0b54e85c",
+        "line": "318"
+      }
+    ]
   },
   {
     "id": "13c13c8f-bacf-4c44-a3a4-827888a27fa6",
@@ -7256,7 +7408,12 @@
       "name": "FIORITO",
       "zone": "4 - Fiorito/Budge/Albertina"
     },
-    "transportLines": []
+    "transportLines": [
+      {
+        "id": "18e4b59d-e3ad-43db-b8e0-3e2e369d0fe9",
+        "line": "550"
+      }
+    ]
   },
   {
     "id": "facaa547-be53-4787-a57d-7776c02971d6",
@@ -7264,8 +7421,8 @@
     "level": "Educacion Superior",
     "address": "MIRO 2550",
     "phone": "4267-1488",
-    "latitude": -34.71561556859303,
-    "longitude": -58.45151646178415,
+    "latitude": -34.715615568593,
+    "longitude": -58.4515164617841,
     "locality": {
       "id": "0461a3a4-32d0-4614-b480-0af5cc5f505e",
       "name": "V. URBANA",
@@ -7300,14 +7457,19 @@
     "level": "Jardines de Infantes",
     "address": "BELEN 1490",
     "phone": "4273-8155",
-    "latitude": -34.75266924356303,
-    "longitude": -58.40285765560537,
+    "latitude": -34.752669243563,
+    "longitude": -58.4028576556053,
     "locality": {
-      "id": "6b67c17e-86ce-47e1-a1e9-1c4e2d069ee5",
-      "name": "BO EL FARO",
+      "id": "eee67f29-2dcb-4346-9be9-218986140fca",
+      "name": "B. EL FARO",
       "zone": "5 - Lomas Oeste/Banfield Oeste"
     },
-    "transportLines": []
+    "transportLines": [
+      {
+        "id": "33cb3bb1-71d0-4f02-8024-a263f62c365e",
+        "line": "544"
+      }
+    ]
   },
   {
     "id": "ac2a27c8-98e9-4b80-92d3-34d649897d2a",
@@ -7339,8 +7501,8 @@
     "level": "Jardines de Infantes",
     "address": "G. MISTRAL Y ZAMORA",
     "phone": "4242-5107",
-    "latitude": -34.72674744916972,
-    "longitude": -58.419138829575196,
+    "latitude": -34.7267474491697,
+    "longitude": -58.4191388295751,
     "locality": {
       "id": "6d1741c5-6aad-4dcf-9742-a91175144db5",
       "name": "CEMENTERIO",
@@ -7463,8 +7625,8 @@
     "level": "Jardines de Infantes",
     "address": "LABARDEN 195",
     "phone": "4285-7674",
-    "latitude": -34.73322661921258,
-    "longitude": -58.45643086169066,
+    "latitude": -34.7332266192125,
+    "longitude": -58.4564308616906,
     "locality": {
       "id": "106575b8-6e00-4940-ae90-8d9f32349096",
       "name": "V. ALBERTINA",
@@ -7495,8 +7657,8 @@
     "level": "Jardines de Infantes",
     "address": "BUSTOS Y OLMOS",
     "phone": "4283-4304",
-    "latitude": -34.75931742952636,
-    "longitude": -58.44394704807905,
+    "latitude": -34.7593174295263,
+    "longitude": -58.443947048079,
     "locality": {
       "id": "7d3c5344-aa53-4130-b5be-03c8ddc1185c",
       "name": "V. INDEP",
@@ -7631,8 +7793,8 @@
     "level": "Primarias",
     "address": "OLMOS 530",
     "phone": "4283-1377",
-    "latitude": -34.76190233253434,
-    "longitude": -58.44445200175181,
+    "latitude": -34.7619023325343,
+    "longitude": -58.4444520017518,
     "locality": {
       "id": "24d727bd-27cb-4bcf-9cce-770167b169b2",
       "name": "V. INDEPENDEN",
@@ -7755,8 +7917,8 @@
     "level": "Primarias",
     "address": "CARAZA 1760",
     "phone": "4202-8752",
-    "latitude": -34.745140754762936,
-    "longitude": -58.39191674685212,
+    "latitude": -34.7451407547629,
+    "longitude": -58.3919167468521,
     "locality": {
       "id": "a580b616-402f-40ae-938e-7b7e5015a2f7",
       "name": "BANFIELD",
@@ -7819,8 +7981,8 @@
     "level": "Primarias",
     "address": "L. DE LA TORRE 2264",
     "phone": "4283-1479",
-    "latitude": -34.75703436491606,
-    "longitude": -58.39858717879606,
+    "latitude": -34.757034364916,
+    "longitude": -58.398587178796,
     "locality": {
       "id": "0712ec89-c85a-40a6-84bb-aa347c9620cc",
       "name": "BO. EL FARO",
@@ -7919,8 +8081,8 @@
     "level": "Primarias",
     "address": "CHAMPAGNAT 2608",
     "phone": "4282-0462",
-    "latitude": -34.75884224449387,
-    "longitude": -58.39858710408071,
+    "latitude": -34.7588422444938,
+    "longitude": -58.3985871040807,
     "locality": {
       "id": "e8a23a0e-5f17-48d2-b2fa-fe0a407a00e8",
       "name": "LOMAS DE Z",
@@ -7951,8 +8113,8 @@
     "level": "Primarias",
     "address": "GUIDY DE FRANC 2520",
     "phone": "4273-2961",
-    "latitude": -34.75495836614178,
-    "longitude": -58.40566184657418,
+    "latitude": -34.7549583661417,
+    "longitude": -58.4056618465741,
     "locality": {
       "id": "0712ec89-c85a-40a6-84bb-aa347c9620cc",
       "name": "BO. EL FARO",
@@ -8023,8 +8185,8 @@
     "level": "Primarias",
     "address": "CASTRO Y F. SANCHEZ",
     "phone": "4283-3861",
-    "latitude": -34.76023285843567,
-    "longitude": -58.404023293715305,
+    "latitude": -34.7602328584356,
+    "longitude": -58.4040232937153,
     "locality": {
       "id": "24547898-75f7-41b8-970c-bf8db9ecf2a2",
       "name": "BO. LA LOMA",
@@ -8055,8 +8217,8 @@
     "level": "Primarias",
     "address": "SICILIANO 1551",
     "phone": "4276-4421",
-    "latitude": -34.74743100206039,
-    "longitude": -58.39922089904357,
+    "latitude": -34.7474310020603,
+    "longitude": -58.3992208990435,
     "locality": {
       "id": "a580b616-402f-40ae-938e-7b7e5015a2f7",
       "name": "BANFIELD",
@@ -8087,8 +8249,8 @@
     "level": "Primarias",
     "address": "CELINA MINETTO 1455",
     "phone": "4276-3518",
-    "latitude": -34.741029113763815,
-    "longitude": -58.39998279585564,
+    "latitude": -34.7410291137638,
+    "longitude": -58.3999827958556,
     "locality": {
       "id": "a580b616-402f-40ae-938e-7b7e5015a2f7",
       "name": "BANFIELD",
@@ -8155,8 +8317,8 @@
     "level": "Primarias",
     "address": "VERNET 281",
     "phone": "4248-9283",
-    "latitude": -34.72808220616346,
-    "longitude": -58.43024146081768,
+    "latitude": -34.7280822061634,
+    "longitude": -58.4302414608176,
     "locality": {
       "id": "72ebf446-eb1f-4136-b0ac-70cd4a2fcb82",
       "name": "V.CENTENARIO",
@@ -8255,8 +8417,8 @@
     "level": "Secundarias",
     "address": "F. SANCHEZ E/I. CASTRO",
     "phone": "4283-3862",
-    "latitude": -34.75987991334066,
-    "longitude": -58.40184784187639,
+    "latitude": -34.7598799133406,
+    "longitude": -58.4018478418763,
     "locality": {
       "id": "24547898-75f7-41b8-970c-bf8db9ecf2a2",
       "name": "BO. LA LOMA",
@@ -8291,8 +8453,8 @@
     "level": "Secundarias",
     "address": "GUIDY DE FRANC 2520",
     "phone": "4273-2961",
-    "latitude": -34.761277959432185,
-    "longitude": -58.40018237574389,
+    "latitude": -34.7612779594321,
+    "longitude": -58.4001823757438,
     "locality": {
       "id": "0712ec89-c85a-40a6-84bb-aa347c9620cc",
       "name": "BO. EL FARO",
@@ -8327,8 +8489,8 @@
     "level": "Secundarias",
     "address": "CASTRO Y F. SANCHEZ",
     "phone": "4282-8869",
-    "latitude": -34.755064799727556,
-    "longitude": -58.398773967224216,
+    "latitude": -34.7550647997275,
+    "longitude": -58.3987739672242,
     "locality": {
       "id": "24547898-75f7-41b8-970c-bf8db9ecf2a2",
       "name": "BO. LA LOMA",
@@ -8435,7 +8597,7 @@
     "level": "Secundarias",
     "address": "OLMOS 530",
     "phone": "4283-1377",
-    "latitude": -34.76273842975077,
+    "latitude": -34.7627384297507,
     "longitude": -58.4506324524111,
     "locality": {
       "id": "7d3c5344-aa53-4130-b5be-03c8ddc1185c",
@@ -8471,8 +8633,8 @@
     "level": "Secundarias",
     "address": "CARAZA 1760",
     "phone": "4202-8752",
-    "latitude": -34.74239304180043,
-    "longitude": -58.399207654241906,
+    "latitude": -34.7423930418004,
+    "longitude": -58.3992076542419,
     "locality": {
       "id": "a580b616-402f-40ae-938e-7b7e5015a2f7",
       "name": "BANFIELD",
@@ -8523,8 +8685,8 @@
     "level": "Secundarias",
     "address": "CHAMPAGNAT 2608",
     "phone": "4282-5008",
-    "latitude": -34.75700317938174,
-    "longitude": -58.40654532576724,
+    "latitude": -34.7570031793817,
+    "longitude": -58.4065453257672,
     "locality": {
       "id": "e8a23a0e-5f17-48d2-b2fa-fe0a407a00e8",
       "name": "LOMAS DE Z",
@@ -8592,7 +8754,7 @@
     "address": "SICILIANO 1551",
     "phone": "4267-4109",
     "latitude": -34.7451872175335,
-    "longitude": -58.39131659898068,
+    "longitude": -58.3913165989806,
     "locality": {
       "id": "a580b616-402f-40ae-938e-7b7e5015a2f7",
       "name": "BANFIELD",
@@ -8623,8 +8785,8 @@
     "level": "Secundarias",
     "address": "MINETTO 1455",
     "phone": "4286-2737",
-    "latitude": -34.74829981377505,
-    "longitude": -58.391415699404675,
+    "latitude": -34.748299813775,
+    "longitude": -58.3914156994046,
     "locality": {
       "id": "a580b616-402f-40ae-938e-7b7e5015a2f7",
       "name": "BANFIELD",
@@ -8887,8 +9049,8 @@
     "level": "Adultos",
     "address": "OLMOS 530",
     "phone": "4283-3813",
-    "latitude": -34.761097899822126,
-    "longitude": -58.44477964870308,
+    "latitude": -34.7610978998221,
+    "longitude": -58.444779648703,
     "locality": {
       "id": "7d3c5344-aa53-4130-b5be-03c8ddc1185c",
       "name": "V. INDEP",
@@ -8923,8 +9085,8 @@
     "level": "Adultos",
     "address": "L. DE LA TORRE 2264",
     "phone": "S/T",
-    "latitude": -34.75343634550437,
-    "longitude": -58.40079909678228,
+    "latitude": -34.7534363455043,
+    "longitude": -58.4007990967822,
     "locality": {
       "id": "0712ec89-c85a-40a6-84bb-aa347c9620cc",
       "name": "BO. EL FARO",
@@ -8955,8 +9117,8 @@
     "level": "Adultos",
     "address": "G. MISTRAL",
     "phone": "S/T",
-    "latitude": -34.744644941278516,
-    "longitude": -58.39123237875846,
+    "latitude": -34.7446449412785,
+    "longitude": -58.3912323787584,
     "locality": {
       "id": "a580b616-402f-40ae-938e-7b7e5015a2f7",
       "name": "BANFIELD",
@@ -9139,8 +9301,8 @@
     "level": "CENS",
     "address": "SIRITO 370",
     "phone": "4282-3345",
-    "latitude": -34.76054661178638,
-    "longitude": -58.39803955782518,
+    "latitude": -34.7605466117863,
+    "longitude": -58.3980395578251,
     "locality": {
       "id": "e8a23a0e-5f17-48d2-b2fa-fe0a407a00e8",
       "name": "LOMAS DE Z",
@@ -9163,8 +9325,8 @@
     "level": "CENS",
     "address": "PALACIOS 1345",
     "phone": "4287-9098",
-    "latitude": -34.745092884671095,
-    "longitude": -58.43130143181674,
+    "latitude": -34.745092884671,
+    "longitude": -58.4313014318167,
     "locality": {
       "id": "e42b9d49-c656-4820-bf4f-a88868c18149",
       "name": "TRIBUNALES",
@@ -9198,6 +9360,146 @@
       {
         "id": "31d8d46f-f130-4ef0-bd04-29c22906ce9c",
         "line": "338"
+      }
+    ]
+  },
+  {
+    "id": "7dff55f3-9def-4339-ab61-b31f07597924",
+    "name": "ISFDyT 18",
+    "level": "Educacion Superior",
+    "address": "ADOLFO ALSINA 1032",
+    "phone": "",
+    "latitude": -34.7486397,
+    "longitude": -58.396571,
+    "locality": {
+      "id": "a580b616-402f-40ae-938e-7b7e5015a2f7",
+      "name": "BANFIELD",
+      "zone": "1 - Lomas/Banfield"
+    },
+    "transportLines": [
+      {
+        "id": "e9b4e54a-d25c-4168-b5bb-e54796567e11",
+        "line": "74"
+      },
+      {
+        "id": "0bb95b1f-bd4e-413f-a50d-6c7fb7a01e79",
+        "line": "79"
+      },
+      {
+        "id": "231d533a-c604-4a91-8be2-990306c7d03a",
+        "line": "160"
+      },
+      {
+        "id": "e7ba9038-e637-446f-9ba2-847cbae42fb2",
+        "line": "323"
+      },
+      {
+        "id": "9d5f1146-f497-4811-b891-6418f0f6dd08",
+        "line": "278"
+      }
+    ]
+  },
+  {
+    "id": "ddf60bca-e7c6-42c3-8ee7-33c4256b7006",
+    "name": "ISFT 172",
+    "level": "Educacion Superior",
+    "address": "Monseñor Piaggio 402",
+    "phone": "",
+    "latitude": -34.7648118,
+    "longitude": -58.4209049,
+    "locality": {
+      "id": "dcb4d8c1-b243-4810-89f1-28c9d5d00b0c",
+      "name": "LOMAS DE ZAMORA",
+      "zone": "1 - Lomas/Banfield"
+    },
+    "transportLines": [
+      {
+        "id": "5deee2e5-39d7-4433-b556-e8cd2185ddb5",
+        "line": "551"
+      },
+      {
+        "id": "70b06baa-9103-4339-915f-47a8d6d1d699",
+        "line": "542"
+      },
+      {
+        "id": "b1848154-17d5-4332-9683-6f35f163a376",
+        "line": "318"
+      },
+      {
+        "id": "cd29a3ff-b5e1-4308-a7f8-4a858419b85c",
+        "line": "283"
+      },
+      {
+        "id": "6589b84f-4822-4c42-ade6-d4cbc4d9b721",
+        "line": "541"
+      }
+    ]
+  },
+  {
+    "id": "afc0f990-9cdf-46f4-9ff3-ddd8ca5c861d",
+    "name": "ISFT 173",
+    "level": "Educacion Superior",
+    "address": "Hipólito Yrigoyen 9428",
+    "phone": "",
+    "latitude": -34.7645666,
+    "longitude": -58.4197044,
+    "locality": {
+      "id": "dcb4d8c1-b243-4810-89f1-28c9d5d00b0c",
+      "name": "LOMAS DE ZAMORA",
+      "zone": "1 - Lomas/Banfield"
+    },
+    "transportLines": [
+      {
+        "id": "0dbf1048-5756-4221-a384-27ee69a28bd4",
+        "line": "51"
+      },
+      {
+        "id": "6cbfac19-8c81-4952-90e1-6c2a313bd274",
+        "line": "540"
+      },
+      {
+        "id": "03d212c4-0950-45d2-b6d6-3b615d401617",
+        "line": "552"
+      },
+      {
+        "id": "98e36bac-c56c-4b28-8da1-fa43671605ea",
+        "line": "TREN"
+      }
+    ]
+  },
+  {
+    "id": "99c45954-f2cd-48c9-a985-705369d5cbc3",
+    "name": "ES 90",
+    "level": "Secundarias",
+    "address": "CELINA MINETTO 1455",
+    "phone": "",
+    "latitude": -34.7410291137638,
+    "longitude": -58.3999827958556,
+    "locality": {
+      "id": "a580b616-402f-40ae-938e-7b7e5015a2f7",
+      "name": "BANFIELD",
+      "zone": "1 - Lomas/Banfield"
+    },
+    "transportLines": [
+      {
+        "id": "87a330de-e4db-4541-b413-bdfbbf4c12ce",
+        "line": "318"
+      },
+      {
+        "id": "e2e58061-af6e-43a2-919f-228106452a04",
+        "line": "540C"
+      },
+      {
+        "id": "cd473ab3-4d05-42da-812e-b744b99dd123",
+        "line": "542"
+      },
+      {
+        "id": "37e8ba15-1a17-40cb-9680-17f5a42ca9a0",
+        "line": "277"
+      },
+      {
+        "id": "00924740-2a7e-4b9b-bf94-20ed290a4f60",
+        "line": "541"
       }
     ]
   }
