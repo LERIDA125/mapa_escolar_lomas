@@ -16,7 +16,7 @@ mapa consume tiles de OpenStreetMap cuando hay conectividad.
 | Mapas           | `flutter_map` + `latlong2`                      |
 | Tiles           | OpenStreetMap raster (`tile.openstreetmap.org`) |
 | Datos locales   | JSON embebido (`assets/escuelas_seed.json`)     |
-| Geocodificación | Python + Nominatim (ETL, fuera del runtime)     |
+| Geocodificación | Python + ArcGIS (ETL, fuera del runtime)         |
 
 No se utiliza Google Maps ni ninguna API key de mapas.
 
@@ -118,17 +118,32 @@ Ese import vive únicamente en la capa de providers; la UI sigue importando
 
 ## 6. Geocodificación (ETL)
 
-`geocoder.py` es un script de un solo uso que:
+El ETL corre fuera del runtime y se apoya en dos scripts.
+
+`geocoder.py` es el script base de un solo uso que:
 
 1. Lee `assets/escuelas_seed.json`.
 2. Normaliza localidades abreviadas e intersecciones.
-3. Consulta Nominatim para cada escuela que todavía tiene las coordenadas
-   default: dirección exacta, después el centroide de la localidad y, como
-   último recurso, el centroide del partido. Los dos fallbacks suman un offset
-   determinístico por escuela.
+3. Consulta el geocoder para cada escuela que todavía tiene las coordenadas
+   default.
 4. Reescribe el JSON con las coordenadas encontradas.
 
-No se ejecuta en runtime: el APK consume las coordenadas ya persistidas.
+`reparador_automatico.py` es el pipeline vigente. Parte de
+`auditoria_escuelas.csv` y:
+
+1. Repara las coordenadas corruptas por Excel reinsertando el punto decimal
+   después del prefijo 34 (latitud) y 58 (longitud).
+2. Geocodifica con **ArcGIS** (vía `geopy`) las direcciones que son una
+   intersección (`CALLE Y CALLE` o `CALLE e/ CALLE`), donde la coordenada
+   exportada no es confiable.
+3. Valida cada resultado de forma estructural: descarta los centroides de calle
+   que ArcGIS devuelve cuando no encuentra el cruce, los puntos fuera del
+   bounding box del partido y los que pertenecen a partidos o localidades
+   vecinas.
+4. Escribe `escuelas_reparadas_final.csv` y un reporte de revisión humana en
+   `revision_manual.csv`.
+
+Ninguno se ejecuta en runtime: el APK consume las coordenadas ya persistidas.
 El detalle operativo está en `docs/05_Geocoding.md`.
 
 ## 7. Decisiones y restricciones
@@ -139,7 +154,8 @@ El detalle operativo está en `docs/05_Geocoding.md`.
 - **Riverpod exclusivo:** no se usa `setState` para estado de negocio.
 - **Sin Google Maps:** se eliminó `google_maps_flutter` y todo el plumbing
   de `MAPS_API_KEY`.
-- **Nominatim:** máximo 1 request por segundo y User-Agent identificable.
+- **ArcGIS en el ETL:** requests espaciados 0.5 s, caché en disco y User-Agent
+  identificable. El servicio se consulta solo desde el ETL, nunca en runtime.
 
 ## 8. Validación
 
