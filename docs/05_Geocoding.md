@@ -87,3 +87,68 @@ Esto evita editar el CSV de salida a mano, que la próxima corrida pisaría.
 De las 44 filas del reporte, 31 marcan localidad distinta (18 de ellas sin otro motivo), 8 tienen coincidencia parcial de calles y 18 superan los 3 km de desvío. Los motivos se solapan.
 
 Una corrida posterior reutiliza el caché y produce archivos byte a byte idénticos.
+
+## 7. Conversión al Seed de la App
+
+`escuelas_reparadas_final.csv` es el dataset de trabajo; la app consume `assets/escuelas_seed.json`. El puente entre ambos es `csv_a_seed_json.py`, y su contrato de salida **no** son los headers del CSV sino el modelo de dominio (`docs/02_Architecture.md` §3.1):
+
+```json
+{
+  "id": "1",
+  "name": "901",
+  "level": "Jardines de Infantes",
+  "address": "PENNA 93",
+  "phone": "4244-4244",
+  "latitude": -34.7581943,
+  "longitude": -58.4109198,
+  "locality": { "id": "<uuid5>", "name": "LOMAS DE Z", "zone": "1 - Lomas/Banfield" },
+  "transportLines": [{ "id": "<uuid5>", "line": "543" }]
+}
+```
+
+### Mapeo
+
+| CSV | Seed | Regla |
+| --- | --- | --- |
+| `nombre` | `name` | `strip()` |
+| `level` | `level` | `strip()` |
+| `address` | `address` | `strip()` |
+| `latitude` / `longitude` | idem | `float`, tolera coma decimal |
+| `zone` | `locality.name` | `strip()` |
+| — | `locality.zone` | agrupación desde `ZONA_POR_LOCALIDAD` (no viene en el CSV) |
+| `colectivos` | `transportLines[].line` | split por `,`, `strip`, deduplicado |
+| — | `phone` | recuperado del seed histórico por nombre y, si falta, por dirección no ambigua |
+
+`locality.id` y `transportLines[].id` se derivan con `uuid5`, así que dos corridas sobre el mismo CSV producen un archivo idéntico.
+
+`turnos`, `modalidad` y `codigoOficial` se omiten a propósito: el modelo los lee como `null`.
+
+### Validación Fail-Fast
+
+El script valida todo antes de escribir y aborta con código 1 sin tocar `assets/escuelas_seed.json` si encuentra:
+
+- `name`, `level`, `address` o `locality.name` vacíos;
+- una localidad sin entrada en `ZONA_POR_LOCALIDAD`;
+- coordenadas no numéricas o fuera del bbox del partido;
+- ids duplicados;
+- un CSV vacío.
+
+Esto existe porque `School.fromJson` es tolerante (`as String? ?? ''`): un seed con las claves equivocadas no lanza excepción, deja el catálogo con tarjetas sin nombre. Un seed generado con nombres en castellano (`nombre`, `nivel`, `direccion`) se ve idéntico a un seed válido para el compilador.
+
+### Uso
+
+```powershell
+python csv_a_seed_json.py
+```
+
+Salida esperada con el dataset actual:
+
+| Métrica | Valor |
+| --- | --- |
+| Registros | 310 |
+| Teléfono recuperado | 293 / 310 |
+| Con colectivos | 310 / 310 |
+| Localidades | 43 |
+
+El seed que produce este script se versiona junto con el CSV: si cambia uno, cambia el otro en el mismo commit.
+
