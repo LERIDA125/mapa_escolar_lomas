@@ -15,6 +15,8 @@ mapa consume tiles de OpenStreetMap cuando hay conectividad.
 | Gestión de estado | Riverpod (`flutter_riverpod`)                 |
 | Mapas           | `flutter_map` + `latlong2`                      |
 | Tiles           | OpenStreetMap raster (`tile.openstreetmap.org`) |
+| Caché de tiles  | `BuiltInMapCachingProvider` (nativo de flutter_map) + `path_provider` |
+| Conectividad    | `connectivity_plus`                             |
 | Datos locales   | JSON embebido (`assets/escuelas_seed.json`)     |
 | Geocodificación | Python + ArcGIS (ETL, fuera del runtime)         |
 
@@ -28,9 +30,11 @@ lib/
 ├── domain/models/                # School, Locality, TransportLine,
 │                                 # UserOrigin, StreetIndexEntry
 ├── data/repositories/            # SchoolRepository, StreetIndexRepository
+├── data/services/                # configureTileCache (política de caché)
 ├── providers/                    # schoolRepositoryProvider, schoolsProvider,
 │                                 # searchQueryProvider, filteredSchoolsProvider,
-│                                 # userOriginProvider, streetIndexProvider
+│                                 # userOriginProvider, streetIndexProvider,
+│                                 # isOfflineProvider
 └── presentation/
     ├── screens/                  # Splash, Login, Home, Perfil
     ├── widgets/                  # Componentes reutilizables
@@ -145,6 +149,75 @@ Ese import vive únicamente en la capa de providers; la UI sigue importando
 - `RichAttributionWidget` con atribución a OpenStreetMap contributors.
 - Android requiere `android.permission.INTERNET` para descargar tiles en
   release.
+
+### 5.1 Caché offline de tiles
+
+`flutter_map` 8.2+ ya cachea en disco cada tile visitado: `TileLayer` usa
+`NetworkTileProvider` por defecto y ese usa `BuiltInMapCachingProvider`. La app
+no activa la caché, la **configura**.
+
+`configureTileCache()` (`lib/data/services/tile_cache.dart`) corre en `main()`
+antes del primer frame y fija tres cosas:
+
+| Parámetro | Valor | Por qué |
+| --- | --- | --- |
+| `cacheDirectory` | `getApplicationSupportDirectory()` | El directorio de caché por defecto lo puede borrar el sistema en cualquier momento; el de soporte sobrevive. |
+| `maxCacheSize` | 250 MB | Techo explícito: el default es 1 GB. |
+| `overrideFreshAge` | 30 días | Un tile en disco se sirve sin ir a la red. |
+
+`overrideFreshAge` es la pieza que hace funcionar el modo offline. Con la
+política por defecto, un tile se considera fresco según los headers HTTP del
+servidor (normalmente horas o días); apenas vence, `flutter_map` va a la red y,
+sin conexión, el tile falla. **No hay fallback a un tile vencido.** Un margen de
+30 días mantiene legible la zona ya recorrida, a cambio de no ver cambios de
+calles nuevas hasta que venza.
+
+Decisiones y límites:
+
+- **No se descargan tiles en bloque.** El caché solo guarda lo que el usuario
+  miró. La [política de uso de tiles de
+  OSM](https://operations.osmfoundation.org/policies/tiles/) prohíbe el
+  pre-descarga masiva; un "descargar todo Lomas" sería una violación, no una
+  feature.
+- **Los dos mapas comparten el caché.** `home_screen.dart` y
+  `origin_picker_sheet.dart` usan la misma URL, así que el singleton cubre a
+  ambos sin tocar ninguno de los dos widgets.
+- **Web no cachea.** `BuiltInMapCachingProvider` es no-op en web y
+  `configureTileCache` corta antes con `kIsWeb`.
+- **No se usa `flutter_map_tile_caching`.** La versión actual exige
+  `latlong2 ^0.9.x`, incompatible con el `latlong2 ^0.10.1` que requiere
+  `flutter_map` 8.3.2; además es GPL-3.0 y no soporta web. La caché nativa
+  cubre el caso sin dependencias extra.
+
+### 5.2 Aviso de "Sin conexión"
+
+`isOfflineProvider` (`lib/providers/connectivity_providers.dart`) escucha
+`Connectivity().onConnectivityChanged` y se siembra con `checkConnectivity()`.
+Es `true` solo cuando el resultado es `ConnectivityResult.none`.
+
+`ConnectivityBanner` es una tira de ~30 px que se monta como fila propia del
+`Scaffold` en `main_screen.dart`, **por encima del `NavigationBar` y fuera del
+`Stack` del mapa**:
+
+```text
+Scaffold
+├── body: IndexedStack (mapa, comparativa, favoritos, perfil)
+└── bottomNavigationBar: Column
+    ├── ConnectivityBanner   ← solo visible sin conexión
+    └── NavigationBar
+```
+
+Esa ubicación es la garantía de no interferencia: el banner no comparte
+`Stack` con el buscador, los chips de filtro, las fichas ni las distancias, así
+que no puede taparlos ni robarles gestos. No tiene `onTap` ni se descarta a
+mano: desaparece solo cuando vuelve la conexión.
+
+El mensaje dice qué sigue funcionando (`escuelas y fichas siguen disponibles`)
+en lugar de solo anunciar la falla, porque perder la red degrada la imagen del
+mapa, no el catálogo. El notifier arranca en `false` y traga los errores del
+plugin: un falso "conectado" es inofensivo, un falso "sin conexión" alarma sin
+motivo.
+
 
 ## 6. Geocodificación (ETL)
 
