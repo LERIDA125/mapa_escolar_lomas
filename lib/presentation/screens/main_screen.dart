@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../providers/auth_providers.dart';
+import '../widgets/connectivity_banner.dart';
 import 'comparator_screen.dart';
 import 'favorites_screen.dart';
 import 'home_screen.dart';
@@ -49,12 +50,20 @@ class _MainScreenState extends ConsumerState<MainScreen> {
           ProfileScreen(),
         ],
       ),
-      bottomNavigationBar: NavigationBar(
-        selectedIndex: _selectedIndex,
-        onDestinationSelected: (index) {
-          setState(() => _selectedIndex = index);
-        },
-        destinations: _destinations,
+      bottomNavigationBar: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          // Sits in its own row, outside the map Stack, so it can never cover
+          // the search bar, the filter chips or the school sheet.
+          const ConnectivityBanner(),
+          NavigationBar(
+            selectedIndex: _selectedIndex,
+            onDestinationSelected: (index) {
+              setState(() => _selectedIndex = index);
+            },
+            destinations: _destinations,
+          ),
+        ],
       ),
     );
   }
