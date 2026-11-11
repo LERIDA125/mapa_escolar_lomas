@@ -1,196 +1,65 @@
-# 05_Geocoding.md (Geocodificación del seed)
+# Pipeline de Geocodificación y Reparación de Coordenadas
 
-## 1. Objetivo
+Este documento describe la arquitectura y las reglas de validación del script `reparador_automatico.py`, diseñado para resolver dos problemas críticos en el dataset de instituciones educativas (`auditoria_escuelas.csv`): la corrupción de formatos numéricos introducida por Excel y la falta de coordenadas precisas en direcciones de intersección.
 
-Reemplazar las coordenadas default (`-34.7628, -58.4022`) que comparten las
-307 escuelas del seed por coordenadas reales obtenidas de OpenStreetMap.
+## 1. Arquitectura y Herramientas
 
-Sin este paso, el mapa dibuja 307 marcadores apilados en un único punto.
+- **Motor de Geocodificación:** ArcGIS (vía la librería `geopy`). Seleccionado por su superioridad frente a Nominatim para interpretar el formato de direcciones argentinas e intersecciones de calles.
+- **Gestión de Caché:** Sistema idempotente basado en `reparador_geocode_cache.json`. Almacena las respuestas de ArcGIS para evitar solicitudes redundantes, acelerar ejecuciones posteriores y prevenir bloqueos por exceso de peticiones.
+- **Tolerancia a Fallos:** 2 intentos por consulta (`REINTENTOS = 2`), con espera duplicada entre intentos (`DELAY_ARCGIS = 0.5 s`, luego `1 s`) y un `timeout` de 20 s por request.
 
-## 2. Entrada y salida
+## 2. Fase 1: Reparación de Formatos Numéricos (Daño de Excel)
 
-- **Entrada:** `assets/escuelas_seed.json`.
-- **Salida:** el mismo archivo con `latitude` y `longitude` actualizados.
-- **Registros que ya tienen coordenadas distintas del default:** se saltan,
-  por lo que la corrida es reanudable.
+Excel, al guardar archivos CSV con configuración regional local, corrompió las coordenadas transformando puntos en separadores de miles y alterando la precisión decimal.
 
-## 3. Requisitos
+**Lógica de reparación:**
 
-- Python 3.10 o superior.
-- Paquete `requests`.
+1. Se extraen exclusivamente los caracteres numéricos de la cadena (ignorando puntos y comas mal ubicados).
+2. Se verifica que los dígitos comiencen con el prefijo esperado (34 para latitud, 58 para longitud).
+3. Se reinserta el punto decimal exactamente después de los dos primeros dígitos, reconstruyendo la precisión GPS original.
 
-## 4. Uso
+- *Ejemplo:* `-347.581.943` -> `-34.7581943`
 
-```powershell
-cd C:\Users\Ferar\OneDrive\Desktop\mapa_escolar
-Copy-Item assets\escuelas_seed.json assets\escuelas_seed.backup.json -Force
-python -m pip install requests
-python geocoder.py
-```
+Si el prefijo no coincide, la fila se reporta como error y se conserva el valor original sin tocarla.
 
-La corrida completa tarda alrededor de 8 minutos porque el script espera
-1.5 segundos entre requests.
+## 3. Fase 2: Geocodificación Estructural
 
-## 5. Política de uso de Nominatim
+Las direcciones que indican intersecciones (contienen " Y " o " e/ ") son enviadas a ArcGIS. Para evitar que el motor devuelva ubicaciones erróneas o "matches degradados", el resultado pasa por un validador estructural estricto.
 
-Nominatim es un servicio público gratuito. Para no abusar:
+### Criterios de Aceptación y Rechazo
 
-- Máximo 1 request por segundo. El script usa 1.5 segundos.
-- Enviar un `User-Agent` identificable con un contacto real.
-- No ejecutar el script en producción de forma intensiva sin permiso.
-- Guardar un backup del JSON antes de correrlo.
+- **Bounding Box (Bbox) Excluyente:** La latitud y longitud devueltas deben caer dentro del rectángulo geográfico configurado para Lomas de Zamora (`LAT_MIN, LAT_MAX = -34.90, -34.62`; `LON_MIN, LON_MAX = -58.60, -58.28`). Todo punto fuera de ese rectángulo se rechaza automáticamente.
+- **Filtro de Partido Ajeno:** Un punto puede caer dentro del bbox y aun así pertenecer a otro partido, porque el bbox es un rectángulo y los límites son irregulares (Burzaco, por ejemplo, está pegado a Lomas). Si el `address` devuelto menciona un partido o localidad vecina (Almirante Brown, Lanús, Avellaneda, Quilmes, Esteban Echeverría, Ezeiza, La Matanza, Berazategui, Florencio Varela, Burzaco, Adrogué, Longchamps, Glew, Monte Grande, etc.), el match se rechaza aunque las coordenadas estén dentro del bbox.
+- **Validación Estructural (Rechazo de Centroides):** ArcGIS tiene la tendencia a devolver el punto medio de una calle (centroide) cuando no encuentra el cruce exacto. El script evalúa la cadena `address` devuelta:
+  - **Aprobado:** Contiene el símbolo `&` (indicador nativo de intersección en ArcGIS) o un número de altura de calle válido (`\b\d{1,5}\b`).
+  - **Rechazado:** Direcciones con un solo nombre de calle sin altura (ej: "Olimpo" o "Camino de Cintura").
+  - *Nota:* el patrón de altura está anclado con `\b`, así que no confunde códigos postales como `B1834` con una altura real.
+- **Coincidencia de Calle:** Se requiere que *al menos un lado* de la calle original coincida estructuralmente en el resultado. Exigir ambos lados era demasiado rígido y descartaba matches correctos por typos del nomenclador (ej: "Pareja" vs "Ramón Pareta"); esos casos se aceptan pero se marcan como coincidencia parcial.
 
-## 6. Normalización aplicada
+### Reglas de Advertencia (No excluyentes)
 
-### Direcciones
+- **Cruce de Localidades:** Se extrae el barrio reportado por ArcGIS (el componente anterior a "Lomas de Zamora" en el `address`) y se cruza contra la columna `zone` del CSV. Dado que los límites barriales de ArcGIS difieren ligeramente de los administrativos, las discrepancias generan una advertencia, pero no rechazan el match.
+- **Desvío Kilométrico:** Se calcula la distancia geodésica entre la coordenada original reparada y la nueva de ArcGIS. Si supera los 3 km (`AVISO_DESVIO_M = 3000`), se marca como advertencia para revisión humana, asumiendo que la coordenada original del CSV probablemente estaba mal ubicada de origen.
 
-`clean_address_string()` corta la dirección en la primera intersección,
-ignorando mayúsculas y minúsculas:
+## 4. Archivos de Salida
 
-- `GARONA Y PIAGGIO` → `GARONA`
-- `GOLONDRINA 3607 y Sta Cruz` → `GOLONDRINA 3607`
-- `ENTRE COLON Y GUIDO SPANO` → `ENTRE COLON`
+El proceso genera dos *artifacts* principales:
 
-### Localidades
+1. `escuelas_reparadas_final.csv`: El dataset principal consolidado y listo para producción. Conserva la estructura exacta de columnas del archivo de origen.
+2. `revision_manual.csv`: Un reporte analítico (con separador `;` y codificación UTF-8-SIG) que aísla únicamente los casos que requieren supervisión humana (ej. desvíos mayores a 3 km, discrepancias de localidad, coincidencias parciales y las direcciones que resultaron en centroides rechazados).
 
-`normalize_locality()` traduce las abreviaturas del nomenclador. El mapping
-se amplió en TICK-008:
+Las columnas del reporte son: `fila`, `nombre`, `direccion`, `zona`, `motivos`, `lat_csv`, `lon_csv`, `lat_final`, `lon_final`, `desvio_m`, `score`, `address`. La columna `motivos` acumula todas las advertencias de una fila separadas por ` | `, así que sirve para filtrar en Excel por tipo de problema.
 
-| Seed                            | Consulta               |
-| ------------------------------- | ---------------------- |
-| `LOMAS DE Z`                    | `Lomas de Zamora`      |
-| `V. ALBERTINA`                  | `Villa Albertina`      |
-| `BO. EL FARO`                   | `Barrio El Faro`       |
-| `V. CENTENARIO`                 | `Villa Centenario`     |
-| `ING. BUDGE`                    | `Ingeniero Budge`      |
-| `V. URBANA`                     | `Villa Urbana`         |
-| `STA. MARTA`                    | `Santa Marta`          |
-| `V. LAMADRID`                   | `Villa Lamadrid`       |
-| `V. INDEP`, `V. INDEPENDEN`     | `Villa Independencia`  |
-| `V. FIORITO`                    | `Villa Fiorito`        |
-| `BANFIELD O/E/OESTE/ESTE`       | `Banfield`             |
-| `TEMPERLEY O/E/OESTE/ESTE`      | `Temperley`            |
-| `LAVALLOL` (dentro de `LLAVALLOL`) | `Llavallol`         |
-| `S. JOSE`, `SAN JOSE`           | `Barrio San José`      |
-| `CTEL IX`, `CTEL. IX`           | `Lomas de Zamora`      |
-| `BO EL FARO`                    | `Barrio El Faro`       |
-| `BO. LA LOMA`                   | `La Loma`              |
-| `BO. 2 DE ABRIL`                | `Barrio 2 de Abril`    |
-| `JUAN M. DE ROS`, `JUAN M. DE ROSA` | `Barrio Juan Manuel de Rosas` |
-| `V URBANA`                      | `Villa Urbana`         |
-| `SIN ESPECIFICAR`               | `Lomas de Zamora`      |
+## 5. Resultado de la Última Corrida
 
-El matching es por substring sobre la localidad en mayúsculas. Quedan
-variantes sin punto o sin espacio que no entran en el mapping y caen en
-`title()`: `V LAMADRID`, `V.FIORITO`, `V.CENTENARIO`. `BUDGE` tampoco está
-mapeado; solo `ING. BUDGE`.
+| Métrica | Valor |
+| --- | --- |
+| Filas procesadas | 310 |
+| Coordenadas reparadas | 310 |
+| Geocodificadas por ArcGIS | 68 |
+| Sin match confiable (conservan la coordenada reparada del CSV) | 10 |
+| Filas con desvío mayor a 3 km | 18 |
+| Filas en `revision_manual.csv` | 54 |
+| Errores de parseo de coordenada | 0 |
 
-Además, varios nombres de barrio no existen como entidad en Nominatim:
-`Barrio El Faro`, `La Loma`, `Barrio 2 de Abril` y `Barrio Juan Manuel de
-Rosas` devuelven cero resultados. Esos casos los absorbe el fallback al
-centroide del partido (ver abajo).
-
-Si la localidad normalizada es `Lomas de Zamora`, la query no repite el
-partido. Para el resto se arma:
-
-```text
-<calle>, <localidad>, Lomas de Zamora, Buenos Aires, Argentina
-```
-
-### Fallback en cascada (TICK-008)
-
-`geocode_address()` intenta tres veces antes de rendirse:
-
-1. **Intento 1 — dirección exacta:** `<calle>, <localidad>, Lomas de Zamora,
-   Buenos Aires, Argentina`. Si Nominatim devuelve un resultado, se guarda tal
-   cual y el log dice `-> EXACTO`.
-2. **Intento 2 — centroide de barrio:** `<localidad>, Lomas de Zamora, Buenos
-   Aires, Argentina`. Si resuelve, se le suma un offset determinístico de hasta
-   ±0.005 grados generado con MD5 del nombre de la escuela. El log dice
-   `-> FALLBACK BARRIO`.
-3. **Intento 3 — centroide del partido:** `Lomas de Zamora, Buenos Aires,
-   Argentina` (constante `PARTIDO_QUERY`). Absorbe los barrios que no existen
-   como entidad en Nominatim. También suma el offset determinístico y el log
-   dice `-> FALLBACK PARTIDO`.
-4. Si los tres fallan, la escuela conserva el default y el log dice
-   `-> FALLO TOTAL`.
-
-El offset es reproducible: correr el script dos veces produce las mismas
-coordenadas para la misma escuela. Sirve para que los pines de un mismo barrio
-no queden apilados en un único punto.
-
-`requests.get()` usa un timeout de 30 segundos.
-
-## 7. Resultados de la corrida (TICK-008)
-
-Segunda pasada sobre las 106 escuelas que seguían en el default, con el mapping
-ampliado y el fallback en cascada:
-
-```text
-Total: 307 | Ya geocodificadas: 201
-Exactos: 6 | Fallback barrio: 86 | Fallos totales: 14
-Exitosos: 92 | Fallidos: 14
-```
-
-Tercera pasada, solo sobre esas 14 rebeldes, con el mapping final y el fallback
-al partido:
-
-```text
-Total: 307 | Ya geocodificadas: 293
-Exactos: 1 | Fallback barrio: 1 | Fallback partido: 12 | Fallos totales: 0
-Exitosos: 14 | Fallidos: 0
-```
-
-- **307 de 307 escuelas tienen coordenadas propias. Cero defaults.**
-- 239 pares de coordenadas únicos: varias escuelas comparten edificio o
-  dirección exacta, y los fallbacks al partido se separan solo por el offset.
-- Ninguna coordenada cae fuera del bounding box del partido.
-- Las 12 escuelas que no resolvían ni por barrio quedaron sobre el centroide de
-  Lomas de Zamora con el offset determinístico. Es la precisión más baja de
-  todo el dataset: sirven para ubicar la escuela en el mapa general, no para
-  navegar hasta la puerta.
-
-## 8. Limitaciones conocidas
-
-- El mapping (TICK-008) cubre las abreviaturas más frecuentes, pero quedan
-  variantes sin punto/espacio sin mapear (`V LAMADRID`, `V.FIORITO`,
-  `V.CENTENARIO`, `BUDGE`) y barrios sin entidad en Nominatim (`BO. LA LOMA`,
-  `BO. 2 DE ABRIL`, `OLIMPO`, `CEMENTERIO`, `TRIBUNALES`).
-- **La normalización de localidades no es el cuello de botella principal.**
-  De las 106 escuelas que quedaron en el default, 50 ya tenían una localidad
-  que se normalizaba bien (`BANFIELD`, `TEMPERLEY`, `LOMAS DE Z`) y aun así
-  fallaron. El problema es que Nominatim no tiene esas calles/números.
-- Prueba empírica sobre 18 muestras de las 106 fallidas con el mapping nuevo:
-  **1 recuperada**. Quitar el número de la calle no mejora el resultado. El
-  centroide de la localidad sí resuelve en 11 de 12 casos; por eso el fallback
-  en cascada lo usa.
-- **El fallback tiene precisión de barrio, no de puerta.** El pin puede quedar
-  a unos 500 metros de la escuela real. Es aceptable para decidir durante un
-  acto, pero no para navegación.
-- **El fallback al partido es todavía menos preciso:** 12 escuelas quedaron
-  sobre el centroide de Lomas de Zamora. Se distinguen entre sí por el offset
-  determinístico, pero no representan su ubicación real.
-- No hay validación por bounding box: un resultado puede pertenecer a otra
-  localidad del partido.
-- Las intersecciones se reducen a la primera calle; se pierde la esquina
-  exacta.
-- Nominatim no tiene todas las calles del nomenclador.
-
-## 9. Verificación posterior
-
-1. Leer el resumen `Exactos / Fallback barrio / Fallback partido / Fallos
-   totales` que imprime el script. Un `FALLO TOTAL` significa que ni la
-   dirección, ni la localidad, ni el partido resolvieron en Nominatim.
-2. Confirmar que el seed dejó de tener un único par de coordenadas:
-
-   ```powershell
-   $j = Get-Content -Raw assets\escuelas_seed.json | ConvertFrom-Json
-   ($j | Group-Object latitude,longitude).Count
-   ```
-
-3. Reiniciar la app para que Flutter vuelva a empaquetar el asset. Hot reload
-   no recarga el JSON.
-
-Si aparecen nuevos `FALLO TOTAL`, revisar el mapping de localidades o mapear
-el barrio a una localidad que Nominatim reconozca antes de volver a correr el
-script.
+Una corrida posterior reutiliza el caché y produce archivos byte a byte idénticos.

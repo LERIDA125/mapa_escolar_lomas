@@ -1,0 +1,902 @@
+{
+  "GARONA Y PIAGGIO, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.764327520861,
+    "lon": -58.409443571423,
+    "score": 99.67,
+    "address": "Calle Juan A. Garona & Calle Monseñor A. Piaggio, Lomas de Zamora, B1832, Provincia de Buenos Aires"
+  },
+  "COLON Y GUIDO SPANO, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.595132309289,
+    "lon": -58.911202735692,
+    "score": 96.2,
+    "address": "Calle Colón & Calle Guido y Spano, General Rodríguez, Provincia de Buenos Aires"
+  },
+  "COLON, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.770399741039,
+    "lon": -58.391386889292,
+    "score": 98.7,
+    "address": "Calle Colón, Temperley, Lomas de Zamora, B1834, Provincia de Buenos Aires"
+  },
+  "GOLONDRINA 3607 y Sta Cruz, Temperley, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.762265195494,
+    "lon": -58.353649265298,
+    "score": 96.99,
+    "address": "Calle La Golondrina & Calle Santa Cruz, San José, Lomas de Zamora, B1834, Provincia de Buenos Aires"
+  },
+  "MEXICO Y BARILARI, Banfield, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.740819299939,
+    "lon": -58.351114074863,
+    "score": 99.71,
+    "address": "Calle México & Calle Barilari, Banfield, Lomas de Zamora, B1828, Provincia de Buenos Aires"
+  },
+  "HEREDIA 250 Y JURAMENTO, Temperley, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.771178008416,
+    "lon": -58.360766004008,
+    "score": 98.65,
+    "address": "Calle José María de Heredia & Calle Juramento, Temperley, Lomas de Zamora, B1834, Provincia de Buenos Aires"
+  },
+  "CONCEPCION Y HORNERO, Temperley, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.75317497959,
+    "lon": -58.340403008433,
+    "score": 96.98,
+    "address": "Calle Concepción & Calle El Hornero, San José, Lomas de Zamora, Provincia de Buenos Aires"
+  },
+  "CONCEPCION, Temperley, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.7654327,
+    "lon": -58.3803581,
+    "score": 92.31,
+    "address": "Temperley, Lomas de Zamora, Provincia de Buenos Aires"
+  },
+  "HEREDIA Y JURAMENTO, Temperley, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.771178008416,
+    "lon": -58.360766004008,
+    "score": 99.71,
+    "address": "Calle José María de Heredia & Calle Juramento, Temperley, Lomas de Zamora, B1834, Provincia de Buenos Aires"
+  },
+  "LAVALLE 879 y SOLER, Temperley, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.777026900452,
+    "lon": -58.409089938928,
+    "score": 98.08,
+    "address": "Calle Juan Galo de Lavalle 879, Temperley, Lomas de Zamora, B1834, Provincia de Buenos Aires"
+  },
+  "9 DE JULIO Y SAN BENITO, Turdera, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.790072494554,
+    "lon": -58.415447109572,
+    "score": 99.71,
+    "address": "Calle 9 de Julio & Calle San Benito, Turdera, Lomas de Zamora, B1836, Provincia de Buenos Aires"
+  },
+  "Santos VEGA Y PAREJA, Llavallol, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.804310582021,
+    "lon": -58.424132270005,
+    "score": 98.5,
+    "address": "Calle Santos Vega & Calle Ramón Pareta, Llavallol, Lomas de Zamora, B1836, Provincia de Buenos Aires"
+  },
+  "Pasaje SALADO 1002 y ACHUPALLA, Temperley, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.779643018162,
+    "lon": -58.379786637789,
+    "score": 96.36,
+    "address": "Calle Salado & Calle Achupallas, Temperley, Lomas de Zamora, Provincia de Buenos Aires"
+  },
+  "Antártida ARGENTINA Y Santa CATALINA, Llavallol, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.804638984988,
+    "lon": -58.439350034315,
+    "score": 99.71,
+    "address": "Avenida Antártida Argentina & Avenida Santa Catalina, Llavallol, Lomas de Zamora, Provincia de Buenos Aires"
+  },
+  "EVA PERON Y ALBARRACIN, Temperley, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.775650717679,
+    "lon": -58.388937161485,
+    "score": 99.71,
+    "address": "Avenida Eva Perón & Calle Coronel Santiago Albarracin, Temperley, Lomas de Zamora, B1834, Provincia de Buenos Aires"
+  },
+  "MERCEDES Y DOYHENAR, Llavallol, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.806997401084,
+    "lon": -58.420838601152,
+    "score": 98.99,
+    "address": "Calle Mercedes & Calle Doyhenard, Llavallol, Lomas de Zamora, B1836, Provincia de Buenos Aires"
+  },
+  "SANTOS VEGA Y PAREJA, Llavallol, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.804310582021,
+    "lon": -58.424132270005,
+    "score": 98.5,
+    "address": "Calle Santos Vega & Calle Ramón Pareta, Llavallol, Lomas de Zamora, B1836, Provincia de Buenos Aires"
+  },
+  "ALAZAN Y SANTOS VEGA, Llavallol, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.809165193052,
+    "lon": -58.432354318301,
+    "score": 91.86,
+    "address": "Calle Santos Vega, Llavallol, Lomas de Zamora, B1836, Provincia de Buenos Aires"
+  },
+  "MERCEDES 1100 Y DOYHENAR, Llavallol, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.807076148848,
+    "lon": -58.420861850553,
+    "score": 97.69,
+    "address": "Calle Mercedes 1100, Llavallol, Lomas de Zamora, B1836, Provincia de Buenos Aires"
+  },
+  "ALBARRACIN Y EVA PERON, Temperley, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.775650717679,
+    "lon": -58.388937161485,
+    "score": 99.71,
+    "address": "Calle Coronel Santiago Albarracin & Avenida Eva Perón, Temperley, Lomas de Zamora, B1834, Provincia de Buenos Aires"
+  },
+  "Antártida ARGENTINA 2200 Y Santa CATALI, Llavallol, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.793411136567,
+    "lon": -58.415830722117,
+    "score": 97.54,
+    "address": "Avenida Antártida Argentina 2200, Llavallol, Lomas de Zamora, B1836, Provincia de Buenos Aires"
+  },
+  "SOLER Y LAVALLE, Temperley, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.781353555052,
+    "lon": -58.416868680351,
+    "score": 92.42,
+    "address": "Calle Juan Galo de Lavalle, Temperley, Lomas de Zamora, Provincia de Buenos Aires"
+  },
+  "MERCEDES Y DOYHENARD, Llavallol, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.806997401084,
+    "lon": -58.420838601152,
+    "score": 99.71,
+    "address": "Calle Mercedes & Calle Doyhenard, Llavallol, Lomas de Zamora, B1836, Provincia de Buenos Aires"
+  },
+  "MERCEDES 1100 Y DOYHENARD, Llavallol, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.806997401084,
+    "lon": -58.420838601152,
+    "score": 98.51,
+    "address": "Calle Mercedes & Calle Doyhenard, Llavallol, Lomas de Zamora, B1836, Provincia de Buenos Aires"
+  },
+  "BUCAREST Y CAMPOAMOR, Villa Albertina, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.725696083496,
+    "lon": -58.446456630922,
+    "score": 96.88,
+    "address": "Calle Bucarest & Calle Campoamor, Ingeniero Budge, Lomas de Zamora, B1821, Provincia de Buenos Aires"
+  },
+  "ELIZALDE Y Diagonal 62, Barrio Olimpo, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.739281597891,
+    "lon": -58.488744505909,
+    "score": 91.73,
+    "address": "Dr Gilberto Elizalde & Avenida Olimpo, Ingeniero Budge, Lomas de Zamora, Provincia de Buenos Aires"
+  },
+  "LA HAYA y PALMA, Villa Albertina, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.7294977795,
+    "lon": -58.45219630676,
+    "score": 96.67,
+    "address": "Calle La Haya & Calle Ricardo Palma, Ingeniero Budge, Lomas de Zamora, B1821, Provincia de Buenos Aires"
+  },
+  "MASSAD Y J. M. DE ROSAS, Barrio Juan Manuel de Rosas, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.738963682375,
+    "lon": -58.488062460649,
+    "score": 85.54,
+    "address": "Calle Juan Manuel de Rosas, Ingeniero Budge, Lomas de Zamora, Provincia de Buenos Aires"
+  },
+  "MANUELA PEDRAZA Y RODRIGUEZ, Barrio 2 de Abril, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.741877179938,
+    "lon": -58.473072526265,
+    "score": 97.9,
+    "address": "Calle Manuela Pedraza & Calle Soldado Víctor Rodríguez, Ingeniero Budge, Lomas de Zamora, B1827, Provincia de Buenos Aires"
+  },
+  "MANUELA PEDRAZA, Barrio 2 de Abril, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.734256295775,
+    "lon": -58.478926401321,
+    "score": 90.93,
+    "address": "Calle Manuela Pedraza, Ingeniero Budge, Lomas de Zamora, Provincia de Buenos Aires"
+  },
+  "RODRIGUEZ, Barrio 2 de Abril, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.75727490371,
+    "lon": -58.425635899615,
+    "score": 93.5,
+    "address": "Calle Ministra Catalina Rodríguez 2, Lomas de Zamora, B1832, Provincia de Buenos Aires"
+  },
+  "CIPOLLETTI 2200 y R. PALMA, Ingeniero Budge, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.718076514415,
+    "lon": -58.46236196275,
+    "score": 98.55,
+    "address": "Calle Ingeniero C. Cipolletti & Calle Ricardo Palma, Ingeniero Budge, Lomas de Zamora, B1827, Provincia de Buenos Aires"
+  },
+  "ELIZALDE Y CALLE 7, Barrio Nueva Esperanza, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.728739805248,
+    "lon": -58.496441609635,
+    "score": 89.19,
+    "address": "Dr Gilberto Elizalde, Ingeniero Budge, Lomas de Zamora, Provincia de Buenos Aires"
+  },
+  "RAWSON Y ESPRONCEDA, Villa Albertina, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.737882281066,
+    "lon": -58.44407273384,
+    "score": 96.85,
+    "address": "Calle G. Rawson & Calle José Espronceda, Ingeniero Budge, Lomas de Zamora, B1821, Provincia de Buenos Aires"
+  },
+  "ISLANDIA Y MORAZAN, Villa Fiorito, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.715888418591,
+    "lon": -58.437958638388,
+    "score": 99.71,
+    "address": "Calle Islandia & Calle Francisco de Morazan, Villa Fiorito, Lomas de Zamora, Provincia de Buenos Aires"
+  },
+  "HOMERO Y CAFAYATE, Villa Albertina, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.730640693908,
+    "lon": -58.465248774022,
+    "score": 96.78,
+    "address": "Calle Homero & Calle Cafayate, Ingeniero Budge, Lomas de Zamora, B1827, Provincia de Buenos Aires"
+  },
+  "CAMPOAMOR 2851 Y Rivera, Ingeniero Budge, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.706883940001,
+    "lon": -58.461076988907,
+    "score": 98.07,
+    "address": "Calle Campoamor 2851, Ingeniero Budge, Lomas de Zamora, B1827, Provincia de Buenos Aires"
+  },
+  "LA HAYA y R. PALMA, Villa Albertina, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.7294977795,
+    "lon": -58.45219630676,
+    "score": 96.71,
+    "address": "Calle La Haya & Calle Ricardo Palma, Ingeniero Budge, Lomas de Zamora, B1821, Provincia de Buenos Aires"
+  },
+  "AZAMOR Y MURATURE, Villa Fiorito, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.6965681591,
+    "lon": -58.44677345645,
+    "score": 91.97,
+    "address": "Calle José Luis Murature, Villa Fiorito, Lomas de Zamora, Provincia de Buenos Aires"
+  },
+  "J. M. DE ROSAS Y OLIMPO, Barrio Juan Manuel de Rosas, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.739281597891,
+    "lon": -58.488744505909,
+    "score": 96.68,
+    "address": "Calle Juan Manuel de Rosas & Avenida Olimpo, Ingeniero Budge, Lomas de Zamora, Provincia de Buenos Aires"
+  },
+  "J. M. DE ROSAS, Barrio Juan Manuel de Rosas, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.738963682375,
+    "lon": -58.488062460649,
+    "score": 90.5,
+    "address": "Calle Juan Manuel de Rosas, Ingeniero Budge, Lomas de Zamora, Provincia de Buenos Aires"
+  },
+  "OLIMPO, Barrio Juan Manuel de Rosas, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.738963682375,
+    "lon": -58.488062460649,
+    "score": 92.96,
+    "address": "Calle Juan Manuel de Rosas, Ingeniero Budge, Lomas de Zamora, Provincia de Buenos Aires"
+  },
+  "J. M. DE ROSAS Y OLIMPO, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.739281597891,
+    "lon": -58.488744505909,
+    "score": 99.67,
+    "address": "Calle Juan Manuel de Rosas & Avenida Olimpo, Ingeniero Budge, Lomas de Zamora, Provincia de Buenos Aires"
+  },
+  "J. M. DE ROSAS, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.738963682375,
+    "lon": -58.488062460649,
+    "score": 98.7,
+    "address": "Calle Juan Manuel de Rosas, Ingeniero Budge, Lomas de Zamora, Provincia de Buenos Aires"
+  },
+  "OLIMPO, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.733971,
+    "lon": -58.4760722,
+    "score": 100,
+    "address": "Olimpo"
+  },
+  "G. MIRO 2550 y Saradero, Villa Urbana, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.708240574019,
+    "lon": -58.452283731543,
+    "score": 94.68,
+    "address": "Calle Gabriel Miro 2550, Villa Fiorito, Lomas de Zamora, B1821, Provincia de Buenos Aires"
+  },
+  "SOLDADO BENITEZ Y PEDRAZA, Barrio 2 de Abril, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.744426200513,
+    "lon": -58.46993920322,
+    "score": 97.87,
+    "address": "Calle Soldado Ángel Benítez & Calle Manuela Pedraza, Ingeniero Budge, Lomas de Zamora, B1827, Provincia de Buenos Aires"
+  },
+  "CAMPANA 534 y PLUMERILLO, Villa Fiorito, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.705381786779,
+    "lon": -58.441734099035,
+    "score": 98.31,
+    "address": "Calle Campana & Calle El Plumerillo, Villa Fiorito, Lomas de Zamora, B1821, Provincia de Buenos Aires"
+  },
+  "G. MIRO Y BARADERO, Villa Urbana, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.709397388953,
+    "lon": -58.451247978234,
+    "score": 97.14,
+    "address": "Calle Gabriel Miro & Calle Baradero, Villa Fiorito, Lomas de Zamora, B1821, Provincia de Buenos Aires"
+  },
+  "CIPOLLETTI y PALMA, Ingeniero Budge, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.718076514415,
+    "lon": -58.46236196275,
+    "score": 99.71,
+    "address": "Calle Ingeniero C. Cipolletti & Calle Ricardo Palma, Ingeniero Budge, Lomas de Zamora, B1827, Provincia de Buenos Aires"
+  },
+  "Presidente PERON Y GINEBRA, Villa Albertina, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.723850514145,
+    "lon": -58.444443800694,
+    "score": 97.04,
+    "address": "Calle Presidente Juan Domingo Perón & Calle Ginebra, Ingeniero Budge, Lomas de Zamora, Provincia de Buenos Aires"
+  },
+  "M. J. TELLO 2061 Y OLIMPO, Barrio Olimpo, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.7577628,
+    "lon": -58.4215706,
+    "score": 84.76,
+    "address": "Lomas de Zamora, Provincia de Buenos Aires"
+  },
+  "M. J. TELLO 2061, Barrio Olimpo, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.733971,
+    "lon": -58.4760722,
+    "score": 88.21,
+    "address": "Olimpo"
+  },
+  "QUIROGA Y MEILLAN, Santa Catalina, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.77694,
+    "lon": -58.43114,
+    "score": 90.16,
+    "address": "Santa Catalina, Lomas de Zamora, Buenos Aires"
+  },
+  "QUIROGA, Santa Catalina, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.77694,
+    "lon": -58.43114,
+    "score": 94.72,
+    "address": "Santa Catalina, Lomas de Zamora, Buenos Aires"
+  },
+  "MEILLAN, Santa Catalina, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.77694,
+    "lon": -58.43114,
+    "score": 94.72,
+    "address": "Santa Catalina, Lomas de Zamora, Buenos Aires"
+  },
+  "QUIROGA Y MEILLAN, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.751663450036,
+    "lon": -58.479557227567,
+    "score": 88.83,
+    "address": "Avenida General Juan Facundo Quiroga, Ingeniero Budge, Lomas de Zamora, Provincia de Buenos Aires"
+  },
+  "VUCETICH 4834 Y PERGAMINO, Villa Lamadrid, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.726263915527,
+    "lon": -58.480317172818,
+    "score": 96.54,
+    "address": "Calle Juan Vucetich & Calle Pergamino, Ingeniero Budge, Lomas de Zamora, B1827, Provincia de Buenos Aires"
+  },
+  "CAMPOAMOR 2890 Y LA RIVERA, Ingeniero Budge, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.706516780288,
+    "lon": -58.461485970049,
+    "score": 95.21,
+    "address": "Calle Campoamor & Camino De La Ribera S, Ingeniero Budge, Lomas de Zamora, B1827, Provincia de Buenos Aires"
+  },
+  "SOLDADO BENITEZ, Barrio 2 de Abril, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.743709944248,
+    "lon": -58.468468991351,
+    "score": 90.93,
+    "address": "Calle Soldado Ángel Benítez, Ingeniero Budge, Lomas de Zamora, B1827, Provincia de Buenos Aires"
+  },
+  "PEDRAZA, Barrio 2 de Abril, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.7781548,
+    "lon": -58.426462,
+    "score": 92.22,
+    "address": "2 de Abril"
+  },
+  "PIO BAROJA Y QUESADA, Villa Fiorito, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.714580715967,
+    "lon": -58.445793370924,
+    "score": 99.71,
+    "address": "Calle Pío Baroja & Calle Quesada, Villa Fiorito, Lomas de Zamora, B1821, Provincia de Buenos Aires"
+  },
+  "QUESADA Y A. BELLO, Ingeniero Budge, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.724652494641,
+    "lon": -58.462807125627,
+    "score": 99.71,
+    "address": "Calle Quesada & Calle Andrés Bello, Ingeniero Budge, Lomas de Zamora, B1827, Provincia de Buenos Aires"
+  },
+  "LA HAYA Y R. PALMA, Ingeniero Budge, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.7294977795,
+    "lon": -58.45219630676,
+    "score": 99.71,
+    "address": "Calle La Haya & Calle Ricardo Palma, Ingeniero Budge, Lomas de Zamora, B1821, Provincia de Buenos Aires"
+  },
+  "CAMPOAMOR Y LA RIBERA, Barrio Juan Manuel de Rosas, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.706516780288,
+    "lon": -58.461485970049,
+    "score": 95.94,
+    "address": "Calle Campoamor & Camino De La Ribera S, Ingeniero Budge, Lomas de Zamora, B1827, Provincia de Buenos Aires"
+  },
+  "Olimpo y las vías, Villa Fiorito, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.7055159,
+    "lon": -58.4446328,
+    "score": 90.51,
+    "address": "Villa Fiorito, Lomas de Zamora, Provincia de Buenos Aires"
+  },
+  "PERON Y GINEBRA, Banfield, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.723269480617,
+    "lon": -58.444006265348,
+    "score": 99.32,
+    "address": "Calle Presidente Juan Domingo Perón & Calle Ginebra, Villa Centenario, Lomas de Zamora, Provincia de Buenos Aires"
+  },
+  "PERON, Banfield, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.7440889,
+    "lon": -58.3815415,
+    "score": 95.65,
+    "address": "Banfield, Lomas de Zamora, Provincia de Buenos Aires"
+  },
+  "Darwin y B.Rojas, Villa Fiorito, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.69364397912,
+    "lon": -58.445713323749,
+    "score": 98.96,
+    "address": "Calle Darwin & Calle D. Rojas, Villa Fiorito, Lomas de Zamora, Provincia de Buenos Aires"
+  },
+  "G. MISTRAL Y ZAMORA, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.729239281607,
+    "lon": -58.42022932061,
+    "score": 99.67,
+    "address": "Calle Gabriela Mistral & Calle Juan Zamora, Villa Centenario, Lomas de Zamora, Provincia de Buenos Aires"
+  },
+  "ESPRONCEDA Y RAWSON, Villa Albertina, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.737882281066,
+    "lon": -58.44407273384,
+    "score": 96.85,
+    "address": "Calle José Espronceda & Calle G. Rawson, Ingeniero Budge, Lomas de Zamora, B1821, Provincia de Buenos Aires"
+  },
+  "BENAVENTE Y GUIRALDES, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.759866294805,
+    "lon": -58.434263224916,
+    "score": 99.67,
+    "address": "Calle Jacinto Benavente & Calle Ricardo Güiraldes, Lomas de Zamora, B1832, Provincia de Buenos Aires"
+  },
+  "BUSTOS Y OLMOS, Villa Independencia, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.760134683345,
+    "lon": -58.447737804822,
+    "score": 96.19,
+    "address": "Calle Bustos & Calle Olmos, Lomas de Zamora, B1832, Provincia de Buenos Aires"
+  },
+  "VERNET Y LAS TROPAS, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.740094516771,
+    "lon": -58.436588281038,
+    "score": 99.67,
+    "address": "Calle L. Vernet & Calle Las Tropas, Ingeniero Budge, Lomas de Zamora, B1828, Provincia de Buenos Aires"
+  },
+  "CASTRO Y F. SANCHEZ, La Loma, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.751690502629,
+    "lon": -58.443277291229,
+    "score": 97.92,
+    "address": "Calle Intendente F. Castro & Calle Florencio Sánchez, Ingeniero Budge, Lomas de Zamora, B1828, Provincia de Buenos Aires"
+  },
+  "F. SANCHEZ y I. CASTRO, La Loma, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.751690502629,
+    "lon": -58.443277291229,
+    "score": 92.72,
+    "address": "Calle Florencio Sánchez & Calle Intendente F. Castro, Ingeniero Budge, Lomas de Zamora, B1832, Provincia de Buenos Aires"
+  },
+  "R. PALMA y RAWSON, Villa Albertina, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.738521987916,
+    "lon": -58.44529766517,
+    "score": 96.71,
+    "address": "Calle Ricardo Palma & Calle G. Rawson, Ingeniero Budge, Lomas de Zamora, B1821, Provincia de Buenos Aires"
+  },
+  "VERNET Y LAS TROPAS, Barrio Odisea, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.740094516771,
+    "lon": -58.436588281038,
+    "score": 98.04,
+    "address": "Calle L. Vernet & Calle Las Tropas, Ingeniero Budge, Lomas de Zamora, B1828, Provincia de Buenos Aires"
+  },
+  "ZAMORA Y VERNET, Villa Centenario, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.729909582403,
+    "lon": -58.419683407256,
+    "score": 99.71,
+    "address": "Calle Juan Zamora & Calle L. Vernet, Villa Centenario, Lomas de Zamora, Provincia de Buenos Aires"
+  },
+  "Camino CINTURA Y JUAN XXIII, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.830470208465,
+    "lon": -58.415098841495,
+    "score": 99.29,
+    "address": "Camino de Cintura & Calle Juan XXIII, Burzaco, Almirante Brown, Provincia de Buenos Aires"
+  },
+  "Camino CINTURA, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.721101544011,
+    "lon": -58.446159341131,
+    "score": 100,
+    "address": "Camino de Cintura, Ingeniero Budge, Lomas de Zamora, Provincia de Buenos Aires"
+  },
+  "JUAN XXIII, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.7713592,
+    "lon": -58.4441103,
+    "score": 100,
+    "address": "Juan Xxiii"
+  },
+  "Olimpo, Villa Fiorito, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.7055159,
+    "lon": -58.4446328,
+    "score": 95.29,
+    "address": "Villa Fiorito, Lomas de Zamora, Provincia de Buenos Aires"
+  },
+  "las vías, Villa Fiorito, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.7055159,
+    "lon": -58.4446328,
+    "score": 94.62,
+    "address": "Villa Fiorito, Lomas de Zamora, Provincia de Buenos Aires"
+  },
+  "Olimpo y las vías, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.733971,
+    "lon": -58.4760722,
+    "score": 89.79,
+    "address": "Olimpo"
+  },
+  "GUIDO SPANO, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.779365954352,
+    "lon": -58.40580360424,
+    "score": 98.7,
+    "address": "Calle Guido y Spano, Temperley, Lomas de Zamora, Provincia de Buenos Aires"
+  },
+  "LAVALLE 879, Temperley, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.777026900452,
+    "lon": -58.409089938928,
+    "score": 99.1,
+    "address": "Calle Juan Galo de Lavalle 879, Temperley, Lomas de Zamora, B1834, Provincia de Buenos Aires"
+  },
+  "SOLER, Temperley, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.7654327,
+    "lon": -58.3803581,
+    "score": 95.74,
+    "address": "Temperley, Lomas de Zamora, Provincia de Buenos Aires"
+  },
+  "LAVALLE 879 y SOLER, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.777026900452,
+    "lon": -58.409089938928,
+    "score": 97.76,
+    "address": "Calle Juan Galo de Lavalle 879, Temperley, Lomas de Zamora, B1834, Provincia de Buenos Aires"
+  },
+  "LAVALLE 879, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.777026900452,
+    "lon": -58.409089938928,
+    "score": 98.97,
+    "address": "Calle Juan Galo de Lavalle 879, Temperley, Lomas de Zamora, B1834, Provincia de Buenos Aires"
+  },
+  "SOLER, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.78987198769,
+    "lon": -58.399210330643,
+    "score": 98.7,
+    "address": "Calle Miguel Estanislao Soler, Turdera, Lomas de Zamora, Provincia de Buenos Aires"
+  },
+  "Santos VEGA, Llavallol, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.809165193052,
+    "lon": -58.432354318301,
+    "score": 98.9,
+    "address": "Calle Santos Vega, Llavallol, Lomas de Zamora, B1836, Provincia de Buenos Aires"
+  },
+  "PAREJA, Llavallol, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.808933933325,
+    "lon": -58.420788048099,
+    "score": 95.57,
+    "address": "Calle Ramon Pareta, Llavallol, Lomas de Zamora, B1836, Provincia de Buenos Aires"
+  },
+  "Santos VEGA Y PAREJA, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.804310582021,
+    "lon": -58.424132270005,
+    "score": 98.31,
+    "address": "Calle Santos Vega & Calle Ramón Pareta, Llavallol, Lomas de Zamora, B1836, Provincia de Buenos Aires"
+  },
+  "Santos VEGA, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.809165193052,
+    "lon": -58.432354318301,
+    "score": 98.7,
+    "address": "Calle Santos Vega, Llavallol, Lomas de Zamora, B1836, Provincia de Buenos Aires"
+  },
+  "PAREJA, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.808933933325,
+    "lon": -58.420788048099,
+    "score": 94.77,
+    "address": "Calle Ramon Pareta, Llavallol, Lomas de Zamora, B1836, Provincia de Buenos Aires"
+  },
+  "SANTOS VEGA, Llavallol, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.809165193052,
+    "lon": -58.432354318301,
+    "score": 98.9,
+    "address": "Calle Santos Vega, Llavallol, Lomas de Zamora, B1836, Provincia de Buenos Aires"
+  },
+  "SANTOS VEGA Y PAREJA, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.804310582021,
+    "lon": -58.424132270005,
+    "score": 98.31,
+    "address": "Calle Santos Vega & Calle Ramón Pareta, Llavallol, Lomas de Zamora, B1836, Provincia de Buenos Aires"
+  },
+  "SANTOS VEGA, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.809165193052,
+    "lon": -58.432354318301,
+    "score": 98.7,
+    "address": "Calle Santos Vega, Llavallol, Lomas de Zamora, B1836, Provincia de Buenos Aires"
+  },
+  "ALAZAN, Llavallol, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.7980495,
+    "lon": -58.4251479,
+    "score": 95,
+    "address": "Llavallol, Lomas de Zamora, Provincia de Buenos Aires"
+  },
+  "ALAZAN Y SANTOS VEGA, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.809165193052,
+    "lon": -58.432354318301,
+    "score": 90.41,
+    "address": "Calle Santos Vega, Llavallol, Lomas de Zamora, B1836, Provincia de Buenos Aires"
+  },
+  "ALAZAN, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.7577628,
+    "lon": -58.4215706,
+    "score": 93.85,
+    "address": "Lomas de Zamora, Provincia de Buenos Aires"
+  },
+  "MERCEDES 1100, Llavallol, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.807076148848,
+    "lon": -58.420861850553,
+    "score": 99.1,
+    "address": "Calle Mercedes 1100, Llavallol, Lomas de Zamora, B1836, Provincia de Buenos Aires"
+  },
+  "DOYHENAR, Llavallol, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.806434007502,
+    "lon": -58.421289891643,
+    "score": 96.9,
+    "address": "Calle Doyhenard, Llavallol, Lomas de Zamora, B1836, Provincia de Buenos Aires"
+  },
+  "MERCEDES 1100 Y DOYHENAR, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.807076148848,
+    "lon": -58.420861850553,
+    "score": 97.32,
+    "address": "Calle Mercedes 1100, Llavallol, Lomas de Zamora, B1836, Provincia de Buenos Aires"
+  },
+  "MERCEDES 1100, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.807076148848,
+    "lon": -58.420861850553,
+    "score": 98.97,
+    "address": "Calle Mercedes 1100, Llavallol, Lomas de Zamora, B1836, Provincia de Buenos Aires"
+  },
+  "DOYHENAR, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.806434007502,
+    "lon": -58.421289891643,
+    "score": 96.34,
+    "address": "Calle Doyhenard, Llavallol, Lomas de Zamora, B1836, Provincia de Buenos Aires"
+  },
+  "Antártida ARGENTINA 2200, Llavallol, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.793411136567,
+    "lon": -58.415830722117,
+    "score": 99.1,
+    "address": "Avenida Antártida Argentina 2200, Llavallol, Lomas de Zamora, B1836, Provincia de Buenos Aires"
+  },
+  "Santa CATALI, Llavallol, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.7980495,
+    "lon": -58.4251479,
+    "score": 91.7,
+    "address": "Llavallol, Lomas de Zamora, Provincia de Buenos Aires"
+  },
+  "Antártida ARGENTINA 2200 Y Santa CATALI, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.793411136567,
+    "lon": -58.415830722117,
+    "score": 97.2,
+    "address": "Avenida Antártida Argentina 2200, Llavallol, Lomas de Zamora, B1836, Provincia de Buenos Aires"
+  },
+  "Antártida ARGENTINA 2200, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.793411136567,
+    "lon": -58.415830722117,
+    "score": 98.97,
+    "address": "Avenida Antártida Argentina 2200, Llavallol, Lomas de Zamora, B1836, Provincia de Buenos Aires"
+  },
+  "Santa CATALI, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.7577628,
+    "lon": -58.4215706,
+    "score": 90,
+    "address": "Lomas de Zamora, Provincia de Buenos Aires"
+  },
+  "LAVALLE, Temperley, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.781353555052,
+    "lon": -58.416868680351,
+    "score": 98.9,
+    "address": "Calle Juan Galo de Lavalle, Temperley, Lomas de Zamora, Provincia de Buenos Aires"
+  },
+  "SOLER Y LAVALLE, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -38.719529993236,
+    "lon": -62.259428977156,
+    "score": 96.03,
+    "address": "Calle Soler & Calle Lavalle, Bahía Blanca, B8000, Provincia de Buenos Aires"
+  },
+  "LAVALLE, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.784474032831,
+    "lon": -58.422874188248,
+    "score": 98.7,
+    "address": "Calle Juan Galo de Lavalle, Llavallol, Lomas de Zamora, Provincia de Buenos Aires"
+  },
+  "MASSAD, Barrio Juan Manuel de Rosas, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.738963682375,
+    "lon": -58.488062460649,
+    "score": 92.96,
+    "address": "Calle Juan Manuel de Rosas, Ingeniero Budge, Lomas de Zamora, Provincia de Buenos Aires"
+  },
+  "MASSAD Y J. M. DE ROSAS, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.738963682375,
+    "lon": -58.488062460649,
+    "score": 90.24,
+    "address": "Calle Juan Manuel de Rosas, Ingeniero Budge, Lomas de Zamora, Provincia de Buenos Aires"
+  },
+  "MASSAD, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.735640518108,
+    "lon": -58.477369636595,
+    "score": 98.7,
+    "address": "Calle Soldado Massad, Ingeniero Budge, Lomas de Zamora, B1827, Provincia de Buenos Aires"
+  },
+  "CAMPOAMOR 2851, Ingeniero Budge, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.706883940001,
+    "lon": -58.461076988907,
+    "score": 99.1,
+    "address": "Calle Campoamor 2851, Ingeniero Budge, Lomas de Zamora, B1827, Provincia de Buenos Aires"
+  },
+  "Rivera, Ingeniero Budge, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.7352523,
+    "lon": -58.4651195,
+    "score": 95.47,
+    "address": "Ingeniero Budge, Lomas de Zamora, Provincia de Buenos Aires"
+  },
+  "CAMPOAMOR 2851 Y Rivera, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.706883940001,
+    "lon": -58.461076988907,
+    "score": 97.67,
+    "address": "Calle Campoamor 2851, Ingeniero Budge, Lomas de Zamora, B1827, Provincia de Buenos Aires"
+  },
+  "CAMPOAMOR 2851, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.706883940001,
+    "lon": -58.461076988907,
+    "score": 98.97,
+    "address": "Calle Campoamor 2851, Ingeniero Budge, Lomas de Zamora, B1827, Provincia de Buenos Aires"
+  },
+  "Rivera, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.755693008078,
+    "lon": -58.401556451992,
+    "score": 98.7,
+    "address": "Calle Pedro Ignacio Rivera, Lomas de Zamora, Provincia de Buenos Aires"
+  },
+  "AZAMOR, Villa Fiorito, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.703517167934,
+    "lon": -58.446817541962,
+    "score": 98.9,
+    "address": "Calle Azamor, Villa Fiorito, Lomas de Zamora, B1821, Provincia de Buenos Aires"
+  },
+  "MURATURE, Villa Fiorito, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.6965681591,
+    "lon": -58.44677345645,
+    "score": 98.9,
+    "address": "Calle José Luis Murature, Villa Fiorito, Lomas de Zamora, Provincia de Buenos Aires"
+  },
+  "AZAMOR Y MURATURE, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.725019542586,
+    "lon": -58.424186584225,
+    "score": 90.06,
+    "address": "Calle J. L. Murature, Villa Centenario, Lomas de Zamora, Provincia de Buenos Aires"
+  },
+  "AZAMOR, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.718901003031,
+    "lon": -58.473449064197,
+    "score": 98.7,
+    "address": "Calle Azamor, Ingeniero Budge, Lomas de Zamora, Provincia de Buenos Aires"
+  },
+  "MURATURE, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.725019542586,
+    "lon": -58.424186584225,
+    "score": 98.7,
+    "address": "Calle J. L. Murature, Villa Centenario, Lomas de Zamora, Provincia de Buenos Aires"
+  },
+  "G. MIRO 2550, Villa Urbana, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.708240574019,
+    "lon": -58.452283731543,
+    "score": 95.82,
+    "address": "Calle Gabriel Miro 2550, Villa Fiorito, Lomas de Zamora, B1821, Provincia de Buenos Aires"
+  },
+  "Saradero, Villa Urbana, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.7136272,
+    "lon": -58.4631088,
+    "score": 92.31,
+    "address": "Villa Urbana Lomas de Zamora"
+  },
+  "G. MIRO 2550 y Saradero, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.708240574019,
+    "lon": -58.452283731543,
+    "score": 96.13,
+    "address": "Calle Gabriel Miro 2550, Villa Fiorito, Lomas de Zamora, B1821, Provincia de Buenos Aires"
+  },
+  "G. MIRO 2550, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.708240574019,
+    "lon": -58.452283731543,
+    "score": 97.87,
+    "address": "Calle Gabriel Miro 2550, Villa Fiorito, Lomas de Zamora, B1821, Provincia de Buenos Aires"
+  },
+  "Saradero, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.714992754879,
+    "lon": -58.46134619279,
+    "score": 92.81,
+    "address": "Calle Baradero, Ingeniero Budge, Lomas de Zamora, B1827, Provincia de Buenos Aires"
+  },
+  "OLIMPO, Barrio Olimpo, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.733971,
+    "lon": -58.4760722,
+    "score": 92.94,
+    "address": "Olimpo"
+  },
+  "M. J. TELLO 2061 Y OLIMPO, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.7577628,
+    "lon": -58.4215706,
+    "score": 85.88,
+    "address": "Lomas de Zamora, Provincia de Buenos Aires"
+  },
+  "M. J. TELLO 2061, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.7577628,
+    "lon": -58.4215706,
+    "score": 90,
+    "address": "Lomas de Zamora, Provincia de Buenos Aires"
+  },
+  "QUIROGA, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.751663450036,
+    "lon": -58.479557227567,
+    "score": 98.7,
+    "address": "Avenida General Juan Facundo Quiroga, Ingeniero Budge, Lomas de Zamora, Provincia de Buenos Aires"
+  },
+  "MEILLAN, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.742348615451,
+    "lon": -58.484150601197,
+    "score": 95.33,
+    "address": "Calle Héctor Millán, Ingeniero Budge, Lomas de Zamora, B1827, Provincia de Buenos Aires"
+  },
+  "CAMPOAMOR 2890, Ingeniero Budge, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.706670595961,
+    "lon": -58.461436676889,
+    "score": 99.1,
+    "address": "Calle Campoamor 2890, Ingeniero Budge, Lomas de Zamora, B1827, Provincia de Buenos Aires"
+  },
+  "LA RIVERA, Ingeniero Budge, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.706301026267,
+    "lon": -58.461339029748,
+    "score": 95.66,
+    "address": "Camino De La Ribera S, Ingeniero Budge, Lomas de Zamora, Provincia de Buenos Aires"
+  },
+  "CAMPOAMOR 2890 Y LA RIVERA, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.706516780288,
+    "lon": -58.461485970049,
+    "score": 94.52,
+    "address": "Calle Campoamor & Camino De La Ribera S, Ingeniero Budge, Lomas de Zamora, B1827, Provincia de Buenos Aires"
+  },
+  "CAMPOAMOR 2890, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.706670595961,
+    "lon": -58.461436676889,
+    "score": 98.97,
+    "address": "Calle Campoamor 2890, Ingeniero Budge, Lomas de Zamora, B1827, Provincia de Buenos Aires"
+  },
+  "LA RIVERA, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.755693008078,
+    "lon": -58.401556451992,
+    "score": 97.83,
+    "address": "Calle Pedro Ignacio Rivera, Lomas de Zamora, Provincia de Buenos Aires"
+  },
+  "Olimpo, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.733971,
+    "lon": -58.4760722,
+    "score": 100,
+    "address": "Olimpo"
+  },
+  "las vías, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.7577628,
+    "lon": -58.4215706,
+    "score": 93,
+    "address": "Lomas de Zamora, Provincia de Buenos Aires"
+  },
+  "ELIZALDE, Barrio Nueva Esperanza, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.7551,
+    "lon": -58.4517,
+    "score": 92.13,
+    "address": "Nueva Esperanza"
+  },
+  "CALLE 7, Barrio Nueva Esperanza, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.7551,
+    "lon": -58.4517,
+    "score": 93.9,
+    "address": "Nueva Esperanza"
+  },
+  "ELIZALDE Y CALLE 7, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.728282944014,
+    "lon": -58.496778273374,
+    "score": 95.17,
+    "address": "Calle Doctor Gilberto Elizalde, Ingeniero Budge, Lomas de Zamora, Provincia de Buenos Aires"
+  },
+  "ELIZALDE, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.728739805248,
+    "lon": -58.496441609635,
+    "score": 100,
+    "address": "Dr Gilberto Elizalde, Ingeniero Budge, Lomas de Zamora, Provincia de Buenos Aires"
+  },
+  "CALLE 7, Lomas de Zamora, Buenos Aires, Argentina": {
+    "lat": -34.746600511555,
+    "lon": -58.474698381807,
+    "score": 97.83,
+    "address": "Pasaje 7, Ingeniero Budge, Lomas de Zamora, Provincia de Buenos Aires"
+  }
+}
