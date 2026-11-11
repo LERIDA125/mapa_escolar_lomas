@@ -25,12 +25,14 @@ No se utiliza Google Maps ni ninguna API key de mapas.
 ```text
 lib/
 ├── main.dart                     # ProviderScope + rutas nombradas
-├── domain/models/                # School, Locality, TransportLine
-├── data/repositories/            # SchoolRepository (lectura del asset)
+├── domain/models/                # School, Locality, TransportLine,
+│                                 # UserOrigin, StreetIndexEntry
+├── data/repositories/            # SchoolRepository, StreetIndexRepository
 ├── providers/                    # schoolRepositoryProvider, schoolsProvider,
-│                                 # searchQueryProvider, filteredSchoolsProvider
+│                                 # searchQueryProvider, filteredSchoolsProvider,
+│                                 # userOriginProvider, streetIndexProvider
 └── presentation/
-    ├── screens/                  # Splash, Login, Home
+    ├── screens/                  # Splash, Login, Home, Perfil
     ├── widgets/                  # Componentes reutilizables
     └── theme/                    # Tokens y ThemeData
 ```
@@ -83,6 +85,34 @@ school.turnosLabel        // turnos    ?? School.notInformed
 school.modalidadLabel     // modalidad ?? School.notInformed
 school.codigoOficialLabel // codigoOficial ?? School.notInformed
 ```
+
+### 3.2 Punto de partida del aspirante (`UserOrigin`)
+
+El origen de todos los cálculos de distancia —ficha, lista, comparador y Zona
+Segura— es configurable desde Perfil y persiste en `shared_preferences`.
+
+| Pieza | Rol |
+| --- | --- |
+| `UserOrigin` | `label`, `latitude`, `longitude`, `source`. Valida el bbox del partido. |
+| `UserOriginNotifier` | `Notifier<UserOrigin>`. Arranca en `UserOrigin.fallback` (Plaza Grigera) e hidrata desde disco. |
+| `originLocationProvider` | `Provider<LatLng>` derivado. Único punto de contacto para los consumidores. |
+| `streetIndexProvider` | `FutureProvider<List<StreetIndexEntry>>` sobre `assets/calles_lomas.json`. |
+| `OriginPickerSheet` | Bottom sheet con mapa, pin fijo y autocompletado de calles. |
+
+`build()` del notifier es **sincrónico** a propósito: cinco widgets leen
+`originLocationProvider` como un `LatLng` plano. Un `AsyncNotifier` obligaría a
+todos a manejar `AsyncValue`. La hidratación corre en un microtask y actualiza
+el estado cuando `shared_preferences` responde; en arranque en frío hay un
+parpadeo breve con el origen de fábrica.
+
+El origen nunca se acepta fuera del bbox del partido
+(`-34.90..-34.62`, `-58.60..-58.28`), el mismo que valida el ETL. Un valor
+persistido corrupto o fuera de rango degrada a `UserOrigin.fallback`.
+
+La geocodificación de la dirección es **offline**: el campo de domicilio
+autocompleta contra las calles que ya existen en el padrón de escuelas y el
+aspirante afina el punto arrastrando el mapa. No hay servicio externo ni
+permiso de GPS. Ver `docs/05_Geocoding.md` §8.
 
 ## 4. Búsqueda
 

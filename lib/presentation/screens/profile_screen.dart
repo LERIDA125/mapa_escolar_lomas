@@ -4,7 +4,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../providers/auth_providers.dart';
 import '../../providers/location_providers.dart';
 import '../../providers/school_providers.dart';
+import '../../providers/user_origin_providers.dart';
 import '../theme/app_theme.dart';
+import '../widgets/origin_picker_sheet.dart';
 import 'login_screen.dart';
 
 class ProfileScreen extends ConsumerStatefulWidget {
@@ -34,6 +36,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
         ref.watch(filteredSchoolsProvider).value?.length ?? 0;
     final totalSchools = ref.watch(schoolsProvider).value?.length ?? 0;
     final userDni = ref.watch(sessionProvider);
+    final origin = ref.watch(userOriginProvider);
 
     return Scaffold(
       appBar: AppBar(title: const Text('Perfil')),
@@ -75,13 +78,15 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
             color: AppColors.surface,
             child: Column(
               children: [
-                const ListTile(
-                  leading: Icon(
+                ListTile(
+                  leading: const Icon(
                     Icons.location_on_rounded,
                     color: AppColors.primary,
                   ),
-                  title: Text('Punto de partida'),
-                  subtitle: Text('Av. Hipólito Yrigoyen 8700, Lomas de Zamora'),
+                  title: const Text('Punto de partida'),
+                  subtitle: Text(origin.label),
+                  trailing: const Icon(Icons.edit_location_alt_outlined),
+                  onTap: () => OriginPickerSheet.show(context),
                 ),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(8, 0, 8, 12),

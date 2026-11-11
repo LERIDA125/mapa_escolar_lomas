@@ -4,9 +4,15 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/legacy.dart';
 import 'package:latlong2/latlong.dart';
 
-/// Simulated user location at Plaza Grigera, Lomas de Zamora.
+import 'user_origin_providers.dart';
+
+/// The applicant's point of departure, derived from [userOriginProvider].
+///
+/// Kept as a plain `LatLng` so the map, the list, the detail sheet, the
+/// comparator and the safe-zone filter recalculate automatically when Perfil
+/// changes the origin, without any of them having to know about persistence.
 final originLocationProvider = Provider<LatLng>(
-  (ref) => const LatLng(-34.7618, -58.4022),
+  (ref) => ref.watch(userOriginProvider).latLng,
 );
 
 /// Whether schools outside the selected safe-zone radius are hidden.
