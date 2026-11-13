@@ -54,7 +54,7 @@ void main() {
     await tester.pumpWidget(
       ProviderScope(
         overrides: [schoolsProvider.overrideWith((ref) async => schools)],
-        child: const MaterialApp(home: HomeScreen()),
+        child: const MaterialApp(home: Scaffold(body: HomeScreen())),
       ),
     );
     await tester.pump();
@@ -117,7 +117,7 @@ void main() {
     await tester.pumpWidget(
       ProviderScope(
         overrides: [schoolsProvider.overrideWith((ref) async => schools)],
-        child: const MaterialApp(home: HomeScreen()),
+        child: const MaterialApp(home: Scaffold(body: HomeScreen())),
       ),
     );
     await tester.pump();

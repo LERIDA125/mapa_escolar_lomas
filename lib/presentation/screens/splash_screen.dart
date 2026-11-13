@@ -44,6 +44,24 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
         backgroundColor: AppColors.splashTop,
         body: Stack(
           children: [
+            // Fondo corporativo: degradado vertical de la paleta del Consejo.
+            // Reemplaza temporalmente al asset de imagen hasta que se exporte.
+            const Positioned.fill(
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      AppColors.splashTop,
+                      AppColors.splashMid,
+                      AppColors.splashBottom,
+                    ],
+                    stops: [0, 0.55, 1],
+                  ),
+                ),
+              ),
+            ),
             const Positioned.fill(
               child: IgnorePointer(
                 child: CustomPaint(painter: _TechnicalGridPainter()),
@@ -263,11 +281,14 @@ class _SplashIdentity extends StatelessWidget {
                 color: AppColors.sky,
               ),
               const SizedBox(width: 9),
-              Text(
-                'Geolocalización y Ruteo Inmediato',
-                style: textTheme.labelMedium?.copyWith(
-                  color: Colors.white.withValues(alpha: 0.9),
-                  fontWeight: FontWeight.w600,
+              Flexible(
+                child: Text(
+                  'Geolocalización y Ruteo Inmediato',
+                  textAlign: TextAlign.center,
+                  style: textTheme.labelMedium?.copyWith(
+                    color: Colors.white.withValues(alpha: 0.9),
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
               ),
             ],
