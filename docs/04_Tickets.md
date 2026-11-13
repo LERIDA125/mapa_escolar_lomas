@@ -78,9 +78,33 @@ Cierra las brechas entre los prototipos de `prototipo_ui/`, el PRD y el código 
 | **TICK-030** | Bugfix/UI | La ficha mostraba `'🚌 Líneas: 540, 277, 164'` hardcodeado para toda escuela. Ahora renderiza `school.transportLines` (solo el campo `line`, unido por comas) con fallback `No informado` cuando no hay datos. | 🟢 DONE |
 | **TICK-031** | Bugfix/Map | Zona Segura: el auto-fit de cámara ya no se dispara al cambiar el radio (el mapa queda estático y el círculo se ve contraerse), slider ampliado a 90 cuadras y contador `N de 307 escuelas visibles` en Perfil. | 🟢 DONE |
 | **BUG-001** | Bugfix/UI | Sincronización Autocompletado y Filtros: las sugerencias del buscador se alimentan de `mapVisibleSchoolsProvider` (nivel + colectivo + Zona Segura, sin texto) y usan el mismo matcher que el mapa (`schoolMatchesQuery`), así nunca ofrecen escuelas que el mapa oculta ni dejan el cartel "No se encontraron escuelas" en conflicto con el overlay del buscador. | 🟢 DONE |
-| **TICK-032** | Data (ETL) | Normalizar las variantes de líneas de colectivo del seed (`79 SAN JOSE` / `79 S. JOSÉ` / `79 SJOSE`, letras sueltas como `B`, `C`) a ramales canónicos y completar las 14 escuelas sin líneas. Base de auditoría: `auditoria_escuelas.csv`. | ⚪ TO DO |
+| **TICK-032** | Data (ETL) | Normalizar las variantes de líneas de colectivo del seed (`79 SAN JOSE` / `79 S. JOSÉ` / `79 SJOSE`, letras sueltas como `B`, `C`) a ramales canónicos y completar las 14 escuelas sin líneas. Base de auditoría: `auditoria_escuelas.csv`. | ⚫ WONTFIX |
 | **TICK-033** | State/UX | Punto de partida editable (HU-02): `UserOrigin` persistido en `shared_preferences`, picker en mapa + etiqueta en Perfil, `originLocationProvider` derivado para que ficha, lista, comparador y Zona Segura recalculen desde ahí. El domicilio se resuelve **offline**: `generar_indice_calles.py` deriva `assets/calles_lomas.json` (165 calles con bounds) del propio padrón, el campo autocompleta por tokens y el pin se afina arrastrando el mapa. Sin dependencias nuevas, sin GPS y sin red. | 🟢 DONE |
 | **TICK-034** | Data (ETL) | Inyectar el padrón de 310 escuelas en `assets/escuelas_seed.json`, corregir coordenadas y aplicar trim a los campos de texto. Commit `c96dd8c`. | 🟢 DONE |
 | **TICK-035** | Data (ETL) | `reparador_automatico.py`: reparar las coordenadas corruptas por Excel (se reinserta el punto decimal tras el prefijo 34/58) y geocodificar las 78 direcciones de intersección con ArcGIS aplicando validación estructural (rechazo de centroides de calle), bbox del partido y filtro de partidos ajenos. Genera `escuelas_reparadas_final.csv` y `revision_manual.csv`. Documentado en `docs/05_Geocoding.md`. | 🟢 DONE |
 | **TICK-036** | Data (QA) | Revisión manual de las 10 escuelas sin match confiable. Se cargaron las coordenadas de Google Maps en `overrides_manual.json`, que el script aplica con prioridad sobre ArcGIS (validando que caigan dentro del partido). `revision_manual.csv` baja de 54 a 44 filas: quedan 18 con desvío mayor a 3 km, 31 con localidad distinta y 8 con coincidencia parcial. | 🟢 DONE |
 | **TICK-037** | Bugfix/Data | El seed regenerado en `8b7a98c` salió con las claves planas del CSV (`nombre`, `nivel`, `zona`, `direccion`), así que `School.fromJson` parseaba 310 escuelas con `name`, `level` y `address` vacíos, `locality` vacía y sin `transportLines`: tarjetas y pines sin nombre, filtros de nivel y colectivo muertos. `csv_a_seed_json.py` ahora emite el contrato de `docs/02_Architecture.md` §3.1, valida todo antes de escribir y recupera teléfonos del seed histórico; `SchoolRepository` valida en debug con un `assert` que ninguna escuela quede sin nombre. Commit `5aab97f`. | 🟢 DONE |
+
+### Notas de estado
+
+- **TICK-032 (⚫ WONTFIX):** se descarta la normalización de variantes de línea. El costo de limpiar la data cruda y sostener excepciones manuales supera el beneficio en UX. El filtro por colectivo sigue operativo; las variantes del nomenclador aparecen como entradas separadas en el selector.
+
+## Sprint 6: Cierre 1.0 — Puerta de Entrada y Contacto
+
+Estos tickets no amplían el MMP del PRD (buscador offline, punto de partida, ficha y comparador ya están cubiertos): cierran la experiencia de entrada, el contacto con el Consejo y la higiene de release.
+
+| Ticket | Módulo | Descripción | Estado |
+|---|---|---|---|
+| **TICK-038** | State/Auth | Persistencia de sesión: guardar el flag de sesión y el DNI activo en `shared_preferences`, hidratar la sesión al arrancar y hacer que el Splash espere esa carga (hoy lee `sessionProvider` sincrónico, que arranca en `null`, y siempre manda a Login). `_signOut` en Perfil debe limpiar el flag persistido, no solo el estado en memoria. El checkbox "Recordar mi DNI" se conserva como preferencia de prellenado y sobrevive al cierre de sesión. | ⚪ TO DO |
+| **TICK-039** | UI/QA | Suite verde y Splash: incorporar el fondo real desde `prototipo_ui/splash_screen_mobile_consejo_escolar_ldz/screen.png` y declararlo en `pubspec.yaml` (hoy no existe ningún asset de imagen en el repo), corregir el overflow de 193px de la píldora "Geolocalización y Ruteo Inmediato" en `_SplashIdentity`, mockear `SharedPreferences` en los widget tests, alinear el pump del test con `_loadingDuration` (2300ms vs 2700ms) y envolver `HomeScreen` con un ancestro `Material` en `home_screen_search_test.dart`. Baseline al abrir: 11 verdes, 3 rojos. | ⚪ TO DO |
+| **TICK-040** | Integración | Mesa de Ayuda: abrir `mailto:ce062auxiliares.abc.gob.ar` con asunto prearmado (`Consulta - Mapa Escolar`) vía `url_launcher` (ya declarado en `pubspec.yaml`), con feedback si el dispositivo no tiene cliente de correo. Debe estar en Login **y** en Perfil, porque con TICK-038 el Login deja de mostrarse en cada arranque y el acceso quedaría huérfano. | ⚪ TO DO |
+| **TICK-041** | Release | Higiene de release: reemplazar `applicationId = "com.example.mapa_escolar"`, definir firma de release (hoy usa debug keys), agregar `<queries>` de `mailto:` y `tel:` en `AndroidManifest.xml` para Android 11+, y reemplazar el ícono y el launch screen por defecto de Flutter. | ⚪ TO DO |
+
+### Puntaje
+
+El módulo de Puntaje se mantiene con el estado "Próximamente" y se difiere a la v2. No se agrega ticket en este sprint.
+
+### Evidencia de apertura del Sprint 6
+
+- `main` local estaba 18 commits detrás de `origin/main`: TICK-024, TICK-033 y TICK-034..037 ya estaban integrados pero ausentes del working copy. La medición y el desarrollo de este sprint parten de `0e1149b`.
+- Suite al abrir el sprint: 11 tests verdes, 3 rojos (`home_screen_search_test` ×2 por falta de ancestro `Material` y `widget_test` por timing del Splash más overflow de 193px).
