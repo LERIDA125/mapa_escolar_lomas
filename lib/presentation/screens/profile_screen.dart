@@ -21,8 +21,22 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
   bool _afternoonShift = true;
   bool _eveningShift = false;
 
-  void _signOut() {
-    ref.read(sessionProvider.notifier).signOut();
+  Future<void> _signOut() async {
+    try {
+      await ref.read(sessionProvider.notifier).signOut();
+    } catch (_) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context)
+        ..hideCurrentSnackBar()
+        ..showSnackBar(
+          const SnackBar(
+            content: Text('No se pudo cerrar la sesión en este dispositivo.'),
+          ),
+        );
+      return;
+    }
+
+    if (!mounted) return;
     Navigator.of(context)
         .pushNamedAndRemoveUntil(LoginScreen.routeName, (route) => false);
   }

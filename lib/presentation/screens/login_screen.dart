@@ -71,23 +71,27 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     FocusScope.of(context).unfocus();
     setState(() => _isSubmitting = true);
     try {
-      await ref
-          .read(authPreferencesProvider)
-          .saveRememberedDni(_rememberDni ? dni : null);
+      final signedIn = await ref
+          .read(sessionProvider.notifier)
+          .signIn(dni, rememberDni: _rememberDni);
+      if (!signedIn) {
+        if (!mounted) return;
+        _showPending(context, 'Ingresa un DNI o legajo de 7 u 8 números.');
+        return;
+      }
       ref.invalidate(rememberedDniProvider);
-      ref.read(sessionProvider.notifier).signIn(dni);
       if (mounted) {
         Navigator.of(context).pushReplacementNamed(MainScreen.routeName);
       }
     } on PlatformException {
       if (!mounted) return;
-      _showPending(context, 'No se pudo guardar la preferencia del DNI.');
+      _showPending(context, 'No se pudo guardar la sesión en este dispositivo.');
     } on MissingPluginException {
       if (!mounted) return;
       _showPending(context, 'El almacenamiento local no está disponible.');
     } on StateError {
       if (!mounted) return;
-      _showPending(context, 'No se pudo guardar el DNI en este dispositivo.');
+      _showPending(context, 'No se pudo guardar la sesión en este dispositivo.');
     } finally {
       if (mounted) setState(() => _isSubmitting = false);
     }

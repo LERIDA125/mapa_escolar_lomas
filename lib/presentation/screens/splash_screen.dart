@@ -24,7 +24,10 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
   }
 
   Future<void> _continueAfterLoading() async {
-    await Future<void>.delayed(_loadingDuration);
+    await Future.wait([
+      Future<void>.delayed(_loadingDuration),
+      ref.read(sessionProvider.notifier).restore(),
+    ]);
     if (!mounted) return;
 
     final destination = ref.read(sessionProvider) == null
