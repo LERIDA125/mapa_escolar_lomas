@@ -1,0 +1,4 @@
+storePassword=Lopez944
+keyPassword=Lopez944
+keyAlias=upload
+storeFile=upload-keystore.jks

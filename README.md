@@ -61,6 +61,10 @@ python -m pip install requests
 python geocoder.py
 ```
 
+`assets/escuelas_seed.backup.json` se genera localmente y ya no se versiona (está
+en `.gitignore`), así que hay que crearlo con el `Copy-Item` de arriba antes de
+correr el ETL.
+
 Después de correrlo, reiniciar la app para que Flutter vuelva a empaquetar el
 asset. Hot reload no recarga el JSON.
 

@@ -2,9 +2,9 @@
     <!-- Required to download OpenStreetMap tiles at runtime. -->
     <uses-permission android:name="android.permission.INTERNET" />
     <application
-        android:label="Mapa Escolar Lomas"
+        android:label="Mapa Escolar LDZ"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"
             android:exported="true"

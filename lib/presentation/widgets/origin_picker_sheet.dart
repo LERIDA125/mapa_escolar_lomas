@@ -263,7 +263,7 @@ class _OriginPickerSheetState extends ConsumerState<OriginPickerSheet> {
                         children: [
                           TileLayer(
                             urlTemplate: _osmTileUrl,
-                            userAgentPackageName: 'com.example.mapa_escolar',
+                            userAgentPackageName: 'ar.gob.abc.mapaescolar',
                             maxNativeZoom: 19,
                           ),
                           const RichAttributionWidget(

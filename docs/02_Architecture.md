@@ -143,7 +143,7 @@ Ese import vive únicamente en la capa de providers; la UI sigue importando
 
 - `FlutterMap` con `MapOptions(initialCenter:, initialZoom:)`.
 - `TileLayer` apuntando a `https://tile.openstreetmap.org/{z}/{x}/{y}.png`
-  con `userAgentPackageName: 'com.example.mapa_escolar'`.
+  con `userAgentPackageName: 'ar.gob.abc.mapaescolar'`.
 - `MarkerLayer` con un `Marker` genérico por escuela, ubicado en
   `LatLng(school.latitude, school.longitude)`.
 - `RichAttributionWidget` con atribución a OpenStreetMap contributors.

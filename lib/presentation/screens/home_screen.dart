@@ -104,7 +104,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               children: [
                 TileLayer(
                   urlTemplate: _osmTileUrl,
-                  userAgentPackageName: 'com.example.mapa_escolar',
+                  userAgentPackageName: 'ar.gob.abc.mapaescolar',
                   maxNativeZoom: 19,
                 ),
                 if (safeZoneEnabled)
