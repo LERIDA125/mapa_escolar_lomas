@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../data/services/support_mail.dart';
 import '../../providers/auth_providers.dart';
 import '../theme/app_theme.dart';
 import '../widgets/institutional_logo_card.dart';
@@ -95,6 +96,20 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     } finally {
       if (mounted) setState(() => _isSubmitting = false);
     }
+  }
+
+  Future<void> _openSupportMail() async {
+    final launched = await launchSupportMail();
+    if (!mounted || launched) return;
+    ScaffoldMessenger.of(context)
+      ..hideCurrentSnackBar()
+      ..showSnackBar(
+        const SnackBar(
+          content: Text(
+            'No se encontró una aplicación de correo en este dispositivo.',
+          ),
+        ),
+      );
   }
 
   void _showPending(BuildContext context, String message) {
@@ -280,10 +295,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
               alignment: WrapAlignment.center,
               children: [
                 TextButton(
-                  onPressed: () => _showPending(
-                    context,
-                    'La mesa de ayuda estará disponible próximamente.',
-                  ),
+                  onPressed: _openSupportMail,
                   child: const Text('Mesa de Ayuda'),
                 ),
                 TextButton(

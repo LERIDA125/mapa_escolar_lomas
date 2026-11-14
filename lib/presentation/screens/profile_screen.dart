@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../data/services/support_mail.dart';
 import '../../providers/auth_providers.dart';
 import '../../providers/location_providers.dart';
 import '../../providers/school_providers.dart';
@@ -39,6 +40,20 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
     if (!mounted) return;
     Navigator.of(context)
         .pushNamedAndRemoveUntil(LoginScreen.routeName, (route) => false);
+  }
+
+  Future<void> _openSupportMail() async {
+    final launched = await launchSupportMail();
+    if (!mounted || launched) return;
+    ScaffoldMessenger.of(context)
+      ..hideCurrentSnackBar()
+      ..showSnackBar(
+        const SnackBar(
+          content: Text(
+            'No se encontró una aplicación de correo en este dispositivo.',
+          ),
+        ),
+      );
   }
 
   @override
@@ -251,6 +266,22 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
               subtitle: Text(
                 'El catálogo de escuelas está disponible sin conexión.',
               ),
+            ),
+          ),
+          const SizedBox(height: 24),
+          const _ProfileSectionTitle(title: 'Ayuda'),
+          Card(
+            margin: EdgeInsets.zero,
+            color: AppColors.surface,
+            child: ListTile(
+              leading: const Icon(
+                Icons.support_agent_rounded,
+                color: AppColors.primary,
+              ),
+              title: const Text('Mesa de Ayuda'),
+              subtitle: const Text(supportMailAddress),
+              trailing: const Icon(Icons.open_in_new_rounded),
+              onTap: _openSupportMail,
             ),
           ),
           const SizedBox(height: 24),
